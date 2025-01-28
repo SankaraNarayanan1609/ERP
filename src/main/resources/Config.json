@@ -1,0 +1,18 @@
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/v4",
+    "users": [
+      { "companyCode": "abc", "userName": "Superadmin", "userId": "0`", "password": "s" },
+      { "companyCode": "abc", "userName": "Sankara Narayanan", "userId": "1", "password": "s" },
+      { "companyCode": "abc", "userName": "Dinesh", "userId": "2", "password": "s" }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      { "companyCode": "abc", "userName": "Superadmin", "userId": "0", "password": "s" },
+      { "companyCode": "abc", "userName": "Sankara Narayanan", "userId": "1", "password": "s" },
+      { "companyCode": "abc", "userName": "Dinesh", "userId": "2", "password": "s" }
+    ]
+  }
+}

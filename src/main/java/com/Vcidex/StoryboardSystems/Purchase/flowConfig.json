@@ -1,0 +1,92 @@
+{
+  "PurchaseIndent": {
+    "type": "Indent",
+    "steps": ["PurchaseIndent", "RaisePO", "GRNInward", "GRNQC", "ReceiveInvoice", "Payment"],
+    "conditions": [
+      {
+        "step": "GRNInward",
+        "conditionType": "ProductType",
+        "value": "Service",
+        "nextStep": "ReceiveInvoice"
+      },
+      {
+        "step": "GRNQC",
+        "conditionType": "Rejection",
+        "value": "Rejected",
+        "nextStep": "PurchaseReturn"
+      },
+      {
+        "step": "ReceiveInvoice",
+        "conditionType": "Validation",
+        "value": "JournalEntry",
+        "nextStep": "ValidateJournalEntry"
+      }
+    ]
+  },
+  "DirectPO": {
+    "type": "Order",
+    "steps": ["DirectPO", "GRNInward", "GRNQC", "ReceiveInvoice", "Payment"],
+    "conditions": [
+      {
+        "step": "GRNInward",
+        "conditionType": "ProductType",
+        "value": "Service",
+        "nextStep": "ReceiveInvoice"
+      },
+      {
+        "step": "GRNQC",
+        "conditionType": "Rejection",
+        "value": "Rejected",
+        "nextStep": "PurchaseReturn"
+      },
+      {
+        "step": "ReceiveInvoice",
+        "conditionType": "Validation",
+        "value": "JournalEntry",
+        "nextStep": "ValidateJournalEntry"
+      }
+    ]
+  },
+  "DirectInvoice": {
+    "type": "Invoice",
+    "steps": ["ReceiveInvoice", "Payment"],
+    "conditions": [
+      {
+        "step": "Payment",
+        "conditionType": "Validation",
+        "value": "BankBookEntry",
+        "nextStep": "ValidateBankBookEntry"
+      },
+      {
+        "step": "Payment",
+        "conditionType": "Validation",
+        "value": "CompareSS",
+        "nextStep": "CompareScreenshots"
+      }
+    ]
+  },
+  "Agreement": {
+    "type": "Contract",
+    "steps": ["RaiseInvoice", "Payment"],
+    "conditions": [
+      {
+        "step": "RaiseInvoice",
+        "conditionType": "Validation",
+        "value": "JournalEntry",
+        "nextStep": "ValidateJournalEntry"
+      },
+      {
+        "step": "Payment",
+        "conditionType": "Validation",
+        "value": "BankBookEntry",
+        "nextStep": "ValidateBankBookEntry"
+      },
+      {
+        "step": "Payment",
+        "conditionType": "Validation",
+        "value": "CompareSS",
+        "nextStep": "CompareScreenshots"
+      }
+    ]
+  }
+}
