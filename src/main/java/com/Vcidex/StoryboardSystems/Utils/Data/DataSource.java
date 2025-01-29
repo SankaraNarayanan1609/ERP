@@ -3,6 +3,9 @@ package com.Vcidex.StoryboardSystems.Utils.Data;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+/**
+ * Custom annotation for specifying test data source.
+ */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DataSource {
     String filePath();

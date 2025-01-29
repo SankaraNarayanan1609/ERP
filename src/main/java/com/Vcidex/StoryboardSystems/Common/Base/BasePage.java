@@ -1,13 +1,12 @@
 package com.Vcidex.StoryboardSystems.Common.Base;
 
-import com.Vcidex.StoryboardSystems.Utils.Config.ConfigLoader;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import java.io.File;
 import java.nio.file.Files;
 import java.time.Duration;
@@ -19,7 +18,7 @@ public class BasePage {
     protected WebDriverWait wait;
 
     static {
-        ConfigLoader.load("config.properties");  // Load config once
+        ConfigManager.load("config.properties");  // Load config once
     }
 
     public BasePage(WebDriver driver) {
@@ -29,7 +28,7 @@ public class BasePage {
 
     // ✅ Fetch timeout from config.properties
     private static int getTimeoutFromConfig() {
-        String timeout = ConfigLoader.get("WebDriver.timeout");
+        String timeout = ConfigManager.getProperty("WebDriver.timeout");
         try {
             return timeout != null ? Integer.parseInt(timeout) : 10;
         } catch (NumberFormatException e) {

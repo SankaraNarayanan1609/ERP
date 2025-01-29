@@ -2,17 +2,17 @@
   "test": {
     "appUrl": "https://erplite.storyboarderp.com/v4",
     "users": [
-      { "companyCode": "abc", "userName": "Superadmin", "userId": "0`", "password": "s" },
-      { "companyCode": "abc", "userName": "Sankara Narayanan", "userId": "1", "password": "s" },
-      { "companyCode": "abc", "userName": "Dinesh", "userId": "2", "password": "s" }
+      { "companyCode": "abc", "userName": "Superadmin", "userId": "0", "password": "c3VwZXJfc2VjcmV0" },
+      { "companyCode": "abc", "userName": "Sankara Narayanan", "userId": "1", "password": "ZW5jb2RlZF9wYXNz" },
+      { "companyCode": "abc", "userName": "Dinesh", "userId": "2", "password": "cGFzc3dvcmRfZGF0YQ==" }
     ]
   },
   "staging": {
     "appUrl": "https://stage.storyboarderp.com/",
     "users": [
-      { "companyCode": "abc", "userName": "Superadmin", "userId": "0", "password": "s" },
-      { "companyCode": "abc", "userName": "Sankara Narayanan", "userId": "1", "password": "s" },
-      { "companyCode": "abc", "userName": "Dinesh", "userId": "2", "password": "s" }
+      { "companyCode": "abc", "userName": "Superadmin", "userId": "0", "password": "c3VwZXJfc2VjcmV0" },
+      { "companyCode": "abc", "userName": "Sankara Narayanan", "userId": "1", "password": "ZW5jb2RlZF9wYXNz" },
+      { "companyCode": "abc", "userName": "Dinesh", "userId": "2", "password": "cGFzc3dvcmRfZGF0YQ==" }
     ]
   }
 }

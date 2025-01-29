@@ -1,6 +1,6 @@
 package com.Vcidex.StoryboardSystems.Purchase.Test.Flow;
 
-import com.Vcidex.StoryboardSystems.Common.TestBase;
+import com.Vcidex.StoryboardSystems.Common.Base.TestBase;
 import org.testng.annotations.Test;
 
 public class DirectPOFlow extends TestBase {
