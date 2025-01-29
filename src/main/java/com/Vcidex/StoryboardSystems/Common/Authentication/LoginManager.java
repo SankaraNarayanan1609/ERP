@@ -5,10 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
 public class LoginManager extends BasePage {
+    private static final Logger logger = LoggerFactory.getLogger(LoginManager.class);
+
     private final By companyCodeField = By.xpath("//label[text()='Company Code']/following-sibling::input");
     private final By usernameField = By.xpath("//label[text()='Username']/following-sibling::input");
     private final By passwordField = By.xpath("//label[text()='Password']/following-sibling::input");
@@ -43,9 +47,15 @@ public class LoginManager extends BasePage {
 
     private void performLogin(String companyCode, String username, String password) {
         // Explicit waits for element visibility
-        waitForElementToBeVisible(companyCodeField, companyCode);
-        waitForElementToBeVisible(usernameField, username);
-        waitForElementToBeVisible(passwordField, password);
+        waitForElementToBeVisible(companyCodeField);
+        driver.findElement(companyCodeField).sendKeys(companyCode);
+
+        waitForElementToBeVisible(usernameField);
+        driver.findElement(usernameField).sendKeys(username);
+
+        waitForElementToBeVisible(passwordField);
+        driver.findElement(passwordField).sendKeys(password);
+
         click(loginButton);
     }
 
@@ -58,7 +68,7 @@ public class LoginManager extends BasePage {
         }
     }
 
-    private boolean isElementPresent(By locator) {
+    public boolean isElementPresent(By locator) {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             return true;
@@ -68,7 +78,8 @@ public class LoginManager extends BasePage {
     }
 
     // Utility to wait for elements to be visible
-    private WebDriverWait waitForElementToBeVisible(By locator, String password) {
-        return (WebDriverWait) new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(locator));
+    private void waitForElementToBeVisible(By locator) {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }

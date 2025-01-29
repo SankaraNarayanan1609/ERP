@@ -28,7 +28,7 @@ public class PI_Summary extends BasePage {
 
     // Method to select the number of PIs to show per page
     public void selectEntriesPerPage(String count) {
-        selectDropdownUsingVisibleText(null, "Show Entries", count);// Select from dropdown
+        selectDropdownUsingVisibleText(showEntriesSelector, count);// Select from dropdown
     }
 
     // Method to click on the "Add PI" button

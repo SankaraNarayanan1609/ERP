@@ -106,7 +106,7 @@ public class PI_Add extends BasePage {
     }
 
     // Helper method to get text from a field
-    private String getTextFromElement(By locator) {
+    public String getTextFromElement(By locator) {
         WebElement element = findElement(locator);  // Find the element
         return element.getText();  // Return the text of the element
     }

@@ -8,26 +8,17 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigLoader {
-
-    private static final Logger logger = LoggerFactory.getLogger(ConfigLoader.class);
     private static final Properties properties = new Properties();
 
-    public ConfigLoader(String s) {
-    }
-
-    public static void load(String configFile) {
-        try (InputStream input = ConfigLoader.class.getClassLoader().getResourceAsStream(configFile)) {
-            if (input == null) {
-                logger.warn("Config file not found: {}", configFile);
-                // Fallback to default properties if the file is not found
-                loadDefaultConfig();
-                return;
+    static {
+        try (InputStream input = ConfigLoader.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (input != null) {
+                properties.load(input);
+            } else {
+                throw new IOException("Config file not found!");
             }
-            properties.load(input);
-            logger.info("Loaded config file: {}", configFile);
         } catch (IOException e) {
-            logger.error("Failed to load configuration: {}", configFile, e);
-            loadDefaultConfig(); // Fallback to default properties on error
+            throw new RuntimeException("Failed to load configuration", e);
         }
     }
 
@@ -35,9 +26,8 @@ public class ConfigLoader {
         return properties.getProperty(key);
     }
 
-    private static void loadDefaultConfig() {
-        // Load default config values in case of missing or failed configuration file
-        properties.setProperty("defaultKey", "defaultValue");
-        logger.info("Loaded default configuration values.");
+    public static void load(String s) {
     }
 }
+
+

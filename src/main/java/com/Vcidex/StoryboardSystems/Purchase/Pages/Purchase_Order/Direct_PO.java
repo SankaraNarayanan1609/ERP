@@ -3,33 +3,41 @@ package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Direct_PO extends PurchaseBasePage {
 
     private static final String UPLOAD_FILE_LABEL = "Upload File";
     private static final String TERMS_CONDITIONS_LABEL = "Terms and Conditions";
-    private static final String SAVE_AS_DRAFT_LABEL = "Save as Draft";
-    private static final String SUBMIT_BUTTON_LABEL = "Submit";
     private static final String CONFIRMATION_MESSAGE_LABEL = "Confirmation Message";
+
+    private By fileUploadSection = By.id("file-upload-section");
+    private By termsConditionsDropdown = By.id("terms-conditions-dropdown");
+    private By saveAsDraftButton = By.id("save-as-draft-button"); // Replace with actual ID
+    private By submitButton = By.id("submit-button"); // Replace with actual ID
+    private By confirmationMessage = By.id("confirmation-message"); // Replace with actual ID
 
     public Direct_PO(WebDriver driver) {
         super(driver);
     }
 
     public void uploadFile(String filePath) {
-        enterTextUsingFollowingSibling(null, UPLOAD_FILE_LABEL, filePath);
+        enterTextUsingFollowingSibling(fileUploadSection, UPLOAD_FILE_LABEL, filePath);
     }
 
     public void selectTermsConditions(String terms) {
-        selectDropdownUsingVisibleText(null, TERMS_CONDITIONS_LABEL, terms);
+        selectDropdownUsingVisibleText(termsConditionsDropdown, terms);
     }
 
     public void clickSaveAsDraft() {
-        click(By.id(SAVE_AS_DRAFT_LABEL));
+        click(saveAsDraftButton);
     }
 
     public void clickSubmitButton() {
-        click(By.id(SUBMIT_BUTTON_LABEL));
+        click(submitButton);
     }
 
     public void createDirectPO(String filePath, String terms) {
@@ -40,22 +48,17 @@ public class Direct_PO extends PurchaseBasePage {
 
     public String fetchCorrectPONumber(String vendorName, String branchName) {
         String rowsXPath = "//table[@id='poSummary']//tr";
-        int rowCountBefore = getElementCount(By.xpath(rowsXPath));
-        int rowCountAfter = getElementCount(By.xpath(rowsXPath));
 
-        if (rowCountAfter > rowCountBefore) {
-            int newRowIndex = rowCountAfter;
-            String newRowXPath = "//table[@id='poSummary']//tr[" + newRowIndex + "]";
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath(rowsXPath), 1));
 
-            if (isRowMatchingContext(newRowXPath, vendorName, branchName)) {
-                String newPONumberXPath = newRowXPath + "//td[@data-column='poNumber']";
-                return getText(By.xpath(newPONumberXPath));//Cannot resolve method 'getText' in 'Direct_PO'
-            } else {
-                throw new RuntimeException("Context mismatch: Vendor and Branch name do not match for the new row!");
-            }
-        } else {
-            throw new RuntimeException("No new row found in the summary table after PO creation!");
+        String newRowXPath = "//table[@id='poSummary']//tr[last()]";
+
+        if (isRowMatchingContext(newRowXPath, vendorName, branchName)) {
+            return getText(By.xpath(newRowXPath + "//td[@data-column='poNumber']"));
         }
+
+        throw new RuntimeException("No matching row found!");
     }
 
     public boolean isRowMatchingContext(String newRowXPath, String vendorName, String branchName) {
@@ -69,15 +72,14 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     public String getConfirmationMessage() {
-        return getTextFromElementByLabel(CONFIRMATION_MESSAGE_LABEL);
-    }
-
-    public int getElementCount(By locator) {
-        return driver.findElements(locator).size();
+        return getText(confirmationMessage);
     }
 
     public String fetchPONumberFromConfirmation() {
         String confirmationMessage = getConfirmationMessage();
-        return confirmationMessage.replaceAll(".*(PO\\d+).*", "$1");
+        if (confirmationMessage.matches(".*(PO\\d+).*")) {
+            return confirmationMessage.replaceAll(".*(PO\\d+).*", "$1");
+        }
+        throw new RuntimeException("No PO number found in confirmation message!");
     }
 }

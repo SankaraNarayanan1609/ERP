@@ -1,7 +1,6 @@
 package com.Vcidex.StoryboardSystems.Utils.Data;
 
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,10 +28,11 @@ public class ExcelUtils {
             Sheet sheet = (sheetName != null) ? workbook.getSheet(sheetName) : workbook.getSheetAt(0);
 
             for (Row row : sheet) {
-                if (row.getCell(0).getStringCellValue().equals(scenarioID)) {
+                if (row.getCell(0) != null && row.getCell(0).getStringCellValue().equals(scenarioID)) {
                     Map<String, String> rowData = new HashMap<>();
-                    for (Cell cell : row) {
-                        rowData.put(sheet.getRow(0).getCell(cell.getColumnIndex()).getStringCellValue(), cell.toString().trim());
+                    for (int j = 0; j < row.getLastCellNum(); j++) {
+                        Cell cell = row.getCell(j, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                        rowData.put(sheet.getRow(0).getCell(j).getStringCellValue(), getCellValue(cell));  // Using getCellValue here
                     }
                     data.add(rowData);
                 }
@@ -42,6 +42,32 @@ public class ExcelUtils {
             throw new RuntimeException("Failed to read data from Excel", e);
         }
         return data;
+    }
+
+    // ✅ Add the missing getCellValue method here
+    public static String getCellValue(Cell cell) {
+        if (cell == null) {
+            return "";
+        }
+
+        switch (cell.getCellType()) {
+            case STRING:
+                return cell.getStringCellValue();
+            case NUMERIC:
+                if (DateUtil.isCellDateFormatted(cell)) {
+                    return cell.getDateCellValue().toString();
+                } else {
+                    return String.valueOf(cell.getNumericCellValue());
+                }
+            case BOOLEAN:
+                return String.valueOf(cell.getBooleanCellValue());
+            case FORMULA:
+                return cell.getCellFormula();
+            case BLANK:
+                return "";
+            default:
+                return "";
+        }
     }
 
     // Convert list of maps to a DataProvider-compatible 2D array

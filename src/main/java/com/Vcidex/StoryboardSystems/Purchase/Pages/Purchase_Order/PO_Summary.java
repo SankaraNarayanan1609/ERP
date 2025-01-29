@@ -4,84 +4,107 @@ import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 import java.util.List;
 
 public class PO_Summary extends BasePage {
 
-    // Locators for PO_Summary page elements
-    private By emailButton = By.id("email-button");  // Email Button
-    private By downloadButton = By.id("download-button");  // Download Button
-    private By directPOButton = By.id("direct-po-button");  // Direct PO Button
-    private By raisePOButton = By.id("raise-po-button");  // Raise PO Button
-    private By editButton = By.xpath("//table[@id='po-table']/tbody/tr/td[last()]/button[contains(text(),'Edit')]");  // Edit Button in the table
-    private By viewButton = By.xpath("//table[@id='po-table']/tbody/tr/td[last()]/button[contains(text(),'View')]");  // View Button in the table
-    private By barChart = By.id("po-bar-chart");  // Bar Chart ID
-    private By invoiceTile = By.id("invoice-tile");  // Invoice tile with count
-    private By orderTile = By.id("order-tile");  // Order tile with count
+    private static final String PO_TABLE_XPATH = "//table[@id='po-table']/tbody";
+    private static final String PO_BAR_CHART_XPATH = "//div[@id='po-bar-chart']";
 
-    // Constructor to initialize WebDriver
+    private By emailButton = By.id("email-button");
+    private By downloadButton = By.id("download-button");
+    private By directPOButton = By.id("direct-po-button");
+    private By raisePOButton = By.id("raise-po-button");
+    private By invoiceTile = By.id("invoice-tile");
+    private By orderTile = By.id("order-tile");
+
     public PO_Summary(WebDriver driver) {
         super(driver);
     }
 
-    // Method to click the "Email" button
     public void clickEmailButton() {
-        click(emailButton);  // Click the email button
+        waitForElement(emailButton).click();
     }
 
-    // Method to click the "Download" button
     public void clickDownloadButton() {
-        click(downloadButton);  // Click the download button
+        waitForElement(downloadButton).click();
     }
 
-    // Method to click the "Direct PO" button
     public void clickDirectPOButton() {
-        click(directPOButton);  // Click the Direct PO button
+        waitForElement(directPOButton).click();
     }
 
-    // Method to click the "Raise PO" button
     public void clickRaisePOButton() {
-        click(raisePOButton);  // Click the Raise PO button
+        waitForElement(raisePOButton).click();
     }
 
-    // Method to click the "Edit" button for a specific PO row by index
-    public void clickEditButton(int rowIndex) {
-        WebElement row = findElement(By.xpath("//table[@id='po-table']/tbody/tr[" + rowIndex + "]/td[last()]/button[contains(text(),'Edit')]"));
-        click((By) row);  // Click the Edit button in the specified row
+    public boolean clickEditButton(String poNumber) {
+        WebElement editButton = findEditButtonForPO(poNumber);
+        if (editButton != null) {
+            waitForElement(editButton).click();
+            return true;
+        }
+        System.err.println("❌ Edit button not found for PO Number: " + poNumber);
+        return false;
     }
 
-    // Method to click the "View" button for a specific PO row by index
-    public void clickViewButton(int rowIndex) {
-        WebElement row = findElement(By.xpath("//table[@id='po-table']/tbody/tr[" + rowIndex + "]/td[last()]/button[contains(text(),'View')]"));
-        click((By) row);  // Click the View button in the specified row
+    public boolean clickViewButton(String poNumber) {
+        WebElement viewButton = findViewButtonForPO(poNumber);
+        if (viewButton != null) {
+            waitForElement(viewButton).click();
+            return true;
+        }
+        System.err.println("❌ View button not found for PO Number: " + poNumber);
+        return false;
     }
 
-    // Method to get the bar chart element (Optional, for verification or interaction)
-    public WebElement getBarChart() {
-        return findElement(barChart);  // Return the bar chart WebElement
-    }
-
-    // Method to get the Invoice tile (contains the count)
     public String getInvoiceTileCount() {
-        return getElementText(invoiceTile);  // Return the text (count) of the Invoice tile
+        return getElementText(invoiceTile);
     }
 
-    // Method to get the Order tile (contains the count)
     public String getOrderTileCount() {
-        return getElementText(orderTile);  // Return the text (count) of the Order tile
+        return getElementText(orderTile);
     }
 
-    // Method to get the value of the bar chart (optional for dynamic interaction)
-    public String getBarChartOrderValue(int monthIndex) {
-        // Assuming the bar chart displays the order value for the months (use bar chart element's index)
-        WebElement bar = findElement(By.xpath("//div[@id='po-bar-chart']/div[" + monthIndex + "]"));
-        return bar.getAttribute("title");  // Assuming the value is displayed in a tooltip/title attribute
+    public List<WebElement> findElements(By locator) {
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
 
-    // Optional: Method to get the count of rows in the PO table
-    public int getTableRowCount() {
-        List<WebElement> rows = findElements(By.xpath("//table[@id='po-table']/tbody/tr"));  // Get all rows in the PO table
-        return rows.size();
+    private WebElement findEditButtonForPO(String poNumber) {
+        List<WebElement> rows = findElements(By.xpath(PO_TABLE_XPATH + "/tr"));
+        for (WebElement row : rows) {
+            if (row.getText().contains(poNumber)) {
+                return row.findElement(By.xpath("./td[last()]/button[contains(text(),'Edit')]"));
+            }
+        }
+        return null;
     }
 
+    private WebElement findViewButtonForPO(String poNumber) {
+        List<WebElement> rows = findElements(By.xpath(PO_TABLE_XPATH + "/tr"));
+        for (WebElement row : rows) {
+            if (row.getText().contains(poNumber)) {
+                return row.findElement(By.xpath("./td[last()]/button[contains(text(),'View')]"));
+            }
+        }
+        return null;
+    }
+
+    public String getElementText(By locator) {
+        WebElement element = waitForElement(locator);
+        return element.getText();
+    }
+
+    private WebElement waitForElement(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    private WebElement waitForElement(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 }

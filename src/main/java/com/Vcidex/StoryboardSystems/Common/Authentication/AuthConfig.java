@@ -2,36 +2,33 @@ package com.Vcidex.StoryboardSystems.Common.Authentication;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class AuthConfig {
-    private static final String CONFIG_PATH = System.getProperty("configFilePath", "src/main/resources/config.json");
-    private static final JSONObject config;
+    private static JSONObject config;
 
-    static {
+    public static void loadConfig(String configPath) {
         try {
-            String jsonText = Files.readString(Paths.get(CONFIG_PATH));
+            String jsonText = Files.readString(Paths.get(configPath));
             config = new JSONObject(jsonText);
         } catch (Exception e) {
-            throw new ConfigFileException("Failed to load config file: " + CONFIG_PATH, e);
+            throw new ConfigFileException("Failed to load config file: " + configPath, e);
         }
     }
 
     public static String getAppUrl(String environment) {
-        JSONObject envConfig = config.optJSONObject(environment);
-        if (envConfig == null) {
-            throw new ConfigFileException("Environment not found: " + environment);
+        if (config == null) {
+            loadConfig("src/main/resources/config.json");
         }
-        String appUrl = envConfig.optString("appUrl", "");
-        if (appUrl.isEmpty()) {
-            throw new ConfigFileException("App URL not found for environment: " + environment);
-        }
-        return appUrl;
+        return config.optJSONObject(environment).optString("appUrl", "");
     }
 
     public static String getUserData(String environment, int userIndex, String dataType) {
+        if (config == null) {
+            loadConfig("src/main/resources/config.json");
+        }
+
         JSONObject envConfig = config.optJSONObject(environment);
         if (envConfig == null) {
             throw new ConfigFileException("Environment not found: " + environment);

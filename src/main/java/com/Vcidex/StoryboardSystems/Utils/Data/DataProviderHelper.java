@@ -5,29 +5,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class DataProviderHelper {
 
     private static final Logger logger = LoggerFactory.getLogger(DataProviderHelper.class);
 
     @DataProvider(name = "ExcelDataProvider")
-    public Iterator<Object[]> getDataFromExcel() {
+    public static Object[][] getExcelData() throws FileNotFoundException {
         String filePath = "src/test/resources/testData.xlsx";
-        if (!Paths.get(filePath).toFile().exists()) {
-            logger.error("Excel file not found at path: {}", filePath);
-            throw new RuntimeException("Excel file not found at path: " + filePath);
-        }
+        ExcelReader excelReader = new ExcelReader(new FileInputStream(filePath));
+        List<Map<String, String>> data = excelReader.getExcelData("Sheet1");
 
-        try (FileInputStream fis = new FileInputStream(filePath)) {
-            ExcelReader excelReader = new ExcelReader(fis);
-            logger.info("Data loaded from Excel file: {}", filePath);
-            return (Iterator<Object[]>) excelReader.getExcelData("Sheet1");
-        } catch (IOException e) {
-            logger.error("Error opening Excel file: {}", filePath, e);
-            throw new RuntimeException("Error opening Excel file: " + filePath, e);
-        }
+        return data.stream().map(row -> new Object[]{row}).toArray(Object[][]::new);
     }
 }
