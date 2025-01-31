@@ -25,8 +25,9 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     public void uploadFile(String filePath) {
-        enterTextUsingFollowingSibling(fileUploadSection, UPLOAD_FILE_LABEL, filePath);
+        enterTextUsingFollowingSibling(getFollowingSiblingLocator(UPLOAD_FILE_LABEL), filePath);
     }
+
 
     public void selectTermsConditions(String terms) {
         selectDropdownUsingVisibleText(termsConditionsDropdown, terms);

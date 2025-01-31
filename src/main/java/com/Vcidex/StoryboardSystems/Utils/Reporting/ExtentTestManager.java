@@ -3,21 +3,26 @@ package com.Vcidex.StoryboardSystems.Utils.Reporting;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ExtentTestManager {
-    private static Map<Long, ExtentTest> extentTestMap = new HashMap<>();
-    private static ExtentReports extent = ExtentManager.getInstance();
+    private static final ThreadLocal<ExtentTest> extentTestThreadLocal = new ThreadLocal<>();
+    private static final ExtentReports extent = ExtentManager.getInstance(); // ✅ Retrieve from ExtentManager
 
     public static synchronized ExtentTest createTest(String testName) {
         ExtentTest test = extent.createTest(testName);
-        extentTestMap.put(Thread.currentThread().getId(), test);
+        extentTestThreadLocal.set(test);
         return test;
     }
 
     public static synchronized ExtentTest getTest() {
-        return extentTestMap.get(Thread.currentThread().getId());
+        ExtentTest test = extentTestThreadLocal.get();
+        if (test == null) {
+            throw new IllegalStateException("No ExtentTest instance found for this thread.");
+        }
+        return test;
+    }
+
+    public static synchronized void removeTest() {
+        extentTestThreadLocal.remove();
     }
 
     public static void flushReports() {

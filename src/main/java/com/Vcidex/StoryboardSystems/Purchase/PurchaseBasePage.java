@@ -12,7 +12,7 @@ public class PurchaseBasePage extends BasePage {
     }
 
     // Helper method to dynamically create XPath for labels
-    private By getFollowingSiblingLocator(String labelText) {
+    protected By getFollowingSiblingLocator(String labelText) {
         return By.xpath(String.format("//label[text()='%s']/following-sibling::*", labelText));
     }
 
@@ -73,18 +73,18 @@ public class PurchaseBasePage extends BasePage {
     // Methods for viewing data using dynamically built XPaths
 
     public String getVendorDetails() {
-        return getElementText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_DETAILS_LABEL));
+        return getText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_DETAILS_LABEL));
     }
 
     public String getExchangeRate() {
-        return getElementText(getFollowingSiblingLocator(PurchaseConstants.EXCHANGE_RATE_LABEL));
+        return getText(getFollowingSiblingLocator(PurchaseConstants.EXCHANGE_RATE_LABEL));
     }
 
     public String getTotalAmount() {
-        return getElementText(getFollowingSiblingLocator(PurchaseConstants.TOTAL_AMOUNT_LABEL));
+        return getText(getFollowingSiblingLocator(PurchaseConstants.TOTAL_AMOUNT_LABEL));
     }
 
     public String getGrandTotal() {
-        return getElementText(getFollowingSiblingLocator(PurchaseConstants.GRAND_TOTAL_LABEL));
+        return getText(getFollowingSiblingLocator(PurchaseConstants.GRAND_TOTAL_LABEL));
     }
 }

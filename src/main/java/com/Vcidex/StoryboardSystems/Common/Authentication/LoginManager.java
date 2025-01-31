@@ -28,37 +28,38 @@ public class LoginManager extends BasePage {
             String username = ConfigManager.getUserData(environment, userIndex, "userName");
             String password = ConfigManager.getUserData(environment, userIndex, "password");
 
+            logger.info("Attempting login with user: {} for environment: {}", username, environment);
+
             driver.get(appUrl);
             performLogin(companyCode, username, password);
             validateLoginSuccess(username, companyCode);
 
         } catch (Exception e) {
-            logger.error("Login failed", e);
-            throw new AuthenticationException("Login failed for user " + userIndex, e);
+            logger.error("❌ Login failed for user {} in environment {}!", userIndex, environment, e);
+            captureScreenshot("Login_Failure_" + System.currentTimeMillis());
+            throw new RuntimeException("Login failed for user " + userIndex, e);
         }
     }
 
     private void performLogin(String companyCode, String username, String password) {
-        sendKeys(companyCodeField, companyCode);
-        sendKeys(usernameField, username);
-        sendKeys(passwordField, password);
-        click(loginButton);
+        try {
+            sendKeys(companyCodeField, companyCode);
+            sendKeys(usernameField, username);
+            sendKeys(passwordField, password);
+            click(loginButton);
+        } catch (Exception e) {
+            logger.error("❌ Login fields not found or not interactable!", e);
+            captureScreenshot("Login_Field_Error_" + System.currentTimeMillis());
+            throw new RuntimeException("Login field interaction failed", e);
+        }
     }
 
     private void validateLoginSuccess(String username, String companyCode) {
-        if (!isElementVisible(dashboardElement)) {
-            throw new AuthenticationException("Login failed for " + username, new Throwable("Dashboard not found"));
+        if (!isElementPresent(dashboardElement)) { // ✅ Fix applied
+            logger.error("❌ Login failed: Dashboard not found for user {}", username);
+            captureScreenshot("Login_Failure_" + System.currentTimeMillis()); // ✅ Fix applied
+            throw new RuntimeException("Login failed for " + username + ". Dashboard not visible.");
         }
-        logger.info("Login successful for user: {} (Company: {})", username, companyCode);
-    }
-
-    public static class AuthenticationException extends RuntimeException {
-        public AuthenticationException(String message) {
-            super(message);
-        }
-
-        public AuthenticationException(String message, Throwable cause) {
-            super(message, cause);
-        }
+        logger.info("✅ Login successful for user: {} (Company: {})", username, companyCode);
     }
 }

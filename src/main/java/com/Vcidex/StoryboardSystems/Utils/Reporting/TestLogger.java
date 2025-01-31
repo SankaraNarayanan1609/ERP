@@ -1,26 +1,28 @@
 package com.Vcidex.StoryboardSystems.Utils.Reporting;
 
+import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v131.network.Network;
 import org.openqa.selenium.devtools.v131.network.model.RequestId;
 import org.openqa.selenium.devtools.v131.network.model.Response;
-import org.openqa.selenium.devtools.v131.network.model.Request;
 import org.openqa.selenium.devtools.v131.log.Log;
-import org.openqa.selenium.devtools.v131.network.model.WebSocketFrameSent;
-import org.openqa.selenium.devtools.v131.network.model.WebSocketFrameReceived;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.v131.runtime.Runtime;
+import com.aventstack.extentreports.ExtentTest;
 
 import java.util.Optional;
 import java.util.Map;
 
 public class TestLogger {
-    private final ChromeDriver driver;
     private final DevTools devTools;
+    private final ExtentTest testLogger;
+    private final ChromeDriver driver; // ✅ Store driver reference
 
     public TestLogger(ChromeDriver driver) {
-        this.driver = driver;
+        this.driver = driver; // ✅ Assign driver
         this.devTools = driver.getDevTools();
         devTools.createSession();
+        this.testLogger = ExtentTestManager.getTest();
         enableLogging();
     }
 
@@ -30,115 +32,88 @@ public class TestLogger {
 
         // ✅ Capture API Requests
         devTools.addListener(Network.requestWillBeSent(), request -> {
-            System.out.println("📡 API Request Sent:");
-            Request requestData = request.getRequest();
-            System.out.println("Method: " + requestData.getMethod());
-            System.out.println("URL: " + requestData.getUrl());
-            System.out.println("Headers: " + requestData.getHeaders());
-            requestData.getPostData().ifPresent(postData -> System.out.println("Payload: " + postData));
+            StringBuilder logMessage = new StringBuilder("📡 API Request Sent: \nMethod: " + request.getRequest().getMethod()
+                            + "\nURL: " + request.getRequest().getUrl()
+                            + "\nHeaders: " + request.getRequest().getHeaders());
+
+                            request.getRequest().getPostData().ifPresent(postData ->
+                            logMessage.append("\nPayload: ").append(postData)); // ✅ Corrected
+
+            System.out.println(logMessage);
+            testLogger.info(logMessage.toString()); // ✅ Fix applied
         });
 
         // ✅ Capture API Responses
         devTools.addListener(Network.responseReceived(), response -> {
-            System.out.println("✅ API Response Received:");
             Response responseData = response.getResponse();
-            System.out.println("Status: " + responseData.getStatus());
-            System.out.println("URL: " + responseData.getUrl());
-            System.out.println("Headers: " + responseData.getHeaders());
+            String logMessage = "✅ API Response Received: \nStatus: " + responseData.getStatus()
+                    + "\nURL: " + responseData.getUrl()
+                    + "\nHeaders: " + responseData.getHeaders();
 
-            // ✅ Log Redirects (301, 302)
-            if (responseData.getStatus() == 301 || responseData.getStatus() == 302) {
-                System.out.println("🔄 Redirected to: " + responseData.getHeaders().get("Location"));
-            }
+            System.out.println(logMessage);
+            testLogger.info(logMessage);
 
-            // ✅ Log Failed API Calls (4xx & 5xx errors)
             if (responseData.getStatus() >= 400) {
-                System.out.println("🚨 API Error: " + responseData.getStatus() + " for URL: " + responseData.getUrl());
-            }
+                String errorLog = "🚨 API Error: " + responseData.getStatus() + " for URL: " + responseData.getUrl();
+                System.out.println(errorLog);
+                testLogger.fail(errorLog);
 
-            // ✅ Log Response Time
-            long requestTime = response.getTimestamp().toEpochMilli();
-            long responseTime = System.currentTimeMillis();
-            System.out.println("⏳ Response Time: " + (responseTime - requestTime) + " ms");
-
-            // ✅ Capture Response Body
-            RequestId requestId = response.getRequestId();
-            try {
-                Object responseBodyRaw = devTools.send(Network.getResponseBody(requestId));
-                if (responseBodyRaw instanceof Map) {
-                    @SuppressWarnings("unchecked")
-                    Map<String, Object> responseBodyMap = (Map<String, Object>) responseBodyRaw;
-                    if (responseBodyMap.containsKey("body")) {
-                        System.out.println("Response Body: " + responseBodyMap.get("body"));
-                    } else {
-                        System.out.println("⚠️ No Response Body Available.");
-                    }
-                } else {
-                    System.out.println("⚠️ Unexpected Response Body Format.");
-                }
-            } catch (Exception e) {
-                System.out.println("⚠️ Failed to retrieve response body.");
-                e.printStackTrace();
+                // ✅ Capture Screenshot on API Failure
+                BasePage basePage = new BasePage(driver);
+                basePage.captureScreenshot("API_Failure_" + System.currentTimeMillis());
             }
         });
 
-        // ✅ Capture Network Failures (Timeouts, DNS Failures, CORS, etc.)
-        devTools.addListener(Network.loadingFailed(), failure -> {
-            System.out.println("❌ Network Failure:");
-            System.out.println("URL: " + failure.getRequestId());
-            System.out.println("Error: " + failure.getErrorText());
-            if (failure.getCanceled() != null && failure.getCanceled()) {
-                System.out.println("🚫 Request Canceled by Browser.");
-            }
+        // ✅ Capture JavaScript Errors
+        devTools.send(Runtime.enable());
+        devTools.addListener(Runtime.exceptionThrown(), exception -> {
+            String jsError = "🚨 JavaScript Error: " + exception.getExceptionDetails().getText();
+            System.out.println(jsError);
+            testLogger.fail(jsError);
         });
 
-        // ✅ Enable WebSocket Monitoring
-        devTools.addListener(Network.webSocketCreated(), ws -> System.out.println("📡 WebSocket Created: " + ws.getUrl()));
-        devTools.addListener(Network.webSocketFrameSent(), (WebSocketFrameSent frame) -> System.out.println("📤 WebSocket Sent: " + frame.getResponse()));
-        devTools.addListener(Network.webSocketFrameReceived(), (WebSocketFrameReceived frame) -> System.out.println("📥 WebSocket Received: " + frame.getResponse()));
-
-        // ✅ Enable Console Log Monitoring
+        // ✅ Capture User Interactions
         devTools.send(Log.enable());
         devTools.addListener(Log.entryAdded(), logEntry -> {
-            System.out.println("📝 Console Log:");
-            System.out.println("Level: " + logEntry.getLevel());
-            System.out.println("Text: " + logEntry.getText());
-            logEntry.getStackTrace().ifPresent(stack -> {
-                System.out.println("🔍 Stack Trace:");
-                stack.getCallFrames().forEach(frame -> {
-                    System.out.println("📌 " + frame.getFunctionName() + " at " + frame.getUrl() + ":" + frame.getLineNumber());
-                });
-            });
-        });
-
-        // ✅ Enable Security Warnings Monitoring
-        devTools.addListener(Network.securityStateChanged(), security -> {
-            System.out.println("🔐 Security Warning: " + security.getSecurityState());
-            if (security.getExplanations().isPresent()) {
-                security.getExplanations().get().forEach(explanation -> {
-                    System.out.println("❗ " + explanation.getDescription());
-                });
-            }
-        });
-
-        // ✅ Capture Request & Response Size
-        devTools.addListener(Network.responseReceived(), response -> {
-            Response responseData = response.getResponse();
-            if (responseData.getEncodedDataLength() > 0) {
-                System.out.println("📦 Response Size: " + (responseData.getEncodedDataLength() / 1024) + " KB");
+            if ("userInput".equalsIgnoreCase(logEntry.getSource().toString())) {
+                String userAction = "🖱️ User Interaction: " + logEntry.getText();
+                System.out.println(userAction);
+                testLogger.info(userAction);
             }
         });
     }
 
+    // ✅ Define logNetworkRequest()
     public void logNetworkRequest() {
-        System.out.println("📡 [LOG] Network Request Captured.");
+        if (testLogger != null) {
+            testLogger.info("📡 [LOG] Capturing Network Request...");
+        }
     }
 
+    // ✅ Define logApiResponse()
     public void logApiResponse() {
-        System.out.println("✅ [LOG] API Response Captured.");
+        if (testLogger != null) {
+            testLogger.info("✅ [LOG] Capturing API Response...");
+        }
     }
 
+
+    // ✅ Define logConsoleLogs()
     public void logConsoleLogs() {
-        System.out.println("📝 [LOG] Capturing Console Logs...");
+        if (testLogger != null) {
+            testLogger.info("📝 [LOG] Capturing Console Logs...");
+        }
+
+        devTools.addListener(Log.entryAdded(), logEntry -> {
+            if (logEntry.getLevel().toString().equalsIgnoreCase("SEVERE")) {
+                String errorLog = "🚨 JavaScript Console Error: " + logEntry.getText();
+                System.out.println(errorLog);
+                testLogger.fail(errorLog);
+
+                // ✅ Capture Screenshot on JavaScript Console Error
+                BasePage basePage = new BasePage(driver);
+                basePage.captureScreenshot("Console_Error_" + System.currentTimeMillis());
+            }
+        });
     }
 }
