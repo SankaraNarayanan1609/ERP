@@ -4,6 +4,7 @@ import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,20 +37,23 @@ public class LoginManager extends BasePage {
 
         } catch (Exception e) {
             logger.error("❌ Login failed for user {} in environment {}!", userIndex, environment, e);
-            captureScreenshot("Login_Failure_" + System.currentTimeMillis());
+            captureScreenshot("Login_Failure_" + System.currentTimeMillis(),
+                    "Login failed for user " + userIndex + " in environment " + environment);
             throw new RuntimeException("Login failed for user " + userIndex, e);
         }
     }
 
     private void performLogin(String companyCode, String username, String password) {
         try {
-            sendKeys(companyCodeField, companyCode);
-            sendKeys(usernameField, username);
-            sendKeys(passwordField, password);
-            click(loginButton);
+            enterTextUsingFollowingSibling(companyCodeField, companyCode);
+            enterTextUsingFollowingSibling(usernameField, username);
+            enterTextUsingFollowingSibling(passwordField, password);
+            WebElement loginButtonElement = findElement(loginButton); // ✅ Convert `By` to `WebElement`
+            click(loginButtonElement, true); // ✅ Now correctly calls `click(WebElement, boolean)`
         } catch (Exception e) {
             logger.error("❌ Login fields not found or not interactable!", e);
-            captureScreenshot("Login_Field_Error_" + System.currentTimeMillis());
+            captureScreenshot("Login_Field_Error_" + System.currentTimeMillis(),
+                    "Failed to interact with login fields.");
             throw new RuntimeException("Login field interaction failed", e);
         }
     }
@@ -57,7 +61,8 @@ public class LoginManager extends BasePage {
     private void validateLoginSuccess(String username, String companyCode) {
         if (!isElementPresent(dashboardElement)) { // ✅ Fix applied
             logger.error("❌ Login failed: Dashboard not found for user {}", username);
-            captureScreenshot("Login_Failure_" + System.currentTimeMillis()); // ✅ Fix applied
+            captureScreenshot("Login_Failure_" + System.currentTimeMillis(),
+                    "Login failed - Dashboard not found for user: " + username);
             throw new RuntimeException("Login failed for " + username + ". Dashboard not visible.");
         }
         logger.info("✅ Login successful for user: {} (Company: {})", username, companyCode);

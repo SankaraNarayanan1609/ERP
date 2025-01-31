@@ -60,7 +60,8 @@ public class TestLogger {
 
                 // ✅ Capture Screenshot on API Failure
                 BasePage basePage = new BasePage(driver);
-                basePage.captureScreenshot("API_Failure_" + System.currentTimeMillis());
+                basePage.captureScreenshot("API_Failure_" + System.currentTimeMillis(),
+                        "API request failed. Capturing screenshot for debugging.");
             }
         });
 
@@ -112,7 +113,8 @@ public class TestLogger {
 
                 // ✅ Capture Screenshot on JavaScript Console Error
                 BasePage basePage = new BasePage(driver);
-                basePage.captureScreenshot("Console_Error_" + System.currentTimeMillis());
+                basePage.captureScreenshot("Console_Error_" + System.currentTimeMillis(),
+                        "JavaScript Console Error detected. Capturing screenshot.");
             }
         });
     }

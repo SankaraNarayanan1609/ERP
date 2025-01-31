@@ -21,7 +21,7 @@ import java.util.List;
 
 public class BasePage {
     protected static final Logger logger = LoggerFactory.getLogger(BasePage.class);
-    protected WebDriver driver;
+    public WebDriver driver;
     protected WebDriverWait wait;
     protected TestLogger testLogger;
 
@@ -61,68 +61,91 @@ public class BasePage {
         if (logResponse) testLogger.logApiResponse();
     }
 
-    // ✅ Find element (NO API logging, just a UI action)
+    // ✅ Select dropdown by visible text
+    public void selectDropdownUsingVisibleText(By locator, String visibleText) {
+        try {
+            WebElement element = findElement(locator);
+            Select dropdown = new Select(element);
+            dropdown.selectByVisibleText(visibleText);
+            logger.info("✅ Selected '{}' in dropdown: {}", visibleText, locator);
+        } catch (Exception e) {
+            logger.error("❌ Failed to select '{}' in dropdown: {}", visibleText, locator, e);
+            captureScreenshot("Dropdown_Selection_Failure_" + System.currentTimeMillis(),
+                    "Failed to select option '" + visibleText + "' from dropdown: " + locator);
+        }
+    }
+
+    // ✅ Enter text into a field
+    public void enterTextUsingFollowingSibling(By locator, String text) {
+        try {
+            WebElement element = findElement(locator);
+            element.clear();
+            element.sendKeys(text);
+            logger.info("✅ Entered text '{}' into: {}", text, locator);
+        } catch (Exception e) {
+            logger.error("❌ Failed to enter text into: {}", locator, e);
+            captureScreenshot("TextEntry_Failure_" + System.currentTimeMillis(),
+                    "Failed to enter text into: " + locator);
+        }
+    }
+
+    // ✅ Get text from an element
+    public String getText(By locator) {
+        try {
+            WebElement element = findElement(locator);
+            String text = element.getText().trim();
+            logger.info("✅ Extracted text from {}: {}", locator, text);
+            return text;
+        } catch (Exception e) {
+            logger.error("❌ Failed to extract text from: {}", locator, e);
+            captureScreenshot("TextExtraction_Failure_" + System.currentTimeMillis(),
+                    "Failed to extract text from: " + locator);
+            return "";
+        }
+    }
+
+    // ✅ Find element
     public WebElement findElement(By locator) {
         try {
             logger.info("🔍 Finding element: {}", locator);
             return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (TimeoutException e) {
             logger.error("❌ Element timeout: {}", locator, e);
-            captureScreenshot("Element_Timeout_" + System.currentTimeMillis());
+            captureScreenshot("Element_Timeout_" + System.currentTimeMillis(),
+                    "Element timeout: " + locator);
             throw new NoSuchElementException("Element not found within timeout: " + locator, e);
         } catch (Exception e) {
             logger.error("❌ Element not found: {}", locator, e);
-            captureScreenshot("Element_Not_Found_" + System.currentTimeMillis());
+            captureScreenshot("Element_Not_Found_" + System.currentTimeMillis(),
+                    "Element not found: " + locator);
             throw new NoSuchElementException("Element not found: " + locator, e);
         }
     }
 
-    // ✅ Find multiple elements (NO API logging)
-    public List<WebElement> findElements(By locator) {
-        logger.info("🔍 Finding multiple elements: {}", locator);
-        return driver.findElements(locator);
-    }
-
-    // ✅ Click element (Triggers API call, logs response)
-    public void click(By locator) {
+    // ✅ Click method for WebElements
+    public void click(WebElement element, boolean handleAlert) {
         try {
-            handleUnexpectedAlert(); // ✅ Check for unexpected popups before clicking
-            logTestAction("Click", locator, true, true);
-            WebElement element = findElement(locator);
+            if (handleAlert) handleUnexpectedAlert(); // Handle alerts before clicking
             element.click();
+            logger.info("✅ Clicked on WebElement.");
         } catch (Exception e) {
-            logger.warn("⚠️ Click failed, capturing screenshot.");
-            captureScreenshot("Click_Failure_" + System.currentTimeMillis());
+            logger.error("❌ Failed to click on WebElement.", e);
+            captureScreenshot("Click_Failure_" + System.currentTimeMillis(),
+                    "Failed to click on WebElement.");
         }
     }
 
-    // ✅ Send keys (Triggers API call but no response needed)
-    public void sendKeys(By locator, String text) {
-        try {
-            logTestAction("Send Keys", locator, true, false);
-            WebElement element = findElement(locator);
-            element.clear();
-            element.sendKeys(text);
-        } catch (Exception e) {
-            logger.error("❌ Text entry failed for element: {}", locator, e);
-            captureScreenshot("SendKeys_Failure_" + System.currentTimeMillis());
-            throw new IllegalStateException("Failed to enter text for element: " + locator, e);
-        }
-    }
-
-    // ✅ Capture screenshot (NO API logging)
-    public void captureScreenshot(String fileName) {
+    // ✅ Capture screenshot
+    public void captureScreenshot(String fileName, String message) {
         try {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String screenshotPath = "./screenshots/" + fileName + ".png";
-            File destination = new File(screenshotPath);
-
+            File destination = new File("./screenshots/" + fileName + ".png");
             FileUtils.copyFile(screenshot, destination);
-            logger.info("📸 Screenshot saved at: {}", destination.getAbsolutePath());
+            logger.info("📸 Screenshot saved: {}", destination.getAbsolutePath());
 
             ExtentTest test = ExtentTestManager.getTest();
             if (test != null) {
-                test.fail("Screenshot on Failure", MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+                test.fail(message, MediaEntityBuilder.createScreenCaptureFromPath(destination.getAbsolutePath()).build());
             }
         } catch (IOException e) {
             logger.error("❌ Screenshot capture failed", e);
@@ -134,14 +157,15 @@ public class BasePage {
         try {
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
             logger.info("⚠️ Unexpected Alert: {}", alert.getText());
-            captureScreenshot("Unexpected_Alert_" + System.currentTimeMillis());
+            captureScreenshot("Unexpected_Alert_" + System.currentTimeMillis(),
+                    "Unexpected alert detected!");
             alert.accept();
         } catch (TimeoutException e) {
             logger.info("No alert present.");
         }
     }
 
-    // ✅ Scroll to element (Triggers console log capture)
+    // ✅ Scroll to element
     public void scrollToElement(By locator) {
         try {
             logger.info("🎯 Scrolling to element: {}", locator);
@@ -150,7 +174,8 @@ public class BasePage {
             if (testLogger != null) testLogger.logConsoleLogs();
         } catch (Exception e) {
             logger.error("❌ Failed to scroll to element: {}", locator, e);
-            captureScreenshot("Scroll_Failure_" + System.currentTimeMillis());
+            captureScreenshot("Scroll_Failure_" + System.currentTimeMillis(),
+                    "Failed to scroll to element: " + locator);
         }
     }
 
@@ -160,12 +185,13 @@ public class BasePage {
             return findElement(locator).isDisplayed();
         } catch (Exception e) {
             logger.error("❌ UI Component Missing: {}", locator, e);
-            captureScreenshot("UI_Failure_" + System.currentTimeMillis());
+            captureScreenshot("UI_Failure_" + System.currentTimeMillis(),
+                    "UI Component Missing: " + locator);
             return false;
         }
     }
 
-    // ✅ Wait for Page Load (Triggers API call)
+    // ✅ Wait for Page Load
     public void waitForPageLoad() {
         logger.info("⏳ Waiting for page load...");
         if (testLogger != null) testLogger.logNetworkRequest();
@@ -177,13 +203,15 @@ public class BasePage {
             logger.info("✅ Page fully loaded.");
         } catch (TimeoutException e) {
             logger.error("❌ Page load timeout!");
-            captureScreenshot("PageLoad_Failure_" + System.currentTimeMillis());
+            captureScreenshot("PageLoad_Failure_" + System.currentTimeMillis(),
+                    "Page did not load completely.");
             throw e;
         }
 
         if (!this.isElementPresent(By.id("mainContent"))) {
             logger.error("❌ UI did not load correctly!");
-            captureScreenshot("UI_Load_Failure_" + System.currentTimeMillis());
+            captureScreenshot("UI_Load_Failure_" + System.currentTimeMillis(),
+                    "UI did not load correctly.");
         }
     }
 }

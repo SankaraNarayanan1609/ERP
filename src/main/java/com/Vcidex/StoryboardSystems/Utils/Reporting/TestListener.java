@@ -19,7 +19,7 @@ public class TestListener implements ITestListener {
             if (driver != null) {
                 String screenshotName = result.getName() + "_Failure_" + System.currentTimeMillis();
                 BasePage basePage = (BasePage) testClass;
-                basePage.captureScreenshot(screenshotName);// ✅ Capture Screenshot
+                basePage.captureScreenshot(screenshotName, "Screenshot captured for debugging.");
                 Reporter.log("📸 Screenshot captured: " + screenshotName, true);
             }
         }

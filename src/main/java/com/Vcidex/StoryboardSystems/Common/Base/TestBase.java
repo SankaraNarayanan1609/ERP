@@ -1,21 +1,23 @@
 package com.Vcidex.StoryboardSystems.Common.Base;
 
-import java.lang.reflect.Method;
+import com.Vcidex.StoryboardSystems.Utils.WebDriverFactory;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.lang.reflect.Method;
+
 public class TestBase {
-    protected WebDriver driver;
+    protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected ExtentTest test;
 
     @BeforeClass
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    @Parameters({"browser", "headless"})
+    public void setUp(@Optional("chrome") String browser, @Optional("false") boolean headless) {
+        driver.set(WebDriverFactory.getDriver(browser, headless));
+        getDriver().manage().window().maximize();
     }
 
     @BeforeMethod
@@ -34,9 +36,14 @@ public class TestBase {
 
     @AfterClass
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
+        if (getDriver() != null) {
+            getDriver().quit();
+            driver.remove();
         }
         ExtentTestManager.flushReports();
+    }
+
+    public static WebDriver getDriver() {
+        return driver.get();
     }
 }

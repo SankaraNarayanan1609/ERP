@@ -3,6 +3,7 @@ package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -34,11 +35,11 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     public void clickSaveAsDraft() {
-        click(saveAsDraftButton);
+        click((WebElement) saveAsDraftButton, true); // ✅ Handles unexpected alerts before clicking
     }
 
     public void clickSubmitButton() {
-        click(submitButton);
+        click((WebElement) submitButton, false); // ✅ Does NOT handle alerts before clicking
     }
 
     public void createDirectPO(String filePath, String terms) {
