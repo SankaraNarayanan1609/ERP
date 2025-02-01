@@ -6,12 +6,18 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 public class ExtentManager {
     private static ExtentReports extent;
 
-    public static synchronized ExtentReports getInstance() { // ✅ Fixed method definition
+    private ExtentManager() {} // ✅ Prevents instantiation
+
+    public static synchronized ExtentReports getInstance() {
         if (extent == null) {
-            extent = new ExtentReports();
-            ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReport.html");
-            extent.attachReporter(reporter);
+            synchronized (ExtentManager.class) {
+                if (extent == null) { // ✅ Double-Checked Locking
+                    extent = new ExtentReports();
+                    ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReport.html");
+                    extent.attachReporter(reporter);
+                }
+            }
         }
-        return extent; // ✅ Correctly placed return statement
+        return extent;
     }
 }

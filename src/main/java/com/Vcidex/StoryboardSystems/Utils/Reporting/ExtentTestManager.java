@@ -14,15 +14,11 @@ public class ExtentTestManager {
     }
 
     public static synchronized ExtentTest getTest() {
-        ExtentTest test = extentTestThreadLocal.get();
-        if (test == null) {
-            throw new IllegalStateException("No ExtentTest instance found for this thread.");
-        }
-        return test;
+        return extentTestThreadLocal.get();
     }
 
     public static synchronized void removeTest() {
-        extentTestThreadLocal.remove();
+        extentTestThreadLocal.remove(); // ✅ Properly clean up after test
     }
 
     public static void flushReports() {
