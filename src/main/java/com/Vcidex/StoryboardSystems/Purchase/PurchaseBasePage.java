@@ -4,19 +4,16 @@ import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Collections;
+
 public class PurchaseBasePage extends BasePage {
 
-    // Constructor
     public PurchaseBasePage(WebDriver driver) {
-        super(driver);
-    }
+        super(driver, Collections.emptyMap());    }
 
-    // Helper method to dynamically create XPath for labels
     protected By getFollowingSiblingLocator(String labelText) {
         return By.xpath(String.format("//label[text()='%s']/following-sibling::*", labelText));
     }
-
-    // Methods for common interactions using dynamically built XPaths
 
     public void selectBranchName(String branch) {
         selectDropdownUsingVisibleText(getFollowingSiblingLocator(PurchaseConstants.BRANCH_NAME_LABEL), branch);
@@ -27,11 +24,11 @@ public class PurchaseBasePage extends BasePage {
     }
 
     public void enterDeliveryTerms(String terms) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.DELIVERY_TERMS_LABEL), terms);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.DELIVERY_TERMS_LABEL), terms);
     }
 
     public void enterPaymentTerms(String terms) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.PAYMENT_TERMS_LABEL), terms);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.PAYMENT_TERMS_LABEL), terms);
     }
 
     public void selectCurrency(String currency) {
@@ -39,27 +36,27 @@ public class PurchaseBasePage extends BasePage {
     }
 
     public void enterQuantity(String quantity) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.QUANTITY_LABEL), quantity);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.QUANTITY_LABEL), quantity);
     }
 
     public void enterPrice(String price) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.PRICE_LABEL), price);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.PRICE_LABEL), price);
     }
 
     public void enterDiscount(String discount) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.DISCOUNT_LABEL), discount);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.DISCOUNT_LABEL), discount);
     }
 
     public void enterAddOnCharges(String charges) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.ADD_ON_CHARGES_LABEL), charges);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.ADD_ON_CHARGES_LABEL), charges);
     }
 
     public void enterAdditionalDiscount(String discount) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.ADDITIONAL_DISCOUNT_LABEL), discount);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.ADDITIONAL_DISCOUNT_LABEL), discount);
     }
 
     public void enterFreightCharges(String charges) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.FREIGHT_CHARGES_LABEL), charges);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.FREIGHT_CHARGES_LABEL), charges);
     }
 
     public void selectAdditionalTax(String tax) {
@@ -67,10 +64,8 @@ public class PurchaseBasePage extends BasePage {
     }
 
     public void enterRoundOff(String roundOff) {
-        enterTextUsingFollowingSibling(getFollowingSiblingLocator(PurchaseConstants.ROUND_OFF_LABEL), roundOff);
+        enterText(getFollowingSiblingLocator(PurchaseConstants.ROUND_OFF_LABEL), roundOff);
     }
-
-    // Methods for viewing data using dynamically built XPaths
 
     public String getVendorDetails() {
         return getText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_DETAILS_LABEL));

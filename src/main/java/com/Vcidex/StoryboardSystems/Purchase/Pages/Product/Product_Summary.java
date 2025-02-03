@@ -4,6 +4,7 @@ import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import java.util.Collections; // ✅ Import for empty map
 import java.util.List;
 
 public class Product_Summary extends BasePage {
@@ -16,14 +17,14 @@ public class Product_Summary extends BasePage {
     private By editButton = By.xpath("//table[@id='product-table']/tbody/tr/td[last()]/button[contains(text(),'Edit')]");
     private By viewButton = By.xpath("//table[@id='product-table']/tbody/tr/td[last()]/button[contains(text(),'View')]");
 
-    // Constructor to initialize WebDriver
+    // ✅ Fixed: Constructor to initialize WebDriver with scenario data
     public Product_Summary(WebDriver driver) {
-        super(driver);
+        super(driver, Collections.emptyMap()); // // Required type:WebDriver , Provided:Map
     }
 
     // Method to search for a product
     public void search(String searchText) {
-        enterTextUsingFollowingSibling(searchBox, searchText);
+        sendText(searchBox, searchText);//Cannot resolve method 'sendText' in 'Product_Summary'
     }
 
     // Method to select the number of products to show per page
@@ -33,20 +34,19 @@ public class Product_Summary extends BasePage {
 
     // ✅ Fixed: Click "Add Product" Button
     public void clickAddButton() {
-        WebElement addButtonElement = findElement(addButton); // ✅ Convert `By` to `WebElement`
-        click(addButtonElement, true); // ✅ Now it correctly passes a WebElement
+        click(addButton); // ✅ Removed extra argument
     }
 
     // Method to get the number of rows in the product table
     public int getTableRowCount() {
-        List<WebElement> rows = (List<WebElement>) findElements(tableRows);
+        List<WebElement> rows = findElements(tableRows);
         return rows.size();
     }
 
     // ✅ Fixed: Click the "Edit" button of a specific product row by index
     public void clickEditButton(int rowIndex) {
-        WebElement editButton = findElement(By.xpath("//table[@id='product-table']/tbody/tr[" + rowIndex + "]/td[last()]/button[contains(text(),'Edit')]"));
-        click(editButton, true); // ✅ Correctly clicks the WebElement
+        By editButtonLocator = By.xpath("//table[@id='product-table']/tbody/tr[" + rowIndex + "]/td[last()]/button[contains(text(),'Edit')]");
+        click(editButtonLocator); // ✅ Removed extra argument
     }
 
     // Method to find a list of elements
@@ -56,8 +56,8 @@ public class Product_Summary extends BasePage {
 
     // ✅ Fixed: Click the "View" button of a specific product row by index
     public void clickViewButton(int rowIndex) {
-        WebElement viewButton = findElement(By.xpath("//table[@id='product-table']/tbody/tr[" + rowIndex + "]/td[last()]/button[contains(text(),'View')]"));
-        click(viewButton, true); // ✅ Correctly clicks the WebElement
+        By viewButtonLocator = By.xpath("//table[@id='product-table']/tbody/tr[" + rowIndex + "]/td[last()]/button[contains(text(),'View')]");
+        click(viewButtonLocator); // ✅ Removed extra argument
     }
 
     // Method to verify the product data in a specific row and column
