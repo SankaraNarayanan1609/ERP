@@ -25,10 +25,6 @@ public class BasePage {
     protected WebDriverWait wait;
     protected TestLogger testLogger;
 
-    static {
-        ConfigManager.load("config.properties");  // Load config once
-    }
-
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(getTimeoutFromConfig()));
@@ -40,7 +36,7 @@ public class BasePage {
     }
 
     private static int getTimeoutFromConfig() {
-        String timeout = ConfigManager.getProperty("WebDriver.timeout");
+        String timeout = ConfigManager.getProperty("WebDriver.timeout");//Expected 2 arguments but found 1
         try {
             return timeout != null ? Integer.parseInt(timeout) : 10;
         } catch (NumberFormatException e) {
@@ -65,15 +61,17 @@ public class BasePage {
     public WebElement findElement(By locator) {
         try {
             logger.info("🔍 Finding element: {}", locator);
-            if (testLogger != null) testLogger.logNetworkRequest(); // ✅ Capture API requests on findElement()
             return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (TimeoutException e) {
             logger.error("❌ Element timeout: {}", locator, e);
             captureScreenshot("Element_Timeout_" + System.currentTimeMillis());
             throw new NoSuchElementException("Element not found within timeout: " + locator, e);
+        } catch (Exception e) {
+            logger.error("❌ Element not found: {}", locator, e);
+            captureScreenshot("Element_Not_Found_" + System.currentTimeMillis());
+            throw new NoSuchElementException("Element not found: " + locator, e);
         }
     }
-
 
     // ✅ Find multiple elements (NO API logging)
     public List<WebElement> findElements(By locator) {
@@ -84,26 +82,23 @@ public class BasePage {
     // ✅ Click element (Triggers API call, logs response)
     public void click(By locator) {
         try {
-            handleUnexpectedAlert();
+            handleUnexpectedAlert(); // ✅ Check for unexpected popups before clicking
             logTestAction("Click", locator, true, true);
             WebElement element = findElement(locator);
             element.click();
-
-            if (testLogger != null) testLogger.logConsoleLogs(); // ✅ Capture JS Errors
         } catch (Exception e) {
             logger.warn("⚠️ Click failed, capturing screenshot.");
             captureScreenshot("Click_Failure_" + System.currentTimeMillis());
         }
     }
 
+    // ✅ Send keys (Triggers API call but no response needed)
     public void sendKeys(By locator, String text) {
         try {
             logTestAction("Send Keys", locator, true, false);
             WebElement element = findElement(locator);
             element.clear();
             element.sendKeys(text);
-
-            if (testLogger != null) testLogger.logConsoleLogs(); // ✅ Capture JS Errors
         } catch (Exception e) {
             logger.error("❌ Text entry failed for element: {}", locator, e);
             captureScreenshot("SendKeys_Failure_" + System.currentTimeMillis());
@@ -158,7 +153,6 @@ public class BasePage {
     // ✅ Check if main UI elements are loaded
     public boolean isElementPresent(By locator) {
         try {
-            if (testLogger != null) testLogger.logNetworkRequest(); // ✅ Log API Requests
             return findElement(locator).isDisplayed();
         } catch (Exception e) {
             logger.error("❌ UI Component Missing: {}", locator, e);

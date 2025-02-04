@@ -1,10 +1,6 @@
 package com.Vcidex.StoryboardSystems.Common.Workflow;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class WorkflowOrchestrator {
-    private static final Logger logger = LogManager.getLogger(WorkflowOrchestrator.class);
     private WorkflowState currentState;
 
     public WorkflowOrchestrator() {
@@ -27,7 +23,7 @@ public class WorkflowOrchestrator {
                 currentState = WorkflowState.INVOICE;
                 break;
             case INVOICE:
-                if (FeatureToggleService.isApprovalRequired("INVOICE_APPROVAL")) {
+                if (RuleEngine.evaluateRule("APPROVAL_REQUIRED")) {
                     currentState = WorkflowState.INVOICE_APPROVAL;
                 } else {
                     currentState = WorkflowState.PAYMENT;
@@ -40,9 +36,9 @@ public class WorkflowOrchestrator {
                 currentState = WorkflowState.COMPLETED;
                 break;
             default:
-                logger.info("✅ Workflow Completed!");
+                System.out.println("✅ Workflow Completed!");
                 break;
         }
-        logger.info("🔄 Current State: " + currentState);
+        System.out.println("🔄 Current State: " + currentState);
     }
 }
