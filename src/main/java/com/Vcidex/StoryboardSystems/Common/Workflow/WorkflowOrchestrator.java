@@ -1,29 +1,39 @@
 package com.Vcidex.StoryboardSystems.Common.Workflow;
 
-public class WorkflowOrchestrator {
-    private WorkflowState currentState;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.List;
 
-    public WorkflowOrchestrator() {
+public class WorkflowOrchestrator {
+    private static final Logger logger = LogManager.getLogger(WorkflowOrchestrator.class);
+    private WorkflowState currentState;
+    private final String clientID;
+
+    public WorkflowOrchestrator(String clientID) {
         this.currentState = WorkflowState.PURCHASE_INDENT; // Default start
+        this.clientID = clientID;
     }
 
-    public void nextStep() {
+    public void nextStep(String poId) {
+        String productType = RuleEngine.getProductType(poId);
+        String workflowStage = RuleEngine.getWorkflowStageForProductType(productType);
+
+        logger.info("🔄 Current PO: {} | Product Type: {} | Workflow Stage: {}", poId, productType, workflowStage);
+
         switch (currentState) {
             case PURCHASE_INDENT:
                 currentState = WorkflowState.DIRECT_PO;
                 break;
             case DIRECT_PO:
-                if (RuleEngine.evaluateRule("IS_SERVICE_PRODUCT")) {
-                    currentState = WorkflowState.INVOICE;
-                } else {
-                    currentState = WorkflowState.INWARD;
-                }
+                currentState = workflowStage.equals("INVOICE") ? WorkflowState.INVOICE : WorkflowState.INWARD;
                 break;
             case INWARD:
                 currentState = WorkflowState.INVOICE;
                 break;
             case INVOICE:
-                if (RuleEngine.evaluateRule("APPROVAL_REQUIRED")) {
+                if (FeatureToggleService.isApprovalRequired(clientID, "INVOICE_APPROVAL")) {
+                    List<String> approvalLevels = FeatureToggleService.getApprovalChain(clientID, "INVOICE_APPROVAL");
+                    logger.info("🔍 Invoice Approval Needed: Approval Levels -> {}", approvalLevels);
                     currentState = WorkflowState.INVOICE_APPROVAL;
                 } else {
                     currentState = WorkflowState.PAYMENT;
@@ -34,11 +44,17 @@ public class WorkflowOrchestrator {
                 break;
             case PAYMENT:
                 currentState = WorkflowState.COMPLETED;
+                logger.info("✅ Workflow Completed!");
                 break;
             default:
-                System.out.println("✅ Workflow Completed!");
+                logger.info("✅ Workflow Completed!");
                 break;
         }
-        System.out.println("🔄 Current State: " + currentState);
+
+        logger.info("🔄 New Workflow State: {}", currentState);
+    }
+
+    public WorkflowState getCurrentState() {
+        return currentState;
     }
 }

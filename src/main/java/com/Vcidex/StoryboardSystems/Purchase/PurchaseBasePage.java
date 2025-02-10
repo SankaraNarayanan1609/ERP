@@ -4,12 +4,11 @@ import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Collections;
-
 public class PurchaseBasePage extends BasePage {
 
     public PurchaseBasePage(WebDriver driver) {
-        super(driver, Collections.emptyMap());    }
+        super(driver);
+    }
 
     protected By getFollowingSiblingLocator(String labelText) {
         return By.xpath(String.format("//label[text()='%s']/following-sibling::*", labelText));
