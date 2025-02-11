@@ -24,7 +24,7 @@ public class Product_Summary extends BasePage {
 
     // Method to search for a product
     public void search(String searchText) {
-        enterText(searchBox, searchText);//Cannot resolve method 'sendText' in 'Product_Summary'
+        sendKeys(searchBox, searchText);//Cannot resolve method 'sendText' in 'Product_Summary'
     }
 
     // Method to select the number of products to show per page
