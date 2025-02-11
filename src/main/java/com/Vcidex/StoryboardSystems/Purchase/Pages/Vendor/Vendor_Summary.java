@@ -38,7 +38,7 @@ public class Vendor_Summary extends BasePage {
 
     // Method to get the number of rows in the vendor table
     public int getTableRowCount() {
-        List<WebElement> rows = findElements(tableRows);  // Assuming findElements is available in BasePage
+        List<WebElement> rows = (List<WebElement>) findElement(tableRows);  // Assuming findElements is available in BasePage
         return rows.size();
     }
 

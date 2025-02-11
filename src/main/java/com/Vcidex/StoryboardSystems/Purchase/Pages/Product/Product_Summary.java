@@ -19,12 +19,12 @@ public class Product_Summary extends BasePage {
 
     // ✅ Fixed: Constructor to initialize WebDriver with scenario data
     public Product_Summary(WebDriver driver) {
-        super(driver, Collections.emptyMap()); // // Required type:WebDriver , Provided:Map
+        super(driver);
     }
 
     // Method to search for a product
     public void search(String searchText) {
-        sendText(searchBox, searchText);//Cannot resolve method 'sendText' in 'Product_Summary'
+        enterText(searchBox, searchText);//Cannot resolve method 'sendText' in 'Product_Summary'
     }
 
     // Method to select the number of products to show per page

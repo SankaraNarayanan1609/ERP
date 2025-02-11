@@ -14,7 +14,14 @@ public class WorkflowEngine {
 
     public WorkflowEngine(String clientID) {
         this.clientID = clientID;
-        this.purchaseWorkflowEngine = new PurchaseWorkflowEngine(clientID);
+
+        // ✅ Fetch the latest PO ID for the client
+        String poId = DatabaseService.fetchLatestPOForClient(clientID);
+        if (poId == null || poId.isEmpty()) {
+            throw new RuntimeException("❌ No PO ID found for Client: " + clientID);
+        }
+
+        this.purchaseWorkflowEngine = new PurchaseWorkflowEngine(clientID, poId); // ✅ Fixed: Pass poId
     }
 
     public void executeWorkflow(List<String> productNames) {

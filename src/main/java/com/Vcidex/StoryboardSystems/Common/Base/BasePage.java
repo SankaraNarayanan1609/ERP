@@ -21,7 +21,7 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(getTimeoutFromConfig()));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.actions = new Actions(driver);
         this.jsExecutor = (JavascriptExecutor) driver;
     }
@@ -57,7 +57,7 @@ public class BasePage {
         }
     }
 
-    public void enterText(By locator, String text) {
+    public void sendKeys(By locator, String text) {
         try {
             WebElement element = findElement(locator);
             element.clear();
@@ -122,6 +122,21 @@ public class BasePage {
             logger.error("❌ Failed to scroll into view: {}", locator, e);
             throw new RuntimeException("Error scrolling into view: " + locator, e);
         }
+    }
+
+    public String getElementAttribute(By locator, String attribute) {
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return element.getDomAttribute(attribute); // ✅ Use getDomAttribute()
+    }
+
+    public String getElementText(By locator) {
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return element.getText();
+    }
+
+    public String getTextFromElementByLabel(String labelText) {
+        By labelLocator = By.xpath("//label[text()='" + labelText + "']/following-sibling::input");
+        return driver.findElement(labelLocator).getAttribute("value");
     }
 
     public void scrollToBottom() {
