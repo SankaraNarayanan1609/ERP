@@ -11,13 +11,13 @@ public class PurchaseWorkflowEngine {
     private static final Logger logger = LogManager.getLogger(PurchaseWorkflowEngine.class);
     private final WorkflowOrchestrator orchestrator;
 
-    public PurchaseWorkflowEngine(String clientID) {
-        this.orchestrator = new WorkflowOrchestrator(clientID);
+    public PurchaseWorkflowEngine(String clientID, String poId) { // ✅ Accepts 2 arguments
+        this.orchestrator = new WorkflowOrchestrator(clientID, poId); // ✅ Correct number of arguments
     }
 
-    public void startWorkflow(String poId) {
+    public void startWorkflow() {
         while (!orchestrator.getCurrentState().equals(WorkflowState.COMPLETED)) {
-            orchestrator.nextStep(poId);
+            orchestrator.nextStep(); // ✅ No error now
         }
     }
 

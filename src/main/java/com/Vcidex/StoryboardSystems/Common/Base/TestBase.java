@@ -1,5 +1,8 @@
 package com.Vcidex.StoryboardSystems.Common.Base;
 
+import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
+import com.Vcidex.StoryboardSystems.Utils.WebDriverFactory;
+import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -9,7 +12,6 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -18,7 +20,6 @@ import java.io.IOException;
 
 public class TestBase {
     private static final Logger logger = LogManager.getLogger(TestBase.class);
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     @BeforeSuite
     public void setupLogging() {
@@ -27,15 +28,19 @@ public class TestBase {
 
     @BeforeClass
     public void setUp() {
-        if (driver.get() == null) {
-            logger.info("🚀 Setting up WebDriver...");
-            driver.set(new ChromeDriver());
-            driver.get().manage().window().maximize();
+        if (ThreadSafeDriverManager.getDriver() == null) {
+            logger.info("🚀 Initializing WebDriver...");
+            String browser = ConfigManager.getProperty("browser", "chrome");
+            boolean headless = Boolean.parseBoolean(ConfigManager.getProperty("headless", "false"));
+
+            WebDriver driver = WebDriverFactory.getDriver(browser, headless);
+            ThreadSafeDriverManager.setDriver(driver);
+            driver.manage().window().maximize();
         }
     }
 
     public WebDriver getDriver() {
-        return driver.get();
+        return ThreadSafeDriverManager.getDriver();
     }
 
     @AfterMethod
@@ -48,16 +53,16 @@ public class TestBase {
 
     @AfterClass
     public void tearDown() {
-        if (driver.get() != null) {
+        if (ThreadSafeDriverManager.getDriver() != null) {
             logger.info("🔧 Closing WebDriver...");
-            driver.get().quit();
-            driver.remove();
+            ThreadSafeDriverManager.getDriver().quit();
+            ThreadSafeDriverManager.removeDriver();
         }
     }
 
     public void captureScreenshot(String fileName) {
         try {
-            File screenshot = ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.FILE);
+            File screenshot = ((TakesScreenshot) ThreadSafeDriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
             String screenshotPath = "./screenshots/" + fileName + ".png";
             File destination = new File(screenshotPath);
 

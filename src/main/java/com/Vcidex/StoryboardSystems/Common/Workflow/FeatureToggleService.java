@@ -1,6 +1,7 @@
 package com.Vcidex.StoryboardSystems.Common.Workflow;
 
 import com.Vcidex.StoryboardSystems.Utils.Database.DatabaseConnection;
+import com.Vcidex.StoryboardSystems.Runner.WorkflowRunner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,6 +34,9 @@ public class FeatureToggleService {
             approvalChains.clear();
             approvalChains.putAll(tempChains);
             logger.info("✅ Approval Chains Loaded for Client [{}]: {}", clientID, approvalChains);
+
+            // ✅ Trigger WorkflowRunner Automatically
+            WorkflowRunner.main(null);
 
         } catch (Exception e) {
             logger.error("❌ Error loading approval settings from DB: {}", e.getMessage());

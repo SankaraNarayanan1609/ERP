@@ -6,14 +6,20 @@ import com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class WorkflowRunner {
     public static void main(String[] args) {
-        // ✅ Load approval rules dynamically from DB/API
-        FeatureToggleService.loadApprovalChainsFromDB();
-
-        // ✅ Fetch all clients dynamically from the database
+        // ✅ Fetch all pending approval clients dynamically
         Map<String, List<String>> clientWorkflows = DatabaseService.getPendingApprovalClients();
+
+        // ✅ Extract all client IDs
+        Set<String> clientIDs = clientWorkflows.keySet();
+
+        // ✅ Load approval rules dynamically for each client
+        for (String clientID : clientIDs) {
+            FeatureToggleService.loadApprovalChainsFromDB(clientID);
+        }
 
         // ✅ Iterate over all clients & process their workflows dynamically
         for (Map.Entry<String, List<String>> entry : clientWorkflows.entrySet()) {

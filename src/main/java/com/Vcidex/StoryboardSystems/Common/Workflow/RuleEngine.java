@@ -37,6 +37,21 @@ public class RuleEngine {
     }
 
     /**
+     * ✅ Evaluates a predefined rule based on rule key.
+     */
+    public static boolean evaluateRule(String ruleKey) {
+        try {
+            String ruleValue = productTypeRules.getOrDefault(ruleKey.toUpperCase(), "false");
+            boolean result = Boolean.parseBoolean(ruleValue);
+            logger.info("🔍 Rule Evaluated: {} → {}", ruleKey, result);
+            return result;
+        } catch (Exception e) {
+            logger.error("❌ Error evaluating rule '{}': {}", ruleKey, e.getMessage());
+            return false;
+        }
+    }
+
+    /**
      * ✅ Updates product type mapping for a given PO ID.
      */
     public static void updateProductTypeRules(String poId, String productType) {
