@@ -13,15 +13,11 @@ public class FeatureToggleService {
     private static final Logger logger = LogManager.getLogger(FeatureToggleService.class);
     private static final Map<String, List<String>> approvalChains = new HashMap<>();
 
-    /**
-     * ✅ Loads approval settings from DB for the given client.
-     */
     public static void loadApprovalChainsFromDB(String clientID) {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
                      "SELECT request_type, approval_level FROM approval_settings WHERE client_id = ? ORDER BY level_order"
              )) {
-
             stmt.setString(1, clientID);
             ResultSet rs = stmt.executeQuery();
 
@@ -43,23 +39,11 @@ public class FeatureToggleService {
         }
     }
 
-    /**
-     * ✅ Checks if approval is required for a request type.
-     */
     public static boolean isApprovalRequired(String clientID, String requestType) {
-        if (!approvalChains.containsKey(requestType)) {
-            loadApprovalChainsFromDB(clientID); // Reload if not found
-        }
         return approvalChains.containsKey(requestType);
     }
 
-    /**
-     * ✅ Gets approval levels (hierarchy) for a request type.
-     */
     public static List<String> getApprovalChain(String clientID, String requestType) {
-        if (!approvalChains.containsKey(requestType)) {
-            loadApprovalChainsFromDB(clientID);
-        }
-        return approvalChains.getOrDefault(requestType, List.of());
+        return approvalChains.getOrDefault(requestType, List.of("DEFAULT_APPROVAL"));
     }
 }

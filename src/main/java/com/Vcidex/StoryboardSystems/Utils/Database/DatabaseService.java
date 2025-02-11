@@ -11,6 +11,31 @@ public class DatabaseService {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "password";
 
+    /**
+     * ✅ Fetches the latest PO ID for a given client.
+     */
+    public static String fetchPoIdByClient(String clientID) {
+        String sql = "SELECT po_id FROM purchase_orders WHERE client_id = ? ORDER BY created_at DESC LIMIT 1";
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, clientID);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    String poId = rs.getString("po_id");
+                    logger.info("✅ Retrieved PO ID [{}] for Client [{}]", poId, clientID);
+                    return poId;
+                }
+            }
+        } catch (SQLException e) {
+            logger.error("❌ Database error fetching PO ID for Client '{}': {}", clientID, e.getMessage(), e);
+        }
+        return null;
+    }
+
+    /**
+     * ✅ Fetches a map of pending approval clients with their request types.
+     */
     public static Map<String, List<String>> getPendingApprovalClients() {
         Map<String, List<String>> clients = new HashMap<>();
         String sql = "SELECT client_id, request_type FROM approvals WHERE status = 'PENDING'";
@@ -30,6 +55,9 @@ public class DatabaseService {
         return clients;
     }
 
+    /**
+     * ✅ Fetches the most recently created PO.
+     */
     public static String fetchLatestPO() {
         String sql = "SELECT po_number FROM purchase_orders ORDER BY created_at DESC LIMIT 1";
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -45,6 +73,9 @@ public class DatabaseService {
         return null;
     }
 
+    /**
+     * ✅ Fetches the PO ID associated with a specific product name.
+     */
     public static String fetchPoIdByProductName(String productName) {
         String sql = "SELECT po_id FROM purchase_orders WHERE product_name = ? ORDER BY created_at DESC LIMIT 1";
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);

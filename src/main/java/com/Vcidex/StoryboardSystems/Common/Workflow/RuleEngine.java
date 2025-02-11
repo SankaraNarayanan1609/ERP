@@ -1,7 +1,7 @@
 package com.Vcidex.StoryboardSystems.Common.Workflow;
 
 import com.Vcidex.StoryboardSystems.Utils.Reporting.TestLogger;
-import com.Vcidex.StoryboardSystems.Utils.API.ExternalAPIService;//Cannot resolve symbol 'API'
+import com.Vcidex.StoryboardSystems.Utils.API.ExternalAPIService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -44,14 +44,9 @@ public class RuleEngine {
 
     public static String getProductType(String poId) {
         return productTypeCache.computeIfAbsent(poId, k -> {
-            logger.warn("⚠️ Product Type Missing for PO: " + poId + ". Fetching from API...");
-            String jsonResponse = ExternalAPIService.fetchProductTypeFromAPI(poId); // ✅ Fixed: Implemented ExternalAPIService
+            String jsonResponse = ExternalAPIService.fetchProductTypeFromAPI(poId);
             TestLogger.captureApiResponse(jsonResponse, poId);
             return productTypeCache.getOrDefault(poId, "INWARD");
         });
-    }
-
-    public static String getWorkflowStageForProductType(String productType) {
-        return productTypeRules.getOrDefault(productType.toUpperCase(), "INWARD");
     }
 }

@@ -2,19 +2,29 @@ package com.Vcidex.StoryboardSystems.Common.Workflow;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class WorkflowOrchestrator {
     private static final Logger logger = LogManager.getLogger(WorkflowOrchestrator.class);
+    private static final String FILE_PATH = "src/test/resources/workflow-state.json";
+
     private WorkflowState currentState;
     private final String clientID;
+    private final String poId;
 
-    public WorkflowOrchestrator(String clientID) {
-        this.currentState = WorkflowState.PURCHASE_INDENT; // Default start
+    public WorkflowOrchestrator(String clientID, String poId) {
         this.clientID = clientID;
+        this.poId = poId;
+        this.currentState = loadWorkflowState(); // ✅ Load from JSON file
     }
 
-    public void nextStep(String poId) {
+    public void nextStep() {
         String productType = RuleEngine.getProductType(poId);
         String workflowStage = RuleEngine.getWorkflowStageForProductType(productType);
 
@@ -51,7 +61,42 @@ public class WorkflowOrchestrator {
                 break;
         }
 
+        saveWorkflowState(); // ✅ Save state after each transition
         logger.info("🔄 New Workflow State: {}", currentState);
+    }
+
+    private void saveWorkflowState() {
+        try {
+            File file = new File(FILE_PATH);
+            JSONObject workflowData = file.exists()
+                    ? new JSONObject(new String(Files.readAllBytes(file.toPath())))
+                    : new JSONObject();
+
+            workflowData.put(poId, new JSONObject()
+                    .put("clientID", clientID)
+                    .put("state", currentState.name()));
+
+            try (FileWriter writer = new FileWriter(FILE_PATH)) {
+                writer.write(workflowData.toString(4)); // Pretty print
+            }
+        } catch (Exception e) {
+            logger.error("❌ Error saving workflow state: {}", e.getMessage());
+        }
+    }
+
+    private WorkflowState loadWorkflowState() {
+        try {
+            File file = new File(FILE_PATH);
+            if (file.exists()) {
+                JSONObject workflowData = new JSONObject(new String(Files.readAllBytes(file.toPath())));
+                if (workflowData.has(poId)) {
+                    return WorkflowState.valueOf(workflowData.getJSONObject(poId).getString("state"));
+                }
+            }
+        } catch (Exception e) {
+            logger.warn("⚠️ No previous workflow state found for PO [{}], starting from PURCHASE_INDENT", poId);
+        }
+        return WorkflowState.PURCHASE_INDENT;
     }
 
     public WorkflowState getCurrentState() {

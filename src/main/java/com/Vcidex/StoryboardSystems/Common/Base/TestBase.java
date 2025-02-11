@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver; // ✅ Fix: Import ChromeDriver
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -17,35 +17,47 @@ import java.io.File;
 import java.io.IOException;
 
 public class TestBase {
-    protected WebDriver driver;
-    protected static final Logger logger = LogManager.getLogger(TestBase.class);
+    private static final Logger logger = LogManager.getLogger(TestBase.class);
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    @BeforeSuite
+    public void setupLogging() {
+        logger.info("🚀 Test Execution Started - Centralized Logging Enabled.");
+    }
 
     @BeforeClass
     public void setUp() {
-        logger.info("🚀 Setting up WebDriver...");
-        driver = new ChromeDriver();  // ✅ Now works
-        driver.manage().window().maximize();
+        if (driver.get() == null) {
+            logger.info("🚀 Setting up WebDriver...");
+            driver.set(new ChromeDriver());
+            driver.get().manage().window().maximize();
+        }
+    }
+
+    public WebDriver getDriver() {
+        return driver.get();
     }
 
     @AfterMethod
     public void tearDownTest(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
-            logger.error("❌ Test failed: ", result.getThrowable());
+            logger.error("❌ Test failed: {}", result.getThrowable());
             captureScreenshot("TestFailure_" + System.currentTimeMillis());
         }
     }
 
     @AfterClass
     public void tearDown() {
-        logger.info("🔧 Closing WebDriver...");
-        if (driver != null) {
-            driver.quit();
+        if (driver.get() != null) {
+            logger.info("🔧 Closing WebDriver...");
+            driver.get().quit();
+            driver.remove();
         }
     }
 
     public void captureScreenshot(String fileName) {
         try {
-            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File screenshot = ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.FILE);
             String screenshotPath = "./screenshots/" + fileName + ".png";
             File destination = new File(screenshotPath);
 

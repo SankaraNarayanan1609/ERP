@@ -7,8 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Collections;
-
 public class LoginManager extends BasePage {
     private static final Logger logger = LogManager.getLogger(LoginManager.class);
 
@@ -19,7 +17,8 @@ public class LoginManager extends BasePage {
     private final By dashboardElement = By.id("dashboard");
 
     public LoginManager(WebDriver driver) {
-        super(driver, Collections.emptyMap());    }
+        super(driver);
+    }
 
     public void login(String environment, int userIndex) {
         try {
@@ -59,11 +58,6 @@ public class LoginManager extends BasePage {
         }
     }
 
-    /**
-     * ✅ Checks if the dashboard is visible (Replaces `isElementPresent()`).
-     *
-     * @return True if dashboard is visible, otherwise false.
-     */
     private boolean isDashboardVisible() {
         try {
             return findElement(dashboardElement) != null;

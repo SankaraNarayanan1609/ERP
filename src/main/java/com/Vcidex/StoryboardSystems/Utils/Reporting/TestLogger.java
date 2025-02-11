@@ -4,13 +4,11 @@ import com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
-import org.openqa.selenium.chrome.ChromeDriver;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class TestLogger {
     private static final Logger logger = LogManager.getLogger(TestLogger.class);
-
-    public TestLogger(ChromeDriver driver) {
-    }
 
     public static void captureApiResponse(String jsonResponse, String poId) {
         try {
@@ -18,11 +16,16 @@ public class TestLogger {
             String productType = json.optString("productType", "Unknown");
 
             if (!"Unknown".equals(productType)) {
-                RuleEngine.updateProductTypeRules(poId, productType); // ✅ Centralized Storage in RuleEngine
-                logger.info("✅ Cached Product Type: PO " + poId + " -> " + productType);
+                RuleEngine.updateProductTypeRules(poId, productType);
+                logger.info("✅ Cached Product Type: PO {} -> {}", poId, productType);
+
+                // ✅ Save API response to a log file
+                try (FileWriter writer = new FileWriter("test-output/api-responses.log", true)) {
+                    writer.write("PO: " + poId + " | Response: " + jsonResponse + "\n");
+                }
             }
         } catch (Exception e) {
-            logger.error("❌ Error parsing API response: " + e.getMessage());
+            logger.error("❌ Error parsing API response: {}", e.getMessage());
         }
     }
 }
