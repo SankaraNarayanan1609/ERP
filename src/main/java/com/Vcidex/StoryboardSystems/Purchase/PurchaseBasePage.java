@@ -23,11 +23,11 @@ public class PurchaseBasePage extends BasePage {
     }
 
     public void enterDeliveryTerms(String terms) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.DELIVERY_TERMS_LABEL), terms);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.DELIVERY_TERMS_LABEL), terms);
     }
 
     public void enterPaymentTerms(String terms) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.PAYMENT_TERMS_LABEL), terms);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.PAYMENT_TERMS_LABEL), terms);
     }
 
     public void selectCurrency(String currency) {
@@ -35,27 +35,27 @@ public class PurchaseBasePage extends BasePage {
     }
 
     public void enterQuantity(String quantity) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.QUANTITY_LABEL), quantity);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.QUANTITY_LABEL), quantity);
     }
 
     public void enterPrice(String price) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.PRICE_LABEL), price);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.PRICE_LABEL), price);
     }
 
     public void enterDiscount(String discount) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.DISCOUNT_LABEL), discount);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.DISCOUNT_LABEL), discount);
     }
 
     public void enterAddOnCharges(String charges) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.ADD_ON_CHARGES_LABEL), charges);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.ADD_ON_CHARGES_LABEL), charges);
     }
 
     public void enterAdditionalDiscount(String discount) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.ADDITIONAL_DISCOUNT_LABEL), discount);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.ADDITIONAL_DISCOUNT_LABEL), discount);
     }
 
     public void enterFreightCharges(String charges) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.FREIGHT_CHARGES_LABEL), charges);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.FREIGHT_CHARGES_LABEL), charges);
     }
 
     public void selectAdditionalTax(String tax) {
@@ -63,7 +63,7 @@ public class PurchaseBasePage extends BasePage {
     }
 
     public void enterRoundOff(String roundOff) {
-        enterText(getFollowingSiblingLocator(PurchaseConstants.ROUND_OFF_LABEL), roundOff);
+        sendKeys(getFollowingSiblingLocator(PurchaseConstants.ROUND_OFF_LABEL), roundOff);
     }
 
     public String getVendorDetails() {

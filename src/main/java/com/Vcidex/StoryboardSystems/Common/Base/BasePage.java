@@ -38,7 +38,8 @@ public class BasePage {
     public WebElement findElement(By locator) {
         try {
             logger.info("🔍 Finding element: {}", locator);
-            return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return new WebDriverWait(driver, Duration.ofSeconds(20)) // ⬆ Increased timeout
+                    .until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (TimeoutException e) {
             logger.error("❌ Timeout while finding element: {}", locator, e);
             throw new TimeoutException("Element not found within timeout: " + locator, e);

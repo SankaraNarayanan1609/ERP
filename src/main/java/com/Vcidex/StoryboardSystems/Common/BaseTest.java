@@ -1,21 +1,17 @@
 package com.Vcidex.StoryboardSystems.Common;
 
-import com.Vcidex.StoryboardSystems.Purchase.PurchaseObserver;
-import com.Vcidex.StoryboardSystems.Inventory.InventoryObserver;
+import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager;
+import org.testng.annotations.AfterSuite;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class BaseTest {
-    public static void main(String[] args) {
-        Subject subject = new Subject();
+    private static final Logger logger = LogManager.getLogger(BaseTest.class);
 
-        // Register observers
-        Observer purchaseObserver = new PurchaseObserver();
-        Observer inventoryObserver = new InventoryObserver();
-
-        subject.registerObserver(purchaseObserver);
-        subject.registerObserver(inventoryObserver);
-
-        // Simulate state changes
-        subject.setState("PO12345", "Approved", "Purchase Order Page");
-        subject.setState("PO12345", "Received", "Goods Receipt Note Page");
+    @AfterSuite
+    public void tearDown() {
+        System.out.println("🔄 [DEBUG] Triggering Extent Report flush...");
+        ExtentManager.flushReports();
+        logger.info("✅ [DEBUG] Extent Reports Flushed Successfully.");
     }
 }

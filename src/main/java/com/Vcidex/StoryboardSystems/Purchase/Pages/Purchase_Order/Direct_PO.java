@@ -26,7 +26,7 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     public void uploadFile(String filePath) {
-        enterText(getFollowingSiblingLocator(UPLOAD_FILE_LABEL), filePath);
+        sendKeys(getFollowingSiblingLocator(UPLOAD_FILE_LABEL), filePath);
     }
 
     public void selectTermsConditions(String terms) {

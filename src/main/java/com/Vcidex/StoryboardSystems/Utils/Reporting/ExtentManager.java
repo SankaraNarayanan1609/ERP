@@ -1,8 +1,11 @@
 package com.Vcidex.StoryboardSystems.Utils.Reporting;
 
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ExtentManager {
     private static ExtentReports extent;
@@ -13,20 +16,41 @@ public class ExtentManager {
         if (extent == null) {
             synchronized (ExtentManager.class) {
                 if (extent == null) {
+                    // ✅ Generate Unique Report Name
+                    String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                    String reportDir = System.getProperty("user.dir") + "/test-output/";
+                    String reportFile = reportDir + "ExtentReport_" + timestamp + ".html";
+
+                    // ✅ Ensure "test-output" folder exists
+                    File directory = new File(reportDir);
+                    if (!directory.exists()) {
+                        boolean dirCreated = directory.mkdirs();
+                        if (dirCreated) {
+                            System.out.println("📁 [DEBUG] test-output directory created.");
+                        } else {
+                            System.out.println("❌ [ERROR] Failed to create test-output directory.");
+                        }
+                    }
+
+                    // ✅ Initialize ExtentReports
                     extent = new ExtentReports();
-                    ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReport.html");
+                    ExtentSparkReporter reporter = new ExtentSparkReporter(reportFile);
                     extent.attachReporter(reporter);
+
+                    System.out.println("📜 [DEBUG] Extent Report Initialized at: " + reportFile);
                 }
             }
         }
         return extent;
     }
 
-    public ExtentTest createTest(String testName) {
-        return getInstance().createTest(testName);
-    }
-
     public static void flushReports() {
-        getInstance().flush();
+        if (extent != null) {
+            System.out.println("🔄 [DEBUG] Flushing Extent Reports...");
+            extent.flush();
+            System.out.println("✅ [DEBUG] Extent Reports saved.");
+        } else {
+            System.out.println("⚠️ [ERROR] Extent Reports instance was null.");
+        }
     }
 }

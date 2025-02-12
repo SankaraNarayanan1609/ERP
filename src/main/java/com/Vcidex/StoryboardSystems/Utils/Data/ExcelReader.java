@@ -11,51 +11,48 @@ import java.util.*;
 
 public class ExcelReader {
     private static final Logger logger = LogManager.getLogger(ExcelReader.class);
-    private static final String FILE_PATH = "src/test/resources/testData.xlsx";
+    private static final String FILE_PATH = "C:\\Users\\SankaraNarayanan\\IdeaProjects\\StoryboardsSystems\\src\\test\\resources\\PurchaseTestData.xlsx";
 
     /**
-     * ✅ Reads all scenarios from Excel.
+     * ✅ Reads **specific scenario data** dynamically.
      */
-    public static List<String> getAllScenarios() {
-        List<String> scenarios = new ArrayList<>();
-        try (FileInputStream fis = new FileInputStream(FILE_PATH);
-             Workbook workbook = new XSSFWorkbook(fis)) {
+    public static Map<String, String> getScenarioData(String scenarioID) {
+        Map<String, String> scenarioData = new HashMap<>();
 
-            Sheet sheet = workbook.getSheetAt(0); // Assuming first sheet has scenarios
-            if (sheet == null) return scenarios;
-
-            for (Row row : sheet) {
-                if (row.getRowNum() == 0) continue; // Skip header
-                Cell scenarioCell = row.getCell(0);
-                if (scenarioCell != null) {
-                    scenarios.add(scenarioCell.getStringCellValue().trim());
-                }
-            }
-        } catch (IOException e) {
-            logger.error("❌ Error reading Excel file: {}", FILE_PATH, e);
-        }
-        return scenarios;
-    }
-
-    /**
-     * ✅ Reads scenario data dynamically based on Scenario ID.
-     */
-    public static Map<String, Map<String, String>> getScenarioData(String scenarioID) {
-        Map<String, Map<String, String>> scenarioData = new HashMap<>();
         try (FileInputStream fis = new FileInputStream(FILE_PATH);
              Workbook workbook = new XSSFWorkbook(fis)) {
 
             for (Sheet sheet : workbook) {
+                int scenarioColumnIndex = -1;
+
+                // ✅ Find scenario column in header row (fixes typo issue)
+                Row headerRow = sheet.getRow(0);
+                if (headerRow != null) {
+                    for (Cell cell : headerRow) {
+                        String cellValue = cell.getStringCellValue().trim();
+                        if (cellValue.equalsIgnoreCase(scenarioID) || cellValue.contains(scenarioID)) {
+                            scenarioColumnIndex = cell.getColumnIndex();
+                            break;
+                        }
+                    }
+                }
+
+                if (scenarioColumnIndex == -1) {
+                    logger.warn("⚠️ Scenario '{}' not found in sheet '{}'", scenarioID, sheet.getSheetName());
+                    continue;
+                }
+
+                // ✅ Read scenario data from this column
                 for (Row row : sheet) {
                     if (row.getRowNum() == 0) continue; // Skip headers
 
-                    Cell scenarioCell = row.getCell(0);
-                    if (scenarioCell != null && scenarioCell.getStringCellValue().trim().equals(scenarioID)) {
-                        Map<String, String> pageData = new HashMap<>();
-                        for (int i = 1; i < row.getLastCellNum(); i++) {
-                            pageData.put(sheet.getRow(0).getCell(i).getStringCellValue(), row.getCell(i).getStringCellValue());
-                        }
-                        scenarioData.put(sheet.getSheetName(), pageData);
+                    Cell keyCell = row.getCell(0);  // First column has the keys
+                    Cell valueCell = row.getCell(scenarioColumnIndex);  // Value from identified column
+
+                    if (keyCell != null && valueCell != null) {
+                        String key = keyCell.getStringCellValue().trim();
+                        String value = getCellValueAsString(valueCell);
+                        scenarioData.put(key, value);
                     }
                 }
             }
@@ -63,5 +60,25 @@ public class ExcelReader {
             logger.error("❌ Error reading Excel file: {}", FILE_PATH, e);
         }
         return scenarioData;
+    }
+
+    /**
+     * ✅ Converts any cell type to String safely.
+     */
+    private static String getCellValueAsString(Cell cell) {
+        switch (cell.getCellType()) {
+            case STRING:
+                return cell.getStringCellValue().trim();
+            case NUMERIC:
+                return String.valueOf(cell.getNumericCellValue());
+            case BOOLEAN:
+                return String.valueOf(cell.getBooleanCellValue());
+            case FORMULA:
+                return cell.getCellFormula();
+            case BLANK:
+                return "";
+            default:
+                return "UNKNOWN";
+        }
     }
 }
