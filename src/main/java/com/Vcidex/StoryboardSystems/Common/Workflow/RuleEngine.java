@@ -1,5 +1,6 @@
 package com.Vcidex.StoryboardSystems.Common.Workflow;
 
+import com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.TestLogger;
 import com.Vcidex.StoryboardSystems.Utils.API.ExternalAPIService;
 import org.apache.logging.log4j.LogManager;
@@ -71,16 +72,22 @@ public class RuleEngine {
      * ✅ Fetches product type from cache or API.
      */
     public static String getProductType(String poId) {
-        try {
-            return productTypeCache.computeIfAbsent(poId, k -> {
-                String jsonResponse = ExternalAPIService.fetchProductTypeFromAPI(poId);
-                TestLogger.captureApiResponse(jsonResponse, poId);
-                return productTypeCache.getOrDefault(poId, "INWARD");
-            });
-        } catch (Exception e) {
-            logger.error("❌ Error fetching product type for PO [{}]: {}", poId, e.getMessage());
-            return "INWARD"; // Default fallback
-        }
+        return productTypeCache.computeIfAbsent(poId, k -> {
+            int retries = 3;
+            while (retries > 0) {
+                try {
+                    String jsonResponse = ExternalAPIService.fetchProductTypeFromAPI(poId);
+                    JSONObject response = new JSONObject(jsonResponse);
+                    String productType = response.optString("productType", "INWARD");
+                    productTypeCache.put(poId, productType);
+                    return productType;
+                } catch (Exception e) {
+                    retries--;
+                    logger.warn("⚠️ Failed to fetch product type for PO [{}], Retrying... {} attempts left", poId, retries);
+                }
+            }
+            return "INWARD";
+        });
     }
 
     /**

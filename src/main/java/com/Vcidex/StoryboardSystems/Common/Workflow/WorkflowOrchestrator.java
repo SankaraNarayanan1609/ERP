@@ -65,7 +65,7 @@ public class WorkflowOrchestrator {
         logger.info("🔄 New Workflow State: {}", currentState);
     }
 
-    private void saveWorkflowState() {
+    private synchronized void saveWorkflowState() {
         try {
             File file = new File(FILE_PATH);
             JSONObject workflowData = file.exists()
@@ -76,11 +76,11 @@ public class WorkflowOrchestrator {
                     .put("clientID", clientID)
                     .put("state", currentState.name()));
 
-            try (FileWriter writer = new FileWriter(FILE_PATH)) {
+            try (FileWriter writer = new FileWriter(FILE_PATH, false)) {
                 writer.write(workflowData.toString(4)); // Pretty print
             }
         } catch (Exception e) {
-            logger.error("❌ Error saving workflow state: {}", e.getMessage());
+            logger.error("❌ Error saving workflow state: {}", e.getMessage(), e);
         }
     }
 

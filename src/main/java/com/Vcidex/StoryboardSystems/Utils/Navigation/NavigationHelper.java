@@ -28,17 +28,15 @@ public class NavigationHelper {
     }
 
     private void clickModuleByText(String text) {
-        By locator = By.xpath("//div[text()[normalize-space(.)='" + text + "']]");
+        By locator = By.xpath("//div[contains(text(),'" + text + "')]");
         clickElement(locator);
     }
-
     private void clickMenuByText(String text) {
-        By locator = By.xpath("//div[contains(@class, 'menu') and text()[normalize-space(.)='" + text + "']]");
+        By locator = By.xpath("//div[contains(@class,'menu') and contains(text(),'" + text + "')]");
         clickElement(locator);
     }
-
     private void clickSubMenuByText(String text) {
-        By locator = By.xpath("//div[contains(@class, 'submenu') and text()[normalize-space(.)='" + text + "']]");
+        By locator = By.xpath("//div[contains(@class,'submenu') and contains(text(),'" + text + "')]");
         clickElement(locator);
     }
 

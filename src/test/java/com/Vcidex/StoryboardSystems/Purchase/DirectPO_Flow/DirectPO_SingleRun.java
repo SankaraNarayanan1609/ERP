@@ -4,8 +4,7 @@ import com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager;
 import com.Vcidex.StoryboardSystems.Common.Base.TestBase;
 import com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
-import com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowOrchestrator;
-import com.Vcidex.StoryboardSystems.Purchase.PurchaseWorkflow.PurchaseWorkflowEngine;
+import com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class DirectPO_SingleRun extends TestBase {
@@ -24,42 +24,34 @@ public class DirectPO_SingleRun extends TestBase {
         ExtentTest test = ExtentTestManager.createTest("Test Scenario: " + scenarioID);
         test.info("🚀 Running Single Scenario: " + scenarioID);
 
-        WebDriver driver = getDriver(); // ✅ Fetch WebDriver from ThreadSafeDriverManager
+        WebDriver driver = getDriver();
 
         try {
-            // ✅ Step 1: Perform Login
-            logger.info("🔑 Logging in before executing the workflow...");
+            // ✅ Step 1: Login
+            logger.info("🔑 Initiating login process...");
             LoginManager loginManager = new LoginManager();
-            loginManager.login("test", 0); // ✅ Pass environment & user index
+            loginManager.login("vcidex", "Superadmin", "s");
             test.info("✅ Login successful!");
 
-            // ✅ Step 2: Validate Scenario Data
+            // ✅ Step 2: Validate scenario data
             if (scenarioData == null || scenarioData.isEmpty()) {
-                test.fail("❌ No data found for scenario: " + scenarioID);
-                throw new RuntimeException("No data found for scenario: " + scenarioID);
+                throw new RuntimeException("❌ No data found for scenario: " + scenarioID);
             }
 
             String branchName = scenarioData.get("Branch Name");
-            test.info("📌 Extracted Branch Name: " + branchName);
+            test.info("📍 Branch: " + branchName);
 
-            String vendorName = scenarioData.getOrDefault("Vendor Name", "Unknown");
-            test.info("🏢 Vendor Name: " + vendorName);
+            // ✅ Step 3: Initialize and start workflow
+            logger.info("🔄 Initializing workflow...");
+            WorkflowEngine workflowEngine = new WorkflowEngine("ClientID");
+            workflowEngine.executeWorkflow(Collections.singletonList(branchName));
 
-            String paymentTerms = scenarioData.getOrDefault("Payment Terms", "Not Provided");
-            test.info("💳 Payment Terms: " + paymentTerms);
-
-            // ✅ Step 3: Execute Workflow
-            WorkflowOrchestrator orchestrator = new WorkflowOrchestrator("ClientID", branchName);
-            PurchaseWorkflowEngine workflowEngine = new PurchaseWorkflowEngine("ClientID", branchName);
-
-            test.info("🔄 Starting workflow execution for Branch: " + branchName);
-            workflowEngine.startWorkflow();
-            test.pass("✅ Workflow execution completed for Branch: " + branchName);
+            test.pass("✅ Workflow execution completed successfully.");
 
         } catch (Exception e) {
-            test.fail("❌ Exception occurred: " + e.getMessage());
-            logger.error("❌ Exception during test execution: {}", e.getMessage(), e);
-            throw new RuntimeException("Test execution failed", e);
+            test.fail("❌ Exception: " + e.getMessage());
+            logger.error("❌ [Test] Exception occurred: {}", e.getMessage(), e);
+            throw new RuntimeException(e);
         } finally {
             ExtentTestManager.flushReports();
         }
