@@ -32,39 +32,39 @@ public class LoginManager extends BasePage {
         int maxRetries = 3;
         int attempt = 0;
 
+        // ✅ Load URL from configuration
+        String appUrl = ConfigManager.getConfig("test", "appUrl"); // Adjust based on env
+
+        // ✅ Navigate to the login page if not already done
+        if (driver.getCurrentUrl().equals("data:,") || driver.getCurrentUrl().isEmpty()) {
+            driver.get(appUrl);
+            logger.info("🌐 Navigated to URL: {}", appUrl);
+        }
+
         while (attempt < maxRetries) {
             try {
                 logger.info("🔑 [LoginManager] Attempting login...");
 
-                // Enter Company Code
-                By companyCodeField = By.xpath("//input[@placeholder='Enter CompanyCode']");
+                // ✅ Wait for Company Code field
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+                wait.until(ExpectedConditions.visibilityOfElementLocated(companyCodeField));
+
+                // ✅ Perform login steps
                 sendKeys(companyCodeField, companyCode);
-
-                // Enter User Code
-                By userCodeField = By.xpath("//input[@placeholder='Enter UserCode']");
-                sendKeys(userCodeField, userCode);
-
-                // Enter Password
-                By passwordField = By.xpath("//input[@placeholder='Enter Password']");
+                sendKeys(usernameField, userCode);
                 sendKeys(passwordField, password);
-
-                // Click Login Button
-                By loginButton = By.xpath("//button[@id='kt_sign_in_submit']");
                 click(loginButton);
 
-                logger.info("✅ Login attempt successful (dashboard check skipped).");
-                return; // Exit the loop after successful click
+                logger.info("✅ Login successful.");
+                return;
 
             } catch (Exception e) {
                 attempt++;
                 logger.warn("⚠️ Login attempt {} failed: {}", attempt, e.getMessage());
-
                 if (attempt >= maxRetries) {
                     throw new RuntimeException("❌ Failed to log in after multiple attempts.", e);
                 }
-
-                // Optional: Sleep between retries
-                sleep(3000);
+                Thread.sleep(3000);
             }
         }
     }

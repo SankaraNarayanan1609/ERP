@@ -13,67 +13,65 @@ public class ConfigManager {
     private static final Logger logger = LogManager.getLogger(ConfigManager.class);
     private static final String JSON_CONFIG_PATH = "src/main/resources/config.json";
     private static final String PROPERTIES_CONFIG_PATH = "src/main/resources/config.properties";
+
     private static JSONObject jsonConfig;
     private static Properties properties = new Properties();
 
+    // Static block to initialize configuration
     static {
-        loadJsonConfig();
-        loadPropertiesConfig();
+        initializeConfig();
     }
 
     /**
-     * ✅ Load JSON-based configuration (config.json)
+     * ✅ Initialize all configurations (JSON + Properties)
      */
-    private static void loadJsonConfig() {
+    private static void initializeConfig() {
         try {
+            // Load JSON Config
             String jsonText = new String(Files.readAllBytes(Paths.get(JSON_CONFIG_PATH)));
             jsonConfig = new JSONObject(jsonText);
-            logger.info("✅ Loaded JSON configuration successfully.");
-        } catch (IOException e) {
-            logger.error("❌ Failed to load JSON config: {}", e.getMessage());
-            throw new RuntimeException("Error loading JSON config file");
-        }
-    }
+            logger.info("✅ JSON configuration loaded from: {}", JSON_CONFIG_PATH);
 
-    /**
-     * ✅ Load properties-based configuration (config.properties)
-     */
-    private static void loadPropertiesConfig() {
-        try {
+            // Load Properties Config
             properties.load(Files.newBufferedReader(Paths.get(PROPERTIES_CONFIG_PATH)));
-            logger.info("✅ Loaded properties configuration successfully.");
+            logger.info("✅ Properties configuration loaded from: {}", PROPERTIES_CONFIG_PATH);
+
         } catch (IOException e) {
-            logger.error("❌ Failed to load properties file: {}", e.getMessage());
-            throw new RuntimeException("Error loading properties file");
+            logger.error("❌ Failed to load configuration: {}", e.getMessage(), e);
+            throw new RuntimeException("Failed to initialize configurations.", e);
         }
     }
 
     /**
-     * ✅ Retrieve application URL based on environment
+     * ✅ Generic method to retrieve JSON config values
      */
-    public static String getAppUrl(String environment) {
+    public static String getConfig(String environment, String key) {
         try {
-            return jsonConfig.optJSONObject(environment).optString("appUrl", "");
+            JSONObject envConfig = jsonConfig.getJSONObject(environment);
+            return envConfig.getString(key);
         } catch (Exception e) {
-            logger.error("❌ Error fetching App URL for environment '{}': {}", environment, e.getMessage());
+            logger.error("❌ Error retrieving config '{}' for env '{}': {}", key, environment, e.getMessage());
             return "";
         }
     }
 
     /**
-     * ✅ Retrieve user-specific data from JSON config
+     * ✅ Retrieve application URL
+     */
+    public static String getAppUrl(String environment) {
+        return getConfig(environment, "appUrl");
+    }
+
+    /**
+     * ✅ Retrieve user-specific data
      */
     public static String getUserData(String environment, int userIndex, String dataType) {
         try {
-            JSONObject envConfig = jsonConfig.optJSONObject(environment);
-            if (envConfig == null) {
-                logger.warn("⚠️ No config found for environment: {}", environment);
-                return null;
-            }
-            return envConfig.optJSONArray("users").optJSONObject(userIndex).optString(dataType, "");
+            JSONObject envConfig = jsonConfig.getJSONObject(environment);
+            return envConfig.getJSONArray("users").getJSONObject(userIndex).getString(dataType);
         } catch (Exception e) {
-            logger.error("❌ Error fetching user data ({}): {}", dataType, e.getMessage());
-            return null;
+            logger.error("❌ Error fetching user data ('{}') for userIndex {} in env '{}': {}", dataType, userIndex, environment, e.getMessage());
+            return "";
         }
     }
 
@@ -81,11 +79,6 @@ public class ConfigManager {
      * ✅ Retrieve a property value from config.properties
      */
     public static String getProperty(String key, String defaultValue) {
-        try {
-            return properties.getProperty(key, defaultValue);
-        } catch (Exception e) {
-            logger.error("❌ Error fetching property '{}': {}", key, e.getMessage());
-            return defaultValue;
-        }
+        return properties.getProperty(key, defaultValue);
     }
 }

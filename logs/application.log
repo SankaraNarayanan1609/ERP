@@ -1,0 +1,34 @@
+2025-02-17 17:39:16 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-02-17 17:39:16 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-02-17 17:39:16 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-02-17 17:39:16 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-02-17 17:39:16 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ Properties configuration loaded from: src/main/resources/config.properties
+2025-02-17 17:39:16 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 133.0.6943.98 (resolved driver for Chrome 133)
+2025-02-17 17:39:16 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\133.0.6943.98\chromedriver.exe
+2025-02-17 17:39:19 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔑 Initiating login process...
+2025-02-17 17:39:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-02-17 17:39:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🔑 [LoginManager] Attempting login...
+2025-02-17 17:39:27 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-02-17 17:39:27 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'vcidex' into element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-02-17 17:39:27 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-02-17 17:39:27 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'Superadmin' into element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-02-17 17:39:27 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password']
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 's' into element: By.xpath: //input[@placeholder='Enter Password']
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🖱️ Clicked on element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful.
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔄 Initializing workflow...
+2025-02-17 17:39:28 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchLatestPOForClient
+2025-02-17 17:39:28 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ✅ Product Rules Loaded: {EXPENSES=INWARD, FINISHED_GOODS=INWARD, SERVICES=INVOICE, TRADABLE_GOODS=INWARD, ASSET=INWARD, RAW_MATERIALS=INWARD, CONSUMABLE=INWARD}
+2025-02-17 17:39:28 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 2 attempts left
+2025-02-17 17:39:28 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 1 attempts left
+2025-02-17 17:39:28 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 0 attempts left
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - 🔄 Updated Product Type for PO [PO001]: INWARD
+2025-02-17 17:39:28 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - ✅ At least one product requires Inward processing...
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
+2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
+2025-02-17 17:39:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...

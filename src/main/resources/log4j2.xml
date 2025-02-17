@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="INFO" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_DIR">logs</Property>
+    </Properties>
+
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
         </Console>
+
+        <File name="File" fileName="${LOG_DIR}/application.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
     </Appenders>
+
     <Loggers>
-        <Root level="debug">
+        <Root level="info">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
         </Root>
     </Loggers>
 </Configuration>
