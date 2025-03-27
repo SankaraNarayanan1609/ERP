@@ -3,87 +3,80 @@ package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Indent;
 import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class PI_View extends BasePage {
 
-    // Locators for the PI_View page elements
-    private By refNoField = By.id("refNo");  // Reference Number (display only)
-    private By departmentField = By.id("department");  // Department (display only)
-    private By requestedByField = By.id("requestedBy");  // Requested By (display only)
-    private By priorityField = By.id("priority");  // Priority (display only)
-    private By remarksField = By.id("remarks");  // Remarks (display only)
-    private By productNameField = By.id("productName");  // Product Name (display only)
-    private By productGroupField = By.id("productGroup");  // Product Group (display only)
-    private By productCodeField = By.id("productCode");  // Product Code (display only)
-    private By productDescriptionField = By.id("productDescription");  // Product Description (display only)
-    private By unitField = By.id("unit");  // Unit (display only)
-    private By quantityRequestedField = By.id("quantityRequested");  // Quantity Requested (display only)
-    private By closeButton = By.id("addButton");  // Add Button (optional, depends on UI)
+    // Locators for PI_View page
+    private By refNoField = By.id("refNo");
+    private By departmentField = By.id("department");
+    private By requestedByField = By.id("requestedBy");
+    private By priorityField = By.id("priority");
+    private By remarksField = By.id("remarks");
+    private By productNameField = By.id("productName");
+    private By productGroupField = By.id("productGroup");
+    private By productCodeField = By.id("productCode");
+    private By productDescriptionField = By.id("productDescription");
+    private By unitField = By.id("unit");
+    private By quantityRequestedField = By.id("quantityRequested");
+    private By closeButton = By.id("closeButton");  // Fixed the correct locator name
 
-    // Constructor to initialize WebDriver
+    // Constructor
     public PI_View(WebDriver driver) {
         super(driver);
     }
 
-    // Method to get the Reference Number from the page (PI View)
+    // ✅ Generic method to get text using locator
+    private String getFieldText(By locator) {
+        return getText(locator);
+    }
+
+    // ✅ Using the generic method for all fields
     public String getRefNo() {
-        return getElementText(refNoField);  // Return the reference number text
+        return getFieldText(refNoField);
     }
 
-    // Method to get the Department from the page (PI View)
     public String getDepartment() {
-        return getElementText(departmentField);  // Return the department text
+        return getFieldText(departmentField);
     }
 
-    // Method to get the Requested By field from the page (PI View)
     public String getRequestedBy() {
-        return getElementText(requestedByField);  // Return the requested by text
+        return getFieldText(requestedByField);
     }
 
-    // Method to get the Priority from the page (PI View)
     public String getPriority() {
-        return getElementText(priorityField);  // Return the priority text
+        return getFieldText(priorityField);
     }
 
-    // Method to get the Remarks from the page (PI View)
     public String getRemarks() {
-        return getElementText(remarksField);  // Return the remarks text
+        return getFieldText(remarksField);
     }
 
-    // Method to get the Product Name from the page (PI View)
     public String getProductName() {
-        return getElementText(productNameField);  // Return the product name text
+        return getFieldText(productNameField);
     }
 
-    // Method to get the Product Group from the page (PI View)
     public String getProductGroup() {
-        return getElementText(productGroupField);  // Return the product group text
+        return getFieldText(productGroupField);
     }
 
-    // Method to get the Product Code from the page (PI View)
     public String getProductCode() {
-        return getElementText(productCodeField);  // Return the product code text
+        return getFieldText(productCodeField);
     }
 
-    // Method to get the Product Description from the page (PI View)
     public String getProductDescription() {
-        return getElementText(productDescriptionField);  // Return the product description text
+        return getFieldText(productDescriptionField);
     }
 
-    // Method to get the Unit from the page (PI View)
     public String getUnit() {
-        return getElementText(unitField);  // Return the unit text
+        return getFieldText(unitField);
     }
 
-    // Method to get the Quantity Requested from the page (PI View)
     public String getQuantityRequested() {
-        return getElementText(quantityRequestedField);  // Return the quantity requested text
+        return getFieldText(quantityRequestedField);
     }
 
-    // Optional: Method to click the "Add" button (if any action is required in the PI View page)
+    // ✅ Click the close button (if applicable)
     public void clickCloseButton() {
-        click(closeButton);  // Click the "Add" button if present
+        click(closeButton);
     }
-
 }

@@ -24,7 +24,7 @@ public class WorkflowEngine {
         this.purchaseWorkflowEngine = new PurchaseWorkflowEngine(clientID, poId); // ✅ Fixed: Pass poId
     }
 
-    public void executeWorkflow(List<String> productNames) {
+    public boolean executeWorkflow(List<String> productNames) {
         productNames.forEach(productName -> {
             String poId = getPoIdForProduct(productName);
             String productType = RuleEngine.getProductType(poId);
@@ -41,6 +41,7 @@ public class WorkflowEngine {
             logger.info("✅ At least one product requires Inward processing...");
             moveToInward(productNames);
         }
+        return allService;
     }
 
     private void moveToInward(List<String> productNames) {

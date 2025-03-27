@@ -11,7 +11,9 @@ import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.WebDriver;
 import java.util.Map;
 
-public class DirectPO_SingleRun extends TestBase {
+import static com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager.getDriver;
+
+public class DirectPO_Text_Run {
 
     @Test(dataProvider = "SingleScenarioProvider", dataProviderClass = DataProviderManager.class)
     @Parameters("scenarioName")

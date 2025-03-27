@@ -32,3 +32,551 @@
 2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
 2025-02-17 17:39:28 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
 2025-02-17 17:39:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-02-18 17:06:38 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-02-18 17:06:38 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-02-18 17:06:38 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-02-18 17:06:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-02-18 17:06:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ Properties configuration loaded from: src/main/resources/config.properties
+2025-02-18 17:06:40 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 133.0.6943.98 (resolved driver for Chrome 133)
+2025-02-18 17:06:40 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\133.0.6943.98\chromedriver.exe
+2025-02-18 17:06:44 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔑 Initiating login process...
+2025-02-18 17:06:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-02-18 17:06:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🔑 [LoginManager] Attempting login...
+2025-02-18 17:06:51 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'vcidex' into element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'Superadmin' into element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password']
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 's' into element: By.xpath: //input[@placeholder='Enter Password']
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🖱️ Clicked on element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful.
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔄 Initializing workflow...
+2025-02-18 17:06:52 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchLatestPOForClient
+2025-02-18 17:06:52 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ✅ Product Rules Loaded: {EXPENSES=INWARD, FINISHED_GOODS=INWARD, SERVICES=INVOICE, TRADABLE_GOODS=INWARD, ASSET=INWARD, RAW_MATERIALS=INWARD, CONSUMABLE=INWARD}
+2025-02-18 17:06:52 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 2 attempts left
+2025-02-18 17:06:52 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 1 attempts left
+2025-02-18 17:06:52 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 0 attempts left
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - 🔄 Updated Product Type for PO [PO001]: INWARD
+2025-02-18 17:06:52 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - ✅ At least one product requires Inward processing...
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
+2025-02-18 17:06:52 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
+2025-02-18 17:06:54 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-03-27 10:51:21 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-03-27 10:51:21 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-03-27 10:51:21 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-03-27 10:51:21 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-03-27 10:51:21 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ Properties configuration loaded from: src/main/resources/config.properties
+2025-03-27 10:51:23 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-03-27 10:51:23 [main] INFO  io.github.bonigarcia.wdm.online.Downloader - Downloading https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/win64/chromedriver-win64.zip
+2025-03-27 10:51:23 [main] INFO  io.github.bonigarcia.wdm.online.Downloader - Extracting driver from compressed file chromedriver-win64.zip
+2025-03-27 10:51:24 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-03-27 10:51:27 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔑 Initiating login process...
+2025-03-27 10:51:27 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-03-27 10:51:27 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🔑 [LoginManager] Attempting login...
+2025-03-27 10:51:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 10:51:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'vcidex' into element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 10:51:28 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'Superadmin' into element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 's' into element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🖱️ Clicked on element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful.
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔄 Initializing workflow...
+2025-03-27 10:51:29 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchLatestPOForClient
+2025-03-27 10:51:29 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ✅ Product Rules Loaded: {EXPENSES=INWARD, FINISHED_GOODS=INWARD, SERVICES=INVOICE, TRADABLE_GOODS=INWARD, ASSET=INWARD, RAW_MATERIALS=INWARD, CONSUMABLE=INWARD}
+2025-03-27 10:51:29 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 2 attempts left
+2025-03-27 10:51:29 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 1 attempts left
+2025-03-27 10:51:29 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 0 attempts left
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - 🔄 Updated Product Type for PO [PO001]: INWARD
+2025-03-27 10:51:29 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - ✅ At least one product requires Inward processing...
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
+2025-03-27 10:51:29 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
+2025-03-27 10:51:30 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-03-27 11:25:56 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-03-27 11:25:56 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-03-27 11:25:56 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-03-27 11:25:56 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-03-27 11:25:56 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ Properties configuration loaded from: src/main/resources/config.properties
+2025-03-27 11:25:56 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-03-27 11:25:56 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-03-27 11:26:00 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔑 Initiating login process...
+2025-03-27 11:26:00 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-03-27 11:26:00 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🔑 [LoginManager] Attempting login...
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'vcidex' into element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 11:26:01 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'Superadmin' into element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-03-27 11:26:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ Properties configuration loaded from: src/main/resources/config.properties
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 's' into element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🖱️ Clicked on element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful.
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔄 Initializing workflow with ClientID...
+2025-03-27 11:26:02 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchLatestPOForClient
+2025-03-27 11:26:02 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ✅ Product Rules Loaded: {EXPENSES=INWARD, FINISHED_GOODS=INWARD, SERVICES=INVOICE, TRADABLE_GOODS=INWARD, ASSET=INWARD, RAW_MATERIALS=INWARD, CONSUMABLE=INWARD}
+2025-03-27 11:26:02 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 2 attempts left
+2025-03-27 11:26:02 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 1 attempts left
+2025-03-27 11:26:02 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 0 attempts left
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - 🔄 Updated Product Type for PO [PO001]: INWARD
+2025-03-27 11:26:02 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - ✅ At least one product requires Inward processing...
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
+2025-03-27 11:26:02 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
+2025-03-27 11:26:02 [main] ERROR com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - ❌ [Test] Exception occurred: Workflow execution failed.
+java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:57) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-03-27 11:26:02 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-03-27 11:26:02 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-03-27 11:26:03 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test failed: {}
+java.lang.RuntimeException: java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:62) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+Caused by: java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:57) ~[test-classes/:?]
+	... 25 more
+2025-03-27 11:26:03 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📸 Screenshot saved at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\.\screenshots\TestFailure_1743054963679.png
+2025-03-27 11:26:03 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-03-27 11:26:06 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔑 Initiating login process...
+2025-03-27 11:26:07 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-03-27 11:26:07 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🔑 [LoginManager] Attempting login...
+2025-03-27 11:26:07 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'vcidex' into element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'Superadmin' into element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 's' into element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🖱️ Clicked on element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful.
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔄 Initializing workflow with ClientID...
+2025-03-27 11:26:08 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchLatestPOForClient
+2025-03-27 11:26:08 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ✅ Product Rules Loaded: {EXPENSES=INWARD, FINISHED_GOODS=INWARD, SERVICES=INVOICE, TRADABLE_GOODS=INWARD, ASSET=INWARD, RAW_MATERIALS=INWARD, CONSUMABLE=INWARD}
+2025-03-27 11:26:08 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 2 attempts left
+2025-03-27 11:26:08 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 1 attempts left
+2025-03-27 11:26:08 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 0 attempts left
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - 🔄 Updated Product Type for PO [PO001]: INWARD
+2025-03-27 11:26:08 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - ✅ At least one product requires Inward processing...
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
+2025-03-27 11:26:08 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
+2025-03-27 11:26:08 [main] ERROR com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - ❌ [Test] Exception occurred: Workflow execution failed.
+java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:57) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-03-27 11:26:09 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test failed: {}
+java.lang.RuntimeException: java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:62) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+Caused by: java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:57) ~[test-classes/:?]
+	... 25 more
+2025-03-27 11:26:10 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📸 Screenshot saved at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\.\screenshots\TestFailure_1743054969837.png
+2025-03-27 11:26:10 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-03-27 15:12:19 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-03-27 15:12:19 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-03-27 15:12:19 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-03-27 15:12:19 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-03-27 15:12:19 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ Properties configuration loaded from: src/main/resources/config.properties
+2025-03-27 15:12:20 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-03-27 15:12:20 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-03-27 15:12:23 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔑 Initiating login process...
+2025-03-27 15:12:24 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-03-27 15:12:24 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🔑 [LoginManager] Attempting login...
+2025-03-27 15:12:24 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'vcidex' into element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'Superadmin' into element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 's' into element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🖱️ Clicked on element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful.
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - 🔄 Initializing workflow with ClientID...
+2025-03-27 15:12:25 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchLatestPOForClient
+2025-03-27 15:12:25 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ✅ Product Rules Loaded: {EXPENSES=INWARD, FINISHED_GOODS=INWARD, SERVICES=INVOICE, TRADABLE_GOODS=INWARD, ASSET=INWARD, RAW_MATERIALS=INWARD, CONSUMABLE=INWARD}
+2025-03-27 15:12:25 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 2 attempts left
+2025-03-27 15:12:25 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 1 attempts left
+2025-03-27 15:12:25 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 0 attempts left
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - 🔄 Updated Product Type for PO [PO001]: INWARD
+2025-03-27 15:12:25 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - ✅ At least one product requires Inward processing...
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
+2025-03-27 15:12:25 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
+2025-03-27 15:12:25 [main] ERROR com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun - ❌ [Test] Exception occurred: Workflow execution failed.
+java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:57) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-03-27 15:12:26 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test failed: {}
+java.lang.RuntimeException: java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:62) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+Caused by: java.lang.RuntimeException: Workflow execution failed.
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:57) ~[test-classes/:?]
+	... 25 more
+2025-03-27 15:12:26 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📸 Screenshot saved at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\.\screenshots\TestFailure_1743068546648.png
+2025-03-27 15:12:27 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-03-27 15:46:30 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-03-27 15:46:30 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-03-27 15:46:30 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-03-27 15:46:30 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-03-27 15:46:30 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ Properties configuration loaded from: src/main/resources/config.properties
+2025-03-27 15:46:31 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-03-27 15:46:31 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-03-27 15:46:33 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-03-27 15:46:34 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'vcidex' into element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'Superadmin' into element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 's' into element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🖱️ Clicked on element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-03-27 15:46:35 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchLatestPOForClient
+2025-03-27 15:46:35 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ✅ Product Rules Loaded: {EXPENSES=INWARD, FINISHED_GOODS=INWARD, SERVICES=INVOICE, TRADABLE_GOODS=INWARD, ASSET=INWARD, RAW_MATERIALS=INWARD, CONSUMABLE=INWARD}
+2025-03-27 15:46:35 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 2 attempts left
+2025-03-27 15:46:35 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 1 attempts left
+2025-03-27 15:46:35 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 0 attempts left
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - 🔄 Updated Product Type for PO [PO001]: INWARD
+2025-03-27 15:46:35 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - ✅ At least one product requires Inward processing...
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
+2025-03-27 15:46:35 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ Error in Test: Scenario 1
+java.lang.IllegalStateException: ❌ Workflow execution failed for branch: Vcidex
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.lambda$runSingleScenario$2(DirectPO_SingleRun.java:54) ~[test-classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.safeExecute(ErrorHandler.java:107) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:47) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-03-27 15:46:35 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ScreenshotRpt - 📸 Screenshot saved: ./screenshots/Scenario 1_682046369036300.png
+2025-03-27 15:46:35 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ⚠️ Failed to capture browser logs: .\browser-logs\Scenario 1_logs.txt (The system cannot find the path specified)
+2025-03-27 15:46:35 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test failed: {}
+java.lang.RuntimeException: java.lang.IllegalStateException: ❌ Workflow execution failed for branch: Vcidex
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.handleException(ErrorHandler.java:63) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.safeExecute(ErrorHandler.java:109) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:47) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+Caused by: java.lang.IllegalStateException: ❌ Workflow execution failed for branch: Vcidex
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.lambda$runSingleScenario$2(DirectPO_SingleRun.java:54) ~[test-classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.safeExecute(ErrorHandler.java:107) ~[classes/:?]
+	... 26 more
+2025-03-27 15:46:36 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📸 Screenshot saved at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\.\screenshots\TestFailure_1743070595978.png
+2025-03-27 15:46:36 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-03-27 15:47:04 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-03-27 15:47:04 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-03-27 15:47:04 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-03-27 15:47:04 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-03-27 15:47:04 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ Properties configuration loaded from: src/main/resources/config.properties
+2025-03-27 15:47:04 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-03-27 15:47:05 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-03-27 15:47:08 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'vcidex' into element: By.xpath: //input[@placeholder='Enter CompanyCode']
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 'Superadmin' into element: By.xpath: //input[@placeholder='Enter UserCode']
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - ⌨️ Entered text 's' into element: By.xpath: //input[@placeholder='Enter Password']
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.BasePage - 🖱️ Clicked on element: By.xpath: //button[@id='kt_sign_in_submit']
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-03-27 15:47:09 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchLatestPOForClient
+2025-03-27 15:47:09 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ✅ Product Rules Loaded: {EXPENSES=INWARD, FINISHED_GOODS=INWARD, SERVICES=INVOICE, TRADABLE_GOODS=INWARD, ASSET=INWARD, RAW_MATERIALS=INWARD, CONSUMABLE=INWARD}
+2025-03-27 15:47:09 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 2 attempts left
+2025-03-27 15:47:09 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 1 attempts left
+2025-03-27 15:47:09 [main] WARN  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - ⚠️ Failed to fetch product type for PO [PO001], Retrying... 0 attempts left
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.RuleEngine - 🔄 Updated Product Type for PO [PO001]: INWARD
+2025-03-27 15:47:09 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService - ⚠️ [MOCK] Bypassing DB connection for fetchPoIdByProductName
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - ✅ At least one product requires Inward processing...
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Workflow.WorkflowEngine - 📦 Inward Process Started for Products: [Vcidex]
+2025-03-27 15:47:09 [main] INFO  com.Vcidex.StoryboardSystems.Inventory.InventoryWorkflow.InventoryWorkflowEngine - 📦 Processing Inward for Products: [Vcidex]
+2025-03-27 15:47:09 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ Error in Test: Scenario 1
+java.lang.IllegalStateException: ❌ Workflow execution failed for branch: Vcidex
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.lambda$runSingleScenario$2(DirectPO_SingleRun.java:54) ~[test-classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.safeExecute(ErrorHandler.java:107) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:47) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-03-27 15:47:10 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ScreenshotRpt - 📸 Screenshot saved: ./screenshots/Scenario 1_682080663241000.png
+2025-03-27 15:47:10 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ⚠️ Failed to capture browser logs: .\browser-logs\Scenario 1_logs.txt (The system cannot find the path specified)
+2025-03-27 16:05:36 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test failed: {}
+java.lang.RuntimeException: java.lang.IllegalStateException: ❌ Workflow execution failed for branch: Vcidex
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.handleException(ErrorHandler.java:63) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.safeExecute(ErrorHandler.java:109) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.runSingleScenario(DirectPO_SingleRun.java:47) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+Caused by: java.lang.IllegalStateException: ❌ Workflow execution failed for branch: Vcidex
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_SingleRun.lambda$runSingleScenario$2(DirectPO_SingleRun.java:54) ~[test-classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.safeExecute(ErrorHandler.java:107) ~[classes/:?]
+	... 26 more
+2025-03-27 16:05:36 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📸 Screenshot saved at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\.\screenshots\TestFailure_1743071736472.png
+2025-03-27 16:05:36 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...

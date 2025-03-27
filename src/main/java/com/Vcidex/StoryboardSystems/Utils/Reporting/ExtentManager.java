@@ -2,7 +2,6 @@ package com.Vcidex.StoryboardSystems.Utils.Reporting;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,13 +22,8 @@ public class ExtentManager {
 
                     // ✅ Ensure "test-output" folder exists
                     File directory = new File(reportDir);
-                    if (!directory.exists()) {
-                        boolean dirCreated = directory.mkdirs();
-                        if (dirCreated) {
-                            System.out.println("📁 [DEBUG] test-output directory created.");
-                        } else {
-                            System.out.println("❌ [ERROR] Failed to create test-output directory.");
-                        }
+                    if (!directory.exists() && !directory.mkdirs()) {
+                        throw new RuntimeException("❌ Failed to create test-output directory.");
                     }
 
                     // ✅ Initialize ExtentReports
@@ -46,9 +40,13 @@ public class ExtentManager {
 
     public static void flushReports() {
         if (extent != null) {
-            System.out.println("🔄 [DEBUG] Flushing Extent Reports...");
-            extent.flush();
-            System.out.println("✅ [DEBUG] Extent Reports saved.");
+            try {
+                System.out.println("🔄 [DEBUG] Flushing Extent Reports...");
+                extent.flush();
+                System.out.println("✅ [DEBUG] Extent Reports saved.");
+            } catch (Exception e) {
+                System.out.println("⚠️ [ERROR] Failed to flush reports: " + e.getMessage());
+            }
         } else {
             System.out.println("⚠️ [ERROR] Extent Reports instance was null.");
         }

@@ -1,15 +1,13 @@
+// Direct_PO.java
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 
 import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
+import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
+import com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.TestLogger;
-import com.Vcidex.StoryboardSystems.Utils.Database.DatabaseService;
 
 public class Direct_PO extends PurchaseBasePage {
-    private static final Logger logger = LogManager.getLogger(Direct_PO.class);
 
     private static final String UPLOAD_FILE_LABEL = "Upload File";
     private static final String TERMS_CONDITIONS_LABEL = "Terms and Conditions";
@@ -25,59 +23,79 @@ public class Direct_PO extends PurchaseBasePage {
         super(driver);
     }
 
+    // ✅ Universal Action Wrapper
+    private void performAction(String actionName, Runnable action, boolean isSubmit, String locator) {
+        ErrorHandler.safeExecute(driver, action, actionName, isSubmit, locator);
+    }
+
     public void uploadFile(String filePath) {
-        sendKeys(getFollowingSiblingLocator(UPLOAD_FILE_LABEL), filePath);
+        performAction("Upload File", () -> sendKeys(getFollowingSiblingLocator(UPLOAD_FILE_LABEL), filePath), false, UPLOAD_FILE_LABEL);
     }
 
     public void selectTermsConditions(String terms) {
-        selectDropdownUsingVisibleText(termsConditionsDropdown, terms);
+        performAction("Select Terms and Conditions",
+                () -> selectDropdownUsingVisibleText(termsConditionsDropdown, terms),
+                false,
+                "terms-conditions-dropdown");
     }
 
     public void clickSaveAsDraft() {
-        findElement(saveAsDraftButton).click();
-        logger.info("✅ Clicked 'Save as Draft' button");
+        performAction("Click Save As Draft",
+                () -> findElement(saveAsDraftButton).click(),
+                false,
+                "save-as-draft-button");
     }
 
     public void clickSubmitButton() {
-        findElement(submitButton).click();
-        logger.info("✅ Clicked 'Submit' button");
+        performAction("Click Submit Button",
+                () -> findElement(submitButton).click(),
+                true,
+                "submit-button");
     }
 
     public void createDirectPO(String filePath, String terms) {
-        uploadFile(filePath);
-        selectTermsConditions(terms);
-        clickSubmitButton();
+        performAction("Create Direct PO",
+                () -> {
+                    uploadFile(filePath);
+                    selectTermsConditions(terms);
+                    clickSubmitButton();
+                    String apiResponse = getApiResponseForPO();
+                    String poNumber = fetchPONumberFromConfirmation();
 
-        String apiResponse = getApiResponseForPO();
-        TestLogger.captureApiResponse(apiResponse, fetchPONumberFromConfirmation());
+                    ErrorHandler.logInfo(driver, "API Response: " + apiResponse + ", PO Number: " + poNumber);
+                },
+                true,
+                "create-direct-po");
     }
 
     public String getConfirmationMessage() {
-        return getText(confirmationMessage);
+        return ErrorHandler.safeExecute(driver,
+                () -> getText(confirmationMessage),
+                "Get Confirmation Message",
+                false,
+                "confirmation-message");
     }
 
     public String fetchPONumberFromConfirmation() {
-        String confirmationMsg = getConfirmationMessage();
+        return ErrorHandler.safeExecute(driver, () -> {
+            String confirmationMsg = getConfirmationMessage();
 
-        int retries = 3;
-        while (retries > 0) {
-            if (confirmationMsg.matches(".*(PO\\d+).*")) {
-                return confirmationMsg.replaceAll(".*(PO\\d+).*", "$1");
+            int retries = 3;
+            while (retries > 0) {
+                if (confirmationMsg.matches(".*(PO\\d+).*")) {
+                    return confirmationMsg.replaceAll(".*(PO\\d+).*", "$1");
+                }
+                retries--;
+                waitForElement(confirmationMessage, 2);
             }
-            logger.warn("⚠️ PO number not found, retrying... Attempts left: " + retries);
-            retries--;
-            waitForElement(confirmationMessage, 2); // ✅ Fixed: Passing `By.id()`
-        }
 
-        logger.error("❌ No PO number found in confirmation message! Fallback needed.");
+            String poFromDB = DatabaseService.fetchLatestPO();
+            if (poFromDB != null) {
+                return poFromDB;
+            }
 
-        String poFromDB = DatabaseService.fetchLatestPO(); // ✅ Fixed: Implemented method
-        if (poFromDB != null) {
-            return poFromDB;
-        }
-
-        captureScreenshot("No_PO_Found_" + System.currentTimeMillis());
-        throw new RuntimeException("No PO number found after retries & DB fallback!");
+            throw new RuntimeException("No PO number found after retries & DB fallback!");
+        }, "Fetch PO Number", false, "confirmation-message");
     }
 
     private String getApiResponseForPO() {

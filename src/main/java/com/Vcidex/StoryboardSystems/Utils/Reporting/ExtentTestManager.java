@@ -4,24 +4,20 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 public class ExtentTestManager {
-    private static final ThreadLocal<ExtentTest> extentTestThreadLocal = new ThreadLocal<>();
-    private static final ExtentReports extent = ExtentManager.getInstance(); // ✅ Retrieve from ExtentManager
+    private static final ThreadLocal<ExtentTest> testThreadLocal = new ThreadLocal<>();
 
-    public static synchronized ExtentTest createTest(String testName) {
+    public static ExtentTest createTest(String testName) {
+        ExtentReports extent = ExtentManager.getInstance();
         ExtentTest test = extent.createTest(testName);
-        extentTestThreadLocal.set(test);
+        testThreadLocal.set(test);
         return test;
     }
 
-    public static synchronized ExtentTest getTest() {
-        return extentTestThreadLocal.get();
-    }
-
-    public static synchronized void removeTest() {
-        extentTestThreadLocal.remove(); // ✅ Properly clean up after test
+    public static ExtentTest getTest() {
+        return testThreadLocal.get();
     }
 
     public static void flushReports() {
-        extent.flush();
+        ExtentManager.flushReports();
     }
 }

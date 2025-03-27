@@ -3,18 +3,15 @@ package com.Vcidex.StoryboardSystems.Common.Authentication;
 import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ScreenshotRpt;
+import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.time.Duration;
-
-import static java.lang.Thread.sleep;
 
 public class LoginManager extends BasePage {
     private static final Logger logger = LogManager.getLogger(LoginManager.class);
@@ -28,44 +25,26 @@ public class LoginManager extends BasePage {
         super(ThreadSafeDriverManager.getDriver());
     }
 
-    public void login(String companyCode, String userCode, String password) throws InterruptedException {
-        int maxRetries = 3;
-        int attempt = 0;
+    public void login(String companyCode, String userCode, String password) {
+        ErrorHandler.safeExecute(driver, () -> {
+            String appUrl = ConfigManager.getConfig("test", "appUrl");
 
-        // ✅ Load URL from configuration
-        String appUrl = ConfigManager.getConfig("test", "appUrl"); // Adjust based on env
-
-        // ✅ Navigate to the login page if not already done
-        if (driver.getCurrentUrl().equals("data:,") || driver.getCurrentUrl().isEmpty()) {
-            driver.get(appUrl);
-            logger.info("🌐 Navigated to URL: {}", appUrl);
-        }
-
-        while (attempt < maxRetries) {
-            try {
-                logger.info("🔑 [LoginManager] Attempting login...");
-
-                // ✅ Wait for Company Code field
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-                wait.until(ExpectedConditions.visibilityOfElementLocated(companyCodeField));
-
-                // ✅ Perform login steps
-                sendKeys(companyCodeField, companyCode);
-                sendKeys(usernameField, userCode);
-                sendKeys(passwordField, password);
-                click(loginButton);
-
-                logger.info("✅ Login successful.");
-                return;
-
-            } catch (Exception e) {
-                attempt++;
-                logger.warn("⚠️ Login attempt {} failed: {}", attempt, e.getMessage());
-                if (attempt >= maxRetries) {
-                    throw new RuntimeException("❌ Failed to log in after multiple attempts.", e);
-                }
-                Thread.sleep(3000);
+            if (driver.getCurrentUrl().equals("data:,") || driver.getCurrentUrl().isEmpty()) {
+                driver.get(appUrl);
+                logger.info("🌐 Navigated to URL: {}", appUrl);
             }
-        }
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(companyCodeField));
+
+            sendKeys(companyCodeField, companyCode);
+            sendKeys(usernameField, userCode);
+            sendKeys(passwordField, password);
+            click(loginButton);
+
+            logger.info("✅ Login successful for user: {}", userCode);
+            ExtentTestManager.getTest().info("Login successful for user: " + userCode);
+        }, "LoginManager", false, "");
+
     }
 }

@@ -6,9 +6,9 @@ import java.util.Map;
 public class DataProviderManager {
 
     @DataProvider(name = "SingleScenarioProvider")
-    public static Object[][] getSingleScenarioData() {
+    public Object[][] getSingleScenarioData() {  // Removed 'static'
         return new Object[][]{
-                {"Scenario 1", ExcelReader.getScenarioData("Scenario 1")}  // Fixed lookup
+                {"Scenario 1", ExcelReader.getScenarioData("Scenario 1")}
         };
     }
 }
