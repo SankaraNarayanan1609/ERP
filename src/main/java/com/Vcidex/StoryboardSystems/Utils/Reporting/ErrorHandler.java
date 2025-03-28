@@ -1,5 +1,6 @@
 package com.Vcidex.StoryboardSystems.Utils.Reporting;
 
+import com.Vcidex.StoryboardSystems.Utils.ExtentLogUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -144,10 +145,11 @@ public class ErrorHandler {
         } catch (IOException e) {
             logger.error("⚠️ Failed to log API error: {}", e.getMessage());
         }
-        logToExtentInfo("<b>API Error Details:</b><br>"
-                + "<b>Request:</b><br><pre>" + requestBody.replaceAll("\n", "<br>") + "</pre>"
-                + "<b>Response:</b><br><pre>" + responseBody.replaceAll("\n", "<br>") + "</pre>"
-                + "<b>File:</b> " + apiErrorFile);
+        // Wrap API log details in collapsible HTML using the helper method
+        logToExtentInfo(ExtentLogUtil.wrapLog("API Error Details",
+                "<b>Request:</b><br>" + requestBody + "<br>"
+                        + "<b>Response:</b><br>" + responseBody + "<br>"
+                        + "<b>File:</b> " + apiErrorFile));
     }
 
     // ===========================
@@ -169,9 +171,8 @@ public class ErrorHandler {
                 logFile.write(sb.toString());
             }
             logger.info("✅ Browser logs captured for: {}", testName);
-            logToExtentInfo("<b>Browser Logs for " + testName + ":</b><br>"
-                    + "<b>Saved to:</b> " + logFilePath + "<br>"
-                    + "<pre>" + sb.toString() + "</pre>");
+            // Wrap browser logs in a collapsible block using ExtentLogUtil
+            logToExtentInfo(ExtentLogUtil.wrapLog("Browser Logs for " + testName + " (Saved to: " + logFilePath + ")", sb.toString()));
         } catch (Exception e) {
             logger.error("⚠️ Failed to capture browser logs: {}", e.getMessage());
             logToExtentInfo("⚠️ Failed to capture browser logs: " + e.getMessage());
@@ -197,9 +198,8 @@ public class ErrorHandler {
                 logFile.write(sb.toString());
             }
             logger.info("✅ Network logs captured for: {}", testName);
-            logToExtentInfo("<b>Network Logs for " + testName + ":</b><br>"
-                    + "<b>Saved to:</b> " + networkLogFile + "<br>"
-                    + "<pre>" + sb.toString() + "</pre>");
+            // Wrap network logs in a collapsible block
+            logToExtentInfo(ExtentLogUtil.wrapLog("Network Logs for " + testName + " (Saved to: " + networkLogFile + ")", sb.toString()));
         } catch (Exception e) {
             logger.error("⚠️ Failed to capture network logs: {}", e.getMessage());
             logToExtentInfo("⚠️ Failed to capture network logs: " + e.getMessage());
