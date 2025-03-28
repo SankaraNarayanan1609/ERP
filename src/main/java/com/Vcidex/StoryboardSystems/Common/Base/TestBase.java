@@ -2,21 +2,15 @@ package com.Vcidex.StoryboardSystems.Common.Base;
 
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import com.Vcidex.StoryboardSystems.Utils.WebDriverFactory;
-import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
+import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class TestBase {
     private static final Logger logger = LogManager.getLogger(TestBase.class);
@@ -27,27 +21,40 @@ public class TestBase {
     }
 
     @BeforeClass
-    public void setUp() {
+    @Parameters({"browser", "headless"})
+    public void setUp(@Optional("chrome") String browser, @Optional("false") String headless) {
         if (ThreadSafeDriverManager.getDriver() == null) {
             logger.info("🚀 Initializing WebDriver...");
-            String browser = ConfigManager.getProperty("browser", "chrome");
-            boolean headless = Boolean.parseBoolean(ConfigManager.getProperty("headless", "false"));
-
-            WebDriver driver = WebDriverFactory.getDriver(browser, headless);
+            boolean isHeadless = Boolean.parseBoolean(headless);
+            WebDriver driver = WebDriverFactory.getDriver(browser, isHeadless);
             ThreadSafeDriverManager.setDriver(driver);
             driver.manage().window().maximize();
         }
     }
 
-    public WebDriver getDriver() {
-        return ThreadSafeDriverManager.getDriver();
+    @BeforeMethod
+    public void initializeTest(Method method) {
+        ExtentTestManager.createTest(method.getName());
+        logger.info("🟢 Test Initialized: {}", method.getName());
     }
 
     @AfterMethod
     public void tearDownTest(ITestResult result) {
+        WebDriver driver = ThreadSafeDriverManager.getDriver();
+        String testName = result.getName();
+
         if (result.getStatus() == ITestResult.FAILURE) {
-            logger.error("❌ Test failed: {}", result.getThrowable());
-            captureScreenshot("TestFailure_" + System.currentTimeMillis());
+            logger.error("❌ Test Failed: {}", result.getThrowable());
+            ErrorHandler.captureScreenshot(driver, testName, "Failure");
+            ErrorHandler.captureBrowserLogs(driver, testName);
+            ErrorHandler.captureNetworkLogs(driver, testName);
+            ExtentTestManager.getTest().fail(result.getThrowable());
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            logger.info("✅ Test Passed: {}", testName);
+            ExtentTestManager.getTest().pass("Test Passed Successfully");
+        } else {
+            logger.warn("⚠️ Test Skipped: {}", testName);
+            ExtentTestManager.getTest().skip("Test Skipped: " + result.getThrowable());
         }
     }
 
@@ -60,21 +67,13 @@ public class TestBase {
         }
     }
 
-    public void captureScreenshot(String fileName) {
-        try {
-            File screenshot = ((TakesScreenshot) ThreadSafeDriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
-            String screenshotPath = "./screenshots/" + fileName + ".png";
-            File destination = new File(screenshotPath);
+    @AfterSuite
+    public void generateReports() {
+        logger.info("📊 Finalizing Reports...");
+        ExtentTestManager.flushReports();
+    }
 
-            FileUtils.copyFile(screenshot, destination);
-            logger.info("📸 Screenshot saved at: {}", destination.getAbsolutePath());
-
-            ExtentTest test = ExtentTestManager.getTest();
-            if (test != null) {
-                test.fail("Screenshot on Failure", MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
-            }
-        } catch (IOException e) {
-            logger.error("❌ Screenshot capture failed", e);
-        }
+    public WebDriver getDriver() {
+        return ThreadSafeDriverManager.getDriver();
     }
 }
