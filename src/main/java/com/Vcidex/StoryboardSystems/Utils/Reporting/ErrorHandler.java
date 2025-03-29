@@ -1,6 +1,5 @@
 package com.Vcidex.StoryboardSystems.Utils.Reporting;
 
-import com.Vcidex.StoryboardSystems.Utils.ExtentLogUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,7 +31,7 @@ public class ErrorHandler {
 
     private static void logToExtentFail(String message) {
         try {
-            ExtentTestManager.getTest().fail(message);
+            ExtentTestManager.getTest().fail("<b style='color:red;'>❗ " + message + "</b>");
         } catch (Exception e) {
             logger.error("Failed to log fail to Extent: {}", e.getMessage());
         }
@@ -62,6 +61,7 @@ public class ErrorHandler {
     public static <T> T safeExecute(WebDriver driver, Supplier<T> action, String actionName, boolean isSubmit, String locator) {
         try {
             if (isSubmit) {
+                logger.info("Performing submit action: {}", actionName); // Added here
                 captureScreenshot(driver, actionName, "BeforeSubmit");
             }
             T result = action.get();
@@ -78,6 +78,7 @@ public class ErrorHandler {
     public static void safeExecute(WebDriver driver, Runnable task, String actionName, boolean isSubmit, String locator) {
         try {
             if (isSubmit) {
+                logger.info("Performing submit action: {}", actionName); // Added here
                 captureScreenshot(driver, actionName, "BeforeSubmit");
             }
             task.run();
@@ -88,21 +89,29 @@ public class ErrorHandler {
         }
     }
 
-    // ===========================
-    //          EXCEPTIONS
-    // ===========================
-    // API Exception Class
-    public static class ApiException extends Exception {
-        private final String requestBody;
-        private final String responseBody;
-
-        public ApiException(String message, String requestBody, String responseBody) {
-            super(message);
-            this.requestBody = requestBody;
-            this.responseBody = responseBody;
+    public static void captureScreenshot(WebDriver driver, String fileName, String status) {
+        if (driver == null) {
+            logger.warn("⚠️ Screenshot not taken - WebDriver is null.");
+            return;
         }
-        public String getRequestBody() { return requestBody; }
-        public String getResponseBody() { return responseBody; }
+        if (!(driver instanceof TakesScreenshot)) {
+            logger.error("❌ The provided WebDriver does not support screenshots. Driver type: {}", driver.getClass().getName());
+            return;
+        }
+        String screenshotsDir = System.getProperty("user.dir") + "/test-output/screenshots/";
+        ensureDirectoryExists(screenshotsDir);
+
+        try {
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String screenshotPath = screenshotsDir + status + "_" + fileName + "_" + System.nanoTime() + ".png";
+            File destination = new File(screenshotPath);
+            FileUtils.copyFile(screenshot, destination);
+            logger.info("📸 Screenshot captured: {}", destination.getAbsolutePath());
+            attachScreenshotToExtent(screenshotPath);
+        } catch (IOException e) {
+            logger.error("❌ Failed to capture screenshot", e);
+            logToExtentInfo("❌ Failed to capture screenshot: " + e.getMessage());
+        }
     }
 
     // ===========================
@@ -111,18 +120,16 @@ public class ErrorHandler {
     public static void handleException(WebDriver driver, Throwable throwable, String testName) {
         logger.error("❗ Error in Test: {}", testName, throwable);
         logToExtentFail("❗ Error in Test: " + testName + "\n" + throwable.getMessage());
+        logToExtentInfo("[UI ERROR] " + throwable.getMessage()); // Added for UI Error Logs
 
         if (throwable instanceof ApiException) {
-            ApiException apiException = (ApiException) throwable;
-            logAPIErrorWithBody(apiException, testName);
+            logAPIErrorWithBody((ApiException) throwable, testName);
         } else {
             if (driver != null) {
                 captureScreenshot(driver, testName, "Error");
                 captureBrowserLogs(driver, testName);
-                captureNetworkLogs(driver, testName);
             }
         }
-        throw new RuntimeException(throwable);
     }
 
     // ===========================
@@ -142,19 +149,15 @@ public class ErrorHandler {
             writer.write("API Response: " + responseBody + "\n");
             writer.write("====================================\n");
             logger.info("✅ API error logged for: {}", testName);
+            logToExtentInfo("[API LOG] API Error Details Captured"); // Added API Log
         } catch (IOException e) {
             logger.error("⚠️ Failed to log API error: {}", e.getMessage());
         }
-        // Wrap API log details in collapsible HTML using the helper method
-        logToExtentInfo(ExtentLogUtil.wrapLog("API Error Details",
-                "<b>Request:</b><br>" + requestBody + "<br>"
-                        + "<b>Response:</b><br>" + responseBody + "<br>"
-                        + "<b>File:</b> " + apiErrorFile));
     }
 
     // ===========================
-    //       BROWSER LOGS
-    // ===========================
+//       BROWSER LOGS
+// ===========================
     public static void captureBrowserLogs(WebDriver driver, String testName) {
         ensureDirectoryExists("./browser-logs/");
         String logFilePath = "./browser-logs/" + testName + "_logs.txt";
@@ -171,8 +174,7 @@ public class ErrorHandler {
                 logFile.write(sb.toString());
             }
             logger.info("✅ Browser logs captured for: {}", testName);
-            // Wrap browser logs in a collapsible block using ExtentLogUtil
-            logToExtentInfo(ExtentLogUtil.wrapLog("Browser Logs for " + testName + " (Saved to: " + logFilePath + ")", sb.toString()));
+            logToExtentInfo("[UI ERROR] Browser Logs Captured for " + testName);
         } catch (Exception e) {
             logger.error("⚠️ Failed to capture browser logs: {}", e.getMessage());
             logToExtentInfo("⚠️ Failed to capture browser logs: " + e.getMessage());
@@ -198,40 +200,10 @@ public class ErrorHandler {
                 logFile.write(sb.toString());
             }
             logger.info("✅ Network logs captured for: {}", testName);
-            // Wrap network logs in a collapsible block
-            logToExtentInfo(ExtentLogUtil.wrapLog("Network Logs for " + testName + " (Saved to: " + networkLogFile + ")", sb.toString()));
+            logToExtentInfo("[NETWORK LOG] Network Logs Captured"); // Added Network Log
         } catch (Exception e) {
             logger.error("⚠️ Failed to capture network logs: {}", e.getMessage());
             logToExtentInfo("⚠️ Failed to capture network logs: " + e.getMessage());
-        }
-    }
-
-    // ===========================
-    //       SCREENSHOTS
-    // ===========================
-    public static void captureScreenshot(WebDriver driver, String fileName, String status) {
-        if (driver == null) {
-            logger.warn("⚠️ Screenshot not taken - WebDriver is null.");
-            return;
-        }
-        if (!(driver instanceof TakesScreenshot)) {
-            logger.error("❌ The provided WebDriver does not support screenshots. Driver type: {}", driver.getClass().getName());
-            return;
-        }
-        String screenshotsDir = System.getProperty("user.dir") + "/test-output/screenshots/";
-        ensureDirectoryExists(screenshotsDir);
-
-        try {
-            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String screenshotPath = screenshotsDir + status + "_" + fileName + "_" + System.nanoTime() + ".png";
-            File destination = new File(screenshotPath);
-            logger.debug("Attempting to save screenshot to: {}", destination.getAbsolutePath());
-            FileUtils.copyFile(screenshot, destination);
-            logger.info("📸 Screenshot captured: {}", destination.getAbsolutePath());
-            attachScreenshotToExtent(screenshotPath);
-        } catch (IOException e) {
-            logger.error("❌ Failed to capture screenshot", e);
-            logToExtentInfo("❌ Failed to capture screenshot: " + e.getMessage());
         }
     }
 
@@ -245,5 +217,21 @@ public class ErrorHandler {
         } else {
             logger.info("📂 Directory exists: {}", dirPath);
         }
+    }
+
+    // ===========================
+    //          API EXCEPTION
+    // ===========================
+    public static class ApiException extends Exception {
+        private final String requestBody;
+        private final String responseBody;
+
+        public ApiException(String message, String requestBody, String responseBody) {
+            super(message);
+            this.requestBody = requestBody;
+            this.responseBody = responseBody;
+        }
+        public String getRequestBody() { return requestBody; }
+        public String getResponseBody() { return responseBody; }
     }
 }
