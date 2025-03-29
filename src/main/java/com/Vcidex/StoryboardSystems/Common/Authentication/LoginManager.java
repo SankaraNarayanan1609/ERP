@@ -26,7 +26,7 @@ public class LoginManager extends BasePage {
     }
 
     public void login(String companyCode, String userCode, String password) {
-        ErrorHandler.safeExecute(driver, () -> {
+        ErrorHandler.executeSafely(driver, () -> {
             String appUrl = ConfigManager.getConfig("test", "appUrl");
 
             if (driver.getCurrentUrl().equals("data:,") || driver.getCurrentUrl().isEmpty()) {

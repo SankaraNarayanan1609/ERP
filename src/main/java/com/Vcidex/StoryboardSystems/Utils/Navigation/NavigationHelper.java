@@ -24,7 +24,7 @@ public class NavigationHelper {
 
     // ✅ Click using JavaScript with Retry using ErrorHandler
     private void clickUsingJS(By locator, String text) {
-        ErrorHandler.safeExecute(driver, () -> {//Cannot resolve method 'safeExecute' in 'ErrorHandler'
+        ErrorHandler.executeSafely(driver, () -> {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
             try {
@@ -72,11 +72,11 @@ public class NavigationHelper {
 
     // ✅ Navigate to Module, Menu, and Submenu using ErrorHandler
     public void navigateToModuleAndMenu(String moduleName, String menuName, String subMenuName) {
-        ErrorHandler.safeExecute(driver, () -> {
+        ErrorHandler.executeSafely(driver, () -> {
             logger.info("Navigating to module: {}, menu: {}, sub-menu: {}", moduleName, menuName, subMenuName);
             clickModuleByText(moduleName);
             clickMenuByText(menuName);
             clickSubMenuByText(subMenuName);
-        }, "Navigating to Module and Menu", false, "N/A");
+        }, "Navigating to Module and Menu", false, "N/A"); // Make isSubmit = false
     }
 }

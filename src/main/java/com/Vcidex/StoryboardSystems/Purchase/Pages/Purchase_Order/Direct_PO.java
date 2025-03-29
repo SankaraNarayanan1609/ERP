@@ -5,7 +5,9 @@ import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
 import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationData;
 import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.regex.Pattern;
@@ -42,11 +44,24 @@ public class Direct_PO extends PurchaseBasePage {
 
     // ✅ Universal Action Wrapper
     private void performAction(String actionName, Runnable action, boolean isSubmit, String locator) {
-        ErrorHandler.safeExecute(driver, action, actionName, isSubmit, locator);
+        ErrorHandler.executeSafely(driver, action, actionName, isSubmit, locator);
+    }
+
+    public void clickDirectPOButton() {
+        performAction("Click Direct PO Button", () -> {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement directPOButton = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[contains(text(), 'Direct PO')]")
+            ));
+            directPOButton.click();
+        }, true, "direct-po-button");
     }
 
     public void uploadFile(String filePath) {
-        performAction("Upload File", () -> sendKeys(fileUploadSection, filePath), false, UPLOAD_FILE_LABEL);
+        performAction("Upload File", () -> {
+            WebElement uploadElement = findElement(fileUploadSection);
+            uploadElement.sendKeys(filePath); // Standard file upload
+        }, false, UPLOAD_FILE_LABEL);
     }
 
     public void selectTermsConditions(String terms) {
@@ -56,13 +71,6 @@ public class Direct_PO extends PurchaseBasePage {
                 "terms-conditions-dropdown");
     }
 
-//    public void clickSaveAsDraft() {
-//        performAction("Click Save As Draft",
-//                () -> findElement(saveAsDraftButton).click(),
-//                false,
-//                "save-as-draft-button");
-//    }
-
     public void clickSubmitButton() {
         performAction("Click Submit Button",
                 () -> findElement(submitButton).click(),
@@ -71,23 +79,20 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     public void createDirectPO(String filePath, String terms) {
-        navigateToDirectPO(); // Ensure correct navigation before performing actions
-        performAction("Create Direct PO",
-                () -> {
-//                    uploadFile(filePath);
-//                    selectTermsConditions(terms);
-                    clickSubmitButton();
-                    String apiResponse = getApiResponseForPO();
-                    String poNumber = fetchPONumberFromConfirmation();
-
-                    ErrorHandler.logInfo(driver, "API Response: " + apiResponse + ", PO Number: " + poNumber);//Cannot resolve method 'logInfo' in 'ErrorHandler'
-                },
-                true,
-                "create-direct-po");
+        navigateToDirectPO();
+        clickDirectPOButton();
+        performAction("Create Direct PO", () -> {
+            uploadFile(filePath);
+            selectTermsConditions(terms);
+            clickSubmitButton();
+            String poNumber = fetchPONumberFromConfirmation();
+            ErrorHandler.log("INFO", "PO Created Successfully. PO Number: " + poNumber, true);
+        }, true, "create-direct-po");
     }
 
+
     public String getConfirmationMessage() {
-        return ErrorHandler.safeExecute(driver,//Cannot resolve method 'safeExecute' in 'ErrorHandler'
+        return ErrorHandler.executeSafely(driver,
                 () -> getText(confirmationMessage),
                 "Get Confirmation Message",
                 false,
@@ -95,7 +100,7 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     public String fetchPONumberFromConfirmation() {
-        return ErrorHandler.safeExecute(driver, () -> {
+        return ErrorHandler.executeSafely(driver, () -> {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             wait.until(ExpectedConditions.textMatches(confirmationMessage, Pattern.compile(".*(PO\\d+).*")));
 
@@ -107,6 +112,6 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     private String getApiResponseForPO() {
-        return "{\"productType\": \"CONSUMABLE\"}";
+        return "{\"productType\"}";
     }
 }
