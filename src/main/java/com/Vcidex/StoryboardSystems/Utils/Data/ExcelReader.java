@@ -1,7 +1,7 @@
 package com.Vcidex.StoryboardSystems.Utils.Data;
 
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+        import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,15 +12,16 @@ import java.util.*;
 public class ExcelReader {
 
     private static final Logger logger = LogManager.getLogger(ExcelReader.class);
-    private static final String FILE_PATH = "C:\\Users\\SankaraNarayanan\\IdeaProjects\\StoryboardsSystems\\src\\test\\resources\\PurchaseTestData.xlsx";
+    private static final String DEFAULT_FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/PurchaseTestData.xlsx";
 
     /**
      * ✅ Reads **specific scenario data** dynamically and handles missing FilePath and Terms.
      */
-    public static Map<String, String> getScenarioData(String scenarioID) {
+    public static Map<String, String> getScenarioData(String scenarioID, String customFilePath) {
+        String filePath = (customFilePath != null && !customFilePath.isEmpty()) ? customFilePath : DEFAULT_FILE_PATH;
         Map<String, String> scenarioData = new HashMap<>();
 
-        try (FileInputStream fis = new FileInputStream(FILE_PATH);
+        try (FileInputStream fis = new FileInputStream(filePath);
              Workbook workbook = new XSSFWorkbook(fis)) {
 
             boolean scenarioFound = false;
@@ -45,7 +46,7 @@ public class ExcelReader {
             validateAndSetDefaults(scenarioData, scenarioID);
 
         } catch (IOException e) {
-            logger.error("❌ Error reading Excel file: {}", FILE_PATH, e);
+            logger.error("❌ Error reading Excel file: {}", filePath, e);
         }
         return scenarioData;
     }
@@ -54,12 +55,19 @@ public class ExcelReader {
      * ✅ Finds the column index of the scenario.
      */
     private static int findScenarioColumn(Sheet sheet, String scenarioID) {
-        Row headerRow = sheet.getRow(0);
+        Row headerRow = null;
+        for (int i = 0; i <= sheet.getLastRowNum(); i++) {
+            if (sheet.getRow(i) != null) {
+                headerRow = sheet.getRow(i);
+                break;
+            }
+        }
+
         if (headerRow == null) return -1;
 
         for (Cell cell : headerRow) {
             String cellValue = cell.getStringCellValue().trim();
-            if (cellValue.equalsIgnoreCase(scenarioID) || cellValue.contains(scenarioID)) {
+            if (cellValue.equalsIgnoreCase(scenarioID)) {
                 return cell.getColumnIndex();
             }
         }
@@ -101,7 +109,7 @@ public class ExcelReader {
             case BLANK:
                 return "";
             default:
-                return "UNKNOWN";
+                return "N/A";
         }
     }
 
