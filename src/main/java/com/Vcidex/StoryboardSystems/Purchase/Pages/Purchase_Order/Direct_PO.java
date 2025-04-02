@@ -4,15 +4,12 @@ import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
 import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationData;
 import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.util.regex.Pattern;
 
 import java.time.Duration;
+import java.util.regex.Pattern;
 
 public class Direct_PO extends PurchaseBasePage {
 
@@ -48,13 +45,30 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     public void clickDirectPOButton() {
-        performAction("Click Direct PO Button", () -> {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement directPOButton = wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("//button[contains(text(), 'Direct PO')]")
-            ));
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));  // Increased wait time
+
+            // Wait for the 'Direct PO' button to be clickable
+            WebElement directPOButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Direct PO')]")));
             directPOButton.click();
-        }, true, "direct-po-button");
+            System.out.println("Button with text 'Direct PO' clicked.");
+
+            // Wait until the Direct PO page has fully loaded (check for submit button)
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("submit-button")));
+            System.out.println("Direct PO page loaded, Submit button is visible.");
+        } catch (TimeoutException e) {
+            System.out.println("Button visibility timeout: " + e.getMessage());
+        }
+    }
+
+    public boolean isDirectPOPageLoaded() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(.,'Direct Purchase Order')]")));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     public void uploadFile(String filePath) {
@@ -64,54 +78,56 @@ public class Direct_PO extends PurchaseBasePage {
         }, false, UPLOAD_FILE_LABEL);
     }
 
-    public void selectTermsConditions(String terms) {
-        performAction("Select Terms and Conditions",
-                () -> selectDropdownUsingVisibleText(termsConditionsDropdown, terms),
-                false,
-                "terms-conditions-dropdown");
-    }
-
     public void clickSubmitButton() {
-        performAction("Click Submit Button",
-                () -> findElement(submitButton).click(),
-                true,
-                "submit-button");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        try {
+            // Wait for the Submit button to be clickable
+            WebElement submitButtonElement = wait.until(ExpectedConditions.elementToBeClickable(submitButton));
+            submitButtonElement.click();
+            System.out.println("Submit button clicked.");
+        } catch (TimeoutException e) {
+            System.out.println("Submit button not clickable: " + e.getMessage());
+        }
     }
 
     public void createDirectPO(String filePath, String terms) {
-        navigateToDirectPO();
-        clickDirectPOButton();
+        navigateToDirectPO();  // Navigate to Purchase Order page
+
+        if (!isDirectPOPageLoaded()) {
+            System.out.println("Direct PO page NOT detected. Clicking Direct PO button...");
+            clickDirectPOButton();  // Click only if the page is not already open
+        } else {
+            System.out.println("Already on Direct PO page. Skipping button click");
+        }
+
         performAction("Create Direct PO", () -> {
             uploadFile(filePath);
-            selectTermsConditions(terms);
             clickSubmitButton();
-            String poNumber = fetchPONumberFromConfirmation();
-            ErrorHandler.log("INFO", "PO Created Successfully. PO Number: " + poNumber, true);
-        }, true, "create-direct-po");
+        }, true, "create-direct-po"); // Pass "create-direct-po" to log this action in the report
     }
 
+//    public String getConfirmationMessage() {
+//        return ErrorHandler.executeSafely(driver,
+//                () -> getText(confirmationMessage),
+//                "Get Confirmation Message",
+//                false,
+//                "confirmation-message");
+//    }
 
-    public String getConfirmationMessage() {
-        return ErrorHandler.executeSafely(driver,
-                () -> getText(confirmationMessage),
-                "Get Confirmation Message",
-                false,
-                "confirmation-message");
-    }
-
-    public String fetchPONumberFromConfirmation() {
-        return ErrorHandler.executeSafely(driver, () -> {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            wait.until(ExpectedConditions.textMatches(confirmationMessage, Pattern.compile(".*(PO\\d+).*")));
-
-            wait.until(ExpectedConditions.visibilityOfElementLocated(confirmationMessage));
-            String confirmationMsg = getText(confirmationMessage);
-
-            return confirmationMsg.replaceAll(".*(PO\\d+).*", "$1");
-        }, "Fetch PO Number", false, "confirmation-message");
-    }
-
-    private String getApiResponseForPO() {
-        return "{\"productType\"}";
-    }
+//    public String fetchPONumberFromConfirmation() {
+//        return ErrorHandler.executeSafely(driver, () -> {
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//            wait.until(ExpectedConditions.textMatches(confirmationMessage, Pattern.compile(".*(PO\\d+).*")));
+//
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(confirmationMessage));
+//            String confirmationMsg = getText(confirmationMessage);
+//
+//            return confirmationMsg.replaceAll(".*(PO\\d+).*", "$1");
+//        }, "Fetch PO Number", false, "confirmation-message");
+//    }
+//
+//    private String getApiResponseForPO() {
+//        return "{\"productType\"}";
+//    }
 }

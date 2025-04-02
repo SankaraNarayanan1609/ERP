@@ -15,17 +15,33 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.function.Supplier;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ErrorHandler {
 
     private static final String basePath = System.getProperty("user.dir") + "/test-output/";
-
     private static final Logger logger = LogManager.getLogger(ErrorHandler.class);
+
+    // Track logged messages to prevent duplicates
+    private static final Set<String> loggedMessages = new HashSet<>();
 
     // ===========================
     //          LOG WRAPPER
     // ===========================
     public static void log(String level, String message, boolean toExtent) {
+        log(level, message, toExtent, ""); // Calls the overloaded method with a default action name
+    }
+
+    public static void log(String level, String message, boolean toExtent, String actionName) {
+        // Skip logging if the message has already been logged
+        if (loggedMessages.contains(message)) {
+            return; // Skip duplicate
+        }
+
+        // Mark the message as logged
+        loggedMessages.add(message);
+
         switch (level.toUpperCase()) {
             case "INFO":
                 logger.info("ℹ️ " + message);
@@ -43,15 +59,19 @@ public class ErrorHandler {
                 logger.info("Unknown log level: " + level + " - " + message);
                 break;
         }
-        if (toExtent) logToExtent(message, level.equalsIgnoreCase("ERROR"));
+        if (toExtent) logToExtent(message, level.equalsIgnoreCase("ERROR"), actionName);
     }
 
     // ===========================
     //         EXTENT HELPERS
     // ===========================
-    private static void logToExtent(String message, boolean isFailure) {
+    private static void logToExtent(String message, boolean isFailure, String actionName) {
         try {
-            String logMessage = "<details><summary><b>" + (isFailure ? "❗ Error" : "ℹ️ Info") + " - Click to expand</b></summary>"
+            String callerMethod = (actionName != null && !actionName.isEmpty()) ? actionName : getCallerMethodName();
+
+            String logMessage = "<details><summary><b>"
+                    + (isFailure ? "❗ Error in " : "ℹ️ Info in ")
+                    + callerMethod + "</b></summary>"
                     + "<pre>" + StringEscapeUtils.escapeHtml4(message) + "</pre></details>";
 
             if (isFailure) {
@@ -63,6 +83,19 @@ public class ErrorHandler {
             logger.error("Failed to log to Extent: " + e.getMessage());
         }
     }
+
+    private static String getCallerMethodName() {
+        StackTraceElement[] stackTrace = new Throwable().getStackTrace();
+        for (StackTraceElement element : stackTrace) {
+            if (!element.getClassName().contains("ErrorHandler") &&
+                    !element.getClassName().contains("ExtentTestManager") &&
+                    !element.getClassName().contains("JavascriptExecutor")) {  // Exclude only JS executor calls
+                return element.getMethodName();
+            }
+        }
+        return "UnknownMethod";
+    }
+
 
     private static void attachScreenshotToExtent(String screenshotPath) {
         try {
@@ -80,7 +113,10 @@ public class ErrorHandler {
     //         SAFE EXECUTE
     // ===========================
     public static void executeSafely(WebDriver driver, Runnable task, String actionName, boolean isSubmit, String locator) {
-        executeCommon(driver, () -> { task.run(); return null; }, actionName, isSubmit, locator);
+        executeCommon(driver, () -> {
+            task.run();
+            return null;
+        }, actionName, isSubmit, locator);
     }
 
     public static <T> T executeSafely(WebDriver driver, Supplier<T> action, String actionName, boolean isSubmit, String locator) {
@@ -100,12 +136,20 @@ public class ErrorHandler {
             if (isSubmit && captureScreenshotsOnSuccess) {
                 captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
             }
+
+            // Log successful execution (Removed "Executing action" log)
+            logToExtent("Successfully executed action: " + actionName + " | Locator: " + locator, false, actionName);
+
             return result; // Return result if no exception occurs
 
         } catch (Exception e) {
             // Capture failure screenshot and handle the exception
             captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_FAIL);
             handleException(driver, e, actionName);
+
+            // Log failure in Extent Reports with function name
+            logToExtent("❗ Exception occurred: " + e.getMessage(), true, actionName);
+
             throw e; // Rethrow the exception to ensure test failure
         }
     }
@@ -164,18 +208,21 @@ public class ErrorHandler {
         try (FileWriter writer = new FileWriter(apiErrorFile, true)) {
             writer.write(String.format(
                     "Timestamp: %s%nTest: %s%nError: %s%nAPI Request: %s%nAPI Response: %s%n%n",
-                    new Date(), testName, apiException.getMessage(), requestBody, responseBody));
-            log("INFO", "✅ API error details saved for test: " + testName, false);
+                    new Date(), testName, apiException.getMessage(), requestBody, responseBody
+            ));
         } catch (IOException e) {
-            log("ERROR", "Failed to log API error for test: " + testName + ". Error: " + e.getMessage(), true);
+            log("ERROR", "Failed to write API error log: " + e.getMessage(), true);
         }
     }
 
-    // ===========================
-    //       ERROR HANDLING
-    // ===========================
     public static void handleException(WebDriver driver, Throwable throwable, String testName) {
-        log("ERROR", "Exception occurred in Test: " + testName + " | " + throwable.getMessage(), true);
+        String errorMessage = "Exception occurred in Test: " + testName + " | " + throwable.getMessage();
+
+        // Check if this message has already been logged
+        if (!loggedMessages.contains(errorMessage)) {
+            log("ERROR", errorMessage, true);
+            loggedMessages.add(errorMessage);
+        }
 
         if (throwable instanceof ApiException) {
             logAPIErrorWithBody((ApiException) throwable, testName);
@@ -190,14 +237,17 @@ public class ErrorHandler {
                         captureNetworkLogs(driver, testName);
                     }
                 }
-
             }
         }
     }
 
     public static void captureNetworkLogs(WebDriver driver, String testName) {
         if (driver == null) {
-            log("WARN", "Network logs not captured - WebDriver is null.", false);
+            String warnMessage = "Network logs not captured - WebDriver is null.";
+            if (!loggedMessages.contains(warnMessage)) {
+                log("WARN", warnMessage, false);
+                loggedMessages.add(warnMessage);
+            }
             return;
         }
 
@@ -219,20 +269,32 @@ public class ErrorHandler {
 
             // Wrap network logs in a collapsible block
             if (sb.isEmpty()) {
-                log("WARN", "No network logs available for test: " + testName, false);
+                String warnMessage = "No network logs available for test: " + testName;
+                if (!loggedMessages.contains(warnMessage)) {
+                    log("WARN", warnMessage, false);
+                    loggedMessages.add(warnMessage);
+                }
             } else {
                 String expandableLog = "<details><summary><b>📡 Network Logs for " + testName + ":</b> Click to expand</summary>"
                         + "<pre>" + StringEscapeUtils.escapeHtml4(sb.toString()) + "</pre></details>";
-                logToExtent(expandableLog, false);
+                logToExtent(expandableLog, false, testName);
             }
         } catch (Exception e) {
-            log("ERROR", "⚠️ Failed to capture network logs: " + e.getMessage(), true);
+            String errorMessage = "⚠️ Failed to capture network logs: " + e.getMessage();
+            if (!loggedMessages.contains(errorMessage)) {
+                log("ERROR", errorMessage, true);
+                loggedMessages.add(errorMessage);
+            }
         }
     }
 
     public static void captureBrowserLogs(WebDriver driver, String testName) {
         if (driver == null) {
-            log("WARN", "Browser logs not captured - WebDriver is null.", false);
+            String warnMessage = "Browser logs not captured - WebDriver is null.";
+            if (!loggedMessages.contains(warnMessage)) {
+                log("WARN", warnMessage, false);
+                loggedMessages.add(warnMessage);
+            }
             return;
         }
 
@@ -242,7 +304,11 @@ public class ErrorHandler {
         try {
             LogEntries logs = driver.manage().logs().get(LogType.BROWSER);
             if (logs.getAll().isEmpty()) {
-                log("WARN", "No browser logs available for test: " + testName, false);
+                String warnMessage = "No browser logs available for test: " + testName;
+                if (!loggedMessages.contains(warnMessage)) {
+                    log("WARN", warnMessage, false);
+                    loggedMessages.add(warnMessage);
+                }
                 return;
             }
 
@@ -259,7 +325,11 @@ public class ErrorHandler {
             }
             log("INFO", "✅ Browser logs captured for: " + testName, false);
         } catch (Exception e) {
-            log("ERROR", "⚠️ Failed to capture browser logs: " + e.getMessage(), true);
+            String errorMessage = "⚠️ Failed to capture browser logs: " + e.getMessage();
+            if (!loggedMessages.contains(errorMessage)) {
+                log("ERROR", errorMessage, true);
+                loggedMessages.add(errorMessage);
+            }
         }
     }
 
@@ -275,7 +345,15 @@ public class ErrorHandler {
             this.requestBody = requestBody;
             this.responseBody = responseBody;
         }
-        public String getRequestBody() { return requestBody; }
-        public String getResponseBody() { return responseBody; }
+
+        public String getRequestBody() {
+            return requestBody;
+        }
+
+        public String getResponseBody() {
+            return responseBody;
+        }
     }
 }
+
+
