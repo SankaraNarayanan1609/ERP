@@ -2,6 +2,9 @@ package com.Vcidex.StoryboardSystems.Utils.Reporting;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +12,7 @@ import java.util.Date;
 public class ExtentManager {
 
     private static ExtentReports extent;
+    private static final String reportDir = System.getProperty("user.dir") + "/test-output/";
 
     /**
      * Initialize and return an ExtentReports instance using ExtentSparkReporter.
@@ -19,8 +23,8 @@ public class ExtentManager {
     public static synchronized ExtentReports getInstance() {
         if (extent == null) {
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String reportDir = System.getProperty("user.dir") + "/test-output/";
-            String reportFile = reportDir + "ExtentReport_" + timestamp + ".html";
+            String reportName = System.getProperty("report.name", "ExtentReport");
+            String reportFile = reportDir + reportName + "_" + timestamp + ".html";
 
             // Ensure directory exists
             new File(reportDir).mkdirs();
@@ -34,7 +38,8 @@ public class ExtentManager {
 
             extent = new ExtentReports();
             extent.attachReporter(reporter);
-            System.out.println("📜 [INFO] Extent Report initialized at: " + reportFile);
+            Logger logger = LogManager.getLogger(ExtentManager.class);
+            logger.info("📜 Extent Report initialized at: {}", reportFile);
         }
         return extent;
     }

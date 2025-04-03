@@ -22,13 +22,13 @@ public class PurchaseBasePage extends BasePage {
         selectDropdownUsingVisibleText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_NAME_LABEL), vendor);
     }
 
-    public void enterDeliveryTerms(String terms) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.DELIVERY_TERMS_LABEL), terms);
-    }
-
-    public void enterPaymentTerms(String terms) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.PAYMENT_TERMS_LABEL), terms);
-    }
+//    public void enterDeliveryTerms(String terms) {
+//        sendKeys(getFollowingSiblingLocator(PurchaseConstants.DELIVERY_TERMS_LABEL), terms);
+//    }
+//
+//    public void enterPaymentTerms(String terms) {
+//        sendKeys(getFollowingSiblingLocator(PurchaseConstants.PAYMENT_TERMS_LABEL), terms);
+//    }
 
     public void selectCurrency(String currency) {
         selectDropdownUsingVisibleText(getFollowingSiblingLocator(PurchaseConstants.CURRENCY_LABEL), currency);
@@ -80,5 +80,44 @@ public class PurchaseBasePage extends BasePage {
 
     public String getGrandTotal() {
         return getText(getFollowingSiblingLocator(PurchaseConstants.GRAND_TOTAL_LABEL));
+    }
+
+    public void fillPurchaseOrderDetails(String branch, String vendor, String currency, String quantity,
+                                         String price, String discount, String addOnCharges,
+                                         String additionalDiscount, String freightCharges,
+                                         String additionalTax, String roundOff) {
+        if (branch != null && !branch.isEmpty()) {
+            selectBranchName(branch);
+        }
+        if (branch != null && !branch.isEmpty()) {
+            selectVendorName(vendor);
+        }
+        if (branch != null && !branch.isEmpty()) {
+            selectCurrency(currency);
+        }
+        if (branch != null && !branch.isEmpty()) {
+            enterQuantity(quantity);
+        }
+        if (branch != null && !branch.isEmpty()) {
+            enterPrice(price);
+        }
+        if (branch != null && !branch.isEmpty()) {
+            enterDiscount(discount);
+        }
+        if (branch != null && !branch.isEmpty()) {
+            enterAddOnCharges(addOnCharges);
+        }
+        if (branch != null && !branch.isEmpty()) {
+            enterAdditionalDiscount(additionalDiscount);
+        }
+        if (branch != null && !branch.isEmpty()) {
+            enterFreightCharges(freightCharges);
+        }
+        if (branch != null && !branch.isEmpty()) {
+        }
+            selectAdditionalTax(additionalTax);
+        if (branch != null && !branch.isEmpty()) {
+            enterRoundOff(roundOff);
+        }
     }
 }

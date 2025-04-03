@@ -112,12 +112,22 @@ public class ErrorHandler {
     // ===========================
     //         SAFE EXECUTE
     // ===========================
-    public static void executeSafely(WebDriver driver, Runnable task, String actionName, boolean isSubmit, String locator) {
-        executeCommon(driver, () -> {
-            task.run();
-            return null;
-        }, actionName, isSubmit, locator);
+    public static void executeSafely(WebDriver driver, Runnable action, String actionName, boolean shouldFail, String errorMessage) {
+        try {
+            action.run();
+        } catch (Exception e) {
+            System.err.println("Error in action: " + actionName + " - " + errorMessage);
+            if (shouldFail) {
+                throw new RuntimeException(e);
+            }
+        }
     }
+
+    // ✅ Keep the old version for backward compatibility
+    public static void executeSafely(Runnable action, String errorMessage) {
+        executeSafely(null, action, "UnknownAction", false, errorMessage);
+    }
+
 
     public static <T> T executeSafely(WebDriver driver, Supplier<T> action, String actionName, boolean isSubmit, String locator) {
         return executeCommon(driver, action, actionName, isSubmit, locator);
@@ -126,31 +136,24 @@ public class ErrorHandler {
     private static <T> T executeCommon(WebDriver driver, Supplier<T> action, String actionName, boolean isSubmit, String locator) {
         try {
             if (isSubmit) {
-                log("INFO", "Performing submit action: " + actionName + " | Locator: " + locator, true);
+                log("INFO", "Performing action: " + actionName + " | Locator: " + locator, true);
                 captureScreenshot(driver, actionName, ScreenshotStatus.BEFORE_SUBMIT);
             }
 
-            T result = action.get(); // Perform the action
+            T result = action.get();  // Execute the WebDriver action
 
-            // Capture screenshot only on successful submit if enabled
+            // Capture screenshot on success
             if (isSubmit && captureScreenshotsOnSuccess) {
                 captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
             }
 
-            // Log successful execution (Removed "Executing action" log)
-            logToExtent("Successfully executed action: " + actionName + " | Locator: " + locator, false, actionName);
-
-            return result; // Return result if no exception occurs
+            logToExtent("✔ Successfully executed: " + actionName, false, actionName);
+            return result;
 
         } catch (Exception e) {
-            // Capture failure screenshot and handle the exception
             captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_FAIL);
             handleException(driver, e, actionName);
-
-            // Log failure in Extent Reports with function name
-            logToExtent("❗ Exception occurred: " + e.getMessage(), true, actionName);
-
-            throw e; // Rethrow the exception to ensure test failure
+            throw e;
         }
     }
 
@@ -216,29 +219,24 @@ public class ErrorHandler {
     }
 
     public static void handleException(WebDriver driver, Throwable throwable, String testName) {
-        String errorMessage = "Exception occurred in Test: " + testName + " | " + throwable.getMessage();
+        String errorMessage = "Exception in Test: " + testName + " | " + throwable.getMessage();
 
-        // Check if this message has already been logged
         if (!loggedMessages.contains(errorMessage)) {
             log("ERROR", errorMessage, true);
             loggedMessages.add(errorMessage);
         }
 
-        if (throwable instanceof ApiException) {
-            logAPIErrorWithBody((ApiException) throwable, testName);
+        if (throwable instanceof ApiException apiException) {
+            logAPIErrorWithBody(apiException, testName);
         } else {
             if (driver != null) {
-                if (throwable instanceof ApiException apiException) {
-                    logAPIErrorWithBody(apiException, testName);
-                } else {
-                    if (driver != null) {
-                        captureScreenshot(driver, testName, ScreenshotStatus.ERROR);
-                        captureBrowserLogs(driver, testName);
-                        captureNetworkLogs(driver, testName);
-                    }
-                }
+                captureScreenshot(driver, testName, ScreenshotStatus.ERROR);
+                captureBrowserLogs(driver, testName);
+                captureNetworkLogs(driver, testName);
             }
         }
+
+        throw new RuntimeException(throwable); // Rethrow for test failure
     }
 
     public static void captureNetworkLogs(WebDriver driver, String testName) {

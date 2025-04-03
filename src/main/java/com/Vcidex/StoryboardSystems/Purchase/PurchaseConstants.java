@@ -3,8 +3,6 @@ package com.Vcidex.StoryboardSystems.Purchase;
 public class PurchaseConstants {
     public static final String BRANCH_NAME_LABEL = "Branch Name";
     public static final String VENDOR_NAME_LABEL = "Vendor Name";
-    public static final String DELIVERY_TERMS_LABEL = "Delivery Terms";
-    public static final String PAYMENT_TERMS_LABEL = "Payment Terms";
     public static final String CURRENCY_LABEL = "Currency";
     public static final String QUANTITY_LABEL = "Quantity";
     public static final String PRICE_LABEL = "Price";

@@ -34,6 +34,9 @@ public class Create_Agreement extends PurchaseBasePage {
         agreementRefNo.sendKeys(refNo);
     }
 
+    public static final String DELIVERY_TERMS_LABEL = "Delivery Terms";
+    public static final String PAYMENT_TERMS_LABEL = "Payment Terms";
+
     public void enterAgreementDate(String date) {
         agreementDate.clear();
         agreementDate.sendKeys(date);

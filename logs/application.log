@@ -17820,3 +17820,726 @@ java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\Storyboard
 2025-04-02 15:46:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Test Passed: runSingleScenario
 2025-04-02 15:46:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
 2025-04-02 15:46:48 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-03 12:52:33 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-03 12:52:33 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-03 12:52:33 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-03 12:52:34 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-04-03 12:52:35 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-04-03 12:52:36 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 12:52:36 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-03 12:52:36 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-04-03 12:52:37 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-04-03 12:52:38 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-03 12:52:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-03 12:52:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 12:52:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-03 12:52:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 12:52:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-03 12:52:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 12:52:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-03 12:52:42 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ File path is missing!
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:39) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 12:52:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250403_125242_956.png
+2025-04-03 12:52:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Browser logs captured for: runSingleScenario
+2025-04-03 12:52:42 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ ⚠️ Failed to capture network logs: invalid argument: log type 'performance' not found
+  (Session info: chrome=134.0.6998.178)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [ba4d98f9842afc698f7a7e4fc5e8971d, getLog {type=performance}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50188}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50188/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ba4d98f9842afc698f7a7e4fc5e8971d
+2025-04-03 12:52:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-03 12:52:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-03 13:59:29 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-03 13:59:30 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-03 13:59:30 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-03 13:59:31 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-04-03 13:59:31 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-04-03 13:59:33 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 13:59:33 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-03 13:59:33 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-04-03 13:59:33 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-04-03 13:59:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-03 13:59:35 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-03 13:59:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 13:59:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-03 13:59:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 13:59:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-03 13:59:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 13:59:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-03 13:59:39 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ File path is missing!
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:39) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 13:59:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250403_135939_789.png
+2025-04-03 13:59:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Browser logs captured for: runSingleScenario
+2025-04-03 13:59:39 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ ⚠️ Failed to capture network logs: invalid argument: log type 'performance' not found
+  (Session info: chrome=134.0.6998.178)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [4ad299bd00ad3de36b4002282b94d7bb, getLog {type=performance}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52132}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52132/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4ad299bd00ad3de36b4002282b94d7bb
+2025-04-03 13:59:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-03 13:59:40 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-03 15:49:52 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-03 15:49:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-03 15:49:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-03 15:49:53 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-04-03 15:49:53 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-04-03 15:49:55 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 15:49:55 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250403_154955.html
+2025-04-03 15:49:55 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-03 15:49:55 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-04-03 15:49:55 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-04-03 15:49:57 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-03 15:49:57 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-03 15:50:00 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:50:00 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-03 15:50:00 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:50:00 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-03 15:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-03 15:50:01 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ File path is missing!
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:39) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 15:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250403_155001_710.png
+2025-04-03 15:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Browser logs captured for: runSingleScenario
+2025-04-03 15:50:01 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ ⚠️ Failed to capture network logs: invalid argument: log type 'performance' not found
+  (Session info: chrome=134.0.6998.178)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [3ac561bf5129b073d59ace29b6e4c846, getLog {type=performance}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52636}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52636/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3ac561bf5129b073d59ace29b6e4c846
+2025-04-03 15:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-03 15:50:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-03 15:56:13 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-03 15:56:13 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-03 15:56:13 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-03 15:56:13 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-04-03 15:56:13 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-04-03 15:56:15 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 15:56:15 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250403_155615.html
+2025-04-03 15:56:15 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-03 15:56:15 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-04-03 15:56:15 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-04-03 15:56:17 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-03 15:56:17 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-03 15:56:20 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:56:20 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-03 15:56:20 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:56:20 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-03 15:56:21 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:56:21 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-03 15:56:21 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ File path is missing!
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:39) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 15:56:21 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250403_155621_737.png
+2025-04-03 15:56:21 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Browser logs captured for: runSingleScenario
+2025-04-03 15:56:21 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ ⚠️ Failed to capture network logs: invalid argument: log type 'performance' not found
+  (Session info: chrome=134.0.6998.178)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [6af36365bc0c6f5b920f2b8efa447e4b, getLog {type=performance}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52694}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52694/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6af36365bc0c6f5b920f2b8efa447e4b
+2025-04-03 15:56:21 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-03 15:56:22 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-03 15:57:55 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-03 15:57:55 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-03 15:57:55 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-03 15:57:55 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-04-03 15:57:55 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-04-03 15:57:57 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 15:57:57 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250403_155757.html
+2025-04-03 15:57:57 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-03 15:57:57 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-04-03 15:57:57 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-04-03 15:57:59 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-03 15:57:59 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-03 15:58:02 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:58:02 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-03 15:58:02 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:58:02 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-03 15:58:03 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 15:58:03 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-03 15:58:13 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/AFTER_SUBMIT_FAIL_findElement_20250403_155813_631.png
+2025-04-03 15:58:13 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ Exception occurred in Test: findElement | Expected condition failed: waiting for visibility of element located by By.id: terms-conditions-dropdown (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52727}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52727/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d2534d2b02ea519ad013cd4e2bd3fe1f
+2025-04-03 15:58:13 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/ERROR_findElement_20250403_155813_762.png
+2025-04-03 15:58:13 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Browser logs captured for: findElement
+2025-04-03 15:58:13 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ ⚠️ Failed to capture network logs: invalid argument: log type 'performance' not found
+  (Session info: chrome=134.0.6998.178)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d2534d2b02ea519ad013cd4e2bd3fe1f, getLog {type=performance}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52727}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52727/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d2534d2b02ea519ad013cd4e2bd3fe1f
+2025-04-03 15:58:13 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/AFTER_SUBMIT_FAIL_Select Terms & Conditions_20250403_155813_881.png
+2025-04-03 15:58:13 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ Exception occurred in Test: Select Terms & Conditions | Expected condition failed: waiting for visibility of element located by By.id: terms-conditions-dropdown (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52727}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52727/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d2534d2b02ea519ad013cd4e2bd3fe1f
+2025-04-03 15:58:13 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/ERROR_Select Terms & Conditions_20250403_155813_995.png
+2025-04-03 15:58:14 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ⚠️ No browser logs available for test: Select Terms & Conditions
+2025-04-03 15:58:14 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: terms-conditions-dropdown (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52727}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52727/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d2534d2b02ea519ad013cd4e2bd3fe1f
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84) ~[selenium-support-4.30.0.jar:?]
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228) ~[selenium-support-4.30.0.jar:?]
+	at com.Vcidex.StoryboardSystems.Common.Base.BasePage.lambda$findElement$0(BasePage.java:31) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeCommon(ErrorHandler.java:133) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeSafely(ErrorHandler.java:123) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Common.Base.BasePage.findElement(BasePage.java:31) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.Direct_PO.lambda$selectTermsConditions$0(Direct_PO.java:85) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.lambda$executeSafely$0(ErrorHandler.java:117) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeCommon(ErrorHandler.java:133) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeSafely(ErrorHandler.java:116) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.Direct_PO.performAction(Direct_PO.java:34) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.Direct_PO.selectTermsConditions(Direct_PO.java:84) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:46) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 15:58:14 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250403_155814_132.png
+2025-04-03 15:58:14 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ⚠️ No browser logs available for test: runSingleScenario
+2025-04-03 15:58:14 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-03 15:58:14 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-03 16:45:51 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-03 16:45:51 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-03 16:45:51 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-03 16:45:52 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-04-03 16:45:52 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-04-03 16:45:54 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 16:45:54 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250403_164554.html
+2025-04-03 16:45:54 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-03 16:45:54 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-04-03 16:45:54 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-04-03 16:45:56 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-03 16:45:56 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-03 16:45:59 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 16:45:59 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-03 16:45:59 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 16:45:59 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-03 16:46:00 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 16:46:00 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-03 16:46:10 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/AFTER_SUBMIT_FAIL_findElement_20250403_164610_703.png
+2025-04-03 16:46:10 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ Exception occurred in Test: findElement | Expected condition failed: waiting for visibility of element located by By.id: terms-conditions-dropdown (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52996}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52996/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1a08d0b22d33a2178b3ab798b54b9976
+2025-04-03 16:46:10 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/ERROR_findElement_20250403_164610_825.png
+2025-04-03 16:46:10 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Browser logs captured for: findElement
+2025-04-03 16:46:10 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ ⚠️ Failed to capture network logs: invalid argument: log type 'performance' not found
+  (Session info: chrome=134.0.6998.178)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1a08d0b22d33a2178b3ab798b54b9976, getLog {type=performance}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52996}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52996/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1a08d0b22d33a2178b3ab798b54b9976
+2025-04-03 16:47:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Test Passed: runSingleScenario
+2025-04-03 16:47:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-03 16:47:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-03 17:49:30 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-03 17:49:30 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-03 17:49:30 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-03 17:49:32 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 134.0.6998.165 (resolved driver for Chrome 134)
+2025-04-03 17:49:32 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\134.0.6998.165\chromedriver.exe
+2025-04-03 17:49:34 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-03 17:49:34 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250403_174934.html
+2025-04-03 17:49:34 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-03 17:49:34 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration loaded from: src/main/resources/config.json
+2025-04-03 17:49:34 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to URL: https://erplite.storyboarderp.com/
+2025-04-03 17:49:35 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-03 17:49:35 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-03 17:49:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 17:49:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-03 17:49:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 17:49:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-03 17:49:40 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked successfully on attempt 1
+2025-04-03 17:49:40 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-03 17:49:51 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/AFTER_SUBMIT_FAIL_findElement_20250403_174951_133.png
+2025-04-03 17:49:51 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ Exception in Test: findElement | Expected condition failed: waiting for visibility of element located by By.id: terms-conditions-dropdown (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53455}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53455/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 981adb5fe06d0ef118aaa8e91ff41d7a
+2025-04-03 17:49:51 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/ERROR_findElement_20250403_174951_453.png
+2025-04-03 17:49:51 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Browser logs captured for: findElement
+2025-04-03 17:49:51 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ ⚠️ Failed to capture network logs: invalid argument: log type 'performance' not found
+  (Session info: chrome=134.0.6998.178)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [981adb5fe06d0ef118aaa8e91ff41d7a, getLog {type=performance}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53455}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53455/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 981adb5fe06d0ef118aaa8e91ff41d7a
+2025-04-03 17:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/AFTER_SUBMIT_FAIL_Check if Direct PO Page is Loaded_20250403_175001_674.png
+2025-04-03 17:50:01 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ❗ Exception in Test: Check if Direct PO Page is Loaded | Expected condition failed: waiting for visibility of element located by By.xpath: //h1[contains(.,'Direct Purchase Order')] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53455}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53455/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 981adb5fe06d0ef118aaa8e91ff41d7a
+2025-04-03 17:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/ERROR_Check if Direct PO Page is Loaded_20250403_175001_779.png
+2025-04-03 17:50:01 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ⚠️ No browser logs available for test: Check if Direct PO Page is Loaded
+2025-04-03 17:50:01 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h1[contains(.,'Direct Purchase Order')] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53455}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53455/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 981adb5fe06d0ef118aaa8e91ff41d7a
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.handleException(ErrorHandler.java:239) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeCommon(ErrorHandler.java:155) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeSafely(ErrorHandler.java:133) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.Direct_PO.isDirectPOPageLoaded(Direct_PO.java:41) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:48) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h1[contains(.,'Direct Purchase Order')] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 134.0.6998.178, chrome: {chromedriverVersion: 134.0.6998.165 (fd886e2cb29..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53455}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53455/devtoo..., se:cdpVersion: 134.0.6998.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 981adb5fe06d0ef118aaa8e91ff41d7a
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84) ~[selenium-support-4.30.0.jar:?]
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228) ~[selenium-support-4.30.0.jar:?]
+	at com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.Direct_PO.lambda$isDirectPOPageLoaded$0(Direct_PO.java:43) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeCommon(ErrorHandler.java:143) ~[classes/:?]
+	... 28 more
+2025-04-03 17:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250403_175001_881.png
+2025-04-03 17:50:01 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ⚠️ No browser logs available for test: runSingleScenario
+2025-04-03 17:50:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-03 17:50:02 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...

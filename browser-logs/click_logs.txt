@@ -1,0 +1,13 @@
+[Wed Apr 02 15:45:14 IST 2025] SEVERE - https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js 0:1274340 "ERROR" TypeError: Cannot read properties of undefined (reading 'segments')
+    at x.isInPaymentsPage (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:488556)
+    at template (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:489131)
+    at dp.runInContext (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:1274859)
+    at _p (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:1277034)
+    at Ip (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:1286569)
+    at Rp (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:1287773)
+    at Wb (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:1287636)
+    at Up (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:1287915)
+    at Ip (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:1287292)
+    at Yu (https://erplite.storyboarderp.com/v4/main.14de2a892fc04234.js:1:1286291)
+[Wed Apr 02 15:45:14 IST 2025] FINE - https://erplite.storyboarderp.com/v4/#/auth/login - [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o
+[Wed Apr 02 15:45:14 IST 2025] FINE - https://erplite.storyboarderp.com/v4/#/auth/login - [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o
