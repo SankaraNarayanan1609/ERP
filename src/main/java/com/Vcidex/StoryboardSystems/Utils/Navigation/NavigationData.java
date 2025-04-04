@@ -1,15 +1,9 @@
 package com.Vcidex.StoryboardSystems.Utils.Navigation;
 
 public enum NavigationData {
-
-    // Purchase Module
-    DIRECT_PO("Purchase", "Purchase", "Purchase Order"),
-    RAISE_PO("Purchase", "Purchase", "Purchase Order"),
-    RAISE_PI("Purchase", "Purchase", "Purchase Indent");
-
-    // Sales Module (Commented for now)
-    // DIRECT_SALES("Sales", "Sales Management", "Direct Sales"),
-    // SALES_INVOICE("Sales", "Sales Management", "Sales Invoice");
+    PO("Purchase", "Purchase", "Purchase Order"),
+    AGREEMENT("Purchase", "Purchase", "Agreement"),
+    PI("Purchase", "Purchase", "Purchase Indent");
 
     private final String moduleName;
     private final String menuName;
@@ -21,15 +15,7 @@ public enum NavigationData {
         this.subMenuName = subMenuName;
     }
 
-    public String getModuleName() {
-        return moduleName;
-    }
-
-    public String getMenuName() {
-        return menuName;
-    }
-
-    public String getSubMenuName() {
-        return subMenuName;
-    }
+    public String getModuleName() { return moduleName; }
+    public String getMenuName() { return menuName; }
+    public String getSubMenuName() { return subMenuName; }
 }

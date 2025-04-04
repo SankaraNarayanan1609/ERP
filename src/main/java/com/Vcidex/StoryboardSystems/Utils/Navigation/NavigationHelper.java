@@ -27,26 +27,21 @@ public class NavigationHelper {
         ErrorHandler.executeSafely(driver, () -> {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
-            try {
-                retryClick(element);
-            } catch (InterruptedException e) {
-                logger.error("Clicking on '{}' failed due to interruption.", text, e);
-                Thread.currentThread().interrupt(); // Preserve interrupt status
-                throw new RuntimeException("Clicking interrupted for: " + text, e);
-            }
+            retryClick(element); // No InterruptedException, so no need for try-catch here
             logger.info("Clicked on '{}' using JavaScript.", text);
-        }, "Clicking on " + text, false, "N/A");
+            return null; // Fix: Explicitly return null
+        }, "Clicking on ");
     }
 
-    private void retryClick(WebElement element) throws InterruptedException {
+    private void retryClick(WebElement element) {
         for (int i = 0; i < 3; i++) {
             try {
+                this.wait.until(ExpectedConditions.elementToBeClickable(element));
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
                 logger.info("Clicked successfully on attempt {}", i + 1);
                 return;
             } catch (Exception e) {
-                logger.warn("Retrying click on attempt {} due to error: {}", i + 1, e.getMessage());
-                Thread.sleep(2000); // Wait 2 seconds before retrying
+                logger.warn("Retrying click (attempt {}): {}", i + 1, e.getMessage());
             }
         }
         throw new RuntimeException("Failed to click element after 3 attempts.");
@@ -77,6 +72,7 @@ public class NavigationHelper {
             clickModuleByText(moduleName);
             clickMenuByText(menuName);
             clickSubMenuByText(subMenuName);
-        }, "Navigating to Module and Menu", false, "N/A"); // Make isSubmit = false
+            return null; // Fix: Explicitly return null
+        }, "Navigating to Module and Menu");
     }
 }

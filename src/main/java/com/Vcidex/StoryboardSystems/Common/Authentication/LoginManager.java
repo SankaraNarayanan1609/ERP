@@ -64,6 +64,7 @@ public class LoginManager extends BasePage {
 
             logger.info("✅ Login successful for user: {}", username);
             ExtentTestManager.getTest().info("Login successful for user: " + username);
-        }, "LoginManager", false, "");
+            return null;
+        }, "LoginManager");
     }
 }

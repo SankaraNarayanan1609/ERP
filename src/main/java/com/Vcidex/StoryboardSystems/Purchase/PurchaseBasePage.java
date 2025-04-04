@@ -89,34 +89,34 @@ public class PurchaseBasePage extends BasePage {
         if (branch != null && !branch.isEmpty()) {
             selectBranchName(branch);
         }
-        if (branch != null && !branch.isEmpty()) {
+        if (vendor != null && !vendor.isEmpty()) {
             selectVendorName(vendor);
         }
-        if (branch != null && !branch.isEmpty()) {
+        if (currency != null && !currency.isEmpty()) {
             selectCurrency(currency);
         }
-        if (branch != null && !branch.isEmpty()) {
+        if (quantity != null && !quantity.isEmpty()) {
             enterQuantity(quantity);
         }
-        if (branch != null && !branch.isEmpty()) {
+        if (price != null && !price.isEmpty()) {
             enterPrice(price);
         }
-        if (branch != null && !branch.isEmpty()) {
+        if (discount != null && !discount.isEmpty()) {
             enterDiscount(discount);
         }
-        if (branch != null && !branch.isEmpty()) {
+        if (addOnCharges != null && !addOnCharges.isEmpty()) {
             enterAddOnCharges(addOnCharges);
         }
-        if (branch != null && !branch.isEmpty()) {
+        if (additionalDiscount != null && !additionalDiscount.isEmpty()) {
             enterAdditionalDiscount(additionalDiscount);
         }
-        if (branch != null && !branch.isEmpty()) {
+        if (freightCharges != null && !freightCharges.isEmpty()) {
             enterFreightCharges(freightCharges);
         }
-        if (branch != null && !branch.isEmpty()) {
-        }
+        if (additionalTax != null && !additionalTax.isEmpty()) {
             selectAdditionalTax(additionalTax);
-        if (branch != null && !branch.isEmpty()) {
+        }
+        if (roundOff != null && !roundOff.isEmpty()) {
             enterRoundOff(roundOff);
         }
     }

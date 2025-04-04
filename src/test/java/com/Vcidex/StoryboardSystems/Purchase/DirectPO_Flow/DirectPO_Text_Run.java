@@ -13,44 +13,52 @@ public class DirectPO_Text_Run extends TestBase {
 
     @Test(dataProvider = "SingleScenarioProvider", dataProviderClass = DataProviderManager.class)
     public void runSingleScenario(String scenarioID, Map<String, String> scenarioData) {
-        // Get environment dynamically (default to 'test' if not specified)
         String environment = System.getProperty("env", "test");
-
-        // Get userId dynamically (default to "0" - Superadmin)
         String userId = System.getProperty("userId", "0");
 
-        // Fetch user credentials based on userId
         Map<String, String> user = ConfigManager.getUserById(environment, userId);
         if (user == null) {
             throw new RuntimeException("❌ No user found with userId: " + userId + " in environment: " + environment);
         }
 
-        // Perform login
         LoginManager loginManager = new LoginManager();
-        loginManager.login(userId);  // ✅ Fixed method signature issue
+        loginManager.login(userId);
 
-        // Navigate to Direct PO page
-        Direct_PO directPO = new Direct_PO(getDriver());  // ✅ Ensured WebDriver instance is passed
-        directPO.navigateToDirectPO();
-
-        // Fetch and validate file path
-//        String filePath = scenarioData.get("FilePath");
-//        if (filePath == null || filePath.isEmpty()) {
-//            throw new RuntimeException("❌ File path is missing!");
-//        }
+        Direct_PO directPO = new Direct_PO(getDriver());
 
         String terms = scenarioData.getOrDefault("Terms", "Standard Terms");
 
-        // Perform Direct PO actions
-        //directPO.uploadFile(filePath);
-        directPO.selectTermsConditions(terms);
-
-        if (!directPO.isDirectPOPageLoaded()) {
-            directPO.clickDirectPOButton();
-        } else {
-            System.out.println("✅ Direct PO page is already loaded.");
+        if (!scenarioData.containsKey("Branch") || !scenarioData.containsKey("Vendor")) {
+            throw new RuntimeException("❌ Required data missing: Branch/Vendor");
         }
 
+        System.out.println("Scenario Data: " + scenarioData);
+
+        // Navigate to Direct PO
+        directPO.navigateToPO();
+        if (!directPO.isDirectPOPageLoaded()) {
+            directPO.clickDirectPOButton();
+        }
+
+        // ✅ Call fillPurchaseOrderDetails with extracted data
+        directPO.fillPurchaseOrderDetails(
+                scenarioData.get("Branch"),
+                scenarioData.get("Vendor"),
+                scenarioData.get("Currency"),
+                scenarioData.get("Quantity"),
+                scenarioData.get("Price"),
+                scenarioData.get("Discount"),
+                scenarioData.get("AddOnCharges"),
+                scenarioData.get("AdditionalDiscount"),
+                scenarioData.get("FreightCharges"),
+                scenarioData.get("AdditionalTax"),
+                scenarioData.get("RoundOff")
+        );
+
+        directPO.selectTermsConditions(terms);
         directPO.clickSubmitButton();
+
+        String confirmationMessage = directPO.getConfirmationMessage();
+        Assert.assertTrue(confirmationMessage.contains("PO"), "❌ PO number not found in confirmation message!");
     }
 }

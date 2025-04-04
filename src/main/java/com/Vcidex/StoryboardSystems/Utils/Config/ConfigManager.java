@@ -27,9 +27,15 @@ public class ConfigManager {
      */
     private static void initializeConfig() {
         try {
+            if (!Files.exists(Paths.get(JSON_CONFIG_PATH))) {
+                logger.error("❌ Config file '{}' not found!", JSON_CONFIG_PATH);
+                throw new RuntimeException("Config file not found: " + JSON_CONFIG_PATH);
+            }
+
             String jsonText = new String(Files.readAllBytes(Paths.get(JSON_CONFIG_PATH)));
-            jsonConfig = new JSONObject(jsonText);
-            logger.info("✅ JSON configuration loaded from: {}", JSON_CONFIG_PATH);
+                    jsonConfig = new JSONObject(jsonText);
+
+            logger.info("✅ JSON configuration successfully loaded: \n{}", jsonConfig.toString(2));
         } catch (IOException e) {
             logger.error("❌ Failed to load JSON configuration: {}", e.getMessage(), e);
             throw new RuntimeException("Failed to initialize JSON configurations.", e);
@@ -41,7 +47,20 @@ public class ConfigManager {
      */
     public static String getConfig(String environment, String key) {
         try {
-            return jsonConfig.getJSONObject(environment).optString(key, "");
+            if (!jsonConfig.has(environment)) {
+                logger.error("❌ Environment '{}' not found in config!", environment);
+                return "";
+            }
+
+            JSONObject envConfig = jsonConfig.getJSONObject(environment);
+            if (!envConfig.has(key)) {
+                logger.error("❌ Key '{}' not found in environment '{}'.", key, environment);
+                return "";
+            }
+
+            String value = envConfig.optString(key, "");
+            logger.info("🔍 Retrieved config '{}' = '{}' from environment '{}'", key, value, environment);
+            return value;
         } catch (Exception e) {
             logger.error("❌ Error retrieving config '{}' for env '{}': {}", key, environment, e.getMessage());
             return "";
@@ -87,12 +106,22 @@ public class ConfigManager {
 
     public static String getProperty(String key, String defaultValue) {
         Properties properties = new Properties();
-        try (InputStream input = new FileInputStream("config.properties")) {
-            properties.load(input);
-        } catch (IOException e) {
-            return defaultValue;  // Return default if file is missing
+        String propertiesPath = "config.properties";
+
+        if (!Files.exists(Paths.get(propertiesPath))) {
+            logger.warn("⚠️ Properties file '{}' not found. Using default value for '{}'.", propertiesPath, key);
+            return defaultValue;
         }
-        return properties.getProperty(key, defaultValue);
+
+        try (InputStream input = new FileInputStream(propertiesPath)) {
+            properties.load(input);
+            String value = properties.getProperty(key, defaultValue);
+            logger.info("🔍 Retrieved property '{}' = '{}'", key, value);
+            return value;
+        } catch (IOException e) {
+            logger.error("❌ Error reading properties file '{}': {}", propertiesPath, e.getMessage());
+            return defaultValue;
+        }
     }
 
     /**

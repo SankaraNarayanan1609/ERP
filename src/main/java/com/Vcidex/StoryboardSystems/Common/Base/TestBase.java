@@ -46,8 +46,8 @@ public class TestBase {
         if (result.getStatus() == ITestResult.FAILURE) {
             logger.error("❌ Test Failed: {}", result.getThrowable());
             ErrorHandler.captureScreenshot(driver, testName, ErrorHandler.ScreenshotStatus.FAIL);
-            ErrorHandler.captureBrowserLogs(driver, testName);
-            ErrorHandler.captureNetworkLogs(driver, testName);
+            //ErrorHandler.captureBrowserLogs(driver, testName);
+            //ErrorHandler.captureNetworkLogs(driver, testName);
             ExtentTestManager.getTest().fail(result.getThrowable());
         } else if (result.getStatus() == ITestResult.SUCCESS) {
             logger.info("✅ Test Passed: {}", testName);

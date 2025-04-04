@@ -45,6 +45,9 @@ public class ExcelReader {
 
             validateAndSetDefaults(scenarioData, scenarioID);
 
+            // ✅ Log the fetched data
+            logger.info("Fetched Data for Scenario '{}': {}", scenarioID, scenarioData);
+
         } catch (IOException e) {
             logger.error("❌ Error reading Excel file: {}", filePath, e);
         }
@@ -68,7 +71,9 @@ public class ExcelReader {
         for (Cell cell : headerRow) {
             String cellValue = cell.getStringCellValue().trim();
             if (cellValue.equalsIgnoreCase(scenarioID)) {
-                return cell.getColumnIndex();
+                int scenarioColumnIndex = cell.getColumnIndex();
+                logger.info("Scenario Column Index Found: {} in sheet '{}'", scenarioColumnIndex, sheet.getSheetName());
+                return scenarioColumnIndex;
             }
         }
         logger.warn("⚠️ Scenario '{}' not found in sheet '{}'", scenarioID, sheet.getSheetName());
@@ -87,7 +92,7 @@ public class ExcelReader {
 
             if (keyCell != null && valueCell != null) {
                 String key = keyCell.getStringCellValue().trim();
-                String value = getCellValueAsString(valueCell);
+                String value = getCellValueAsString(valueCell).trim();
                 scenarioData.put(key, value);
             }
         }
@@ -97,22 +102,22 @@ public class ExcelReader {
      * ✅ Converts any cell type to String safely.
      */
     private static String getCellValueAsString(Cell cell) {
+        if (cell == null) return ""; // Handle null case explicitly
         switch (cell.getCellType()) {
             case STRING:
                 return cell.getStringCellValue().trim();
             case NUMERIC:
-                return String.valueOf(cell.getNumericCellValue());
+                return String.valueOf((int) cell.getNumericCellValue()); // Avoid decimal issues
             case BOOLEAN:
                 return String.valueOf(cell.getBooleanCellValue());
             case FORMULA:
-                return cell.getCellFormula();
+                return cell.getCellFormula().trim();
             case BLANK:
                 return "";
             default:
                 return "N/A";
         }
     }
-
     /**
      * ✅ Validate scenario data and set defaults if necessary.
      */
