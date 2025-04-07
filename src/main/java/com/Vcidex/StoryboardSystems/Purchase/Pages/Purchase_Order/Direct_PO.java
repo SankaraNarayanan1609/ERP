@@ -10,6 +10,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.WebDriver;
+
 
 import java.time.Duration;
 
@@ -41,7 +43,7 @@ public class Direct_PO extends PurchaseBasePage {
         this.navigationHelper = new NavigationHelper(driver);
     }
 
-    private void performAction(String actionName, Runnable action, boolean isSubmit, String locator) {
+    public void performAction(String actionName, Runnable action, boolean isSubmit, String locator) {
         try {
             logger.info("🔄 Performing action: {}", actionName);
             ErrorHandler.executeSafely(driver, () -> {

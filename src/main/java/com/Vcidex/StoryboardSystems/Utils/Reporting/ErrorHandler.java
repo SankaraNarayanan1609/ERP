@@ -8,10 +8,13 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.openqa.selenium.*;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.model.Media;
+import org.testng.Assert;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Supplier;
+import static com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeSafely;
 
 public class ErrorHandler {
 
@@ -97,12 +100,6 @@ public class ErrorHandler {
         }
     }
 
-    public class TestExtent {
-        public static void main(String[] args) throws Exception {
-            Media media = MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build();
-            System.out.println("Media entity created: " + media);
-        }
-    }
     private static String getCallerMethodName() {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
 
@@ -121,15 +118,47 @@ public class ErrorHandler {
     //         SAFE EXECUTE
     // ===========================
 
-    public static <T> T executeSafely(WebDriver driver, Supplier<T> action, String actionName) {
+    public static <T> T executeSafely(WebDriver driver, Supplier<T> action, String actionName){
+
+    long startTime = System.currentTimeMillis();
         try {
-            return action.get();
+            T result = action.get();
+            long duration = System.currentTimeMillis() - startTime;
+
+            log("INFO", "✅ Action Passed: " + actionName + " (" + duration + " ms)", true, actionName);
+
+            if (!captureScreenshotsOnFailureOnly) {
+                captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
+            }
+
+            return result;
         } catch (Exception e) {
             captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_FAIL);
             handleException(driver, e, actionName);
             throw new RuntimeException("❌ Failed to execute: " + actionName, e);
         }
     }
+
+    public static void executeSafely(Assert.ThrowingRunnable action, String actionName) {
+        long startTime = System.currentTimeMillis();
+        try {
+            action.run();
+            long duration = System.currentTimeMillis() - startTime;
+
+            log("INFO", "✅ Action Passed: " + actionName + " (" + duration + " ms)", true, actionName);
+
+            if (!captureScreenshotsOnFailureOnly) {
+                WebDriver driver = WebDriverFactory.getDriver();
+                captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
+            }
+        } catch (Throwable e) {
+            WebDriver driver = WebDriverFactory.getDriver();
+            captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
+            handleException(driver, (Exception) e, actionName);
+            throw new RuntimeException("❌ Failed to execute: " + actionName, e);
+        }
+    }
+
 
     private static void handleException(WebDriver driver, Exception e, String actionName) {
         String errorMessage = "❌ Action Failed: " + actionName + " | " + extractRootCause(e);
@@ -192,7 +221,7 @@ public class ErrorHandler {
 
     private static String captureScreenshotWithCallerName() {
         try {
-            WebDriver driver = WebDriverFactory.getDriver();//Expected 2 arguments but found 0
+            WebDriver driver = WebDriverFactory.getDriver();
             if (!(driver instanceof TakesScreenshot)) {
                 log("ERROR", "WebDriver does not support screenshots.", true, "");
                 return null;

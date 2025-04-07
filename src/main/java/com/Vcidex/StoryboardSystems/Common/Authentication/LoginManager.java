@@ -2,9 +2,9 @@ package com.Vcidex.StoryboardSystems.Common.Authentication;
 
 import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
-import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
+import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -24,52 +24,80 @@ public class LoginManager extends BasePage {
     private final By loginButton = By.xpath("//button[@id='kt_sign_in_submit']");
     private final By postLoginLocator = By.xpath("//b[normalize-space()='Member Dashboard']");
 
-
     public LoginManager() {
         super(ThreadSafeDriverManager.getDriver());
     }
 
     public void login(String userId) {
+        String env = System.getProperty("env", "test");
+        String appUrl = ConfigManager.getConfig(env, "appUrl");
+
+        List<Map<String, String>> users = ConfigManager.getConfigList(env, "users");
+        if (users.isEmpty()) {
+            throw new RuntimeException("❌ No users found in config.json for environment: " + env);
+        }
+
+        Map<String, String> user = users.stream()
+                .filter(u -> u.get("userId").equals(userId))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("❌ User with ID " + userId + " not found in config"));
+
+        String companyCode = user.get("companyCode");
+        String username = user.get("userName");
+        String password = user.get("password");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        // Navigate to app URL if current URL is blank
         ErrorHandler.executeSafely(driver, () -> {
-            String env = System.getProperty("env", "test");
-            String appUrl = ConfigManager.getConfig(env, "appUrl");
-
-            List<Map<String, String>> users = ConfigManager.getConfigList(env, "users");
-            if (users.isEmpty()) {
-                throw new RuntimeException("❌ No users found in config.json for environment: " + env);
-            }
-
-            Map<String, String> user = users.stream()
-                    .filter(u -> u.get("userId").equals(userId))
-                    .findFirst()
-                    .orElseThrow(() -> new RuntimeException("❌ User with ID " + userId + " not found in config"));
-
-            String companyCode = user.get("companyCode");
-            String username = user.get("userName");
-            String password = user.get("password");
-
-            if (driver.getCurrentUrl().equals("data:,") || driver.getCurrentUrl().isEmpty()) {
+            String currentUrl = driver.getCurrentUrl();
+            if (currentUrl.equals("data:,") || currentUrl.isEmpty()) {
                 driver.get(appUrl);
+                ExtentTestManager.getTest().info("🌐 Navigated to app URL: " + appUrl);
                 logger.info("🌐 Navigated to app URL: {}", appUrl);
             }
+            return null;
+        }, "Navigate to App URL");
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        // Wait for login fields
+        ErrorHandler.executeSafely(driver, () -> {
             wait.until(ExpectedConditions.visibilityOfElementLocated(companyCodeField));
+            return null;
+        }, "Wait for Company Code Field");
 
-            logger.info("📥 Filling login credentials for userId: {}", userId);
+        logger.info("📥 Filling login credentials for userId: {}", userId);
+        ExtentTestManager.getTest().info("📥 Filling login credentials for userId: " + userId);
+
+        // Fill credentials
+        ErrorHandler.executeSafely(driver, () -> {
             sendKeys(companyCodeField, companyCode);
-            sendKeys(usernameField, username);
-            sendKeys(passwordField, password);
-            click(loginButton);
+            return null;
+        }, "Enter Company Code");
 
-            // Wait until dashboard is visible (confirm login success)
+        ErrorHandler.executeSafely(driver, () -> {
+            sendKeys(usernameField, username);
+            return null;
+        }, "Enter Username");
+
+        ErrorHandler.executeSafely(driver, () -> {
+            sendKeys(passwordField, password);
+            return null;
+        }, "Enter Password");
+
+        // Click login
+        ErrorHandler.executeSafely(driver, () -> {
+            click(loginButton);
+            return null;
+        }, "Click Login Button");
+
+        // Wait for dashboard
+        ErrorHandler.executeSafely(driver, () -> {
             wait.until(ExpectedConditions.presenceOfElementLocated(postLoginLocator));
             wait.until(ExpectedConditions.visibilityOfElementLocated(postLoginLocator));
-            logger.info("🌟 Login dashboard element detected");
-
-            ExtentTestManager.getTest().info("✅ Login successful for user: " + username);
-            logger.info("✅ Login successful for user: {}", username);
             return null;
-        }, "LoginManager");
+        }, "Wait for Dashboard after Login");
+
+        ExtentTestManager.getTest().info("✅ Login successful for user: " + username);
+        logger.info("✅ Login successful for user: {}", username);
     }
 }

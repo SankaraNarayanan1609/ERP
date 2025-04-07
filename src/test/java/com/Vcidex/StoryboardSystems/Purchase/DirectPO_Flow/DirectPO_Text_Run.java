@@ -7,16 +7,19 @@ import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import java.time.Duration;
 import java.util.Map;
+
+import static com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeSafely;
 
 public class DirectPO_Text_Run extends TestBase {
 
     @Test(dataProvider = "SingleScenarioProvider", dataProviderClass = DataProviderManager.class)
-    public void runSingleScenario(String scenarioID, Map<String, String> scenarioData) throws InterruptedException {
+    public void runSingleScenario(String scenarioID, Map<String, String> scenarioData) {
         try {
             logger.info("▶️ Starting Scenario ID: {}", scenarioID);
 
@@ -31,15 +34,19 @@ public class DirectPO_Text_Run extends TestBase {
             }
 
             logger.info("🔐 Logging in with user ID: {}", userId);
-            LoginManager loginManager = new LoginManager();
-            loginManager.login(userId);
 
-            Thread.sleep(3000); // Optional debugging delay
-            logger.info("🧭 Post-login URL: {}", getDriver().getCurrentUrl());
+            executeSafely(() -> {
+                LoginManager loginManager = new LoginManager();
+                loginManager.login(userId);
+            }, "Login to application");
+
+            executeSafely(() -> Thread.sleep(3000), "Post-login debug wait");//Unhandled exception: java.lang.InterruptedException
+
+            executeSafely(() -> logger.info("🧭 Post-login URL: {}", getDriver().getCurrentUrl()), "Log current URL");
+            executeSafely(() -> logger.info("🔎 Driver state: {}", getDriver()), "Log WebDriver instance");
 
             Direct_PO directPO = new Direct_PO(getDriver());
-//            String terms = scenarioData.getOrDefault("Terms", "Standard Terms");
-//
+
             if (!scenarioData.containsKey("Branch") || !scenarioData.containsKey("Vendor")) {
                 String err = "❌ Required data missing: Branch or Vendor";
                 logger.error(err);
@@ -48,30 +55,39 @@ public class DirectPO_Text_Run extends TestBase {
 
             logger.info("📦 [{}] Scenario Data: {}", scenarioID, scenarioData);
 
-            // Navigate to Direct PO section
-            directPO.navigateToPO();
-            logger.info("🔁 Navigated to Direct PO section.");
+            executeSafely(() -> directPO.navigateToPO(), "Navigate to Direct PO section");
 
-            for (int i = 0; i < 2; i++) {
+            executeSafely(() -> {
                 if (!directPO.isDirectPOPageLoaded()) {
-                    logger.warn("⏳ Direct PO page not yet loaded. Retrying (attempt {})...", i + 1);
+                    logger.warn("⏳ Direct PO page not yet loaded. Retrying (attempt 1)...");
                     directPO.clickDirectPOButton();
-                    Thread.sleep(1000);
+                }
+            }, "First attempt to load Direct PO page");
+
+            executeSafely(() -> Thread.sleep(1000), "Wait after first retry");
+
+            executeSafely(() -> {
+                if (!directPO.isDirectPOPageLoaded()) {
+                    logger.warn("⏳ Direct PO page still not loaded. Retrying (attempt 2)...");
+                    directPO.clickDirectPOButton();
                 } else {
                     logger.info("✅ Direct PO page is fully loaded.");
-                    break;
                 }
-            }
+            }, "Second attempt to load Direct PO page");
 
-            // Wait for Direct PO page header to appear
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-            boolean isLoaded = wait.until(ExpectedConditions.textToBePresentInElementLocated(
-                    By.xpath("//h4"), "Direct Purchase Order"));
-            Assert.assertTrue(isLoaded, "❌ Direct PO Page did not load correctly.");
-            logger.info("🪪 Direct PO Page title found.");
+            executeSafely(() -> Thread.sleep(1000), "Wait after second retry");
 
-            logger.info("📝 Filling Purchase Order details...");
-            directPO.fillPurchaseOrderDetails(
+            executeSafely(() -> {
+                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+                boolean isLoaded = wait.until(ExpectedConditions.textToBePresentInElementLocated(
+                        By.xpath("//h4"), "Direct Purchase Order"));
+                Assert.assertTrue(isLoaded, "❌ Direct PO Page did not load correctly.");
+            }, "Wait for Direct PO page title");
+
+            executeSafely(() -> logger.info("🪪 Direct PO Page title found."), "Log confirmation of PO title");
+
+            // ✅ Fill form using single method
+            executeSafely(() -> directPO.fillPurchaseOrderDetails(
                     scenarioData.get("Branch"),
                     scenarioData.get("Vendor"),
                     scenarioData.get("Currency"),
@@ -83,22 +99,24 @@ public class DirectPO_Text_Run extends TestBase {
                     scenarioData.get("FreightCharges"),
                     scenarioData.get("AdditionalTax"),
                     scenarioData.get("RoundOff")
-            );
+            ), "Fill Purchase Order Details");
 
-            logger.info("📃 Selecting terms and submitting PO...");
-            //directPO.selectTermsConditions(terms);
-            directPO.clickSubmitButton();
+            executeSafely(() -> logger.info("📃 Submitting PO..."), "Log before clicking Submit");
+            executeSafely(() -> directPO.clickSubmitButton(), "Click Submit button");
 
-            String confirmationMessage = directPO.getConfirmationMessage();
-            logger.info("📬 Received confirmation message: {}", confirmationMessage);
+            executeSafely(() -> {
+                String confirmationMessage = directPO.getConfirmationMessage();
+                logger.info("📬 Received confirmation message: {}", confirmationMessage);
+                Assert.assertTrue(confirmationMessage.contains("PO"),
+                        "❌ Expected confirmation to contain 'PO', but got: " + confirmationMessage);
+            }, "Verify confirmation message content");
 
-            Assert.assertTrue(confirmationMessage.contains("PO"),
-                    "❌ Expected confirmation to contain 'PO', but got: " + confirmationMessage);
-            logger.info("✅ Scenario [{}] Passed.", scenarioID);
+            executeSafely(() -> logger.info("✅ Scenario [{}] Passed.", scenarioID), "Final scenario success log");
 
         } catch (Exception e) {
             logger.error("❌ Exception during runSingleScenario execution: {}", e.getMessage(), e);
-            throw e; // Re-throw so TestNG marks it as failed and tearDownTest() can log/report it
+            throw e; // Re-throw so TestNG marks it as failed
         }
     }
+
 }

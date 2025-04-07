@@ -25927,3 +25927,1382 @@ java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
 2025-04-05 18:08:59 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250405_180859_758.png
 2025-04-05 18:09:00 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
 2025-04-05 18:09:01 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-07 11:13:59 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-07 11:13:59 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-07 11:14:00 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-07 11:14:03 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 135.0.7049.42 (resolved driver for Chrome 135)
+2025-04-07 11:14:03 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.42\chromedriver.exe
+2025-04-07 11:14:05 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 11:14:06 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250407_111405.html
+2025-04-07 11:14:06 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-07 11:14:06 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ▶️ Starting Scenario ID: Scenario1
+2025-04-07 11:14:06 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-07 11:14:06 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔐 Logging in with user ID: 0
+2025-04-07 11:14:06 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 11:14:06 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-07 11:14:07 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-07 11:14:12 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 📥 Filling login credentials for userId: 0
+2025-04-07 11:14:17 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌟 Login dashboard element detected
+2025-04-07 11:14:17 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-07 11:14:20 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🧭 Post-login URL: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 11:14:20 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 11:14:20 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Required data missing: Branch or Vendor
+2025-04-07 11:14:20 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Exception during runSingleScenario execution: ❌ Required data missing: Branch or Vendor
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:46) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 11:14:20 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:46) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 11:14:20 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250407_111420_427.png
+2025-04-07 11:14:20 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-07 11:14:21 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-07 11:24:48 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-07 11:24:48 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-07 11:24:48 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-07 11:24:49 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 135.0.7049.42 (resolved driver for Chrome 135)
+2025-04-07 11:24:49 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.42\chromedriver.exe
+2025-04-07 11:24:51 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 11:24:52 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250407_112451.html
+2025-04-07 11:24:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-07 11:24:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ▶️ Starting Scenario ID: Scenario1
+2025-04-07 11:24:52 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-07 11:24:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔐 Logging in with user ID: 0
+2025-04-07 11:24:52 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 11:24:52 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-07 11:24:55 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-07 11:25:00 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 📥 Filling login credentials for userId: 0
+2025-04-07 11:25:10 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌟 Login dashboard element detected
+2025-04-07 11:25:10 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-07 11:25:13 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🧭 Post-login URL: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 11:25:13 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 11:25:13 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Required data missing: Branch or Vendor
+2025-04-07 11:25:13 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Exception during runSingleScenario execution: ❌ Required data missing: Branch or Vendor
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:46) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 11:25:13 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:46) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 11:25:14 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250407_112514_062.png
+2025-04-07 11:25:14 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-07 11:25:15 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-07 12:08:00 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-07 12:08:00 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-07 12:08:00 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-07 12:08:01 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 135.0.7049.42 (resolved driver for Chrome 135)
+2025-04-07 12:08:01 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.42\chromedriver.exe
+2025-04-07 12:08:04 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 12:08:04 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250407_120804.html
+2025-04-07 12:08:04 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-07 12:08:04 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ▶️ Starting Scenario ID: Scenario1
+2025-04-07 12:08:04 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-07 12:08:04 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔐 Logging in with user ID: 0
+2025-04-07 12:08:04 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 12:08:04 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-07 12:08:05 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-07 12:08:09 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 📥 Filling login credentials for userId: 0
+2025-04-07 12:08:20 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌟 Login dashboard element detected
+2025-04-07 12:08:20 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-07 12:08:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🧭 Post-login URL: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 12:08:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Checking driver state post-login: ChromeDriver: chrome on windows (d1d349f2cfb1cd541350b5aa4cec2276)
+2025-04-07 12:08:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Current URL after login: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 12:08:23 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 12:08:23 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Required data missing: Branch or Vendor
+2025-04-07 12:08:23 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Exception during runSingleScenario execution: ❌ Required data missing: Branch or Vendor
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 12:08:23 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 12:08:23 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250407_120823_417.png
+2025-04-07 12:08:23 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-07 12:08:24 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-07 13:44:40 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-07 13:44:41 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-07 13:44:41 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-07 13:44:42 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 135.0.7049.42 (resolved driver for Chrome 135)
+2025-04-07 13:44:42 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.42\chromedriver.exe
+2025-04-07 13:44:43 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 13:44:44 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250407_134443.html
+2025-04-07 13:44:44 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-07 13:44:44 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ▶️ Starting Scenario ID: Scenario1
+2025-04-07 13:44:44 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-07 13:44:44 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔐 Logging in with user ID: 0
+2025-04-07 13:44:44 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 13:44:44 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-07 13:44:44 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-07 13:44:45 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 📥 Filling login credentials for userId: 0
+2025-04-07 13:44:45 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (9 ms)
+2025-04-07 13:44:45 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (802 ms)
+2025-04-07 13:44:46 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (15 ms)
+2025-04-07 13:44:46 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (241 ms)
+2025-04-07 13:44:46 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (12 ms)
+2025-04-07 13:44:46 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (184 ms)
+2025-04-07 13:44:46 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (11 ms)
+2025-04-07 13:44:47 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (8 ms)
+2025-04-07 13:44:47 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: click (232 ms)
+2025-04-07 13:44:48 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌟 Login dashboard element detected
+2025-04-07 13:44:48 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-07 13:44:48 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: LoginManager (4055 ms)
+2025-04-07 13:44:51 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🧭 Post-login URL: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 13:44:51 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Checking driver state post-login: ChromeDriver: chrome on windows (45b91a6b4fb637101b8affe041372f97)
+2025-04-07 13:44:51 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Current URL after login: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 13:44:51 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 13:44:51 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Required data missing: Branch or Vendor
+2025-04-07 13:44:51 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Exception during runSingleScenario execution: ❌ Required data missing: Branch or Vendor
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 13:44:51 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 13:44:51 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-07 13:44:51 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-07 14:07:43 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-07 14:07:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-07 14:07:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-07 14:07:43 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 135.0.7049.42 (resolved driver for Chrome 135)
+2025-04-07 14:07:43 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.42\chromedriver.exe
+2025-04-07 14:07:45 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:07:45 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250407_140745.html
+2025-04-07 14:07:45 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-07 14:07:45 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ▶️ Starting Scenario ID: Scenario1
+2025-04-07 14:07:45 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-07 14:07:45 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔐 Logging in with user ID: 0
+2025-04-07 14:07:45 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 14:07:45 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-07 14:07:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-07 14:07:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Navigate to app URL
+2025-04-07 14:07:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Wait for Company Code field
+2025-04-07 14:07:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 📥 Filling login credentials for userId: 0
+2025-04-07 14:07:46 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (9 ms)
+2025-04-07 14:07:47 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (577 ms)
+2025-04-07 14:07:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Enter Company Code
+2025-04-07 14:07:47 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (11 ms)
+2025-04-07 14:07:47 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (326 ms)
+2025-04-07 14:07:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Enter Username
+2025-04-07 14:07:48 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (98 ms)
+2025-04-07 14:07:48 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Enter Password
+2025-04-07 14:07:48 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (8 ms)
+2025-04-07 14:07:48 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: click (206 ms)
+2025-04-07 14:07:48 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Click Login Button
+2025-04-07 14:07:49 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Wait for Dashboard after login
+2025-04-07 14:07:49 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-07 14:07:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🧭 Post-login URL: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 14:07:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Checking driver state post-login: ChromeDriver: chrome on windows (64db18015897498d89967a9dca13c2a5)
+2025-04-07 14:07:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Current URL after login: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 14:07:52 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 14:07:52 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Required data missing: Branch or Vendor
+2025-04-07 14:07:52 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Exception during runSingleScenario execution: ❌ Required data missing: Branch or Vendor
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:07:52 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:07:52 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250407_140752_519.png
+2025-04-07 14:07:52 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-07 14:07:53 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-07 14:27:34 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-07 14:27:34 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-07 14:27:34 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-07 14:27:35 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 135.0.7049.42 (resolved driver for Chrome 135)
+2025-04-07 14:27:35 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.42\chromedriver.exe
+2025-04-07 14:27:36 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:27:37 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250407_142736.html
+2025-04-07 14:27:37 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-07 14:27:37 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ▶️ Starting Scenario ID: Scenario1
+2025-04-07 14:27:37 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-07 14:27:37 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔐 Logging in with user ID: 0
+2025-04-07 14:27:37 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 14:27:37 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-07 14:27:37 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-07 14:27:37 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Navigate to app URL
+2025-04-07 14:27:38 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Wait for Company Code field
+2025-04-07 14:27:38 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 📥 Filling login credentials for userId: 0
+2025-04-07 14:27:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (12 ms)
+2025-04-07 14:27:38 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (607 ms)
+2025-04-07 14:27:38 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Enter Company Code
+2025-04-07 14:27:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (99 ms)
+2025-04-07 14:27:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Enter Username
+2025-04-07 14:27:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (85 ms)
+2025-04-07 14:27:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Enter Password
+2025-04-07 14:27:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: click (76 ms)
+2025-04-07 14:27:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Click Login Button
+2025-04-07 14:27:40 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ✅ Action succeeded: Wait for Dashboard after login
+2025-04-07 14:27:40 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-07 14:27:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🧭 Post-login URL: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 14:27:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Checking driver state post-login: ChromeDriver: chrome on windows (70e9c6a653d67f99d213811194d51a83)
+2025-04-07 14:27:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Current URL after login: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 14:27:43 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 14:27:43 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Required data missing: Branch or Vendor
+2025-04-07 14:27:43 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Exception during runSingleScenario execution: ❌ Required data missing: Branch or Vendor
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:27:43 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:27:43 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ 📸 Screenshot captured: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/screenshots/FAIL_runSingleScenario_20250407_142743_731.png
+2025-04-07 14:27:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-07 14:27:44 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-07 14:30:37 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-07 14:30:37 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-07 14:30:37 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-07 14:30:38 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 135.0.7049.42 (resolved driver for Chrome 135)
+2025-04-07 14:30:38 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.42\chromedriver.exe
+2025-04-07 14:30:39 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:30:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250407_143039.html
+2025-04-07 14:30:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-07 14:30:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ▶️ Starting Scenario ID: Scenario1
+2025-04-07 14:30:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-07 14:30:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔐 Logging in with user ID: 0
+2025-04-07 14:30:39 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 14:30:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-07 14:30:40 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-07 14:30:40 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: Navigate to App URL (197 ms)
+2025-04-07 14:30:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: Wait for Company Code Field (98 ms)
+2025-04-07 14:30:41 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 📥 Filling login credentials for userId: 0
+2025-04-07 14:30:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (9 ms)
+2025-04-07 14:30:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (291 ms)
+2025-04-07 14:30:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: Enter Company Code (425 ms)
+2025-04-07 14:30:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (12 ms)
+2025-04-07 14:30:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (223 ms)
+2025-04-07 14:30:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: Enter Username (362 ms)
+2025-04-07 14:30:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (14 ms)
+2025-04-07 14:30:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (210 ms)
+2025-04-07 14:30:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-07 14:30:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🧭 Post-login URL: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 14:30:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Checking driver state post-login: ChromeDriver: chrome on windows (9416dc6a5ac417631e18be36cf857bf5)
+2025-04-07 14:30:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Current URL after login: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 14:30:47 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 14:30:47 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Required data missing: Branch or Vendor
+2025-04-07 14:30:47 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Exception during runSingleScenario execution: ❌ Required data missing: Branch or Vendor
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:30:47 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:50) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 14:30:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-07 14:30:47 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...
+2025-04-07 15:34:36 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-07 15:34:36 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Test Execution Started - Centralized Logging Enabled.
+2025-04-07 15:34:36 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🚀 Initializing WebDriver...
+2025-04-07 15:34:37 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 135.0.7049.42 (resolved driver for Chrome 135)
+2025-04-07 15:34:37 [main] INFO  io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.42\chromedriver.exe
+2025-04-07 15:34:39 [main] ERROR com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader - ❌ Error reading Excel file: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 15:34:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentManager - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250407_153439.html
+2025-04-07 15:34:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🟢 Test Initialized: runSingleScenario
+2025-04-07 15:34:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - ▶️ Starting Scenario ID: Scenario1
+2025-04-07 15:34:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-07 15:34:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔐 Logging in with user ID: 0
+2025-04-07 15:34:39 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 15:34:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-07 15:34:39 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-07 15:34:39 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: Navigate to App URL (106 ms)
+2025-04-07 15:34:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: Wait for Company Code Field (48 ms)
+2025-04-07 15:34:41 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - 📥 Filling login credentials for userId: 0
+2025-04-07 15:34:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (9 ms)
+2025-04-07 15:34:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (257 ms)
+2025-04-07 15:34:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: Enter Company Code (423 ms)
+2025-04-07 15:34:41 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: findElement (11 ms)
+2025-04-07 15:34:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (227 ms)
+2025-04-07 15:34:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: Enter Username (384 ms)
+2025-04-07 15:34:42 [main] INFO  com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler - ℹ️ ✅ Action Passed: sendKeys (84 ms)
+2025-04-07 15:34:43 [main] INFO  com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager - ✅ Login successful for user: Superadmin
+2025-04-07 15:34:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🧭 Post-login URL: https://erplite.storyboarderp.com/v4/#/hrm/HrmTrnMemberdhashboard
+2025-04-07 15:34:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔎 Driver state: ChromeDriver: chrome on windows (b60d615d62ab1807d87c63d5b345dab4)
+2025-04-07 15:34:46 [main] WARN  com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-07 15:34:46 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Required data missing: Branch or Vendor
+2025-04-07 15:34:46 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Exception during runSingleScenario execution: ❌ Required data missing: Branch or Vendor
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:53) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 15:34:46 [main] ERROR com.Vcidex.StoryboardSystems.Common.Base.TestBase - ❌ Test Failed: {}
+java.lang.RuntimeException: ❌ Required data missing: Branch or Vendor
+	at com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow.DirectPO_Text_Run.runSingleScenario(DirectPO_Text_Run.java:53) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-07 15:34:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 🔧 Closing WebDriver...
+2025-04-07 15:34:46 [main] INFO  com.Vcidex.StoryboardSystems.Common.Base.TestBase - 📊 Finalizing Reports...

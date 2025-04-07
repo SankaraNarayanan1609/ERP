@@ -48,31 +48,45 @@ public class NavigationHelper {
     }
 
     // ✅ Click Module using Button
-    private void clickModuleByText(String text) {
+    private void clickModuleByText(String text)throws InterruptedException {
         By locator = By.xpath("//button[contains(@class,'head-menu-item-name-btn') and contains(text(),'" + text + "')]");
         clickUsingJS(locator, "Module: " + text);
+        Thread.sleep(1000); // TEMP: helps check if it’s a timing issue
+        logger.info("✅ Module clicked. Waiting before clicking menu...");
+
     }
 
     // ✅ Click Menu using Span
-    private void clickMenuByText(String text) {
+    private void clickMenuByText(String text)throws InterruptedException {
         By locator = By.xpath("//span[contains(@class,'sidenav-link-text') and contains(text(),'" + text + "')]");
         clickUsingJS(locator, "Menu: " + text);
+        Thread.sleep(1000); //Unhandled exception: java.lang.InterruptedException
+        logger.info("✅ Menu clicked. Waiting before clicking menu...");
     }
 
     // ✅ Click Sub-Menu using Span
-    private void clickSubMenuByText(String text) {
+    private void clickSubMenuByText(String text) throws InterruptedException{
         By locator = By.xpath("//span[contains(@class,'sublevel-link-text') and contains(text(),'" + text + "')]");
         clickUsingJS(locator, "Sub-Menu: " + text);
+        Thread.sleep(1000); // TEMP: helps check if it’s a timing issue
+        logger.info("✅ SubMenu clicked. Waiting before clicking menu...");
     }
 
     // ✅ Navigate to Module, Menu, and Submenu using ErrorHandler
     public void navigateToModuleAndMenu(String moduleName, String menuName, String subMenuName) {
         ErrorHandler.executeSafely(driver, () -> {
             logger.info("Navigating to module: {}, menu: {}, sub-menu: {}", moduleName, menuName, subMenuName);
-            clickModuleByText(moduleName);
-            clickMenuByText(menuName);
-            clickSubMenuByText(subMenuName);
-            return null; // Fix: Explicitly return null
+
+            try {
+                clickModuleByText(moduleName);
+                clickMenuByText(menuName);
+                clickSubMenuByText(subMenuName);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); // Restore the interrupt status
+                logger.error("❌ Navigation interrupted: {}", e.getMessage(), e);
+            }
+
+            return null;
         }, "Navigating to Module and Menu");
     }
 }
