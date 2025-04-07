@@ -4,6 +4,8 @@ import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
 import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationData;
 import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
 
 public class Direct_PO extends PurchaseBasePage {
+    private static final Logger logger = LogManager.getLogger(Direct_PO.class);
 
     private final By fileUploadSection = By.xpath("//label[text()='File Upload']/following-sibling::*");
     private final By termsConditionsDropdown = By.xpath("//label[text()='Terms & Conditions']/following-sibling::select");
@@ -39,13 +42,22 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     private void performAction(String actionName, Runnable action, boolean isSubmit, String locator) {
-        ErrorHandler.executeSafely(driver, () -> {
-            action.run();
-            return null;
-        }, actionName);
+        try {
+            logger.info("🔄 Performing action: {}", actionName);
+            ErrorHandler.executeSafely(driver, () -> {
+                action.run();
+                return null;
+            }, actionName);
+            logger.info("✅ Action succeeded: {}", actionName);
+        } catch (Exception e) {
+            logger.error("❌ Action failed: {}", actionName, e);
+            throw new RuntimeException("Failed to perform: " + actionName, e);
+        }
     }
 
     public void navigateToPO() {
+        System.out.println("📁 Navigating to Direct PO...");
+
         navigationHelper.navigateToModuleAndMenu(
                 NavigationData.PO.getModuleName(),
                 NavigationData.PO.getMenuName(),
@@ -69,9 +81,7 @@ public class Direct_PO extends PurchaseBasePage {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement button = wait.until(ExpectedConditions.elementToBeClickable(directPOButton));
 
-            // Scroll into view to prevent hidden element issues
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", button);
-
             button.click();
             return null;
         }, "Click Direct PO Button");
@@ -120,8 +130,10 @@ public class Direct_PO extends PurchaseBasePage {
         navigateToPO();
 
         if (!isDirectPOPageLoaded()) {
-            clickDirectPOButton();//Cannot resolve method 'clickDirectPOButton' in 'Direct_PO'
+            throw new RuntimeException("❌ Direct PO Page not loaded. Navigation likely failed.");
         }
+
+        clickDirectPOButton();
 
         fillPurchaseOrderDetails(branch, vendor, currency, quantity, price, discount, addOnCharges,
                 additionalDiscount, freightCharges, additionalTax, roundOff);

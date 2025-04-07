@@ -1,11 +1,13 @@
 package com.Vcidex.StoryboardSystems.Utils.Reporting;
 
 import org.apache.commons.io.FileUtils;
+import com.Vcidex.StoryboardSystems.Utils.WebDriverFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.commons.text.StringEscapeUtils;
 import org.openqa.selenium.*;
-
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.model.Media;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -80,22 +82,38 @@ public class ErrorHandler {
                     + callerMethod + "</b></summary>"
                     + "<pre>" + StringEscapeUtils.escapeHtml4(message) + "</pre></details>";
 
-            if (isFailure) {
-                ExtentTestManager.getTest().fail(logMessage);
-            } else {
-                ExtentTestManager.getTest().info(logMessage);
+            // Check if there’s a screenshot captured just before this call
+            String screenshotPath = captureScreenshotWithCallerName();
+            if (screenshotPath != null) {
+                Media media = MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build();
+                if (isFailure) {
+                    ExtentTestManager.getTest().fail(logMessage, media);
+                } else {
+                    ExtentTestManager.getTest().info(logMessage, media);
+                }
             }
         } catch (Exception e) {
             logger.error("Failed to log to Extent: " + e.getMessage());
         }
     }
 
+    public class TestExtent {
+        public static void main(String[] args) throws Exception {
+            Media media = MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build();
+            System.out.println("Media entity created: " + media);
+        }
+    }
     private static String getCallerMethodName() {
-        for (StackTraceElement element : new Throwable().getStackTrace()) {
-            if (!element.getClassName().contains("ErrorHandler")) {
-                return element.getMethodName();
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+
+        for (int i = 2; i < stackTrace.length; i++) {
+            String className = stackTrace[i].getClassName();
+
+            if (!className.contains("ErrorHandler") && !className.contains("Thread")) {
+                return stackTrace[i].getMethodName();
             }
         }
+
         return "UnknownMethod";
     }
 
@@ -156,6 +174,46 @@ public class ErrorHandler {
         File dir = new File(dirPath);
         if (!dir.exists() && !dir.mkdirs()) {
             log("ERROR", "Failed to create directory: " + dirPath, true, "");
+        }
+    }
+
+    private static String getLatestScreenshotPathForAction(String actionName) {
+        File screenshotsDir = new File(basePath + "screenshots/");
+        if (!screenshotsDir.exists() || !screenshotsDir.isDirectory()) return null;
+
+        File[] matchingFiles = screenshotsDir.listFiles((dir, name) -> name.contains(actionName));
+        if (matchingFiles == null || matchingFiles.length == 0) return null;
+
+        Arrays.sort(matchingFiles, Comparator.comparingLong(File::lastModified).reversed());
+
+        // Only return the latest file path relative to the report
+        return "screenshots/" + matchingFiles[0].getName(); // For HTML compatibility
+    }
+
+    private static String captureScreenshotWithCallerName() {
+        try {
+            WebDriver driver = WebDriverFactory.getDriver();//Expected 2 arguments but found 0
+            if (!(driver instanceof TakesScreenshot)) {
+                log("ERROR", "WebDriver does not support screenshots.", true, "");
+                return null;
+            }
+
+            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String methodName = getCallerMethodName();
+            String screenshotName = "screenshot_" + methodName + "_" + timestamp + ".png";
+
+            String screenshotDir = basePath + "screenshots/";
+            ensureDirectoryExists(screenshotDir);
+
+            String screenshotPath = screenshotDir + screenshotName;
+            File dest = new File(screenshotPath);
+            FileUtils.copyFile(src, dest);
+
+            return "screenshots/" + screenshotName; // Relative path for HTML compatibility
+        } catch (Exception e) {
+            logger.error("⚠️ Failed to capture screenshot: {}", e.getMessage(), e);
+            return null;
         }
     }
 

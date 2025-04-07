@@ -21,6 +21,12 @@ public class WebDriverFactory {
         CHROME, FIREFOX, EDGE
     }
 
+    public static WebDriver getDriver() {
+        // Return default WebDriver instance if context allows
+        return ThreadSafeDriverManager.getDriver(); //Cannot resolve symbol 'driverThreadLocal'
+    }
+
+
     // ✅ Initialize Driver Based on Browser Type
     public static WebDriver getDriver(String browser, boolean headless) {
         WebDriver driver = ThreadSafeDriverManager.getDriver();

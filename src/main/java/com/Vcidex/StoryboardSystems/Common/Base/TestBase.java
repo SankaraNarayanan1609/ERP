@@ -13,7 +13,7 @@ import org.testng.annotations.*;
 import java.lang.reflect.Method;
 
 public class TestBase {
-    private static final Logger logger = LogManager.getLogger(TestBase.class);
+    protected static final Logger logger = LogManager.getLogger(TestBase.class);
 
     @BeforeSuite
     public void setupLogging() {
@@ -64,6 +64,7 @@ public class TestBase {
             logger.info("🔧 Closing WebDriver...");
             ThreadSafeDriverManager.getDriver().quit();
             ThreadSafeDriverManager.removeDriver();
+
         }
     }
 
