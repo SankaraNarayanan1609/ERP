@@ -64,7 +64,6 @@ public class TestBase {
             logger.info("🔧 Closing WebDriver...");
             ThreadSafeDriverManager.getDriver().quit();
             ThreadSafeDriverManager.removeDriver();
-
         }
     }
 
@@ -77,6 +76,4 @@ public class TestBase {
     public WebDriver getDriver() {
         return ThreadSafeDriverManager.getDriver();
     }
-
-
 }

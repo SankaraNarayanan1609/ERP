@@ -159,7 +159,6 @@ public class ErrorHandler {
         }
     }
 
-
     private static void handleException(WebDriver driver, Exception e, String actionName) {
         String errorMessage = "❌ Action Failed: " + actionName + " | " + extractRootCause(e);
         log("ERROR", errorMessage, true, actionName);

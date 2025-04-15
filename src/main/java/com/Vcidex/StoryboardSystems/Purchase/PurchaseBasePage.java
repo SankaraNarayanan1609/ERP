@@ -3,6 +3,7 @@ package com.Vcidex.StoryboardSystems.Purchase;
 import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class PurchaseBasePage extends BasePage {
 
@@ -15,8 +16,12 @@ public class PurchaseBasePage extends BasePage {
     }
 
     public void selectBranchName(String branch) {
-        selectDropdownUsingVisibleText(getFollowingSiblingLocator(PurchaseConstants.BRANCH_NAME_LABEL), branch);
+        WebElement dropdown = driver.findElement(By.xpath("//*[@formcontrolname='branch_name']"));
+        dropdown.click(); // Open dropdown
+        WebElement option = driver.findElement(By.xpath("//span[@class='ng-option-label' and text()='" + branch + "']"));
+        option.click();   // Select desired branch
     }
+
 
     public void selectVendorName(String vendor) {
         selectDropdownUsingVisibleText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_NAME_LABEL), vendor);

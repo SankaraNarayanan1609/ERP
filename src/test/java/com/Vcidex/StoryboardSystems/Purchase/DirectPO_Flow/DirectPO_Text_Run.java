@@ -5,6 +5,8 @@ import com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.Direct_PO;
 import com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager;
+import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper;
+import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,51 +42,19 @@ public class DirectPO_Text_Run extends TestBase {
                 loginManager.login(userId);
             }, "Login to application");
 
-            executeSafely(() -> Thread.sleep(3000), "Post-login debug wait");//Unhandled exception: java.lang.InterruptedException
+            executeSafely(() -> Thread.sleep(3000), "Post-login debug wait");
 
-            executeSafely(() -> logger.info("🧭 Post-login URL: {}", getDriver().getCurrentUrl()), "Log current URL");
-            executeSafely(() -> logger.info("🔎 Driver state: {}", getDriver()), "Log WebDriver instance");
+            executeSafely(() -> {
+                NavigationHelper navigator = new NavigationHelper(getDriver());
+                navigator.navigateToModuleAndMenu(NavigationData.PO);
+            }, "Navigate to Purchase > Purchase > Purchase Order");
 
             Direct_PO directPO = new Direct_PO(getDriver());
 
-            if (!scenarioData.containsKey("Branch") || !scenarioData.containsKey("Vendor")) {
-                String err = "❌ Required data missing: Branch or Vendor";
-                logger.error(err);
-                throw new RuntimeException(err);
-            }
-
-            logger.info("📦 [{}] Scenario Data: {}", scenarioID, scenarioData);
-
-            executeSafely(() -> directPO.navigateToPO(), "Navigate to Direct PO section");
-
             executeSafely(() -> {
-                if (!directPO.isDirectPOPageLoaded()) {
-                    logger.warn("⏳ Direct PO page not yet loaded. Retrying (attempt 1)...");
-                    directPO.clickDirectPOButton();
-                }
-            }, "First attempt to load Direct PO page");
-
-            executeSafely(() -> Thread.sleep(1000), "Wait after first retry");
-
-            executeSafely(() -> {
-                if (!directPO.isDirectPOPageLoaded()) {
-                    logger.warn("⏳ Direct PO page still not loaded. Retrying (attempt 2)...");
-                    directPO.clickDirectPOButton();
-                } else {
-                    logger.info("✅ Direct PO page is fully loaded.");
-                }
-            }, "Second attempt to load Direct PO page");
-
-            executeSafely(() -> Thread.sleep(1000), "Wait after second retry");
-
-            executeSafely(() -> {
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-                boolean isLoaded = wait.until(ExpectedConditions.textToBePresentInElementLocated(
-                        By.xpath("//h4"), "Direct Purchase Order"));
-                Assert.assertTrue(isLoaded, "❌ Direct PO Page did not load correctly.");
-            }, "Wait for Direct PO page title");
-
-            executeSafely(() -> logger.info("🪪 Direct PO Page title found."), "Log confirmation of PO title");
+                logger.info("🖱️ Attempting to click Direct PO button...");
+                directPO.clickDirectPOButton();
+            }, "Click Direct PO Button");
 
             // ✅ Fill form using single method
             executeSafely(() -> directPO.fillPurchaseOrderDetails(
@@ -102,7 +72,7 @@ public class DirectPO_Text_Run extends TestBase {
             ), "Fill Purchase Order Details");
 
             executeSafely(() -> logger.info("📃 Submitting PO..."), "Log before clicking Submit");
-            executeSafely(() -> directPO.clickSubmitButton(), "Click Submit button");
+            executeSafely(() -> directPO.clickSubmit(), "Click Submit button");
 
             executeSafely(() -> {
                 String confirmationMessage = directPO.getConfirmationMessage();
@@ -118,5 +88,4 @@ public class DirectPO_Text_Run extends TestBase {
             throw e; // Re-throw so TestNG marks it as failed
         }
     }
-
 }

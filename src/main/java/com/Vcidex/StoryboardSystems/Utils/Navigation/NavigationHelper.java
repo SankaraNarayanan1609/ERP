@@ -73,6 +73,7 @@ public class NavigationHelper {
     }
 
     // ✅ Navigate to Module, Menu, and Submenu using ErrorHandler
+    // ✅ Navigate to Module, Menu, and Submenu using ErrorHandler
     public void navigateToModuleAndMenu(String moduleName, String menuName, String subMenuName) {
         ErrorHandler.executeSafely(driver, () -> {
             logger.info("Navigating to module: {}, menu: {}, sub-menu: {}", moduleName, menuName, subMenuName);
@@ -88,5 +89,14 @@ public class NavigationHelper {
 
             return null;
         }, "Navigating to Module and Menu");
+    }
+
+    // ✅ Overload to accept NavigationData
+    public void navigateToModuleAndMenu(NavigationData navData) {
+        navigateToModuleAndMenu(
+                navData.getModuleName(),
+                navData.getMenuName(),
+                navData.getSubMenuName()
+        );
     }
 }

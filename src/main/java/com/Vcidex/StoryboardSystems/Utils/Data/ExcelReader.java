@@ -1,7 +1,7 @@
 package com.Vcidex.StoryboardSystems.Utils.Data;
 
 import org.apache.poi.ss.usermodel.*;
-        import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -81,10 +81,12 @@ public class ExcelReader {
     }
 
     /**
-     * ✅ Reads data for the given scenario column.
+     * ✅ Reads data for the given scenario column, skipping label "PO_Details".
      */
     private static void readScenarioData(Sheet sheet, int scenarioColumnIndex, Map<String, String> scenarioData) {
         for (Row row : sheet) {
+            logger.info("🧩 Available keys in scenarioData: {}", scenarioData.keySet());
+
             if (row.getRowNum() == 0) continue; // Skip header
 
             Cell keyCell = row.getCell(0);  // First column for keys
@@ -93,7 +95,11 @@ public class ExcelReader {
             if (keyCell != null && valueCell != null) {
                 String key = keyCell.getStringCellValue().trim();
                 String value = getCellValueAsString(valueCell).trim();
-                scenarioData.put(key, value);
+
+                // ✅ Skip the first row label "PO_Details"
+                if (!key.equalsIgnoreCase("PO_Details")) {
+                    scenarioData.put(key, value);
+                }
             }
         }
     }
@@ -107,7 +113,10 @@ public class ExcelReader {
             case STRING:
                 return cell.getStringCellValue().trim();
             case NUMERIC:
-                return String.valueOf((int) cell.getNumericCellValue()); // Avoid decimal issues
+                if (DateUtil.isCellDateFormatted(cell)) {
+                    return cell.getDateCellValue().toString(); // Or format with SimpleDateFormat
+                }
+                return String.valueOf(cell.getNumericCellValue());
             case BOOLEAN:
                 return String.valueOf(cell.getBooleanCellValue());
             case FORMULA:
@@ -118,13 +127,14 @@ public class ExcelReader {
                 return "N/A";
         }
     }
+
     /**
      * ✅ Validate scenario data and set defaults if necessary.
      */
     private static void validateAndSetDefaults(Map<String, String> scenarioData, String scenarioID) {
         if (!scenarioData.containsKey("FilePath") || scenarioData.get("FilePath").isEmpty()) {
             logger.warn("⚠️ 'FilePath' not found or empty for scenario '{}'. Using default path.", scenarioID);
-            scenarioData.put("FilePath", "C:\\default\\path\\default.xlsx");
+            scenarioData.put("FilePath", "C:\\Users\\SankaraNarayanan\\IdeaProjects\\StoryboardsSystems\\src\\test\\resources\\PurchaseTestData.xlsx");
         }
         if (!scenarioData.containsKey("Terms") || scenarioData.get("Terms").isEmpty()) {
             logger.warn("⚠️ 'Terms' not found or empty for scenario '{}'. Using default terms.", scenarioID);
