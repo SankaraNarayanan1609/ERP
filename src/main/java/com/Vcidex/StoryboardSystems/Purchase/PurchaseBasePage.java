@@ -1,9 +1,11 @@
 package com.Vcidex.StoryboardSystems.Purchase;
 
 import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class PurchaseBasePage extends BasePage {
 
@@ -11,20 +13,48 @@ public class PurchaseBasePage extends BasePage {
         super(driver);
     }
 
-    protected By getFollowingSiblingLocator(String labelText) {
-        return By.xpath(String.format("//label[text()='%s']/following-sibling::*", labelText));
-    }
-
     public void selectBranchName(String branch) {
-        WebElement dropdown = driver.findElement(By.xpath("//*[@formcontrolname='branch_name']"));
-        dropdown.click(); // Open dropdown
-        WebElement option = driver.findElement(By.xpath("//span[@class='ng-option-label' and text()='" + branch + "']"));
-        option.click();   // Select desired branch
-    }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+        // Open the dropdown
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//ng-select[@formcontrolname='branch_name']")));
+        dropdown.click();
+
+        // Type the branch name
+        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//ng-select[@formcontrolname='branch_name']//input")));
+        input.clear();
+        input.sendKeys(branch);
+
+        // Wait for the filtered option to appear
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//div[contains(@class,'ng-dropdown-panel')]//span[contains(@class,'ng-option-label') and contains(text(),'" + branch + "')]")));
+
+        // Press ENTER to select the highlighted option
+        input.sendKeys(Keys.ENTER);
+    }
 
     public void selectVendorName(String vendor) {
-        selectDropdownUsingVisibleText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_NAME_LABEL), vendor);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Open the dropdown
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//ng-select[@formcontrolname='vendor_companyname']")));
+        dropdown.click();
+
+        // Type the vendor name
+        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//ng-select[@formcontrolname='vendor_companyname']//input")));
+        input.clear();
+        input.sendKeys(vendor);
+
+        // Wait for any options to appear in the dropdown list (not matching vendor string directly)
+        wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("//div[contains(@class,'ng-dropdown-panel')]//div[contains(@class,'ng-option')]")));
+
+        // Press ENTER to select the first filtered option
+        input.sendKeys(Keys.ENTER);
     }
 
 //    public void enterDeliveryTerms(String terms) {
@@ -36,56 +66,91 @@ public class PurchaseBasePage extends BasePage {
 //    }
 
     public void selectCurrency(String currency) {
-        selectDropdownUsingVisibleText(getFollowingSiblingLocator(PurchaseConstants.CURRENCY_LABEL), currency);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Open the dropdown
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//ng-select[@formcontrolname='currency']")));
+        dropdown.click();
+
+        // Type the currency name
+        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//ng-select[@formcontrolname='currency']//input")));
+        input.clear();
+        input.sendKeys(currency);
+
+        // Wait for the filtered option to appear
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//div[contains(@class,'ng-dropdown-panel')]//span[contains(@class,'ng-option-label') and contains(text(),'" + currency + "')]")));
+
+        // Select with ENTER
+        input.sendKeys(Keys.ENTER);
     }
+
 
     public void enterQuantity(String quantity) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.QUANTITY_LABEL), quantity);
+        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='productquantity']"));
+        qtyInput.clear();
+        qtyInput.sendKeys(quantity);
     }
 
-    public void enterPrice(String price) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.PRICE_LABEL), price);
+    public void enterPrice(String unitprice) {
+        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='unitprice']"));
+        qtyInput.clear();
+        qtyInput.sendKeys(unitprice);
     }
 
-    public void enterDiscount(String discount) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.DISCOUNT_LABEL), discount);
+    public void enterDiscount(String productdiscount) {
+        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='productdiscount']"));
+        qtyInput.clear();
+        qtyInput.sendKeys(productdiscount);
     }
 
-    public void enterAddOnCharges(String charges) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.ADD_ON_CHARGES_LABEL), charges);
+    public void enterAddOnCharges(String addoncharge) {
+        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='addoncharge']"));
+        qtyInput.clear();
+        qtyInput.sendKeys(addoncharge);
     }
 
-    public void enterAdditionalDiscount(String discount) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.ADDITIONAL_DISCOUNT_LABEL), discount);
+    public void enterAdditionalDiscount(String additional_discount) {
+        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='additional_discount']"));
+        qtyInput.clear();
+        qtyInput.sendKeys(additional_discount);
     }
 
-    public void enterFreightCharges(String charges) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.FREIGHT_CHARGES_LABEL), charges);
+    public void enterFreightCharges(String freightcharges) {
+        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='freightcharges']"));
+        qtyInput.clear();
+        qtyInput.sendKeys(freightcharges);
     }
 
-    public void selectAdditionalTax(String tax) {
-        selectDropdownUsingVisibleText(getFollowingSiblingLocator(PurchaseConstants.ADDITIONAL_TAX_LABEL), tax);
+    public void selectAdditionalTax(String additional_tax) {
+        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='tax_name4']"));
+        qtyInput.clear();
+        qtyInput.sendKeys(additional_tax);
     }
 
     public void enterRoundOff(String roundOff) {
-        sendKeys(getFollowingSiblingLocator(PurchaseConstants.ROUND_OFF_LABEL), roundOff);
+        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='roundOff']"));
+        qtyInput.clear();
+        qtyInput.sendKeys(roundOff);
     }
 
-    public String getVendorDetails() {
-        return getText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_DETAILS_LABEL));
-    }
+//    public String getVendorDetails() {
+//        return getText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_DETAILS_LABEL));
+//    }
+//
+//    public String getExchangeRate() {
+//        return getText(getFollowingSiblingLocator(PurchaseConstants.EXCHANGE_RATE_LABEL));
+//    }
 
-    public String getExchangeRate() {
-        return getText(getFollowingSiblingLocator(PurchaseConstants.EXCHANGE_RATE_LABEL));
-    }
-
-    public String getTotalAmount() {
-        return getText(getFollowingSiblingLocator(PurchaseConstants.TOTAL_AMOUNT_LABEL));
-    }
-
-    public String getGrandTotal() {
-        return getText(getFollowingSiblingLocator(PurchaseConstants.GRAND_TOTAL_LABEL));
-    }
+//    public String getTotalAmount() {
+//        return getText(getFollowingSiblingLocator(PurchaseConstants.TOTAL_AMOUNT_LABEL));
+//    }
+//
+//    public String getGrandTotal() {
+//        return getText(getFollowingSiblingLocator(PurchaseConstants.GRAND_TOTAL_LABEL));
+//    }
 
     public void fillPurchaseOrderDetails(String branch, String vendor, String currency, String quantity,
                                          String price, String discount, String addOnCharges,

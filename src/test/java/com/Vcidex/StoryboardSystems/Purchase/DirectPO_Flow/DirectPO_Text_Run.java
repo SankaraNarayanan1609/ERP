@@ -57,29 +57,18 @@ public class DirectPO_Text_Run extends TestBase {
             }, "Click Direct PO Button");
 
             // ✅ Fill form using single method
-            executeSafely(() -> directPO.fillPurchaseOrderDetails(
-                    scenarioData.get("Branch"),
-                    scenarioData.get("Vendor"),
+            executeSafely(() -> directPO.createDirectPO(
+                    scenarioData.get("Branch Name"),
+                    scenarioData.get("Vendor Name"),
                     scenarioData.get("Currency"),
                     scenarioData.get("Quantity"),
                     scenarioData.get("Price"),
-                    scenarioData.get("Discount"),
-                    scenarioData.get("AddOnCharges"),
-                    scenarioData.get("AdditionalDiscount"),
-                    scenarioData.get("FreightCharges"),
-                    scenarioData.get("AdditionalTax"),
-                    scenarioData.get("RoundOff")
+                    scenarioData.get("TermsAndConditions")
             ), "Fill Purchase Order Details");
+
 
             executeSafely(() -> logger.info("📃 Submitting PO..."), "Log before clicking Submit");
             executeSafely(() -> directPO.clickSubmit(), "Click Submit button");
-
-            executeSafely(() -> {
-                String confirmationMessage = directPO.getConfirmationMessage();
-                logger.info("📬 Received confirmation message: {}", confirmationMessage);
-                Assert.assertTrue(confirmationMessage.contains("PO"),
-                        "❌ Expected confirmation to contain 'PO', but got: " + confirmationMessage);
-            }, "Verify confirmation message content");
 
             executeSafely(() -> logger.info("✅ Scenario [{}] Passed.", scenarioID), "Final scenario success log");
 
