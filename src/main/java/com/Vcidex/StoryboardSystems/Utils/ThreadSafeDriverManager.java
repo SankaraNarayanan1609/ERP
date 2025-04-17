@@ -4,7 +4,11 @@ package com.Vcidex.StoryboardSystems.Utils;
 import org.openqa.selenium.WebDriver;
 
 public class ThreadSafeDriverManager {
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    public static WebDriver driver() {
+        return driver.get();
+    }
 
     public static WebDriver getDriver() {
         return driver.get();

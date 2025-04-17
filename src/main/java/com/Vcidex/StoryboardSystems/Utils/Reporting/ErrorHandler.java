@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Supplier;
 import static com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeSafely;
+import static com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager.driver;
 
 public class ErrorHandler {
 
@@ -38,7 +39,7 @@ public class ErrorHandler {
         if (shouldSkipLog(level, message)) return;
 
         message = normalizeLogMessage(message);
-        loggedMessages.add(message);  // Avoid duplicate logs
+        loggedMessages.add(message);
 
         switch (level.toUpperCase()) {
             case "INFO":
@@ -118,29 +119,24 @@ public class ErrorHandler {
     //         SAFE EXECUTE
     // ===========================
 
-    public static <T> T executeSafely(WebDriver driver, Supplier<T> action, String actionName){
-
-    long startTime = System.currentTimeMillis();
+    public static <T> T executeSafely(WebDriver driver, Supplier<T> action, String actionName) {
+        long startTime = System.currentTimeMillis();
         try {
             T result = action.get();
             long duration = System.currentTimeMillis() - startTime;
 
-            log("INFO", "✅ Action Passed: " + actionName + " (" + duration + " ms)", true, actionName);
-
-            if (!captureScreenshotsOnFailureOnly) {
-                captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
-            }
-
+            log("INFO", "✅ Action succeeded: " + actionName + " (" + duration + " ms)", true, actionName);
             return result;
         } catch (Exception e) {
-            captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_FAIL);
-            handleException(driver, e, actionName);
+            log("ERROR", "❌ Failed to execute: " + actionName + " - " + e.getMessage(), true, actionName);
+            captureScreenshotWithCallerName();
             throw new RuntimeException("❌ Failed to execute: " + actionName, e);
         }
     }
 
     public static void executeSafely(Assert.ThrowingRunnable action, String actionName) {
         long startTime = System.currentTimeMillis();
+        WebDriver driver = null;
         try {
             action.run();
             long duration = System.currentTimeMillis() - startTime;
@@ -148,18 +144,26 @@ public class ErrorHandler {
             log("INFO", "✅ Action Passed: " + actionName + " (" + duration + " ms)", true, actionName);
 
             if (!captureScreenshotsOnFailureOnly) {
-                WebDriver driver = WebDriverFactory.getDriver();
+                driver = WebDriverFactory.getDriver();
                 captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
             }
-        } catch (Throwable e) {
-            WebDriver driver = WebDriverFactory.getDriver();
-            captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
-            handleException(driver, (Exception) e, actionName);
-            throw new RuntimeException("❌ Failed to execute: " + actionName, e);
+        } catch (Throwable e) {//
+            if (e instanceof StackOverflowError) {
+                log("ERROR", "💥 StackOverflowError detected. Check for infinite recursion in: " + actionName, true, actionName);
+            }
+            handleException(driver, e, actionName);
+            throw new RuntimeException("❌ Failed to execute: " + actionName, e);//
         }
     }
 
-    private static void handleException(WebDriver driver, Exception e, String actionName) {
+    public static void executeSafely(Runnable action, String actionName) {
+        executeSafely(driver(), () -> {
+            action.run();
+            return null;
+        }, actionName);
+    }
+
+    private static void handleException(WebDriver driver, Throwable e, String actionName) {
         String errorMessage = "❌ Action Failed: " + actionName + " | " + extractRootCause(e);
         log("ERROR", errorMessage, true, actionName);
     }
@@ -169,7 +173,13 @@ public class ErrorHandler {
         while (root.getCause() != null) {
             root = root.getCause();
         }
-        return root.getMessage().split("\\R")[0];
+
+        String message = root.getMessage();
+        if (message == null) {
+            return root.getClass().getSimpleName();
+        }
+
+        return message.split("\\R")[0];
     }
 
     // ===========================
@@ -207,40 +217,31 @@ public class ErrorHandler {
 
     private static String getLatestScreenshotPathForAction(String actionName) {
         File screenshotsDir = new File(basePath + "screenshots/");
-        if (!screenshotsDir.exists() || !screenshotsDir.isDirectory()) return null;
+        if (!screenshotsDir.exists() || !screenshotsDir.isDirectory()) {
+            return null;
+        }
 
-        File[] matchingFiles = screenshotsDir.listFiles((dir, name) -> name.contains(actionName));
-        if (matchingFiles == null || matchingFiles.length == 0) return null;
+        File[] matchingFiles = screenshotsDir.listFiles((dir, name) -> name.contains(actionName) && name.endsWith(".png"));
+
+        if (matchingFiles == null || matchingFiles.length == 0) {
+            return null;
+        }
 
         Arrays.sort(matchingFiles, Comparator.comparingLong(File::lastModified).reversed());
-
-        // Only return the latest file path relative to the report
-        return "screenshots/" + matchingFiles[0].getName(); // For HTML compatibility
+        return matchingFiles[0].getAbsolutePath();
     }
 
     private static String captureScreenshotWithCallerName() {
         try {
-            WebDriver driver = WebDriverFactory.getDriver();
-            if (!(driver instanceof TakesScreenshot)) {
-                log("ERROR", "WebDriver does not support screenshots.", true, "");
-                return null;
-            }
+            File srcFile = ((TakesScreenshot) driver()).getScreenshotAs(OutputType.FILE);
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmssSSS").format(new Date());
+            String screenshotPath = basePath + "screenshots/" + "screenshot_" + timestamp + ".png";
 
-            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String methodName = getCallerMethodName();
-            String screenshotName = "screenshot_" + methodName + "_" + timestamp + ".png";
-
-            String screenshotDir = basePath + "screenshots/";
-            ensureDirectoryExists(screenshotDir);
-
-            String screenshotPath = screenshotDir + screenshotName;
-            File dest = new File(screenshotPath);
-            FileUtils.copyFile(src, dest);
-
-            return "screenshots/" + screenshotName; // Relative path for HTML compatibility
+            File destFile = new File(screenshotPath);
+            FileUtils.copyFile(srcFile, destFile);
+            return screenshotPath;
         } catch (Exception e) {
-            logger.error("⚠️ Failed to capture screenshot: {}", e.getMessage(), e);
+            logger.warn("⚠️ Screenshot capture failed: " + e.getMessage());
             return null;
         }
     }
