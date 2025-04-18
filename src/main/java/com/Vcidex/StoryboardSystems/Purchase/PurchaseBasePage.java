@@ -68,22 +68,29 @@ public class PurchaseBasePage extends BasePage {
     public void selectCurrencyName(String currency) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+        // Wait for overlay/loaders to disappear if needed
+        waitForLoaderToDisappear();  // Create this method separately
+
         // Open the dropdown
         WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//ng-select[@formcontrolname='currency']")));
-        dropdown.click();
 
-        // Type the currency name
+        try {
+            dropdown.click();
+        } catch (ElementClickInterceptedException e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown);
+        }
+
+        // Wait for input to appear and type the value
         WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//ng-select[@formcontrolname='currency']//input")));
         input.clear();
         input.sendKeys(currency);
 
-        // Wait for the filtered option to appear
+        // Wait for filtered dropdown option to appear
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//div[contains(@class,'ng-dropdown-panel')]//span[contains(@class,'ng-option-label') and contains(text(),'" + currency + "')]")));
 
-        // Select with ENTER
         input.sendKeys(Keys.ENTER);
     }
 

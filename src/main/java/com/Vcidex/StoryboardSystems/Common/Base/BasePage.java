@@ -170,6 +170,16 @@ public class BasePage {
         }, "clearText");
     }
 
+    public void waitForLoaderToDisappear() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.cssSelector(".ngx-spinner-overlay, .loader, .overlay-loader"))); // adjust if needed
+        } catch (TimeoutException e) {
+            logger.warn("Loader did not disappear in expected time.");
+        }
+    }
+
     public String getCSSValue(By locator, String property) {
         return ErrorHandler.executeSafely(driver, () -> findElement(locator).getCssValue(property), "getCSSValue");
     }
