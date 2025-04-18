@@ -9,12 +9,10 @@ import org.openqa.selenium.*;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.model.Media;
 import org.testng.Assert;
-
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Supplier;
-import static com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler.executeSafely;
 import static com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager.driver;
 
 public class ErrorHandler {

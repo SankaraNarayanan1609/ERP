@@ -65,7 +65,7 @@ public class PurchaseBasePage extends BasePage {
 //        sendKeys(getFollowingSiblingLocator(PurchaseConstants.PAYMENT_TERMS_LABEL), terms);
 //    }
 
-    public void selectCurrency(String currency) {
+    public void selectCurrencyName(String currency) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Open the dropdown
@@ -163,7 +163,7 @@ public class PurchaseBasePage extends BasePage {
             selectVendorName(vendor);
         }
         if (currency != null && !currency.isEmpty()) {
-            selectCurrency(currency);
+            selectCurrencyName(currency);
         }
         if (quantity != null && !quantity.isEmpty()) {
             enterQuantity(quantity);

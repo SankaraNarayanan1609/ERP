@@ -29,22 +29,23 @@ public class Direct_PO extends PurchaseBasePage {
     }
 
     // Locators
-    private By quantityField = By.xpath("//input[@formcontrolname='productquantity']");
-    private By priceField = By.xpath("//input[@formcontrolname='productprice']");
-    private By termsConditionsDropdown = By.xpath("//ng-select[@formcontrolname='Terms & Conditions']");
-    private By submitButton = By.xpath("//button[@formcontrolname='Submit']");
+    private final By quantityField = By.xpath("//input[@formcontrolname='productquantity']");
+    private final By priceField = By.xpath("//input[@formcontrolname='productprice']");
+    private final By termsConditionsDropdown = By.xpath("//ng-select[@formcontrolname='Terms & Conditions']");
+    private final By submitButton = By.xpath("//button[@formcontrolname='Submit']");
 
     public void selectBranch(String branch) {
-        selectBranchName(branch);
+        selectBranchName(branch); // from base class
     }
 
     public void selectVendor(String vendor) {
-        selectVendorName(vendor);
+        selectVendorName(vendor); // from base class
     }
 
     public void selectCurrency(String currency) {
-        selectCurrency(currency);
+        selectCurrencyName(currency); // assuming you rename the method in base class
     }
+
 
     public void enterQuantity(String qty) {
         sendKeys(quantityField, qty, "Quantity");
