@@ -170,13 +170,28 @@ public class BasePage {
         }, "clearText");
     }
 
+    public String escapeXPathText(String text) {
+        if (text.contains("'")) {
+            String[] parts = text.split("'");
+            StringBuilder xpath = new StringBuilder("concat(");
+            for (int i = 0; i < parts.length; i++) {
+                xpath.append("'").append(parts[i]).append("'");
+                if (i != parts.length - 1) {
+                    xpath.append(", \"'\", ");
+                }
+            }
+            xpath.append(")");
+            return xpath.toString();
+        }
+        return "'" + text + "'";
+    }
+
     public void waitForLoaderToDisappear() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                    By.cssSelector(".ngx-spinner-overlay, .loader, .overlay-loader"))); // adjust if needed
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class, 'loader')]")));
         } catch (TimeoutException e) {
-            logger.warn("Loader did not disappear in expected time.");
+            System.out.println("Loader did not disappear in time.");
         }
     }
 

@@ -38,24 +38,37 @@ public class PurchaseBasePage extends BasePage {
     public void selectVendorName(String vendor) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Open the dropdown
+        // Open dropdown
         WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//ng-select[@formcontrolname='vendor_companyname']")));
         dropdown.click();
 
-        // Type the vendor name
+        // Type vendor name
         WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//ng-select[@formcontrolname='vendor_companyname']//input")));
+                By.xpath("//ng-select[@formcontrolname='vendor_companyname']//div[@class='ng-input']/input")));
         input.clear();
         input.sendKeys(vendor);
 
-        // Wait for any options to appear in the dropdown list (not matching vendor string directly)
+        // Wait for dropdown options to load
         wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath("//div[contains(@class,'ng-dropdown-panel')]//div[contains(@class,'ng-option')]")));
 
-        // Press ENTER to select the first filtered option
-        input.sendKeys(Keys.ENTER);
+        // Pause to ensure options fully rendered
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Escape vendor name for XPath
+        String escapedVendor = escapeXPathText(vendor);
+        String optionXpath = "//div[contains(@class,'ng-option')]//span[normalize-space(text())=" + escapedVendor + "]";
+
+        // Click the matching option
+        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(optionXpath)));
+        option.click();
     }
+
 
 //    public void enterDeliveryTerms(String terms) {
 //        sendKeys(getFollowingSiblingLocator(PurchaseConstants.DELIVERY_TERMS_LABEL), terms);
@@ -66,34 +79,13 @@ public class PurchaseBasePage extends BasePage {
 //    }
 
     public void selectCurrencyName(String currency) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        // Wait for overlay/loaders to disappear if needed
-        waitForLoaderToDisappear();  // Create this method separately
-
-        // Open the dropdown
-        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//ng-select[@formcontrolname='currency']")));
-
-        try {
-            dropdown.click();
-        } catch (ElementClickInterceptedException e) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown);
-        }
-
-        // Wait for input to appear and type the value
-        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//ng-select[@formcontrolname='currency']//input")));
-        input.clear();
-        input.sendKeys(currency);
-
-        // Wait for filtered dropdown option to appear
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//div[contains(@class,'ng-dropdown-panel')]//span[contains(@class,'ng-option-label') and contains(text(),'" + currency + "')]")));
-
-        input.sendKeys(Keys.ENTER);
+        WebElement dropdown = driver.findElement(By.xpath("//ng-select[@formcontrolname='currency_code']"));
+        dropdown.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='option']//span[text()='" + currency + "']")));
+        WebElement option = driver.findElement(By.xpath("//div[@role='option']//span[text()='" + currency + "']"));
+        option.click();
     }
-
 
     public void enterQuantity(String quantity) {
         WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='productquantity']"));

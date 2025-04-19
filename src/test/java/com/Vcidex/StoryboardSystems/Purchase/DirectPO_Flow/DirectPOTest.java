@@ -68,7 +68,10 @@ public class DirectPOTest extends TestBase {
                             scenarioData.get("Currency"),
                             scenarioData.get("Quantity"),
                             scenarioData.get("Price"),
-                            scenarioData.get("TermsAndConditions")
+                            scenarioData.get("TermsAndConditions"),
+                            scenarioData.get("Day"),
+                            scenarioData.get("Month"),
+                            scenarioData.get("Year")
                     );
                 }, "Fill Purchase Order Details");
 
