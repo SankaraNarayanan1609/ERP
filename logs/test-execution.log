@@ -1,0 +1,1002 @@
+2025-04-21 17:55:51 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-21 17:55:53 [main] INFO  WebDriverManager.resolveDriverVersion() - Using chromedriver 135.0.7049.95 (resolved driver for Chrome 135)
+2025-04-21 17:55:53 [main] INFO  WebDriverManager.exportDriver() - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.95\chromedriver.exe
+2025-04-21 17:55:55 [main] INFO  WebDriverManager.resolveDriverVersion() - Using chromedriver 135.0.7049.95 (resolved driver for Chrome 135)
+2025-04-21 17:55:55 [main] INFO  WebDriverManager.exportDriver() - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.95\chromedriver.exe
+2025-04-21 17:55:56 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-21 17:55:56 [main] WARN  ConfigManager.getProperty() - ⚠️ Properties file 'config.properties' not found. Using default value for 'WebDriver.timeout'.
+2025-04-22 14:23:24 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 14:23:27 [main] INFO  WebDriverManager.resolveDriverVersion() - Using chromedriver 135.0.7049.95 (resolved driver for Chrome 135)
+2025-04-22 14:23:27 [main] INFO  WebDriverManager.exportDriver() - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.95\chromedriver.exe
+2025-04-22 14:23:30 [main] INFO  WebDriverManager.resolveDriverVersion() - Using chromedriver 135.0.7049.95 (resolved driver for Chrome 135)
+2025-04-22 14:23:30 [main] INFO  WebDriverManager.exportDriver() - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.95\chromedriver.exe
+2025-04-22 14:23:31 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-22 14:23:31 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 15:24:12 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 15:24:14 [main] INFO  WebDriverManager.resolveDriverVersion() - Using chromedriver 135.0.7049.95 (resolved driver for Chrome 135)
+2025-04-22 15:24:14 [main] INFO  WebDriverManager.exportDriver() - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.95\chromedriver.exe
+2025-04-22 15:24:15 [main] INFO  WebDriverManager.resolveDriverVersion() - Using chromedriver 135.0.7049.95 (resolved driver for Chrome 135)
+2025-04-22 15:24:15 [main] INFO  WebDriverManager.exportDriver() - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.95\chromedriver.exe
+2025-04-22 15:24:16 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{
+  "test": {
+    "appUrl": "https://erplite.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex",
+        "password": "s",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  },
+  "staging": {
+    "appUrl": "https://stage.storyboarderp.com/",
+    "users": [
+      {
+        "companyCode": "vcidex_demo",
+        "password": "c3VwZXJfc2VjcmV0",
+        "userName": "Superadmin",
+        "userId": "0"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "ZW5jb2RlZF9wYXNz",
+        "userName": "Sankara Narayanan",
+        "userId": "1"
+      },
+      {
+        "companyCode": "vcidex_demo",
+        "password": "cGFzc3dvcmRfZGF0YQ==",
+        "userName": "Dinesh",
+        "userId": "2"
+      }
+    ]
+  }
+}
+2025-04-22 15:24:16 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 15:24:16 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 15:24:16 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 15:24:16 [main] ERROR ExcelReader.getScenarioData() - ❌ Error reading Excel file: src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-22 15:50:03 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 15:50:04 [main] INFO  WebDriverManager.resolveDriverVersion() - Using chromedriver 135.0.7049.95 (resolved driver for Chrome 135)
+2025-04-22 15:50:04 [main] INFO  WebDriverManager.exportDriver() - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.95\chromedriver.exe
+2025-04-22 15:50:05 [main] INFO  WebDriverManager.resolveDriverVersion() - Using chromedriver 135.0.7049.95 (resolved driver for Chrome 135)
+2025-04-22 15:50:05 [main] INFO  WebDriverManager.exportDriver() - Exporting webdriver.chrome.driver as C:\Users\SankaraNarayanan\.cache\selenium\chromedriver\win64\135.0.7049.95\chromedriver.exe
+2025-04-22 15:50:06 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 15:50:06 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 15:50:06 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 15:50:06 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 15:50:10 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: ExtentTest not initialized. Please call createTest() before using getTest(). | Action: Navigate to App URL
+2025-04-22 15:50:10 [main] WARN  ErrorHandler.captureScreenshotWithCallerName() - ⚠️ Screenshot capture failed: Cannot invoke "org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)" because the return value of "com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager.driver()" is null
+2025-04-22 15:50:10 [main] ERROR ExcelReader.getScenarioData() - ❌ Error reading Excel file: src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-22 16:22:12 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 16:22:16 [main] INFO  ExtentManager.getInstance() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250422_162216.html
+2025-04-22 16:22:16 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 16:22:16 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:22:16 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:22:16 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 16:22:19 [main] INFO  LoginManager.lambda$login$2() - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-22 16:22:19 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 3634 ms | Action: Navigate to App URL
+2025-04-22 16:22:23 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 4051 ms | Action: Wait for Company Code Field
+2025-04-22 16:22:23 [main] INFO  LoginManager.login() - 📥 Filling login credentials for userId: 0
+2025-04-22 16:22:23 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: SENDKEYS
+2025-04-22 16:22:23 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: FIND_ELEMENT
+2025-04-22 16:22:23 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 10 ms | Action: findElement
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 301 ms | Action: sendKeys
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 304 ms | Action: Enter Company Code
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: SENDKEYS
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: FIND_ELEMENT
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 13 ms | Action: findElement
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 128 ms | Action: sendKeys
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 132 ms | Action: Enter Username
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter Password'] | Action: SENDKEYS
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password'] | Action: FIND_ELEMENT
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 15 ms | Action: findElement
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 90 ms | Action: sendKeys
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 91 ms | Action: Enter Password
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[@id='kt_sign_in_submit'] | Action: CLICK
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit'] | Action: FIND_ELEMENT
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 18 ms | Action: findElement
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Action succeeded in 251 ms | Action: click
+2025-04-22 16:22:24 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 252 ms | Action: Click Login Button
+2025-04-22 16:22:25 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 1121 ms | Action: Wait for Dashboard after Login
+2025-04-22 16:22:25 [main] INFO  LoginManager.login() - ✅ Login successful for user: Superadmin
+2025-04-22 16:22:25 [main] INFO  NavigationHelper.lambda$navigateToModuleAndMenu$1() - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-22 16:22:28 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:22:28 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-22 16:22:28 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 2755 ms | Action: Clicking on 
+2025-04-22 16:22:29 [main] INFO  NavigationHelper.clickModuleByText() - ✅ Module clicked. Waiting before clicking menu...
+2025-04-22 16:22:29 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:22:29 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-22 16:22:29 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 81 ms | Action: Clicking on 
+2025-04-22 16:22:30 [main] INFO  NavigationHelper.clickMenuByText() - ✅ Menu clicked. Waiting before clicking menu...
+2025-04-22 16:22:30 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:22:30 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-22 16:22:30 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 100 ms | Action: Clicking on 
+2025-04-22 16:22:31 [main] INFO  NavigationHelper.clickSubMenuByText() - ✅ SubMenu clicked. Waiting before clicking menu...
+2025-04-22 16:22:31 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 5959 ms | Action: Navigating to Module and Menu
+2025-04-22 16:22:31 [main] ERROR ExcelReader.getScenarioData() - ❌ Error reading Excel file: src/test/resources/defaultTestData.xlsx
+java.io.FileNotFoundException: src\test\resources\defaultTestData.xlsx (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152) ~[?:?]
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106) ~[?:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.ExcelReader.getScenarioData(ExcelReader.java:24) ~[classes/:?]
+	at com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager.getSingleScenarioData(DataProviderManager.java:16) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:809) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154) ~[testng-7.10.2.jar:7.10.2]
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134) ~[testng-7.10.2.jar:7.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) [?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:739) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestRunner.run(TestRunner.java:614) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52) [testng-7.10.2.jar:7.10.2]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.runSuites(TestNG.java:1112) [testng-7.10.2.jar:7.10.2]
+	at org.testng.TestNG.run(TestNG.java:1079) [testng-7.10.2.jar:7.10.2]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65) [testng-rt.jar:?]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:?]
+2025-04-22 16:22:31 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@formcontrolname='po_refno'] | Action: SENDKEYS
+2025-04-22 16:22:31 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@formcontrolname='po_refno'] | Action: FIND_ELEMENT
+2025-04-22 16:22:31 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@formcontrolname='po_refno']"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [011403979afc7fff681bd2d1a567ec58, findElement {using=xpath, value=//input[@formcontrolname='po_refno']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63853}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63853/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 011403979afc7fff681bd2d1a567ec58 | Action: findElement
+2025-04-22 16:22:32 [main] ERROR LoggingHelper.log() - ❌ 📤 Failed to execute: Failed to execute: findElement | Action: sendKeys
+2025-04-22 16:22:32 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Submit')] | Action: CLICK
+2025-04-22 16:22:32 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Submit')] | Action: FIND_ELEMENT
+2025-04-22 16:22:32 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Submit')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [011403979afc7fff681bd2d1a567ec58, findElement {using=xpath, value=//button[contains(text(), 'Submit')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63853}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63853/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 011403979afc7fff681bd2d1a567ec58 | Action: findElement
+2025-04-22 16:22:32 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 16:22:32 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Cancel')] | Action: CLICK
+2025-04-22 16:22:32 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Cancel')] | Action: FIND_ELEMENT
+2025-04-22 16:22:32 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Cancel')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [011403979afc7fff681bd2d1a567ec58, findElement {using=xpath, value=//button[contains(text(), 'Cancel')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63853}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63853/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 011403979afc7fff681bd2d1a567ec58 | Action: findElement
+2025-04-22 16:22:32 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 16:31:47 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 16:31:50 [main] INFO  ExtentManager.getInstance() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250422_163150.html
+2025-04-22 16:31:50 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 16:31:50 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:31:50 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:31:50 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 16:31:53 [main] INFO  LoginManager.lambda$login$2() - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-22 16:31:53 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 3462 ms | Action: Navigate to App URL
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 28984 ms | Action: Wait for Company Code Field
+2025-04-22 16:32:22 [main] INFO  LoginManager.login() - 📥 Filling login credentials for userId: 0
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: SENDKEYS
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: FIND_ELEMENT
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 9 ms | Action: findElement
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 127 ms | Action: sendKeys
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 129 ms | Action: Enter Company Code
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: SENDKEYS
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: FIND_ELEMENT
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 14 ms | Action: findElement
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 94 ms | Action: sendKeys
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 95 ms | Action: Enter Username
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter Password'] | Action: SENDKEYS
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password'] | Action: FIND_ELEMENT
+2025-04-22 16:32:22 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 25 ms | Action: findElement
+2025-04-22 16:32:23 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 97 ms | Action: sendKeys
+2025-04-22 16:32:23 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 98 ms | Action: Enter Password
+2025-04-22 16:32:23 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[@id='kt_sign_in_submit'] | Action: CLICK
+2025-04-22 16:32:23 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit'] | Action: FIND_ELEMENT
+2025-04-22 16:32:23 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 13 ms | Action: findElement
+2025-04-22 16:32:24 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: element click intercepted: Element is not clickable at point (509, 1023)
+  (Session info: chrome=135.0.7049.96)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [742d0adb62328be1be89d7661954dd57, clickElement {id=f.ABF65FF6F596A145F44CA42F04666898.d.693846D9560FE08143F869C525C1ADB7.e.27}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64122}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64122/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (742d0adb62328be1be89d7661954dd57)] -> xpath: //button[@id='kt_sign_in_submit']]
+Session ID: 742d0adb62328be1be89d7661954dd57 | Action: click
+2025-04-22 16:32:24 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: Failed to execute: click | Action: Click Login Button
+2025-04-22 16:32:25 [main] WARN  ExcelReader.findScenarioColumn() - ⚠️ Scenario 'DirectPO1' not found in sheet 'DirectPO'
+2025-04-22 16:32:25 [main] WARN  ExcelReader.getScenarioData() - ⚠️ Scenario 'DirectPO1' not found in any sheet. Returning empty data.
+2025-04-22 16:32:25 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'FilePath' not found or empty for scenario 'DirectPO1'. Using default path.
+2025-04-22 16:32:25 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'Terms' not found or empty for scenario 'DirectPO1'. Using default terms.
+2025-04-22 16:32:25 [main] INFO  ExcelReader.getScenarioData() - Fetched Data for Scenario 'DirectPO1': {FilePath=C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\PurchaseTestData.xlsx, Terms=Standard Terms}
+2025-04-22 16:32:38 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 16:32:40 [main] INFO  ExtentManager.getInstance() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250422_163240.html
+2025-04-22 16:32:41 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 16:32:41 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:32:41 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:32:41 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 16:32:44 [main] INFO  LoginManager.lambda$login$2() - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-22 16:32:44 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 3308 ms | Action: Navigate to App URL
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 3816 ms | Action: Wait for Company Code Field
+2025-04-22 16:32:48 [main] INFO  LoginManager.login() - 📥 Filling login credentials for userId: 0
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: SENDKEYS
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: FIND_ELEMENT
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 8 ms | Action: findElement
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 115 ms | Action: sendKeys
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 121 ms | Action: Enter Company Code
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: SENDKEYS
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: FIND_ELEMENT
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 15 ms | Action: findElement
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 100 ms | Action: sendKeys
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 101 ms | Action: Enter Username
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter Password'] | Action: SENDKEYS
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password'] | Action: FIND_ELEMENT
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 15 ms | Action: findElement
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 94 ms | Action: sendKeys
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 98 ms | Action: Enter Password
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[@id='kt_sign_in_submit'] | Action: CLICK
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit'] | Action: FIND_ELEMENT
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 10 ms | Action: findElement
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Action succeeded in 90 ms | Action: click
+2025-04-22 16:32:48 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 90 ms | Action: Click Login Button
+2025-04-22 16:32:49 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 1187 ms | Action: Wait for Dashboard after Login
+2025-04-22 16:32:49 [main] INFO  LoginManager.login() - ✅ Login successful for user: Superadmin
+2025-04-22 16:32:49 [main] INFO  NavigationHelper.lambda$navigateToModuleAndMenu$1() - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-22 16:32:52 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:32:52 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-22 16:32:52 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 2265 ms | Action: Clicking on 
+2025-04-22 16:32:53 [main] INFO  NavigationHelper.clickModuleByText() - ✅ Module clicked. Waiting before clicking menu...
+2025-04-22 16:32:53 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:32:53 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-22 16:32:53 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 81 ms | Action: Clicking on 
+2025-04-22 16:32:54 [main] INFO  NavigationHelper.clickMenuByText() - ✅ Menu clicked. Waiting before clicking menu...
+2025-04-22 16:32:54 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:32:54 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-22 16:32:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 105 ms | Action: Clicking on 
+2025-04-22 16:32:55 [main] INFO  NavigationHelper.clickSubMenuByText() - ✅ SubMenu clicked. Waiting before clicking menu...
+2025-04-22 16:32:55 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 5481 ms | Action: Navigating to Module and Menu
+2025-04-22 16:32:56 [main] WARN  ExcelReader.findScenarioColumn() - ⚠️ Scenario 'DirectPO1' not found in sheet 'DirectPO'
+2025-04-22 16:32:56 [main] WARN  ExcelReader.getScenarioData() - ⚠️ Scenario 'DirectPO1' not found in any sheet. Returning empty data.
+2025-04-22 16:32:56 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'FilePath' not found or empty for scenario 'DirectPO1'. Using default path.
+2025-04-22 16:32:56 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'Terms' not found or empty for scenario 'DirectPO1'. Using default terms.
+2025-04-22 16:32:56 [main] INFO  ExcelReader.getScenarioData() - Fetched Data for Scenario 'DirectPO1': {FilePath=C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\PurchaseTestData.xlsx, Terms=Standard Terms}
+2025-04-22 16:32:56 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@formcontrolname='po_refno'] | Action: SENDKEYS
+2025-04-22 16:32:56 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@formcontrolname='po_refno'] | Action: FIND_ELEMENT
+2025-04-22 16:32:56 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@formcontrolname='po_refno']"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [587afb1557fc76660c746382d858a0a3, findElement {value=//input[@formcontrolname='po_refno'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64157}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64157/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 587afb1557fc76660c746382d858a0a3 | Action: findElement
+2025-04-22 16:32:56 [main] ERROR LoggingHelper.log() - ❌ 📤 Failed to execute: Failed to execute: findElement | Action: sendKeys
+2025-04-22 16:32:56 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Submit')] | Action: CLICK
+2025-04-22 16:32:56 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Submit')] | Action: FIND_ELEMENT
+2025-04-22 16:32:56 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Submit')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [587afb1557fc76660c746382d858a0a3, findElement {value=//button[contains(text(), 'Submit')], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64157}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64157/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 587afb1557fc76660c746382d858a0a3 | Action: findElement
+2025-04-22 16:32:56 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 16:32:56 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Cancel')] | Action: CLICK
+2025-04-22 16:32:56 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Cancel')] | Action: FIND_ELEMENT
+2025-04-22 16:32:56 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Cancel')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [587afb1557fc76660c746382d858a0a3, findElement {value=//button[contains(text(), 'Cancel')], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64157}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64157/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 587afb1557fc76660c746382d858a0a3 | Action: findElement
+2025-04-22 16:32:56 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 16:51:17 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 16:51:20 [main] INFO  ExtentManager.getInstance() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250422_165119.html
+2025-04-22 16:51:20 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 16:51:20 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:51:20 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:51:20 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 16:51:23 [main] INFO  LoginManager.lambda$login$2() - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-22 16:51:23 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 3378 ms | Action: Navigate to App URL
+2025-04-22 16:51:27 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 4266 ms | Action: Wait for Company Code Field
+2025-04-22 16:51:27 [main] INFO  LoginManager.login() - 📥 Filling login credentials for userId: 0
+2025-04-22 16:51:27 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: SENDKEYS
+2025-04-22 16:51:27 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: FIND_ELEMENT
+2025-04-22 16:51:27 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 12 ms | Action: findElement
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 233 ms | Action: sendKeys
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 235 ms | Action: Enter Company Code
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: SENDKEYS
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: FIND_ELEMENT
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 68 ms | Action: findElement
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 388 ms | Action: sendKeys
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 390 ms | Action: Enter Username
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter Password'] | Action: SENDKEYS
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password'] | Action: FIND_ELEMENT
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 11 ms | Action: findElement
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 82 ms | Action: sendKeys
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 84 ms | Action: Enter Password
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[@id='kt_sign_in_submit'] | Action: CLICK
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit'] | Action: FIND_ELEMENT
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 13 ms | Action: findElement
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Action succeeded in 86 ms | Action: click
+2025-04-22 16:51:28 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 88 ms | Action: Click Login Button
+2025-04-22 16:51:29 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 1121 ms | Action: Wait for Dashboard after Login
+2025-04-22 16:51:29 [main] INFO  LoginManager.login() - ✅ Login successful for user: Superadmin
+2025-04-22 16:51:29 [main] INFO  NavigationHelper.lambda$navigateToModuleAndMenu$1() - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-22 16:51:31 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:51:31 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-22 16:51:31 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 2204 ms | Action: Clicking on 
+2025-04-22 16:51:32 [main] INFO  NavigationHelper.clickModuleByText() - ✅ Module clicked. Waiting before clicking menu...
+2025-04-22 16:51:33 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:51:33 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-22 16:51:33 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 107 ms | Action: Clicking on 
+2025-04-22 16:51:34 [main] INFO  NavigationHelper.clickMenuByText() - ✅ Menu clicked. Waiting before clicking menu...
+2025-04-22 16:51:34 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:51:34 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-22 16:51:34 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 132 ms | Action: Clicking on 
+2025-04-22 16:51:35 [main] INFO  NavigationHelper.clickSubMenuByText() - ✅ SubMenu clicked. Waiting before clicking menu...
+2025-04-22 16:51:35 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 5486 ms | Action: Navigating to Module and Menu
+2025-04-22 16:51:36 [main] WARN  ExcelReader.findScenarioColumn() - ⚠️ Scenario 'DirectPO1' not found in sheet 'DirectPO'
+2025-04-22 16:51:36 [main] WARN  ExcelReader.getScenarioData() - ⚠️ Scenario 'DirectPO1' not found in any sheet. Returning empty data.
+2025-04-22 16:51:36 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'FilePath' not found or empty for scenario 'DirectPO1'. Using default path.
+2025-04-22 16:51:36 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'Terms' not found or empty for scenario 'DirectPO1'. Using default terms.
+2025-04-22 16:51:36 [main] INFO  ExcelReader.getScenarioData() - Fetched Data for Scenario 'DirectPO1': {FilePath=C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\PurchaseTestData.xlsx, Terms=Standard Terms}
+2025-04-22 16:51:36 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@formcontrolname='PO Ref.No'] | Action: SENDKEYS
+2025-04-22 16:51:36 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@formcontrolname='PO Ref.No'] | Action: FIND_ELEMENT
+2025-04-22 16:51:36 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@formcontrolname='PO Ref.No']"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [853efba7cf29b07f053590499a844e2c, findElement {value=//input[@formcontrolname='PO Ref.No'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64711}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64711/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 853efba7cf29b07f053590499a844e2c | Action: findElement
+2025-04-22 16:51:36 [main] ERROR LoggingHelper.log() - ❌ 📤 Failed to execute: Failed to execute: findElement | Action: sendKeys
+2025-04-22 16:51:36 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Submit')] | Action: CLICK
+2025-04-22 16:51:36 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Submit')] | Action: FIND_ELEMENT
+2025-04-22 16:51:36 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Submit')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [853efba7cf29b07f053590499a844e2c, findElement {value=//button[contains(text(), 'Submit')], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64711}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64711/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 853efba7cf29b07f053590499a844e2c | Action: findElement
+2025-04-22 16:51:37 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 16:51:37 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Cancel')] | Action: CLICK
+2025-04-22 16:51:37 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Cancel')] | Action: FIND_ELEMENT
+2025-04-22 16:51:37 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Cancel')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [853efba7cf29b07f053590499a844e2c, findElement {value=//button[contains(text(), 'Cancel')], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64711}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64711/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 853efba7cf29b07f053590499a844e2c | Action: findElement
+2025-04-22 16:51:37 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 16:54:43 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 16:54:46 [main] INFO  ExtentManager.getInstance() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250422_165446.html
+2025-04-22 16:54:46 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 16:54:46 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:54:46 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 16:54:46 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 16:54:49 [main] INFO  LoginManager.lambda$login$2() - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-22 16:54:49 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 3412 ms | Action: Navigate to App URL
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 4340 ms | Action: Wait for Company Code Field
+2025-04-22 16:54:54 [main] INFO  LoginManager.login() - 📥 Filling login credentials for userId: 0
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: SENDKEYS
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: FIND_ELEMENT
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 11 ms | Action: findElement
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 278 ms | Action: sendKeys
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 280 ms | Action: Enter Company Code
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: SENDKEYS
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: FIND_ELEMENT
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 30 ms | Action: findElement
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 166 ms | Action: sendKeys
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 168 ms | Action: Enter Username
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter Password'] | Action: SENDKEYS
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password'] | Action: FIND_ELEMENT
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 13 ms | Action: findElement
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 136 ms | Action: sendKeys
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 138 ms | Action: Enter Password
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[@id='kt_sign_in_submit'] | Action: CLICK
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit'] | Action: FIND_ELEMENT
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 15 ms | Action: findElement
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Action succeeded in 105 ms | Action: click
+2025-04-22 16:54:54 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 106 ms | Action: Click Login Button
+2025-04-22 16:54:55 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 1133 ms | Action: Wait for Dashboard after Login
+2025-04-22 16:54:55 [main] INFO  LoginManager.login() - ✅ Login successful for user: Superadmin
+2025-04-22 16:54:55 [main] INFO  NavigationHelper.lambda$navigateToModuleAndMenu$1() - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-22 16:54:58 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:54:58 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-22 16:54:58 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 2271 ms | Action: Clicking on 
+2025-04-22 16:54:59 [main] INFO  NavigationHelper.clickModuleByText() - ✅ Module clicked. Waiting before clicking menu...
+2025-04-22 16:54:59 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:54:59 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-22 16:54:59 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 128 ms | Action: Clicking on 
+2025-04-22 16:55:00 [main] INFO  NavigationHelper.clickMenuByText() - ✅ Menu clicked. Waiting before clicking menu...
+2025-04-22 16:55:00 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 16:55:00 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-22 16:55:00 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 96 ms | Action: Clicking on 
+2025-04-22 16:55:01 [main] INFO  NavigationHelper.clickSubMenuByText() - ✅ SubMenu clicked. Waiting before clicking menu...
+2025-04-22 16:55:01 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 5538 ms | Action: Navigating to Module and Menu
+2025-04-22 16:55:02 [main] WARN  ExcelReader.findScenarioColumn() - ⚠️ Scenario 'DirectPO1' not found in sheet 'DirectPO'
+2025-04-22 16:55:02 [main] WARN  ExcelReader.getScenarioData() - ⚠️ Scenario 'DirectPO1' not found in any sheet. Returning empty data.
+2025-04-22 16:55:02 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'FilePath' not found or empty for scenario 'DirectPO1'. Using default path.
+2025-04-22 16:55:02 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'Terms' not found or empty for scenario 'DirectPO1'. Using default terms.
+2025-04-22 16:55:02 [main] INFO  ExcelReader.getScenarioData() - Fetched Data for Scenario 'DirectPO1': {FilePath=C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\PurchaseTestData.xlsx, Terms=Standard Terms}
+2025-04-22 16:55:02 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@formcontrolname='PO Ref.No'] | Action: SENDKEYS
+2025-04-22 16:55:02 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@formcontrolname='PO Ref.No'] | Action: FIND_ELEMENT
+2025-04-22 16:55:02 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@formcontrolname='PO Ref.No']"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9d8acb82e4a2efebb05067335c7ed3d0, findElement {using=xpath, value=//input[@formcontrolname='PO Ref.No']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64899}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64899/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9d8acb82e4a2efebb05067335c7ed3d0 | Action: findElement
+2025-04-22 16:55:02 [main] ERROR LoggingHelper.log() - ❌ 📤 Failed to execute: Failed to execute: findElement | Action: sendKeys
+2025-04-22 16:55:02 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Submit')] | Action: CLICK
+2025-04-22 16:55:02 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Submit')] | Action: FIND_ELEMENT
+2025-04-22 16:55:02 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Submit')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9d8acb82e4a2efebb05067335c7ed3d0, findElement {using=xpath, value=//button[contains(text(), 'Submit')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64899}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64899/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9d8acb82e4a2efebb05067335c7ed3d0 | Action: findElement
+2025-04-22 16:55:02 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 16:55:02 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Cancel')] | Action: CLICK
+2025-04-22 16:55:02 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Cancel')] | Action: FIND_ELEMENT
+2025-04-22 16:55:02 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Cancel')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9d8acb82e4a2efebb05067335c7ed3d0, findElement {using=xpath, value=//button[contains(text(), 'Cancel')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64899}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64899/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9d8acb82e4a2efebb05067335c7ed3d0 | Action: findElement
+2025-04-22 16:55:03 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 17:07:07 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 17:07:10 [main] INFO  ExtentManager.getInstance() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250422_170710.html
+2025-04-22 17:07:10 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 17:07:10 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 17:07:10 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 17:07:10 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 17:07:10 [main] INFO  LoginManager.lambda$login$2() - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-22 17:07:10 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 213 ms | Action: Navigate to App URL
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 572 ms | Action: Wait for Company Code Field
+2025-04-22 17:07:11 [main] INFO  LoginManager.login() - 📥 Filling login credentials for userId: 0
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: SENDKEYS
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: FIND_ELEMENT
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 12 ms | Action: findElement
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 161 ms | Action: sendKeys
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 167 ms | Action: Enter Company Code
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: SENDKEYS
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: FIND_ELEMENT
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 22 ms | Action: findElement
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 420 ms | Action: sendKeys
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 424 ms | Action: Enter Username
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter Password'] | Action: SENDKEYS
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password'] | Action: FIND_ELEMENT
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 12 ms | Action: findElement
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 92 ms | Action: sendKeys
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 94 ms | Action: Enter Password
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[@id='kt_sign_in_submit'] | Action: CLICK
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit'] | Action: FIND_ELEMENT
+2025-04-22 17:07:11 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 22 ms | Action: findElement
+2025-04-22 17:07:12 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: element click intercepted: Element is not clickable at point (509, 605)
+  (Session info: chrome=135.0.7049.96)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [5198e10d0b3fbfe9ef0d63d27b4dcfbd, clickElement {id=f.8CB63BB7157168F420D126AC40BA23A5.d.1980B7D2596979AEDFE2FE8518360188.e.27}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49426}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49426/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (5198e10d0b3fbfe9ef0d63d27b4dcfbd)] -> xpath: //button[@id='kt_sign_in_submit']]
+Session ID: 5198e10d0b3fbfe9ef0d63d27b4dcfbd | Action: click
+2025-04-22 17:07:13 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: Failed to execute: click | Action: Click Login Button
+2025-04-22 17:07:14 [main] WARN  ExcelReader.findScenarioColumn() - ⚠️ Scenario 'DirectPO1' not found in sheet 'DirectPO'
+2025-04-22 17:07:14 [main] WARN  ExcelReader.getScenarioData() - ⚠️ Scenario 'DirectPO1' not found in any sheet. Returning empty data.
+2025-04-22 17:07:14 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'FilePath' not found or empty for scenario 'DirectPO1'. Using default path.
+2025-04-22 17:07:14 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'Terms' not found or empty for scenario 'DirectPO1'. Using default terms.
+2025-04-22 17:07:14 [main] INFO  ExcelReader.getScenarioData() - Fetched Data for Scenario 'DirectPO1': {FilePath=C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\PurchaseTestData.xlsx, Terms=Standard Terms}
+2025-04-22 17:07:33 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 17:07:35 [main] INFO  ExtentManager.getInstance() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250422_170735.html
+2025-04-22 17:07:35 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 17:07:35 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 17:07:35 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 17:07:35 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 17:07:36 [main] INFO  LoginManager.lambda$login$2() - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 261 ms | Action: Navigate to App URL
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 738 ms | Action: Wait for Company Code Field
+2025-04-22 17:07:36 [main] INFO  LoginManager.login() - 📥 Filling login credentials for userId: 0
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: SENDKEYS
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: FIND_ELEMENT
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 10 ms | Action: findElement
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 116 ms | Action: sendKeys
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 118 ms | Action: Enter Company Code
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: SENDKEYS
+2025-04-22 17:07:36 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: FIND_ELEMENT
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 14 ms | Action: findElement
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 281 ms | Action: sendKeys
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 282 ms | Action: Enter Username
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter Password'] | Action: SENDKEYS
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password'] | Action: FIND_ELEMENT
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 14 ms | Action: findElement
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 99 ms | Action: sendKeys
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 103 ms | Action: Enter Password
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[@id='kt_sign_in_submit'] | Action: CLICK
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit'] | Action: FIND_ELEMENT
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 29 ms | Action: findElement
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Action succeeded in 135 ms | Action: click
+2025-04-22 17:07:37 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 139 ms | Action: Click Login Button
+2025-04-22 17:07:38 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 1241 ms | Action: Wait for Dashboard after Login
+2025-04-22 17:07:38 [main] INFO  LoginManager.login() - ✅ Login successful for user: Superadmin
+2025-04-22 17:07:38 [main] INFO  NavigationHelper.lambda$navigateToModuleAndMenu$1() - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-22 17:07:41 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 17:07:41 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-22 17:07:41 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 2234 ms | Action: Clicking on 
+2025-04-22 17:07:42 [main] INFO  NavigationHelper.clickModuleByText() - ✅ Module clicked. Waiting before clicking menu...
+2025-04-22 17:07:42 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 17:07:42 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-22 17:07:42 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 78 ms | Action: Clicking on 
+2025-04-22 17:07:43 [main] INFO  NavigationHelper.clickMenuByText() - ✅ Menu clicked. Waiting before clicking menu...
+2025-04-22 17:07:43 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 17:07:43 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-22 17:07:43 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 104 ms | Action: Clicking on 
+2025-04-22 17:07:44 [main] INFO  NavigationHelper.clickSubMenuByText() - ✅ SubMenu clicked. Waiting before clicking menu...
+2025-04-22 17:07:44 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 5438 ms | Action: Navigating to Module and Menu
+2025-04-22 17:07:44 [main] INFO  ExcelReader.findScenarioColumn() - Scenario Column Index Found: 1 in sheet 'DirectPO'
+2025-04-22 17:07:44 [main] INFO  ExcelReader.getScenarioData() - ✅ Scenario 'DirectPO1' found in sheet 'DirectPO'
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: []
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: []
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Branch Name]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Branch Name, Vendor Name]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Expected Date Day, Branch Name, Vendor Name]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Currency, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Currency, Quantity, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Price, Currency, Quantity, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Add-On Charges, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Add-On Charges, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Add-On Charges, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Add-On Charges, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:07:44 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'FilePath' not found or empty for scenario 'DirectPO1'. Using default path.
+2025-04-22 17:07:44 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'Terms' not found or empty for scenario 'DirectPO1'. Using default terms.
+2025-04-22 17:07:44 [main] INFO  ExcelReader.getScenarioData() - Fetched Data for Scenario 'DirectPO1': {Payment Terms=7.0, FilePath=C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\PurchaseTestData.xlsx, Discount=250.0, Price=2000.0, Currency=GBP, Terms=Standard Terms, Quantity=10.0, Add-On Charges=500.0, Expected Date Day=Thu Apr 10 00:00:00 IST 2025, Branch Name=TechOne Services Limited, Vendor Name=TechSupply Pvt. Ltd., Delivery Terms=7.0}
+2025-04-22 17:07:44 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@formcontrolname='PO Ref.No'] | Action: SENDKEYS
+2025-04-22 17:07:44 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@formcontrolname='PO Ref.No'] | Action: FIND_ELEMENT
+2025-04-22 17:07:44 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@formcontrolname='PO Ref.No']"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9274df7cbc6c19e47f6e307073e2b485, findElement {using=xpath, value=//input[@formcontrolname='PO Ref.No']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49476}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49476/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9274df7cbc6c19e47f6e307073e2b485 | Action: findElement
+2025-04-22 17:07:45 [main] ERROR LoggingHelper.log() - ❌ 📤 Failed to execute: Failed to execute: findElement | Action: sendKeys
+2025-04-22 17:07:45 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Submit')] | Action: CLICK
+2025-04-22 17:07:45 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Submit')] | Action: FIND_ELEMENT
+2025-04-22 17:07:45 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Submit')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9274df7cbc6c19e47f6e307073e2b485, findElement {using=xpath, value=//button[contains(text(), 'Submit')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49476}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49476/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9274df7cbc6c19e47f6e307073e2b485 | Action: findElement
+2025-04-22 17:07:45 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 17:07:45 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[contains(text(), 'Cancel')] | Action: CLICK
+2025-04-22 17:07:45 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[contains(text(), 'Cancel')] | Action: FIND_ELEMENT
+2025-04-22 17:07:45 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(text(), 'Cancel')]"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9274df7cbc6c19e47f6e307073e2b485, findElement {using=xpath, value=//button[contains(text(), 'Cancel')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49476}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49476/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9274df7cbc6c19e47f6e307073e2b485 | Action: findElement
+2025-04-22 17:07:45 [main] ERROR LoggingHelper.log() - ❌ 🖱️ Failed to execute: Failed to execute: findElement | Action: click
+2025-04-22 17:14:51 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-04-22 17:14:54 [main] INFO  ExtentManager.getInstance() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250422_171453.html
+2025-04-22 17:14:54 [main] INFO  ConfigManager.initializeConfig() - ✅ JSON configuration successfully loaded: 
+{"test": {
+  "appUrl": "https://erplite.storyboarderp.com/",
+  "users": [{
+    "companyCode": "vcidex",
+    "password": "s",
+    "userName": "Superadmin",
+    "userId": "0"
+  }]
+}}
+2025-04-22 17:14:54 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 17:14:54 [main] INFO  ConfigManager.getProperty() - 🔍 Retrieved property 'WebDriver.timeout' = '10'
+2025-04-22 17:14:54 [main] INFO  ConfigManager.getConfig() - 🔍 Retrieved config 'appUrl' = 'https://erplite.storyboarderp.com/' from environment 'test'
+2025-04-22 17:14:57 [main] INFO  LoginManager.lambda$login$2() - 🌐 Navigated to app URL: https://erplite.storyboarderp.com/
+2025-04-22 17:14:57 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 3273 ms | Action: Navigate to App URL
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 4584 ms | Action: Wait for Company Code Field
+2025-04-22 17:15:02 [main] INFO  LoginManager.login() - 📥 Filling login credentials for userId: 0
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: SENDKEYS
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter CompanyCode'] | Action: FIND_ELEMENT
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 17 ms | Action: findElement
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 367 ms | Action: sendKeys
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 370 ms | Action: Enter Company Code
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: SENDKEYS
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter UserCode'] | Action: FIND_ELEMENT
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 13 ms | Action: findElement
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 118 ms | Action: sendKeys
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 121 ms | Action: Enter Username
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Entering text into element: By.xpath: //input[@placeholder='Enter Password'] | Action: SENDKEYS
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //input[@placeholder='Enter Password'] | Action: FIND_ELEMENT
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 22 ms | Action: findElement
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Action succeeded in 145 ms | Action: sendKeys
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 146 ms | Action: Enter Password
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Clicking on: By.xpath: //button[@id='kt_sign_in_submit'] | Action: CLICK
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //button[@id='kt_sign_in_submit'] | Action: FIND_ELEMENT
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 21 ms | Action: findElement
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️ 🖱️ Action succeeded in 142 ms | Action: click
+2025-04-22 17:15:02 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 145 ms | Action: Click Login Button
+2025-04-22 17:15:04 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 1650 ms | Action: Wait for Dashboard after Login
+2025-04-22 17:15:04 [main] INFO  LoginManager.login() - ✅ Login successful for user: Superadmin
+2025-04-22 17:15:04 [main] INFO  NavigationHelper.lambda$navigateToModuleAndMenu$1() - Navigating to module: Purchase, menu: Purchase, sub-menu: Purchase Order
+2025-04-22 17:15:06 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 17:15:06 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Module: Purchase' using JavaScript.
+2025-04-22 17:15:06 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 2222 ms | Action: Clicking on 
+2025-04-22 17:15:07 [main] INFO  NavigationHelper.clickModuleByText() - ✅ Module clicked. Waiting before clicking menu...
+2025-04-22 17:15:07 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 17:15:07 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Menu: Purchase' using JavaScript.
+2025-04-22 17:15:07 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 107 ms | Action: Clicking on 
+2025-04-22 17:15:08 [main] INFO  NavigationHelper.clickMenuByText() - ✅ Menu clicked. Waiting before clicking menu...
+2025-04-22 17:15:08 [main] INFO  NavigationHelper.retryClick() - Clicked successfully on attempt 1
+2025-04-22 17:15:08 [main] INFO  NavigationHelper.lambda$clickUsingJS$0() - Clicked on 'Sub-Menu: Purchase Order' using JavaScript.
+2025-04-22 17:15:08 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 81 ms | Action: Clicking on 
+2025-04-22 17:15:09 [main] INFO  NavigationHelper.clickSubMenuByText() - ✅ SubMenu clicked. Waiting before clicking menu...
+2025-04-22 17:15:09 [main] INFO  LoggingHelper.log() - ℹ️  Action succeeded in 5437 ms | Action: Navigating to Module and Menu
+2025-04-22 17:15:10 [main] INFO  ExcelReader.findScenarioColumn() - Scenario Column Index Found: 1 in sheet 'DirectPO'
+2025-04-22 17:15:10 [main] INFO  ExcelReader.getScenarioData() - ✅ Scenario 'DirectPO1' found in sheet 'DirectPO'
+2025-04-22 17:15:10 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: []
+2025-04-22 17:15:10 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: []
+2025-04-22 17:15:10 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Branch Name]
+2025-04-22 17:15:10 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Branch Name, Vendor Name]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Expected Date Day, Branch Name, Vendor Name]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Currency, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Currency, Quantity, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Price, Currency, Quantity, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Add-On Charges, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Add-On Charges, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Add-On Charges, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] INFO  ExcelReader.readScenarioData() - 🧩 Available keys in scenarioData: [Payment Terms, Discount, Price, Currency, Quantity, Add-On Charges, Expected Date Day, Branch Name, Vendor Name, Delivery Terms]
+2025-04-22 17:15:11 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'FilePath' not found or empty for scenario 'DirectPO1'. Using default path.
+2025-04-22 17:15:11 [main] WARN  ExcelReader.validateAndSetDefaults() - ⚠️ 'Terms' not found or empty for scenario 'DirectPO1'. Using default terms.
+2025-04-22 17:15:11 [main] INFO  ExcelReader.getScenarioData() - Fetched Data for Scenario 'DirectPO1': {Payment Terms=7.0, FilePath=C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\PurchaseTestData.xlsx, Discount=250.0, Price=2000.0, Currency=GBP, Terms=Standard Terms, Quantity=10.0, Add-On Charges=500.0, Expected Date Day=Thu Apr 10 00:00:00 IST 2025, Branch Name=TechOne Services Limited, Vendor Name=TechSupply Pvt. Ltd., Delivery Terms=7.0}
+2025-04-22 17:15:11 [main] INFO  LoggingHelper.log() - ℹ️ 📤 Selecting dropdown value: GBP | Action: SENDKEYS
+2025-04-22 17:15:11 [main] INFO  LoggingHelper.log() - ℹ️ 🔍 Finding element: By.xpath: //ng-select[@formcontrolname='currency_code'] | Action: FIND_ELEMENT
+2025-04-22 17:15:11 [main] ERROR LoggingHelper.log() - ❌  Failed to execute: no such element: Unable to locate element: {"method":"xpath","selector":"//ng-select[@formcontrolname='currency_code']"}
+  (Session info: chrome=135.0.7049.96)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a4e7aff7b7cc53d83051afa726ebd921, findElement {value=//ng-select[@formcontrolname='currency_code'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49778}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49778/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a4e7aff7b7cc53d83051afa726ebd921 | Action: findElement

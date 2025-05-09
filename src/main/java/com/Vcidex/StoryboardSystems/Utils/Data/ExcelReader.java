@@ -1,5 +1,6 @@
 package com.Vcidex.StoryboardSystems.Utils.Data;
 
+import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.logging.log4j.LogManager;
@@ -7,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ExcelReader {
@@ -15,130 +18,147 @@ public class ExcelReader {
     private static final String DEFAULT_FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/PurchaseTestData.xlsx";
 
     /**
-     * ✅ Reads **specific scenario data** dynamically and handles missing FilePath and Terms.
+     * Reads Excel data and maps each row to a PurchaseOrderData object.
+     *
+     * @param customFilePath Optional custom file path; uses default if null or empty.
+     * @return List of PurchaseOrderData objects.
      */
-    public static Map<String, String> getScenarioData(String scenarioID, String customFilePath) {
+    public static List<PurchaseOrderData> readPurchaseOrderData(String customFilePath) {
         String filePath = (customFilePath != null && !customFilePath.isEmpty()) ? customFilePath : DEFAULT_FILE_PATH;
-        Map<String, String> scenarioData = new HashMap<>();
+        List<PurchaseOrderData> purchaseOrderList = new ArrayList<>();
 
         try (FileInputStream fis = new FileInputStream(filePath);
              Workbook workbook = new XSSFWorkbook(fis)) {
 
-            boolean scenarioFound = false;
+            Sheet sheet = workbook.getSheetAt(0); // Assuming data is in the first sheet
+            Iterator<Row> rowIterator = sheet.iterator();
 
-            for (Sheet sheet : workbook) {
-                if (sheet.getPhysicalNumberOfRows() == 0) continue; // Skip empty sheets
-
-                int scenarioColumnIndex = findScenarioColumn(sheet, scenarioID);
-                if (scenarioColumnIndex == -1) continue;
-
-                scenarioFound = true;
-                logger.info("✅ Scenario '{}' found in sheet '{}'", scenarioID, sheet.getSheetName());
-
-                // ✅ Read data from the identified scenario column
-                readScenarioData(sheet, scenarioColumnIndex, scenarioData);
+            if (!rowIterator.hasNext()) {
+                logger.warn("⚠️ The sheet is empty.");
+                return purchaseOrderList;
             }
 
-            if (!scenarioFound) {
-                logger.warn("⚠️ Scenario '{}' not found in any sheet. Returning empty data.", scenarioID);
+            // Read header row
+            Row headerRow = rowIterator.next();
+            List<String> headers = new ArrayList<>();
+            for (Cell cell : headerRow) {
+                headers.add(cell.getStringCellValue().trim());
             }
 
-            validateAndSetDefaults(scenarioData, scenarioID);
+            // Process data rows
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+                PurchaseOrderData pod = new PurchaseOrderData();
 
-            // ✅ Log the fetched data
-            logger.info("Fetched Data for Scenario '{}': {}", scenarioID, scenarioData);
+                for (int i = 0; i < headers.size(); i++) {
+                    Cell cell = row.getCell(i, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                    String fieldName = headers.get(i);
+                    setFieldValue(pod, fieldName, cell);
+                }
+
+                purchaseOrderList.add(pod);
+            }
 
         } catch (IOException e) {
             logger.error("❌ Error reading Excel file: {}", filePath, e);
         }
-        return scenarioData;
+
+        return purchaseOrderList;
+    }
+    /**
+     * Retrieves a specific PurchaseOrderData object based on the scenario ID.
+     *
+     * @param scenarioID The scenario ID to match.
+     * @param filePath   The path to the Excel file.
+     * @return The matching PurchaseOrderData object, or null if not found.
+     */
+    public static PurchaseOrderData getScenarioAsPOJO(String scenarioID, String filePath) {
+        List<PurchaseOrderData> allData = readPurchaseOrderData(filePath);
+        for (PurchaseOrderData pod : allData) {
+            if (pod.getScenarioID() != null && pod.getScenarioID().equalsIgnoreCase(scenarioID)) {
+                return pod;
+            }
+        }
+        logger.warn("⚠️ Scenario ID '{}' not found in data file: {}", scenarioID, filePath);
+        return null;
+    }
+    /**
+     * Sets the value of a field in the PurchaseOrderData object using reflection.
+     *
+     * @param pod       The PurchaseOrderData object.
+     * @param fieldName The name of the field to set.
+     * @param cell      The Excel cell containing the value.
+     */
+
+    private static void setFieldValue(PurchaseOrderData pod, String fieldName, Cell cell) {
+        try {
+            Field field = PurchaseOrderData.class.getDeclaredField(convertToCamelCase(fieldName));
+            field.setAccessible(true);
+
+            switch (cell.getCellType()) {
+                case STRING:
+                    if (field.getType() == String.class) {
+                        field.set(pod, cell.getStringCellValue().trim());
+                    } else if (field.getType() == Date.class) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        field.set(pod, sdf.parse(cell.getStringCellValue().trim()));
+                    } else if (field.getType() == double.class || field.getType() == Double.class) {
+                        field.set(pod, Double.parseDouble(cell.getStringCellValue().trim()));
+                    }
+                    break;
+                case NUMERIC:
+                    if (DateUtil.isCellDateFormatted(cell) && field.getType() == Date.class) {
+                        field.set(pod, cell.getDateCellValue());
+                    } else if (field.getType() == double.class || field.getType() == Double.class) {
+                        field.set(pod, cell.getNumericCellValue());
+                    } else if (field.getType() == String.class) {
+                        field.set(pod, String.valueOf(cell.getNumericCellValue()));
+                    }
+                    break;
+                case BOOLEAN:
+                    if (field.getType() == boolean.class || field.getType() == Boolean.class) {
+                        field.set(pod, cell.getBooleanCellValue());
+                    } else if (field.getType() == String.class) {
+                        field.set(pod, String.valueOf(cell.getBooleanCellValue()));
+                    }
+                    break;
+                case BLANK:
+                    field.set(pod, null);
+                    break;
+                default:
+                    field.set(pod, null);
+                    break;
+            }
+
+        } catch (NoSuchFieldException e) {
+            logger.warn("⚠️ No such field: {}", fieldName);
+        } catch (Exception e) {
+            logger.error("❌ Error setting field value for {}: {}", fieldName, e.getMessage());
+        }
     }
 
     /**
-     * ✅ Finds the column index of the scenario.
+     * Converts a string to camelCase to match Java field naming conventions.
+     *
+     * @param input The input string.
+     * @return The camelCase version of the string.
      */
-    private static int findScenarioColumn(Sheet sheet, String scenarioID) {
-        Row headerRow = null;
-        for (int i = 0; i <= sheet.getLastRowNum(); i++) {
-            if (sheet.getRow(i) != null) {
-                headerRow = sheet.getRow(i);
-                break;
-            }
-        }
-
-        if (headerRow == null) return -1;
-
-        for (Cell cell : headerRow) {
-            String cellValue = cell.getStringCellValue().trim();
-            if (cellValue.equalsIgnoreCase(scenarioID)) {
-                int scenarioColumnIndex = cell.getColumnIndex();
-                logger.info("Scenario Column Index Found: {} in sheet '{}'", scenarioColumnIndex, sheet.getSheetName());
-                return scenarioColumnIndex;
-            }
-        }
-        logger.warn("⚠️ Scenario '{}' not found in sheet '{}'", scenarioID, sheet.getSheetName());
-        return -1;
-    }
-
-    /**
-     * ✅ Reads data for the given scenario column, skipping label "PO_Details".
-     */
-    private static void readScenarioData(Sheet sheet, int scenarioColumnIndex, Map<String, String> scenarioData) {
-        for (Row row : sheet) {
-            logger.info("🧩 Available keys in scenarioData: {}", scenarioData.keySet());
-
-            if (row.getRowNum() == 0) continue; // Skip header
-
-            Cell keyCell = row.getCell(0);  // First column for keys
-            Cell valueCell = row.getCell(scenarioColumnIndex);  // Scenario column for values
-
-            if (keyCell != null && valueCell != null) {
-                String key = keyCell.getStringCellValue().trim();
-                String value = getCellValueAsString(valueCell).trim();
-
-                // ✅ Skip the first row label "PO_Details"
-                if (!key.equalsIgnoreCase("PO_Details")) {
-                    scenarioData.put(key, value);
+    private static String convertToCamelCase(String input) {
+        StringBuilder result = new StringBuilder();
+        boolean nextIsUpper = false;
+        for (char c : input.toCharArray()) {
+            if (c == '_' || c == ' ') {
+                nextIsUpper = true;
+            } else {
+                if (nextIsUpper) {
+                    result.append(Character.toUpperCase(c));
+                    nextIsUpper = false;
+                } else {
+                    result.append(Character.toLowerCase(c));
                 }
             }
         }
-    }
+        return result.toString();
 
-    /**
-     * ✅ Converts any cell type to String safely.
-     */
-    private static String getCellValueAsString(Cell cell) {
-        if (cell == null) return ""; // Handle null case explicitly
-        switch (cell.getCellType()) {
-            case STRING:
-                return cell.getStringCellValue().trim();
-            case NUMERIC:
-                if (DateUtil.isCellDateFormatted(cell)) {
-                    return cell.getDateCellValue().toString(); // Or format with SimpleDateFormat
-                }
-                return String.valueOf(cell.getNumericCellValue());
-            case BOOLEAN:
-                return String.valueOf(cell.getBooleanCellValue());
-            case FORMULA:
-                return cell.getCellFormula().trim();
-            case BLANK:
-                return "";
-            default:
-                return "N/A";
-        }
-    }
-
-    /**
-     * ✅ Validate scenario data and set defaults if necessary.
-     */
-    private static void validateAndSetDefaults(Map<String, String> scenarioData, String scenarioID) {
-        if (!scenarioData.containsKey("FilePath") || scenarioData.get("FilePath").isEmpty()) {
-            logger.warn("⚠️ 'FilePath' not found or empty for scenario '{}'. Using default path.", scenarioID);
-            scenarioData.put("FilePath", "C:\\Users\\SankaraNarayanan\\IdeaProjects\\StoryboardsSystems\\src\\test\\resources\\PurchaseTestData.xlsx");
-        }
-        if (!scenarioData.containsKey("Terms") || scenarioData.get("Terms").isEmpty()) {
-            logger.warn("⚠️ 'Terms' not found or empty for scenario '{}'. Using default terms.", scenarioID);
-            scenarioData.put("Terms", "Standard Terms");
-        }
     }
 }

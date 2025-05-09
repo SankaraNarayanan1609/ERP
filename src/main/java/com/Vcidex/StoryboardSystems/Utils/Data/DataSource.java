@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DataSource {
-    String filePath() default "src/test/resources/defaultTestData.xlsx";
+    String filePath() default "src/test/resources/PurchaseTestData.xlsx";
     String pageName() default "DefaultPage";
     String scenarioID() default "Scenario1";
     String loginData() default "login.xlsx";

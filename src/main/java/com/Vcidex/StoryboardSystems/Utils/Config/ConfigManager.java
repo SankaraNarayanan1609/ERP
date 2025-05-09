@@ -101,25 +101,25 @@ public class ConfigManager {
                 return user;
             }
         }
-        return null; // Return null if no matching user is found
+        throw new RuntimeException("❌ User with ID " + userId + " not found in config for environment '" + environment + "'");
     }
 
     public static String getProperty(String key, String defaultValue) {
         Properties properties = new Properties();
-        String propertiesPath = "config.properties";
+        String propertiesPath = "config.properties"; // This should match the filename inside resources
 
-        if (!Files.exists(Paths.get(propertiesPath))) {
-            logger.warn("⚠️ Properties file '{}' not found. Using default value for '{}'.", propertiesPath, key);
-            return defaultValue;
-        }
+        try (InputStream input = ConfigManager.class.getClassLoader().getResourceAsStream(propertiesPath)) {
+            if (input == null) {
+                logger.warn("⚠️ Properties file '{}' not found in resources. Using default for '{}'.", propertiesPath, key);
+                return defaultValue;
+            }
 
-        try (InputStream input = new FileInputStream(propertiesPath)) {
             properties.load(input);
             String value = properties.getProperty(key, defaultValue);
             logger.info("🔍 Retrieved property '{}' = '{}'", key, value);
             return value;
         } catch (IOException e) {
-            logger.error("❌ Error reading properties file '{}': {}", propertiesPath, e.getMessage());
+            logger.error("❌ Error loading properties file '{}': {}", propertiesPath, e.getMessage());
             return defaultValue;
         }
     }

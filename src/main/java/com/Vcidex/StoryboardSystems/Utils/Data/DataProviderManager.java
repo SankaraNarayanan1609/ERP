@@ -1,5 +1,6 @@
 package com.Vcidex.StoryboardSystems.Utils.Data;
 
+import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import org.testng.annotations.DataProvider;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -12,8 +13,7 @@ public class DataProviderManager {
         String scenarioID = (dataSource != null) ? dataSource.scenarioID() : "Scenario1";
         String filePath = (dataSource != null) ? dataSource.filePath() : System.getProperty("user.dir") + "/src/test/resources/PurchaseTestData.xlsx";
 
-        return new Object[][]{
-                {scenarioID, ExcelReader.getScenarioData(scenarioID, filePath)}
-        };
+        PurchaseOrderData pojo = ExcelReader.getScenarioAsPOJO(scenarioID, filePath);
+        return new Object[][] { { pojo } };
     }
 }

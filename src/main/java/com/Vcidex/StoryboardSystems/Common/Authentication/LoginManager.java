@@ -8,6 +8,7 @@ import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,8 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 public class LoginManager extends BasePage {
+    public LoginManager(WebDriver driver) {
+        super(driver);
+    }
     private static final Logger logger = LogManager.getLogger(LoginManager.class);
-
     private final By companyCodeField = By.xpath("//input[@placeholder='Enter CompanyCode']");
     private final By usernameField = By.xpath("//input[@placeholder='Enter UserCode']");
     private final By passwordField = By.xpath("//input[@placeholder='Enter Password']");

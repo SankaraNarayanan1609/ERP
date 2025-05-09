@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Supplier;
 import static com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager.driver;
+import com.Vcidex.StoryboardSystems.Utils.Helpers.LoggingHelper;
 
 public class ErrorHandler {
 
@@ -60,14 +61,26 @@ public class ErrorHandler {
     }
 
     private static boolean shouldSkipLog(String level, String message) {
+        // Skip common repetitive logs
         if (message.matches(".*(Clicking on element|Element found).*")) return true;
 
+        // Normalize message for consistent tracking
+        String normalizedMessage = normalizeLogMessage(message);
+
+        // Suppress if it's already logged
+        if (loggedMessages.contains(normalizedMessage)) return true;
+
+        // Track INFO logs frequency
         if (level.equalsIgnoreCase("INFO")) {
             if (infoLogCount >= MAX_INFO_LOGS) return true;
             infoLogCount++;
         }
 
-        return loggedMessages.contains(normalizeLogMessage(message));
+        // Frequency-based suppression
+        logFrequency.put(normalizedMessage, logFrequency.getOrDefault(normalizedMessage, 0) + 1);
+        if (logFrequency.get(normalizedMessage) > 3) return true;
+
+        return false;
     }
 
     private static String normalizeLogMessage(String message) {
@@ -113,6 +126,30 @@ public class ErrorHandler {
         return "UnknownMethod";
     }
 
+    public class ExecutionTimer {
+
+        // Method for measuring and timing any action that returns a value (Supplier<T>)
+        public static <T> T measure(String actionName, Supplier<T> action) {
+            long start = System.currentTimeMillis();  // Start time
+            try {
+                return action.get();  // Execute the action
+            } finally {
+                long end = System.currentTimeMillis();  // End time
+                long duration = end - start;  // Calculate the duration
+                // Log the duration of the action
+                ErrorHandler.log("INFO", "⏱️ Duration for [" + actionName + "]: " + duration + "ms", true, actionName);
+            }
+        }
+
+        // Method for measuring and timing actions that do not return a value (Runnable)
+        public static void measure(String actionName, Runnable action) {
+            measure(actionName, () -> {
+                action.run();  // Run the action
+                return null;  // No return value
+            });
+        }
+    }
+
     // ===========================
     //         SAFE EXECUTE
     // ===========================
@@ -123,35 +160,47 @@ public class ErrorHandler {
             T result = action.get();
             long duration = System.currentTimeMillis() - startTime;
 
-            log("INFO", "✅ Action succeeded: " + actionName + " (" + duration + " ms)", true, actionName);
+            // Log success with custom emoji and action name
+            LoggingHelper.logWithEmoji("INFO", "Action succeeded in " + duration + " ms", actionName);
             return result;
         } catch (Exception e) {
-            log("ERROR", "❌ Failed to execute: " + actionName + " - " + e.getMessage(), true, actionName);
+            // Log error with emoji and action name
+            LoggingHelper.logWithEmoji("ERROR", "Failed to execute: " + e.getMessage(), actionName);
             captureScreenshotWithCallerName();
-            throw new RuntimeException("❌ Failed to execute: " + actionName, e);
+            throw new RuntimeException("Failed to execute: " + actionName, e);
+        }
+    }
+
+
+    public enum LogLevel { INFO, ERROR, WARN, DEBUG }
+
+    public static void log(LogLevel level, String message, boolean toExtent, String actionName) {
+        switch (level) {
+            case INFO -> logger.info("ℹ️ " + message);
+            case ERROR -> logger.error("❗ " + message);
+            // ...
         }
     }
 
     public static void executeSafely(Assert.ThrowingRunnable action, String actionName) {
-        long startTime = System.currentTimeMillis();
-        WebDriver driver = null;
-        try {
-            action.run();
-            long duration = System.currentTimeMillis() - startTime;
+        ExecutionTimer.measure(actionName, () -> {
+            WebDriver driver = null;
+            try {
+                action.run();
+                log("INFO", "✅ Action Passed: " + actionName, true, actionName);
 
-            log("INFO", "✅ Action Passed: " + actionName + " (" + duration + " ms)", true, actionName);
-
-            if (!captureScreenshotsOnFailureOnly) {
-                driver = WebDriverFactory.getDriver();
-                captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
+                if (!captureScreenshotsOnFailureOnly) {
+                    driver = WebDriverFactory.getDriver();
+                    captureScreenshot(driver, actionName, ScreenshotStatus.AFTER_SUBMIT_PASS);
+                }
+            } catch (Throwable e) {
+                if (e instanceof StackOverflowError) {
+                    log("ERROR", "💥 StackOverflowError detected. Check for infinite recursion in: " + actionName, true, actionName);
+                }
+                handleException(driver, e, actionName);
+                throw new RuntimeException("❌ Failed to execute: " + actionName, e);
             }
-        } catch (Throwable e) {//
-            if (e instanceof StackOverflowError) {
-                log("ERROR", "💥 StackOverflowError detected. Check for infinite recursion in: " + actionName, true, actionName);
-            }
-            handleException(driver, e, actionName);
-            throw new RuntimeException("❌ Failed to execute: " + actionName, e);//
-        }
+        });
     }
 
     public static void executeSafely(Runnable action, String actionName) {

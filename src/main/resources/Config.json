@@ -2,17 +2,13 @@
   "test": {
     "appUrl": "https://erplite.storyboarderp.com/",
     "users": [
-      { "companyCode": "vcidex", "userName": "Superadmin", "userId": "0", "password": "s" },
-      { "companyCode": "vcidex", "userName": "Sankara Narayanan", "userId": "1", "password": "s" },
-      { "companyCode": "vcidex", "userName": "Dinesh", "userId": "2", "password": "s" }
-    ]
-  },
-  "staging": {
-    "appUrl": "https://stage.storyboarderp.com/",
-    "users": [
-      { "companyCode": "vcidex_demo", "userName": "Superadmin", "userId": "0", "password": "c3VwZXJfc2VjcmV0" },
-      { "companyCode": "vcidex_demo", "userName": "Sankara Narayanan", "userId": "1", "password": "ZW5jb2RlZF9wYXNz" },
-      { "companyCode": "vcidex_demo", "userName": "Dinesh", "userId": "2", "password": "cGFzc3dvcmRfZGF0YQ==" }
+      {
+        "companyCode": "vcidex",
+        "userName": "Superadmin",
+        "userId": "0",
+        "password": "s"
+      }
     ]
   }
 }
+

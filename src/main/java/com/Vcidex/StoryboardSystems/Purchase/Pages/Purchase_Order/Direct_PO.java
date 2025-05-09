@@ -1,96 +1,137 @@
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 
+import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.*;
-
-import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class Direct_PO extends PurchaseBasePage {
-    private static final Logger logger = LogManager.getLogger(Direct_PO.class);
 
     public Direct_PO(WebDriver driver) {
         super(driver);
     }
 
-    // Locators
-    private final By quantityField = By.xpath("//input[@formcontrolname='productquantity']");
-    private final By priceField = By.xpath("//input[@formcontrolname='unitprice']");
-    private final By termsConditionsDropdown = By.xpath("//ng-select[@formcontrolname='Terms & Conditions']");
-    private final By submitButton = By.xpath("//button[@formcontrolname='Submit']");
-    private final By expectedDateInput = By.xpath("//input[@formcontrolname='expecteddate']");
+    // ------------------- Unique Locators -------------------
 
-    // Methods
+    private final By branchNameDropdown = By.xpath("//ng-select[@formcontrolname='branchName']");
+    private final By poRefNoInput = By.xpath("//input[@formcontrolname='PO Ref.No']");
+    private final By poDateInput = By.xpath("//input[@formcontrolname='po_date']");
+    private final By expectedDateInput = By.xpath("//input[@formcontrolname='expected_date']");
+    private final By vendorNameDropdown = By.xpath("//ng-select[@formcontrolname='vendorName']");
+    private final By vendorDetailsInput = By.xpath("//ng-select[@formcontrolname='vendorDetails']");
+    private final By billToInput = By.xpath("//input[@formcontrolname='address1']");
+    private final By shipToInput = By.xpath("//input[@formcontrolname='address2']");
+    private final By requestedByDropdown = By.xpath("//ng-select[@formcontrolname='employee_name']");
+    private final By requestorContactInput = By.xpath("//input[@formcontrolname='Requestor_details']");
+    private final By deliveryTermsInput = By.xpath("//input[@formcontrolname='delivery_terms']");
+    private final By paymentTermsInput = By.xpath("//input[@formcontrolname='payment_terms']");
+    private final By despatchModeInput = By.xpath("//input[@formcontrolname='despatch_mode']");
+    private final By currencyDropdown = By.xpath("//ng-select[@formcontrolname='currency_code']");
+    private final By exchangeRateInput = By.xpath("//input[@formcontrolname='exchange_rate']");
+    private final By coverNoteInput = By.xpath("//textarea[@formcontrolname='po_covernote']");
+    private final By renewalYesRadio = By.xpath("//label[contains(., 'Yes')]/preceding-sibling::input[@formcontrolname='renewal_mode']");
+    private final By renewalNoRadio = By.xpath("//label[contains(., 'No')]/preceding-sibling::input[@formcontrolname='renewal_mode']");
+    private final By renewalDateInput = By.xpath("//input[@formcontrolname='renewal_date']");
+    private final By frequencyDropdown = By.xpath("//ng-select[@formcontrolname='frequency_terms']");
+    private final By productAddButton = By.xpath("//button[contains(text(), 'Add')]");
+    private final By productDeleteButton = By.xpath("//button[contains(text(), 'Delete')]");
+    private final By termsDropdown = By.xpath("//ng-select[@formcontrolname='po_terms_conditions']");
+    private final By saveAsDraftButton = By.xpath("//button[contains(text(), 'Save as Draft')]");
+    private final By submitButton = By.xpath("//button[contains(text(), 'Submit')]");
+    private final By cancelButton = By.xpath("//button[contains(text(), 'Cancel')]");
+    private final By draftHistoryButton = By.xpath("//button[contains(text(), 'Draft History')]");
 
-    public void clickDirectPOButton() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        By buttonLocator = By.xpath("//button[contains(text(),'Direct PO')]");
-        WebElement directPOButton = wait.until(ExpectedConditions.elementToBeClickable(buttonLocator));
-        directPOButton.click();
-        logger.info("✅ Clicked on Direct PO Button");
-    }
+    // ------------------- Action Methods -------------------
 
-    public void selectBranch(String branch) {
-        selectBranchName(branch); // from base class
-    }
-
-    public void selectVendor(String vendor) {
-        selectVendorName(vendor); // from base class
-    }
-
-    public void selectCurrency(String currency) {
-        selectCurrencyName(currency); // from base class
-    }
-
-    public void enterQuantity(String qty) {
-        sendKeys(quantityField, qty, "Quantity");
-    }
-
-    public void enterPrice(String price) {
-        sendKeys(priceField, price, "Price");
+    public void fillPOForm(PurchaseOrderData poData) {
+        if (poData.getBranchName() != null) {
+            sendKeys(branchNameDropdown, poData.getBranchName());
+        }
+        if (poData.getPoRefNo() != null) {
+            sendKeys(poRefNoInput, poData.getPoRefNo());
+        }
+        if (poData.getPoDate() != null) {
+            sendKeys(poDateInput, poData.getPoDate().toString());
+        }
+        if (poData.getExpectedDate() != null) {
+            sendKeys(expectedDateInput, poData.getExpectedDate().toString());
+        }
+        if (poData.getExpectedDate() != null) {
+            sendKeys(vendorNameDropdown, poData.getVendorName().toString());
+        }
+        if (poData.getExpectedDate() != null) {
+            sendKeys(vendorDetailsInput, poData.getVendorDetails().toString());
+        }
+        if (poData.getBillTo() != null) {
+            sendKeys(billToInput, poData.getBillTo());
+        }
+        if (poData.getShipTo() != null) {
+            sendKeys(shipToInput, poData.getShipTo());
+        }
+        if (poData.getRequestedBy() != null) {
+            selectDropdownUsingVisibleText(requestedByDropdown, poData.getRequestedBy());
+        }
+        if (poData.getRequestorContactDetails() != null) {
+            sendKeys(requestorContactInput, poData.getRequestorContactDetails());
+        }
+        if (poData.getDeliveryTerms() != null) {
+            sendKeys(deliveryTermsInput, poData.getDeliveryTerms());
+        }
+        if (poData.getPaymentTerms() != null) {
+            sendKeys(paymentTermsInput, poData.getPaymentTerms());
+        }
+        if (poData.getDespatchMode() != null) {
+            sendKeys(despatchModeInput, poData.getDespatchMode());
+        }
+        if (poData.getCurrency() != null) {
+            selectDropdownUsingVisibleText(currencyDropdown, poData.getCurrency());
+        }
+        if (poData.getExchangeRate() != null) {
+            sendKeys(exchangeRateInput, String.valueOf(poData.getExchangeRate()));
+        }
+        if (poData.getCoverNote() != null) {
+            sendKeys(coverNoteInput, poData.getCoverNote());
+        }
+        if (poData.getRenewalDate() != null) {
+            sendKeys(renewalDateInput, poData.getRenewalDate().toString());
+        }
+        if (poData.getFrequency() != null) {
+            selectDropdownUsingVisibleText(frequencyDropdown, poData.getFrequency());
+        }
     }
 
     public void clickSubmit() {
-        click(submitButton, "Submit Button");
+        click(submitButton);
     }
 
-    public void selectExpectedDate(String day, String month, String year) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        // 1. Open the date picker
-        WebElement dateInput = wait.until(ExpectedConditions.elementToBeClickable(expectedDateInput));
-        dateInput.click();
-
-        // 2. Select year
-        WebElement yearInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='numInput cur-year']")));
-        yearInput.clear();
-        yearInput.sendKeys(year);
-
-        // 3. Select month
-        WebElement monthDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@class='flatpickr-monthDropdown-months']")));
-        Select monthSelect = new Select(monthDropdown);
-        monthSelect.selectByVisibleText(month);
-
-        // 4. Select date
-        String fullDate = month + " " + day + ", " + year;
-        WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//span[@class='flatpickr-day' and @aria-label='" + fullDate + "']")));
-        dateElement.click();
-
-        logger.info("📅 Selected Expected Date: " + fullDate);
+    public void clickSaveAsDraft() {
+        click(saveAsDraftButton);
     }
 
-    // Business Flow
-    public void createDirectPO(String branch, String vendor, String currency, String quantity, String unitPrice, String termsAndConditions, String day, String month, String year) {
-        selectBranch(branch);
-        selectVendor(vendor);
-        selectCurrency(currency);
-        enterQuantity(quantity);
-        enterPrice(unitPrice);
-        selectExpectedDate(day, month, year);
-        //selectTermsAndConditions(termsAndConditions); // optional
-        clickSubmit();
+
+    public boolean isPOSubmitted() {
+        By submittedStatus = By.xpath("//span[contains(text(),'Submitted') or contains(@class,'submitted-status')]");
+        return isElementPresent(submittedStatus);
+    }
+
+    public boolean isPOCancelled() {
+        By cancelledStatus = By.xpath("//span[contains(text(),'Cancelled') or contains(@class,'cancelled-status')]");
+        return isElementPresent(cancelledStatus);
+    }
+
+    public void clickAddProduct() {
+        click(productAddButton);
+    }
+
+    public void clickDeleteProduct() {
+        click(productDeleteButton);
+    }
+
+    public void clickCancel() {
+        click(cancelButton);
+    }
+
+    public void clickDraftHistory() {
+        click(draftHistoryButton);
     }
 }

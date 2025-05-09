@@ -1,192 +1,165 @@
 package com.Vcidex.StoryboardSystems.Purchase;
 
+import com.Vcidex.StoryboardSystems.Utils.Helpers.LocatorUtils;
 import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 
 public class PurchaseBasePage extends BasePage {
+
+    // Locators for all the fields in the Purchase module
+    private By branchNameDropdown = By.xpath("//ng-select[@formcontrolname='branch_name']");
+    private By vendorNameDropdown = By.xpath("//ng-select[@formcontrolname='vendor_companyname']");
+    private By vendorDetailsInput = By.xpath("//input[@formcontrolname='vendor_details']");
+    private By shipToInput = By.xpath("//input[@formcontrolname='shipping_address']");
+    private By productGroupDropdown = By.xpath("//ng-select[@formcontrolname='product_group']");
+    private By productCodeDropdown = By.xpath("//ng-select[@formcontrolname='product_code']");
+    private By productNameDropdown = By.xpath("//ng-select[@formcontrolname='product_name']");
+    private By descriptionInput = By.xpath("//input[@formcontrolname='description']");
+    private By quantityInput = By.xpath("//input[@formcontrolname='quantity']");
+    private By priceInput = By.xpath("//input[@formcontrolname='price']");
+    private By discountInput = By.xpath("//input[@formcontrolname='discount']");
+    private By taxInput = By.xpath("//input[@formcontrolname='tax']");
+    private By taxRateInput = By.xpath("//input[@formcontrolname='tax_rate']");
+    private By totalAmountInput = By.xpath("//input[@formcontrolname='total_amount']");
+    private By termsDropdown = By.xpath("//ng-select[@formcontrolname='terms']");
+    private By termsConditionsEditor = By.xpath("//input[@formcontrolname='terms_conditions']");
+    private By netAmountInput = By.xpath("//input[@formcontrolname='net_amount']");
+    private By addOnChargesInput = By.xpath("//input[@formcontrolname='add_on_charges']");
+    private By additionalDiscountInput = By.xpath("//input[@formcontrolname='additional_discount']");
+    private By freightChargesInput = By.xpath("//input[@formcontrolname='freight_charges']");
+    private By additionalTaxDropdown = By.xpath("//ng-select[@formcontrolname='additional_tax']");
+    private By roundOffInput = By.xpath("//input[@formcontrolname='round_off']");
+    private By grandTotalInput = By.xpath("//input[@formcontrolname='grand_total']");
 
     public PurchaseBasePage(WebDriver driver) {
         super(driver);
     }
 
-    public void selectBranchName(String branch) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    // -------------------------- Element Interaction Methods ---------------------------
 
-        // Open the dropdown
-        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//ng-select[@formcontrolname='branch_name']")));
-        dropdown.click();
-
-        // Type the branch name
-        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//ng-select[@formcontrolname='branch_name']//input")));
-        input.clear();
-        input.sendKeys(branch);
-
-        // Wait for the filtered option to appear
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//div[contains(@class,'ng-dropdown-panel')]//span[contains(@class,'ng-option-label') and contains(text(),'" + branch + "')]")));
-
-        // Press ENTER to select the highlighted option
-        input.sendKeys(Keys.ENTER);
+    public void selectBranchName(String branchName) {
+        if (branchName == null || branchName.trim().isEmpty()) return;
+        selectDropdownUsingVisibleText(branchNameDropdown, LocatorUtils.escapeXPathText(branchName));
     }
 
-    public void selectVendorName(String vendor) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void selectVendorName(String vendorName) {
+        if (vendorName == null || vendorName.trim().isEmpty()) return;
+        selectDropdownUsingVisibleText(vendorNameDropdown, LocatorUtils.escapeXPathText(vendorName));
+    }
 
-        // Open dropdown
-        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//ng-select[@formcontrolname='vendor_companyname']")));
-        dropdown.click();
+    public void enterVendorDetails(String vendorDetails) {
+        if (vendorDetails == null || vendorDetails.trim().isEmpty()) return;
+        sendKeys(vendorDetailsInput, LocatorUtils.escapeXPathText(vendorDetails));
+    }
 
-        // Type vendor name
-        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//ng-select[@formcontrolname='vendor_companyname']//div[@class='ng-input']/input")));
-        input.clear();
-        input.sendKeys(vendor);
+    public void enterShipTo(String shipTo) {
+        if (shipTo == null || shipTo.trim().isEmpty()) return;
+        sendKeys(shipToInput, LocatorUtils.escapeXPathText(shipTo));
+    }
 
-        // Wait for dropdown options to load
-        wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//div[contains(@class,'ng-dropdown-panel')]//div[contains(@class,'ng-option')]")));
+    public void selectProductGroup(String productGroup) {
+        if (productGroup == null || productGroup.trim().isEmpty()) return;
+        selectDropdownUsingVisibleText(productGroupDropdown, LocatorUtils.escapeXPathText(productGroup));
+    }
 
-        // Pause to ensure options fully rendered
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public void selectProductCode(String productCode) {
+        if (productCode == null || productCode.trim().isEmpty()) return;
+        selectDropdownUsingVisibleText(productCodeDropdown, LocatorUtils.escapeXPathText(productCode));
+    }
+
+    public void selectProductName(String productName) {
+        if (productName == null || productName.trim().isEmpty()) return;
+        selectDropdownUsingVisibleText(productNameDropdown, LocatorUtils.escapeXPathText(productName));
+    }
+
+    public void enterDescription(String desc) {
+        if (desc == null || desc.trim().isEmpty()) {
+            Reporter.log("⚠️ Description is empty. Skipping enterDescription().", true);
+            return;
         }
-
-        // Escape vendor name for XPath
-        String escapedVendor = escapeXPathText(vendor);
-        String optionXpath = "//div[contains(@class,'ng-option')]//span[normalize-space(text())=" + escapedVendor + "]";
-
-        // Click the matching option
-        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(optionXpath)));
-        option.click();
-    }
-
-
-//    public void enterDeliveryTerms(String terms) {
-//        sendKeys(getFollowingSiblingLocator(PurchaseConstants.DELIVERY_TERMS_LABEL), terms);
-//    }
-//
-//    public void enterPaymentTerms(String terms) {
-//        sendKeys(getFollowingSiblingLocator(PurchaseConstants.PAYMENT_TERMS_LABEL), terms);
-//    }
-
-    public void selectCurrencyName(String currency) {
-        WebElement dropdown = driver.findElement(By.xpath("//ng-select[@formcontrolname='currency_code']"));
-        dropdown.click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='option']//span[text()='" + currency + "']")));
-        WebElement option = driver.findElement(By.xpath("//div[@role='option']//span[text()='" + currency + "']"));
-        option.click();
+        sendKeys(descriptionInput, desc);
     }
 
     public void enterQuantity(String quantity) {
-        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='productquantity']"));
-        qtyInput.clear();
-        qtyInput.sendKeys(quantity);
+        if (quantity == null || quantity.trim().isEmpty()) return;
+        sendKeys(quantityInput, LocatorUtils.escapeXPathText(quantity));
     }
 
-    public void enterPrice(String unitprice) {
-        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='unitprice']"));
-        qtyInput.clear();
-        qtyInput.sendKeys(unitprice);
+    public void enterPrice(String price) {
+        if (price == null || price.trim().isEmpty()) return;
+        sendKeys(priceInput, LocatorUtils.escapeXPathText(price));
     }
 
-    public void enterDiscount(String productdiscount) {
-        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='productdiscount']"));
-        qtyInput.clear();
-        qtyInput.sendKeys(productdiscount);
+    public void enterDiscount(String discount) {
+        if (discount == null || discount.trim().isEmpty()) {
+            Reporter.log("⚠️ Discount is empty. Skipping enterDiscount().", true);
+            return;
+        }
+        sendKeys(discountInput, discount);
+    }
+    public void enterTax(String tax) {
+        if (tax == null || tax.trim().isEmpty()) return;
+        sendKeys(taxInput, LocatorUtils.escapeXPathText(tax));
     }
 
-    public void enterAddOnCharges(String addoncharge) {
-        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='addoncharge']"));
-        qtyInput.clear();
-        qtyInput.sendKeys(addoncharge);
+    public void enterTaxRate(String taxRate) {
+        if (taxRate == null || taxRate.trim().isEmpty()) return;
+        sendKeys(taxRateInput, LocatorUtils.escapeXPathText(taxRate));
     }
 
-    public void enterAdditionalDiscount(String additional_discount) {
-        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='additional_discount']"));
-        qtyInput.clear();
-        qtyInput.sendKeys(additional_discount);
+    public void enterTotalAmount(String totalAmount) {
+        if (totalAmount == null || totalAmount.trim().isEmpty()) return;
+        sendKeys(totalAmountInput, LocatorUtils.escapeXPathText(totalAmount));
     }
 
-    public void enterFreightCharges(String freightcharges) {
-        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='freightcharges']"));
-        qtyInput.clear();
-        qtyInput.sendKeys(freightcharges);
+    public void selectTermsAndConditions(String terms) {
+        if (terms == null || terms.trim().isEmpty()) return;
+        selectDropdownUsingVisibleText(termsDropdown, LocatorUtils.escapeXPathText(terms));
     }
 
-    public void selectAdditionalTax(String additional_tax) {
-        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='tax_name4']"));
-        qtyInput.clear();
-        qtyInput.sendKeys(additional_tax);
+    public void enterTermsConditions(String termsConditions) {
+        if (termsConditions == null || termsConditions.trim().isEmpty()) return;
+        sendKeys(termsConditionsEditor, LocatorUtils.escapeXPathText(termsConditions));
+    }
+
+    public String getNetAmount() {
+        return getText(netAmountInput);
+    }
+
+    public void enterAddOnCharges(String addOnCharges) {
+        if (addOnCharges == null || addOnCharges.trim().isEmpty()) return;
+        sendKeys(addOnChargesInput, LocatorUtils.escapeXPathText(addOnCharges));
+    }
+
+    public void enterAdditionalDiscount(String discount) {
+        if (discount == null || discount.trim().isEmpty()) {
+            Reporter.log("⚠️ Additional Discount is empty. Skipping enterAdditionalDiscount().", true);
+            return;
+        }
+        sendKeys(additionalDiscountInput, discount);
+    }
+
+    public void enterFreightCharges(String freight) {
+        if (freight == null || freight.trim().isEmpty()) {
+            Reporter.log("⚠️ Freight Charges is empty. Skipping enterFreightCharges().", true);
+            return;
+        }
+        sendKeys(freightChargesInput, freight);
+    }
+
+    public void selectAdditionalTax(String additionalTax) {
+        if (additionalTax == null || additionalTax.trim().isEmpty()) return;
+        selectDropdownUsingVisibleText(additionalTaxDropdown, LocatorUtils.escapeXPathText(additionalTax));
     }
 
     public void enterRoundOff(String roundOff) {
-        WebElement qtyInput = driver.findElement(By.xpath("//input[@formcontrolname='roundOff']"));
-        qtyInput.clear();
-        qtyInput.sendKeys(roundOff);
+        if (roundOff == null || roundOff.trim().isEmpty()) return;
+        sendKeys(roundOffInput, LocatorUtils.escapeXPathText(roundOff));
     }
 
-//    public String getVendorDetails() {
-//        return getText(getFollowingSiblingLocator(PurchaseConstants.VENDOR_DETAILS_LABEL));
-//    }
-//
-//    public String getExchangeRate() {
-//        return getText(getFollowingSiblingLocator(PurchaseConstants.EXCHANGE_RATE_LABEL));
-//    }
-
-//    public String getTotalAmount() {
-//        return getText(getFollowingSiblingLocator(PurchaseConstants.TOTAL_AMOUNT_LABEL));
-//    }
-//
-//    public String getGrandTotal() {
-//        return getText(getFollowingSiblingLocator(PurchaseConstants.GRAND_TOTAL_LABEL));
-//    }
-
-    public void fillPurchaseOrderDetails(String branch, String vendor, String currency, String quantity,
-                                         String price, String discount, String addOnCharges,
-                                         String additionalDiscount, String freightCharges,
-                                         String additionalTax, String roundOff) {
-        if (branch != null && !branch.isEmpty()) {
-            selectBranchName(branch);
-        }
-        if (vendor != null && !vendor.isEmpty()) {
-            selectVendorName(vendor);
-        }
-        if (currency != null && !currency.isEmpty()) {
-            selectCurrencyName(currency);
-        }
-        if (quantity != null && !quantity.isEmpty()) {
-            enterQuantity(quantity);
-        }
-        if (price != null && !price.isEmpty()) {
-            enterPrice(price);
-        }
-        if (discount != null && !discount.isEmpty()) {
-            enterDiscount(discount);
-        }
-        if (addOnCharges != null && !addOnCharges.isEmpty()) {
-            enterAddOnCharges(addOnCharges);
-        }
-        if (additionalDiscount != null && !additionalDiscount.isEmpty()) {
-            enterAdditionalDiscount(additionalDiscount);
-        }
-        if (freightCharges != null && !freightCharges.isEmpty()) {
-            enterFreightCharges(freightCharges);
-        }
-        if (additionalTax != null && !additionalTax.isEmpty()) {
-            selectAdditionalTax(additionalTax);
-        }
-        if (roundOff != null && !roundOff.isEmpty()) {
-            enterRoundOff(roundOff);
-        }
+    public String getGrandTotal() {
+        return getText(grandTotalInput);
     }
 }

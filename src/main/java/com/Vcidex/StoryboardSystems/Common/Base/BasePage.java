@@ -1,13 +1,16 @@
 package com.Vcidex.StoryboardSystems.Common.Base;
 
+import com.Vcidex.StoryboardSystems.Utils.Helpers.LoggingHelper;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
 import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.internal.Require;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 import static com.Vcidex.StoryboardSystems.Common.Base.TestBase.logger;
@@ -19,9 +22,8 @@ public class BasePage {
     protected JavascriptExecutor jsExecutor;
 
     public BasePage(WebDriver driver) {
-        this.driver = driver;
-        int timeout = getTimeoutFromConfig();
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        this.driver = Require.nonNull("Driver must be set", driver); // This is where your error occurred
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(getTimeoutFromConfig()));
         this.actions = new Actions(driver);
         this.jsExecutor = (JavascriptExecutor) driver;
     }
@@ -30,17 +32,20 @@ public class BasePage {
         return Integer.parseInt(ConfigManager.getProperty("WebDriver.timeout", "10"));
     }
 
+    // -------------------------- Element Interaction Methods ---------------------------
+
     public WebElement findElement(By locator) {
+        LoggingHelper.logWithEmoji("INFO", "Finding element: " + locator, "FIND_ELEMENT");
         return ErrorHandler.executeSafely(driver, () -> driver.findElement(locator), "findElement");
     }
 
     public WebElement findElement(By locator, String elementName) {
-        ExtentTestManager.getTest().info("🔍 Finding element: " + elementName);
-        logger.info("🔍 Finding element: {}", elementName);
+        LoggingHelper.logWithEmoji("INFO", "Finding element: " + elementName, "FIND_ELEMENT");
         return ErrorHandler.executeSafely(driver, () -> driver.findElement(locator), "findElement - " + elementName);
     }
 
     public void sendKeys(By locator, String text) {
+        LoggingHelper.logWithEmoji("INFO", "Entering text into element: " + locator, "SENDKEYS");
         ErrorHandler.executeSafely(driver, () -> {
             WebElement element = findElement(locator);
             element.clear();
@@ -50,23 +55,29 @@ public class BasePage {
     }
 
     public void sendKeys(By locator, String value, String elementName) {
-        ExtentTestManager.getTest().info("⌨️ Entering '" + value + "' into: " + elementName);
-        logger.info("⌨️ Entering '{}' into: {}", value, elementName);
-        WebElement element = findElement(locator, elementName);
-        element.clear();
-        element.sendKeys(value);
+        LoggingHelper.logWithEmoji("INFO", "Entering '" + value + "' into: " + elementName, "SENDKEYS");
+        ErrorHandler.executeSafely(driver, () -> {
+            WebElement element = findElement(locator, elementName);
+            element.clear();
+            element.sendKeys(value);
+            return null;
+        }, "SendKeys");
     }
 
     public void click(By locator) {
+        LoggingHelper.logWithEmoji("INFO", "Clicking on: " + locator, "CLICK");
         ErrorHandler.executeSafely(driver, () -> {
             findElement(locator).click();
             return null;
         }, "click");
     }
 
+    public String getAttribute(By locator, String attributeName) {
+        return ErrorHandler.executeSafely(driver, () -> driver.findElement(locator).getAttribute(attributeName), "getAttribute");
+    }
+
     public void click(By locator, String elementName) {
-        ExtentTestManager.getTest().info("🖱️ Clicking on: " + elementName);
-        logger.info("🖱️ Clicking on: {}", elementName);
+        LoggingHelper.logWithEmoji("INFO", "Clicking on: " + elementName, "CLICK");
         WebElement element = findElement(locator, elementName);
         element.click();
     }
@@ -86,14 +97,17 @@ public class BasePage {
     public boolean isElementPresent(By locator) {
         return ErrorHandler.executeSafely(driver, () -> driver.findElements(locator).size() > 0, "isElementPresent");
     }
+
+    // -------------------------- Action Methods ---------------------------
+
     public void performAction(Runnable action, String actionDescription) {
         try {
             action.run();
+            LoggingHelper.logWithEmoji("INFO", actionDescription + " succeeded", "START");
             ExtentTestManager.getTest().info("✅ Action succeeded: " + actionDescription);
-            logger.info("✅ Action succeeded: {}", actionDescription);
         } catch (Exception e) {
+            LoggingHelper.logWithEmoji("ERROR", actionDescription + " failed: " + e.getMessage(), "FAIL");
             ExtentTestManager.getTest().fail("❌ Action failed: " + actionDescription + " | Error: " + e.getMessage());
-            logger.error("❌ Action failed: {} | Error: {}", actionDescription, e.getMessage(), e);
             throw new RuntimeException("Error in action: " + actionDescription, e);
         }
     }
@@ -106,14 +120,10 @@ public class BasePage {
         return ErrorHandler.executeSafely(driver, () -> findElement(locator).getText(), "getText");
     }
 
-    public void waitForElement(By locator, int seconds) {
-        ErrorHandler.executeSafely(driver, () -> {
-            new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
-            return null;
-        }, "waitForElement");
-    }
+    // -------------------------- Element Actions ---------------------------
 
     public void selectDropdownUsingVisibleText(By locator, String value) {
+        LoggingHelper.logWithEmoji("INFO", "Selecting dropdown value: " + value, "SENDKEYS");
         ErrorHandler.executeSafely(driver, () -> {
             new Select(findElement(locator)).selectByVisibleText(value);
             return null;
@@ -121,6 +131,7 @@ public class BasePage {
     }
 
     public void scrollIntoView(By locator) {
+        LoggingHelper.logWithEmoji("INFO", "Scrolling into view: " + locator, "TIMER");
         ErrorHandler.executeSafely(driver, () -> {
             WebElement element = findElement(locator);
             jsExecutor.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
@@ -129,6 +140,7 @@ public class BasePage {
     }
 
     public void moveToElement(By locator) {
+        LoggingHelper.logWithEmoji("INFO", "Moving to element: " + locator, "TIMER");
         ErrorHandler.executeSafely(driver, () -> {
             actions.moveToElement(findElement(locator)).perform();
             return null;
@@ -136,6 +148,7 @@ public class BasePage {
     }
 
     public void doubleClick(By locator) {
+        LoggingHelper.logWithEmoji("INFO", "Double clicking on: " + locator, "CLICK");
         ErrorHandler.executeSafely(driver, () -> {
             actions.doubleClick(findElement(locator)).perform();
             return null;
@@ -143,6 +156,7 @@ public class BasePage {
     }
 
     public void rightClick(By locator) {
+        LoggingHelper.logWithEmoji("INFO", "Right clicking on: " + locator, "CLICK");
         ErrorHandler.executeSafely(driver, () -> {
             actions.contextClick(findElement(locator)).perform();
             return null;
@@ -150,69 +164,41 @@ public class BasePage {
     }
 
     public void executeJavaScript(String script, Object... args) {
+        LoggingHelper.logWithEmoji("INFO", "Executing JavaScript: " + script, "TIMER");
         ErrorHandler.executeSafely(driver, () -> {
             jsExecutor.executeScript(script, args);
             return null;
         }, "executeJavaScript");
     }
 
-    public boolean isElementClickable(By locator) {
-        return ErrorHandler.executeSafely(driver, () -> {
-            wait.until(ExpectedConditions.elementToBeClickable(locator));
-            return true;
-        }, "isElementClickable");
-    }
-
     public void clearText(By locator) {
+        LoggingHelper.logWithEmoji("INFO", "Clearing text from element: " + locator, "SENDKEYS");
         ErrorHandler.executeSafely(driver, () -> {
             findElement(locator).clear();
             return null;
         }, "clearText");
     }
 
-    public String escapeXPathText(String text) {
-        if (text.contains("'")) {
-            String[] parts = text.split("'");
-            StringBuilder xpath = new StringBuilder("concat(");
-            for (int i = 0; i < parts.length; i++) {
-                xpath.append("'").append(parts[i]).append("'");
-                if (i != parts.length - 1) {
-                    xpath.append(", \"'\", ");
-                }
-            }
-            xpath.append(")");
-            return xpath.toString();
-        }
-        return "'" + text + "'";
-    }
-
-    public void waitForLoaderToDisappear() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class, 'loader')]")));
-        } catch (TimeoutException e) {
-            System.out.println("Loader did not disappear in time.");
-        }
-    }
-
     public String getCSSValue(By locator, String property) {
+        LoggingHelper.logWithEmoji("INFO", "Getting CSS value from: " + locator, "TIMER");
         return ErrorHandler.executeSafely(driver, () -> findElement(locator).getCssValue(property), "getCSSValue");
     }
 
-    // ✨ Optional: Common utility to wrap any action with logging and extent reporting
+    // -------------------------- Error Handling and Logging ---------------------------
+
     protected void performAction(String actionName, Runnable action, boolean isSubmit, String elementDesc) {
         try {
+            LoggingHelper.logWithEmoji("INFO", actionName + ": " + elementDesc, "START");
             ExtentTestManager.getTest().info("🚀 " + actionName + ": " + elementDesc);
-            logger.info("🔄 Performing action: {}", actionName);
-
             ErrorHandler.executeSafely(driver, () -> {
                 action.run();
                 return null;
             }, actionName);
 
-            logger.info("✅ Action succeeded: {}", actionName);
+            LoggingHelper.logWithEmoji("INFO", actionName + " succeeded", "DONE");
             ExtentTestManager.getTest().pass("✅ " + actionName + " successful");
         } catch (Exception e) {
+            LoggingHelper.logWithEmoji("ERROR", actionName + " failed: " + e.getMessage(), "FAIL");
             logger.error("❌ Action failed: {}", actionName, e);
             ExtentTestManager.getTest().fail("❌ " + actionName + " failed: " + e.getMessage());
             throw new RuntimeException("Failed to perform: " + actionName, e);
