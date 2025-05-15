@@ -39,7 +39,7 @@ C:.
 |   |   |               |   +---Base
 |   |   |               |   |       BasePage.java
 |   |   |               |   |       TestBase.java
-|   |   |               |   |       
+|   |   |               |   |
 |   |   |               |   +---Helpers
 |   |   |               |   \---Workflow
 |   |   |               |       |   FeatureToggleService.java
@@ -50,20 +50,20 @@ C:.
 |   |   |               |       |   WorkflowOrchestrator.java
 |   |   |               |       |   WorkflowState.java
 |   |   |               |       |   WorkflowStrategy.java
-|   |   |               |       |   
+|   |   |               |       |
 |   |   |               |       \---Approval
 |   |   |               |               ApprovalProcessor.java
 |   |   |               |               DynamicApprovalHandler.java
 |   |   |               |               GenericApproval.java
-|   |   |               |               
+|   |   |               |
 |   |   |               +---Inventory
 |   |   |               |   |   InventoryObserver.java
-|   |   |               |   |   
+|   |   |               |   |
 |   |   |               |   \---InventoryWorkflow
 |   |   |               |           InventoryRuleEngine.java
 |   |   |               |           InventoryStateHandler.java
 |   |   |               |           InventoryWorkflowEngine.java
-|   |   |               |           
+|   |   |               |
 |   |   |               +---Purchase
 |   |   |               |   |   flowConfig.json
 |   |   |               |   |   PurchaseBasePage.java
@@ -72,7 +72,7 @@ C:.
 |   |   |               |   |   
 |   |   |               |   +---Pages
 |   |   |               |   |   |   Dashboard.java
-|   |   |               |   |   |   
+|   |   |               |   |   |
 |   |   |               |   |   +---Agreement
 |   |   |               |   |   |       Agreement_Edit.java
 |   |   |               |   |   |       Agreement_View.java

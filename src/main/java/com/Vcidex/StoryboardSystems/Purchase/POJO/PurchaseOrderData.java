@@ -18,7 +18,7 @@ public class PurchaseOrderData {
     private String despatchMode;              // Input
     private String currency;                  // Dropdown (Required)
     private double exchangeRate;              // Autofetch from currency
-    private String uploadFile;                // File upload
+    private String uploadFile;                    // File upload
     private String coverNote;                 // Input
     private String renewal;                   // Radio buttons (Yes / No)
     private Date renewalDate;                 // Date picker (Required) if renewal is yes
