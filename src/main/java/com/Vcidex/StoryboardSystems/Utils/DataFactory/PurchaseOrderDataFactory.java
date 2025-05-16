@@ -1,4 +1,4 @@
-package com.Vcidex.StoryboardSystems.Utils.Data.DataFactory;
+package com.Vcidex.StoryboardSystems.Utils.DataFactory;
 
 import com.github.javafaker.Faker;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;

@@ -1,8 +1,8 @@
 package com.Vcidex.StoryboardSystems.Utils.Helpers;
 
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorHandler;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;

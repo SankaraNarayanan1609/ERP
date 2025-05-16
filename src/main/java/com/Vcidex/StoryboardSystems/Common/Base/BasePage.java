@@ -2,8 +2,8 @@ package com.Vcidex.StoryboardSystems.Common.Base;
 
 import com.Vcidex.StoryboardSystems.Utils.Helpers.LoggingHelper;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorHandler;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.internal.Require;

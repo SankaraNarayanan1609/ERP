@@ -2,8 +2,8 @@ package com.Vcidex.StoryboardSystems.Common.Authentication;
 
 import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorHandler;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

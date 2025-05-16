@@ -4,12 +4,9 @@ import com.Vcidex.StoryboardSystems.BaseTest;
 import com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager;
 import com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.Direct_PO;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
-import com.Vcidex.StoryboardSystems.Utils.Data.DataProviderManager;
-import com.Vcidex.StoryboardSystems.Utils.Data.DataSource;
 import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationData;
 import com.Vcidex.StoryboardSystems.Utils.Navigation.NavigationHelper;
-import com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -52,7 +49,6 @@ public class DirectPOTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = "SingleScenarioProvider", dataProviderClass = DataProviderManager.class)
-    @DataSource(scenarioID = "DirectPO1")
     public void testCreateDirectPO(String scenarioID, Map<String, String> data) {
         Reporter.log("🚧 Starting Direct PO Creation", true);
 

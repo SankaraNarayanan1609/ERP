@@ -2,8 +2,8 @@ package com.Vcidex.StoryboardSystems.Common.Base;
 
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import com.Vcidex.StoryboardSystems.Utils.WebDriverFactory;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ExtentTestManager;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;

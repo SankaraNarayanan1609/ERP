@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.Vcidex.StoryboardSystems.Utils.Reporting.ErrorHandler;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorHandler;
 
 import java.time.Duration;
 
