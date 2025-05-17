@@ -1,62 +1,59 @@
+// PurchaseIndentLogger.java
 package com.Vcidex.StoryboardSystems.Purchase.Business;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PurchaseIndentLogger {
-
     private static final Logger logger = LoggerFactory.getLogger("RaisePurchaseIndentBusiness");
+    private static final ThreadLocal<String> PI_ID = new ThreadLocal<>();
 
-    public static void startPICreation(String branchName, String requestedBy, String department, String remarks) {
-        logger.info("[RaisePI] Starting Raise PI creation - Branch: {}, Requested By: {}, Department: {}, Remarks: {}",
-                branchName, requestedBy, department, remarks);
+    public static void start(String branch, String requestedBy, String dept, String remarks) {
+        String temp = "PI-temp-" + Thread.currentThread().getId();
+        PI_ID.set(temp);
+        logger.info("[PI:{}] Starting Raise PI – Branch: {} | RequestedBy: {} | Dept: {} | Remarks: {}",
+                temp, branch, requestedBy, dept, remarks);
     }
 
-    public static void addedGeneralDetails(String piType, String deliveryLocation) {
-        logger.debug("[PI] Entered general details - PI Type: {}, Delivery Location: {}", piType, deliveryLocation);
+    public static void addedGeneralDetails(String type, String location) {
+        logger.debug("[PI:{}] General details – Type: {}, Location: {}", PI_ID.get(), type, location);
     }
 
-    public static void addedProduct(String productName, int quantity) {
-        logger.debug("[PI] Added product - Name: {}, Quantity: {}", productName, quantity);
+    public static void addedProduct(String name, int qty) {
+        logger.debug("[PI:{}] Added product – {} x{}", PI_ID.get(), name, qty);
     }
 
     public static void addedMultipleProducts(int count) {
-        logger.debug("[PI] Added {} products in total.", count);
+        logger.debug("[PI:{}] Added {} products total", PI_ID.get(), count);
     }
 
-    public static void submittingPI() {
-        logger.info("[PI] Submitting the Purchase Indent form...");
+    public static void submitting() {
+        logger.info("[PI:{}] Submitting the Purchase Indent form...", PI_ID.get());
     }
 
-    public static void piCreationSuccess(String piNumber) {
-        logger.info("[PI] Purchase Indent created successfully. PI Number: {}", piNumber);
+    public static void creationSuccess(String piNumber) {
+        PI_ID.set(piNumber);
+        logger.info("[PI:{}] Purchase Indent created – PI Number: {}", piNumber, piNumber);
     }
 
-    public static void validatingPISummary(String expectedPINumber) {
-        logger.info("[PI] Validating PI number in summary: Expected = {}", expectedPINumber);
+    public static void validatingSummary(String expected) {
+        logger.info("[PI:{}] Validating PI# in summary: expected={}", PI_ID.get(), expected);
     }
 
-    public static void validationSuccess(String actualPINumber) {
-        logger.info("[PI] PI Summary validation passed. PI Number matched: {}", actualPINumber);
+    public static void validationSuccess(String actual) {
+        logger.info("[PI:{}] PI summary OK – found={}", PI_ID.get(), actual);
     }
 
     public static void validationFailure(String expected, String actual) {
-        logger.warn("[PI] PI Summary validation failed. Expected: {}, Found: {}", expected, actual);
+        logger.warn("[PI:{}] PI summary MISMATCH – expected={} found={}",
+                PI_ID.get(), expected, actual);
     }
 
-    public static void errorDuringPICreation(String step, Throwable t) {
-        logger.error("[PI] Error during step: {}. Exception: {}", step, t.getMessage(), t);
+    public static void error(String step, Throwable t) {
+        logger.error("[PI:{}] Error during {}: {}", PI_ID.get(), step, t.getMessage(), t);
     }
 
-    public static void info(String message) {
-        logger.info("[PI] {}", message);
-    }
-
-    public static void warn(String message) {
-        logger.warn("[PI] {}", message);
-    }
-
-    public static void error(String message, Throwable t) {
-        logger.error("[PI] {}", message, t);
+    public static void metricLines(int count) {
+        logger.info("[PI:{}][METRIC] IndentLines count={}", PI_ID.get(), count);
     }
 }

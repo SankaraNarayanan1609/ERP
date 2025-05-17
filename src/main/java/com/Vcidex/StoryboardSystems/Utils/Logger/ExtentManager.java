@@ -1,8 +1,8 @@
-// ExtentManager.java
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,6 +10,10 @@ import java.util.Date;
 public class ExtentManager {
     private static ExtentReports extent;
     private static final String reportDir = System.getProperty("user.dir") + "/test-output/";
+
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread(ExtentManager::flushReports));
+    }
 
     public static synchronized ExtentReports getInstance() {
         if (extent == null) {

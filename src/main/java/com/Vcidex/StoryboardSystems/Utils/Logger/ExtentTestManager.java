@@ -1,9 +1,8 @@
-// ExtentTestManager.java
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-
+import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentManager;
 public class ExtentTestManager {
     private static final ThreadLocal<ExtentTest> testThreadLocal = new ThreadLocal<>();
 
@@ -17,9 +16,7 @@ public class ExtentTestManager {
 
     public static ExtentTest getTest() {
         ExtentTest t = testThreadLocal.get();
-        if (t == null) {
-            throw new IllegalStateException("Call createTest() first");
-        }
+        if (t == null) throw new IllegalStateException("Call createTest() first");
         return t;
     }
 

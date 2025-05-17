@@ -1,6 +1,5 @@
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
-import com.Vcidex.StoryboardSystems.Utils.ExtentLogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.openqa.selenium.By;
@@ -15,25 +14,35 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
+import com.Vcidex.StoryboardSystems.Utils.ExtentLogUtil;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
+
 public class UIActionLogger {
     private static final Logger logger = LoggerFactory.getLogger(UIActionLogger.class);
 
-    /** Interaction logs at DEBUG level */
-    public static void click(By locator, String name) {
-        logger.debug("UI Click → {} | {}", name, locator);
+    /** DEBUG-level click with visibility check. */
+    public static void click(WebDriver driver, By locator, String name) {
+        boolean visible = false;
+        try { visible = driver.findElement(locator).isDisplayed(); } catch (Exception ignore) {}
+        logger.debug("UI Click → {} | {} | visible={}", name, locator, visible);
+        driver.findElement(locator).click();
     }
 
-    public static void type(By locator, String value, String name) {
-        logger.debug("UI Type → {} | '{}' | {}", name, value, locator);
+    /** DEBUG-level type with visibility check. */
+    public static void type(WebDriver driver, By locator, String value, String name) {
+        boolean visible = false;
+        try { visible = driver.findElement(locator).isDisplayed(); } catch (Exception ignore) {}
+        logger.debug("UI Type → {} | '{}' | {} | visible={}", name, value, locator, visible);
+        driver.findElement(locator).sendKeys(value);
     }
 
-    public static void submit(By locator, String pageName) {
+    /** DEBUG-level form submit. */
+    public static void submit(WebDriver driver, By locator, String pageName) {
         logger.debug("UI Submit → Page: {} | {}", pageName, locator);
+        driver.findElement(locator).submit();
     }
 
-    /**
-     * On failure: capture screenshot + browser console, at ERROR level.
-     */
+    /** ERROR-level failure hook: screenshot + console logs. */
     public static void failure(WebDriver driver, String context) {
         logger.error("UI Failure context: {}", context);
         captureScreenshot(driver, context);
@@ -48,21 +57,16 @@ public class UIActionLogger {
         }
     }
 
-    public static void click(WebDriver driver, By locator, String name) {
-        boolean visible = false;
-        try { visible = driver.findElement(locator).isDisplayed(); }
-        catch (Exception ignore) {}
-        logger.debug("UI Click → {} | {} | visible={}", name, locator, visible);
-        driver.findElement(locator).click();
-    }
-
-    // New helper—call in catch blocks when you need full page source:
+    /** Helper to save DOM snapshot into the Extent report. */
     public static void snapshot(WebDriver driver, String context) {
-        String html = driver.getPageSource();
-        String block = ExtentLogUtil.wrapLog("DOM snapshot: " + context, html);
-        ExtentTestManager.getTest().info(block);
+        try {
+            String html = driver.getPageSource();
+            String block = ExtentLogUtil.wrapLog("DOM snapshot: " + context, html);
+            ExtentTestManager.getTest().info(block);
+        } catch (Exception e) {
+            logger.warn("Could not capture DOM snapshot: {}", e.getMessage());
+        }
     }
-
 
     private static void captureScreenshot(WebDriver driver, String name) {
         try {

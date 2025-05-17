@@ -1,3 +1,4 @@
+// InwardLogger.java
 package com.Vcidex.StoryboardSystems.Purchase.Business;
 
 import com.Vcidex.StoryboardSystems.LogMessages.PurchaseLogs;
@@ -5,30 +6,38 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class InwardLogger {
+    private static final Logger logger = LoggerFactory.getLogger("InwardBusiness");
+    private static final ThreadLocal<String> INWARD_ID = new ThreadLocal<>();
 
-    private static final Logger logger = LoggerFactory.getLogger(InwardLogger.class);
-
-    public static void startInwardProcess() {
-        logger.info(PurchaseLogs.Inward.started());
+    public static void startProcess() {
+        String temp = "INW-temp-" + Thread.currentThread().getId();
+        INWARD_ID.set(temp);
+        logger.info("[Inward:{}] Started Material Inward creation.", temp);
     }
 
-    public static void addedInwardDetails(String deliveryNo) {
-        logger.info(PurchaseLogs.Inward.details(deliveryNo));
+    public static void addedDetails(String deliveryNo) {
+        logger.info("[Inward:{}] {}", INWARD_ID.get(), PurchaseLogs.Inward.details(deliveryNo));
     }
 
-    public static void addedProducts(int productCount) {
-        logger.info(PurchaseLogs.Inward.addedProducts(productCount));
+    public static void addedProducts(int count) {
+        logger.info("[Inward:{}] {}", INWARD_ID.get(), PurchaseLogs.Inward.addedProducts(count));
     }
 
-    public static void submittedInward() {
-        logger.info(PurchaseLogs.Inward.submitted());
+    public static void submitting() {
+        logger.info("[Inward:{}] {}", INWARD_ID.get(), PurchaseLogs.Inward.submitted());
     }
 
-    public static void validatedInwardSummary(String inwardNumber) {
-        logger.info(PurchaseLogs.Inward.summaryValidated(inwardNumber));
+    public static void summaryValidated(String inwardNo) {
+        INWARD_ID.set(inwardNo);
+        logger.info("[Inward:{}] {}", inwardNo, PurchaseLogs.Inward.summaryValidated(inwardNo));
     }
 
-    public static void completedInwardProcess() {
-        logger.info(PurchaseLogs.Inward.completed());
+    public static void completed() {
+        logger.info("[Inward:{}] {}", INWARD_ID.get(), PurchaseLogs.Inward.completed());
+    }
+
+    /** Business metric hook */
+    public static void metricLines(int count) {
+        logger.info("[Inward:{}][METRIC] InwardLines count={}", INWARD_ID.get(), count);
     }
 }
