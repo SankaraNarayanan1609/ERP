@@ -57,6 +57,16 @@ public class UIActionLogger {
         }
     }
 
+    /** for arbitrary UI-layer debug messages */
+    public static void debug(String message) {
+        logger.debug(message);
+    }
+
+    /** if you need generic info: */
+    public static void info(String message) {
+        logger.info(message);
+    }
+
     /** Helper to save DOM snapshot into the Extent report. */
     public static void snapshot(WebDriver driver, String context) {
         try {

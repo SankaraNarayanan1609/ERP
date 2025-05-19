@@ -1,87 +1,59 @@
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Indent;
 
-import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
+import com.Vcidex.StoryboardSystems.Purchase.POJO.IndentData;
+import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
+import com.Vcidex.StoryboardSystems.Purchase.PurchaseLogs;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class PI_Add extends BasePage {
+public class PI_Add extends PurchaseBasePage {
+    private final By branchDropdown      = By.id("branch-dropdown");
+    private final By refNoField          = By.id("ref-no-field");
+    private final By departmentField     = By.id("department-field");
+    private final By requestedByDropdown = By.id("requested-by-dropdown");
+    private final By priorityHighRadio   = By.id("priority-high-radio");
+    private final By priorityLowRadio    = By.id("priority-low-radio");
+    private final By remarksField        = By.id("remarks-field");
+    private final By addButton           = By.id("add-button");
+    private final By indentNoLocator     = By.cssSelector(".indent-number"); // adjust as needed
 
-    // Locators
-    private By branchNameDropdown = By.id("branch-dropdown");
-    private By refNoField = By.id("ref-no-field");
-    private By departmentField = By.id("department-field");
-    private By requestedByDropdown = By.id("requested-by-dropdown");
-    private By priorityHighRadio = By.id("priority-high-radio");
-    private By priorityLowRadio = By.id("priority-low-radio");
-    private By remarksField = By.id("remarks-field");
-    private By productNameDropdown = By.id("product-name-dropdown");
-    private By productGroupField = By.id("product-group-field");
-    private By productCodeField = By.id("product-code-field");
-    private By productDescriptionField = By.id("product-description-field");
-    private By unitField = By.id("unit-field");
-    private By quantityRequestedField = By.id("quantity-requested-field");
-    private By addButton = By.id("add-button");
-
-    // Constructor
     public PI_Add(WebDriver driver) {
         super(driver);
     }
 
-    // Select Branch
-    public void selectBranchName(String branchName) {
-        selectDropdownUsingVisibleText(branchNameDropdown, branchName);
-    }
+    /**
+     * Complete “create indent” flow.
+     * Returns the generated indent number.
+     */
+    public String createIndent(IndentData data) {
+        // 1) start indent
+        logger.info(PurchaseLogs.Inward.started());
 
-    // Get Ref No (Auto-generated)
-    public String getRefNo() {
-        return getText(refNoField);
-    }
+        // 2) fill basics
+        selectByText(branchDropdown, data.getBranchName());
+        logger.info(PurchaseLogs.Inward.details(data.getIndentRefNo()));
 
-    // Get Department (Auto-fetched)
-    public String getDepartment() {
-        return getText(departmentField);
-    }
-
-    // Select Requested By
-    public void selectRequestedBy(String requestedBy) {
-        selectDropdownUsingVisibleText(requestedByDropdown, requestedBy);
-    }
-
-    // Select Priority (High/Low)
-    public void selectPriority(String priority) {
-        if ("high".equalsIgnoreCase(priority)) {
-            click(priorityHighRadio);
-        } else if ("low".equalsIgnoreCase(priority)) {
-            click(priorityLowRadio);
+        selectByText(requestedByDropdown, data.getRequestedBy());
+        if ("high".equalsIgnoreCase(data.getPriority())) {
+            click(priorityHighRadio, "Priority: High");
+        } else {
+            click(priorityLowRadio, "Priority: Low");
         }
-    }
+        logger.info("🚩 Priority set to " + data.getPriority());
 
-    // Enter Remarks
-    public void enterRemarks(String remarks) {
-        sendKeys(remarksField, remarks);
-    }
+        // 3) remarks & items
+        type(remarksField, data.getRemarks());
+        click(addButton, "Add Indent");
+        logger.info("📦 Added Indent item – Quantity: " + data.getQuantityRequested());
 
-    // Select Product Name
-    public void selectProductName(String productName) {
-        selectDropdownUsingVisibleText(productNameDropdown, productName);
-        fetchProductDetails();
-    }
+        // 4) submit & capture
+        logger.info(PurchaseLogs.Inward.submitted());
+        // assume clicking add is a submit here; otherwise add a separate submit button
 
-    // Fetch Product Details (Auto-fetched)
-    private void fetchProductDetails() {
-        System.out.println("Product Group: " + getText(productGroupField));
-        System.out.println("Product Code: " + getText(productCodeField));
-        System.out.println("Product Description: " + getText(productDescriptionField));
-        System.out.println("Unit: " + getText(unitField));
-    }
+        String indentNo = getText(indentNoLocator, "Indent Number");
+        logger.info(PurchaseLogs.Inward.summaryValidated(indentNo));
+        logger.info(PurchaseLogs.Inward.completed());
 
-    // Enter Quantity Requested
-    public void enterQuantityRequested(String quantity) {
-        sendKeys(quantityRequestedField, quantity);
-    }
-
-    // Click Add Button
-    public void clickAddButton() {
-        click(addButton);
+        return indentNo;
     }
 }

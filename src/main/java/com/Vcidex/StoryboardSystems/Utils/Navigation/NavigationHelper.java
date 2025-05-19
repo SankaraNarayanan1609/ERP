@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorHandler;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
 
 import java.time.Duration;
 
@@ -24,7 +24,7 @@ public class NavigationHelper {
 
     // ✅ Click using JavaScript with Retry using ErrorHandler
     private void clickUsingJS(By locator, String text) {
-        ErrorHandler.executeSafely(driver, () -> {
+        ErrorLogger.executeSafely(driver, () -> {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
             retryClick(element); // No InterruptedException, so no need for try-catch here
@@ -75,7 +75,7 @@ public class NavigationHelper {
     // ✅ Navigate to Module, Menu, and Submenu using ErrorHandler
     // ✅ Navigate to Module, Menu, and Submenu using ErrorHandler
     public void navigateToModuleAndMenu(String moduleName, String menuName, String subMenuName) {
-        ErrorHandler.executeSafely(driver, () -> {
+        ErrorLogger.executeSafely(driver, () -> {
             logger.info("Navigating to module: {}, menu: {}, sub-menu: {}", moduleName, menuName, subMenuName);
 
             try {

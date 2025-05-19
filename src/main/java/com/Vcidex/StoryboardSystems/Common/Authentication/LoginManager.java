@@ -2,7 +2,7 @@ package com.Vcidex.StoryboardSystems.Common.Authentication;
 
 import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
-import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorHandler;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import org.apache.logging.log4j.LogManager;
@@ -72,29 +72,29 @@ public class LoginManager extends BasePage {
         ExtentTestManager.getTest().info("📥 Filling login credentials for userId: " + userId);
 
         // Fill credentials
-        ErrorHandler.executeSafely(driver, () -> {
+        ErrorLogger.executeSafely(driver, () -> {
             sendKeys(companyCodeField, companyCode);
             return null;
         }, "Enter Company Code");
 
-        ErrorHandler.executeSafely(driver, () -> {
+        ErrorLogger.executeSafely(driver, () -> {
             sendKeys(usernameField, username);
             return null;
         }, "Enter Username");
 
-        ErrorHandler.executeSafely(driver, () -> {
+        ErrorLogger.executeSafely(driver, () -> {
             sendKeys(passwordField, password);
             return null;
         }, "Enter Password");
 
         // Click login
-        ErrorHandler.executeSafely(driver, () -> {
+        ErrorLogger.executeSafely(driver, () -> {
             click(loginButton);
             return null;
         }, "Click Login Button");
 
         // Wait for dashboard
-        ErrorHandler.executeSafely(driver, () -> {
+        ErrorLogger.executeSafely(driver, () -> {
             wait.until(ExpectedConditions.presenceOfElementLocated(postLoginLocator));
             wait.until(ExpectedConditions.visibilityOfElementLocated(postLoginLocator));
             return null;

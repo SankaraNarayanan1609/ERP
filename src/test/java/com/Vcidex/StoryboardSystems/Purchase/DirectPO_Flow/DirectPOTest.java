@@ -1,6 +1,6 @@
 package com.Vcidex.StoryboardSystems.Purchase.DirectPO_Flow;
 
-import com.Vcidex.StoryboardSystems.BaseTest;
+import com.Vcidex.StoryboardSystems.Test.TestBase;
 import com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager;
 import com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.Direct_PO;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
@@ -14,7 +14,7 @@ import org.testng.annotations.*;
 
 import java.util.Map;
 
-public class DirectPOTest extends BaseTest {
+public class DirectPOTest extends TestBase {
 
     private LoginManager loginManager;
     private Direct_PO directPO;

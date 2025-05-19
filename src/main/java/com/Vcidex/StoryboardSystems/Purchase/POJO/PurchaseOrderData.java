@@ -1,285 +1,156 @@
+// File: src/main/java/com/Vcidex/StoryboardSystems/Purchase/POJO/PurchaseOrderData.java
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
+
 public class PurchaseOrderData {
-    // Basic Fields
-    private String branchName;                // Dropdown (Required)
-    private String poRefNo;                   // Input
-    private Date poDate;                      // Date picker (Required)
-    private Date expectedDate;                // Date picker (Required)
-    private String vendorName;                // Dropdown (Required)
-    private String vendorDetails;             // Autofetch from Vendor selection
-    private String billTo;                    // Autofetch from Branch
-    private String shipTo;                    // Autofetch from Vendor
-    private String requestedBy;               // Dropdown
-    private String deliveryTerms;             // Input
-    private String paymentTerms;              // Input
-    private String requestorContactDetails;   // Input
-    private String despatchMode;              // Input
-    private String currency;                  // Dropdown (Required)
-    private double exchangeRate;              // Autofetch from currency
-    private String uploadFile;                    // File upload
-    private String coverNote;                 // Input
-    private String renewal;                   // Radio buttons (Yes / No)
-    private Date renewalDate;                 // Date picker (Required) if renewal is yes
-    private String frequency;                 // Dropdown (Required) if renewal is yes
+    // ──────────────────────────────────────────────────────────────────────────
+    // Fields
+    // ──────────────────────────────────────────────────────────────────────────
+    private String           branchName;
+    private String           poRefNo;
+    private LocalDate        poDate;
+    private LocalDate        expectedDate;
+    private String           vendorName;
+    private String           vendorDetails;
+    private String           billTo;
+    private String           shipTo;
+    private String           requestedBy;
+    private String           requestorContactDetails;
+    private String           deliveryTerms;
+    private String           paymentTerms;
+    private String           dispatchMode;
+    private String           currency;
+    private BigDecimal       exchangeRate;
+    private String           coverNote;
+    private boolean          renewal;
+    private LocalDate        renewalDate;
+    private String           frequency;
+    private List<LineItem>   lineItems;
+    private BigDecimal       netAmount;
+    private BigDecimal       addOnCharges;
+    private BigDecimal       additionalDiscount;
+    private BigDecimal       freightCharges;
+    private String           additionalTax;
+    private BigDecimal       roundOff;
+    private BigDecimal       grandTotal;
+    private String           termsAndConditions;
+    private String           termsEditorText;
 
-    // Terms and Conditions
-    private String termsAndConditions;       // Dropdown
-    private String termsAndConditionsEditor; // Input
+    // Private constructor
+    private PurchaseOrderData() {}
 
-    // Financial Fields
-    private double netAmount;                 // Read-only
-    private double addOnCharges;              // Input
-    private double additionalDiscount;        // Input
-    private double freightCharges;            // Input
-    private String additionalTax;             // Dropdown or Text
-    private double roundOff;                  // Input
-    private double grandTotal;                // Read-only
-
-    // Getters and Setters
-    private String scenarioID;
-
-    public String getScenarioID() {
-        return scenarioID;
+    // ──────────────────────────────────────────────────────────────────────────
+    // Builder
+    // ──────────────────────────────────────────────────────────────────────────
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public void setScenarioID(String scenarioID) {
-        this.scenarioID = scenarioID;
+    public static class Builder {
+        private final PurchaseOrderData d = new PurchaseOrderData();
+
+        public Builder branchName(String b)                  { d.branchName = b; return this; }
+        public Builder poRefNo(String ref)                   { d.poRefNo = ref; return this; }
+        public Builder poDate(LocalDate date)                { d.poDate = date; return this; }
+        public Builder expectedDate(LocalDate date)          { d.expectedDate = date; return this; }
+        public Builder vendorName(String v)                  { d.vendorName = v; return this; }
+        public Builder vendorDetails(String vd)              { d.vendorDetails = vd; return this; }
+        public Builder billTo(String bt)                     { d.billTo = bt; return this; }
+        public Builder shipTo(String st)                     { d.shipTo = st; return this; }
+        public Builder requestedBy(String r)                 { d.requestedBy = r; return this; }
+        public Builder requestorContactDetails(String rc)    { d.requestorContactDetails = rc; return this; }
+        public Builder deliveryTerms(String dt)              { d.deliveryTerms = dt; return this; }
+        public Builder paymentTerms(String pt)               { d.paymentTerms = pt; return this; }
+        public Builder dispatchMode(String dm)               { d.dispatchMode = dm; return this; }
+        public Builder currency(String c)                    { d.currency = c; return this; }
+        public Builder exchangeRate(BigDecimal er)           { d.exchangeRate = er; return this; }
+        public Builder coverNote(String cn)                  { d.coverNote = cn; return this; }
+        public Builder renewal(boolean r)                    { d.renewal = r; return this; }
+        public Builder renewalDate(LocalDate rd)             { d.renewalDate = rd; return this; }
+        public Builder frequency(String f)                   { d.frequency = f; return this; }
+        public Builder lineItems(List<LineItem> items)       { d.lineItems = items; return this; }
+        public Builder netAmount(BigDecimal na)              { d.netAmount = na; return this; }
+        public Builder addOnCharges(BigDecimal aoc)          { d.addOnCharges = aoc; return this; }
+        public Builder additionalDiscount(BigDecimal ad)     { d.additionalDiscount = ad; return this; }
+        public Builder freightCharges(BigDecimal fc)         { d.freightCharges = fc; return this; }
+        public Builder additionalTax(String at)              { d.additionalTax = at; return this; }
+        public Builder roundOff(BigDecimal ro)               { d.roundOff = ro; return this; }
+        public Builder grandTotal(BigDecimal gt)             { d.grandTotal = gt; return this; }
+        public Builder termsAndConditions(String tc)         { d.termsAndConditions = tc; return this; }
+        public Builder termsEditorText(String tet)           { d.termsEditorText = tet; return this; }
+
+        public PurchaseOrderData build() {
+            // Mandatory validations
+            Objects.requireNonNull(d.branchName,    "branchName is required");
+            Objects.requireNonNull(d.expectedDate,  "expectedDate is required");
+            Objects.requireNonNull(d.vendorName,    "vendorName is required");
+            Objects.requireNonNull(d.currency,      "currency is required");
+            if (d.renewal) {
+                Objects.requireNonNull(d.renewalDate, "renewalDate is required when renewal=true");
+                Objects.requireNonNull(d.frequency,   "frequency is required when renewal=true");
+            }
+            return d;
+        }
     }
 
-    public String getBranchName() {
-        return branchName;
+    // ──────────────────────────────────────────────────────────────────────────
+    // Getters
+    // ──────────────────────────────────────────────────────────────────────────
+    public String getBranchName()             { return branchName; }
+    public String getPoRefNo()                { return poRefNo; }
+    public LocalDate getPoDate()              { return poDate; }
+    public LocalDate getExpectedDate()        { return expectedDate; }
+    public String getVendorName()             { return vendorName; }
+    public String getVendorDetails()          { return vendorDetails; }
+    public String getBillTo()                 { return billTo; }
+    public String getShipTo()                 { return shipTo; }
+    public String getRequestedBy()            { return requestedBy; }
+    public String getRequestorContactDetails(){ return requestorContactDetails; }
+    public String getDeliveryTerms()          { return deliveryTerms; }
+    public String getPaymentTerms()           { return paymentTerms; }
+    public String getDispatchMode()           { return dispatchMode; }
+    public String getCurrency()               { return currency; }
+    public BigDecimal getExchangeRate()       { return exchangeRate; }
+    public String getCoverNote()              { return coverNote; }
+    public boolean isRenewal()                { return renewal; }
+    public LocalDate getRenewalDate()         { return renewalDate; }
+    public String getFrequency()              { return frequency; }
+    public List<LineItem> getLineItems()      { return lineItems; }
+    public BigDecimal getNetAmount()          { return netAmount; }
+    public BigDecimal getAddOnCharges()       { return addOnCharges; }
+    public BigDecimal getAdditionalDiscount() { return additionalDiscount; }
+    public BigDecimal getFreightCharges()     { return freightCharges; }
+    public String getAdditionalTax()          { return additionalTax; }
+    public BigDecimal getRoundOff()           { return roundOff; }
+    public BigDecimal getGrandTotal()         { return grandTotal; }
+    public String getTermsAndConditions()     { return termsAndConditions; }
+    public String getTermsEditorText()        { return termsEditorText; }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Calculation helpers (retain your existing implementations)
+    // ──────────────────────────────────────────────────────────────────────────
+    public void computeNetAmount() {
+        this.netAmount = lineItems.stream()
+                .map(LineItem::getTotalAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
-    }
-
-    public String getPoRefNo() {
-        return poRefNo;
-    }
-
-    public void setPoRefNo(String poRefNo) {
-        this.poRefNo = poRefNo;
-    }
-
-    public Date getPoDate() {
-        return poDate;
-    }
-
-    public void setPoDate(Date poDate) {
-        this.poDate = poDate;
-    }
-
-    public Date getExpectedDate() {
-        return expectedDate;
-    }
-
-    public void setExpectedDate(Date expectedDate) {
-        this.expectedDate = expectedDate;
-    }
-
-    public String getVendorName() {
-        return vendorName;
-    }
-
-    public void setVendorName(String vendorName) {
-        this.vendorName = vendorName;
-    }
-
-    public String getVendorDetails() {
-        return vendorDetails;
-    }
-
-    public void setVendorDetails(String vendorDetails) {
-        this.vendorDetails = vendorDetails;
-    }
-
-    public String getBillTo() {
-        return billTo;
-    }
-
-    public void setBillTo(String billTo) {
-        this.billTo = billTo;
-    }
-
-    public String getShipTo() {
-        return shipTo;
-    }
-
-    public void setShipTo(String shipTo) {
-        this.shipTo = shipTo;
-    }
-
-    public String getRequestedBy() {
-        return requestedBy;
-    }
-
-    public void setRequestedBy(String requestedBy) {
-        this.requestedBy = requestedBy;
-    }
-
-    public String getDeliveryTerms() {
-        return deliveryTerms;
-    }
-
-    public void setDeliveryTerms(String deliveryTerms) {
-        this.deliveryTerms = deliveryTerms;
-    }
-
-    public String getPaymentTerms() {
-        return paymentTerms;
-    }
-
-    public void setPaymentTerms(String paymentTerms) {
-        this.paymentTerms = paymentTerms;
-    }
-
-    public String getRequestorContactDetails() {
-        return requestorContactDetails;
-    }
-
-    public void setRequestorContactDetails(String requestorContactDetails) {
-        this.requestorContactDetails = requestorContactDetails;
-    }
-
-    public String getDespatchMode() {
-        return despatchMode;
-    }
-
-    public void setDespatchMode(String despatchMode) {
-        this.despatchMode = despatchMode;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    // In PurchaseOrderData.java
-
-    public Double getExchangeRate() {
-        return exchangeRate;
-    }
-
-    public void setExchangeRate(Double exchangeRate) {
-        this.exchangeRate = exchangeRate;
-    }
-
-    public String getUploadFile() {
-        return uploadFile;
-    }
-
-    public void setUploadFile(String uploadFile) {
-        this.uploadFile = uploadFile;
-    }
-
-    public String getCoverNote() {
-        return coverNote;
-    }
-
-    public void setCoverNote(String coverNote) {
-        this.coverNote = coverNote;
-    }
-
-    public String getRenewal() {
-        return renewal;
-    }
-
-    public void setRenewal(String renewal) {
-        this.renewal = renewal;
-    }
-
-    public Date getRenewalDate() {
-        return renewalDate;
-    }
-
-    public void setRenewalDate(Date renewalDate) {
-        this.renewalDate = renewalDate;
-    }
-
-    public String getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
-    }
-
-    public String getTermsAndConditions() {
-        return termsAndConditions;
-    }
-
-    public void setTermsAndConditions(String termsAndConditions) {
-        this.termsAndConditions = termsAndConditions;
-    }
-
-    public String getTermsAndConditionsEditor() {
-        return termsAndConditionsEditor;
-    }
-
-    public void setTermsAndConditionsEditor(String termsAndConditionsEditor) {
-        this.termsAndConditionsEditor = termsAndConditionsEditor;
-    }
-
-    public double getNetAmount() {
-        return netAmount;
-    }
-
-    public void setNetAmount(double netAmount) {
-        this.netAmount = netAmount;
-    }
-
-    public double getAddOnCharges() {
-        return addOnCharges;
-    }
-
-    public void setAddOnCharges(double addOnCharges) {
-        this.addOnCharges = addOnCharges;
-    }
-
-    public double getAdditionalDiscount() {
-        return additionalDiscount;
-    }
-
-    public void setAdditionalDiscount(double additionalDiscount) {
-        this.additionalDiscount = additionalDiscount;
-    }
-
-    public double getFreightCharges() {
-        return freightCharges;
-    }
-
-    public void setFreightCharges(double freightCharges) {
-        this.freightCharges = freightCharges;
-    }
-
-    public String getAdditionalTax() {
-        return additionalTax;
-    }
-
-    public void setAdditionalTax(String additionalTax) {
-        this.additionalTax = additionalTax;
-    }
-
-    public double getRoundOff() {
-        return roundOff;
-    }
-
-    public void setRoundOff(double roundOff) {
-        this.roundOff = roundOff;
-    }
-
-    public double getGrandTotal() {
-        return grandTotal;
-    }
-
-    public void setGrandTotal(double grandTotal) {
-        this.grandTotal = grandTotal;
+    public void computeGrandTotal() {
+        BigDecimal interim = netAmount
+                .add(addOnCharges)
+                .subtract(additionalDiscount)
+                .add(freightCharges);
+        BigDecimal taxAmt = interim.multiply(
+                new BigDecimal(additionalTax.replace("%",""))
+                        .divide(BigDecimal.valueOf(100))
+        );
+        BigDecimal rawTotal = interim.add(taxAmt);
+        this.roundOff   = rawTotal.setScale(0, BigDecimal.ROUND_HALF_UP)
+                .subtract(rawTotal);
+        this.grandTotal = rawTotal.add(roundOff);
     }
 }
-
