@@ -1,6 +1,5 @@
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 
-import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

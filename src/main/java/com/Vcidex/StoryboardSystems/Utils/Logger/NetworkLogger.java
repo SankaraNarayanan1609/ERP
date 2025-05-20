@@ -7,7 +7,6 @@ import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v130.network.Network;
 import org.openqa.selenium.devtools.v130.network.model.RequestWillBeSent;
 import org.openqa.selenium.devtools.v130.network.model.ResponseReceived;
-import org.openqa.selenium.devtools.v130.network.Network.GetResponseBodyResponse;
 
 import java.util.Optional;
 
@@ -23,24 +22,27 @@ public class NetworkLogger {
         devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
 
         devTools.addListener(Network.requestWillBeSent(), (RequestWillBeSent req) -> {
-            logger.debug("BROWSER-NET ▶ {} {}", req.getRequest().getMethod(), req.getRequest().getUrl());
+            logger.debug("▶ {} {}", req.getRequest().getMethod(), req.getRequest().getUrl());
         });
         devTools.addListener(Network.responseReceived(), (ResponseReceived resp) -> {
             int status = resp.getResponse().getStatus();
-            String url = resp.getResponse().getUrl();
-            logger.debug("BROWSER-NET ◀ {} {}", status, url);
+            String url   = resp.getResponse().getUrl();
+            logger.debug("◀ {} {}", status, url);
             if (status >= 400) {
                 try {
-                    GetResponseBodyResponse body = devTools.send(Network.getResponseBody(resp.getRequestId()));
-                    logger.error("BROWSER-NET Body: {}", body.getBody());
+                    var body = devTools.send(Network.getResponseBody(resp.getRequestId()));
+                    logger.error("Body: {}", body.getBody());
                 } catch (Exception ex) {
-                    logger.error("Could not fetch network response body: {}", ex.getMessage());
+                    logger.error("Could not fetch body: {}", ex.getMessage());
                 }
             }
         });
     }
 
     public static void stop() {
-        if (devTools != null) devTools.close();
+        if (devTools != null) {
+            try { devTools.close(); }
+            catch (Exception ignore) {}
+        }
     }
 }

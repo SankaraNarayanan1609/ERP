@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 
-public class DbMasterDataProvider implements MasterDataProvider {
+public class DbMasterDataProvider implements MasterDataProvider { // Class 'DbMasterDataProvider' must either be declared abstract or implement abstract method 'getTaxCodes()' in 'MasterDataProvider'
     private final DataSource dataSource;
 
     public DbMasterDataProvider(DataSource dataSource) {
@@ -87,10 +87,7 @@ public class DbMasterDataProvider implements MasterDataProvider {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                rates.put(
-                        rs.getString("currency_code"),
-                        rs.getBigDecimal("exchange_rate")
-                );
+                rates.put(rs.getString("currency_code"), rs.getBigDecimal("exchange_rate"));
             }
         } catch (SQLException e) {
             throw new RuntimeException("Failed to load currency rates", e);
@@ -106,12 +103,31 @@ public class DbMasterDataProvider implements MasterDataProvider {
         );
     }
 
+    // ——— New: match the interface exactly ———
+
     @Override
-    public List<String> getAdditionalTaxCodes() {
+    public List<String> getTaxCodes() {
         return queryForList(
-                "SELECT tax_code FROM tax_codes_master",
-                rs -> rs.getString("tax_code")
+                "SELECT tax_prefix FROM tax_codes_master",
+                rs -> rs.getString("tax_prefix")
         );
+    }
+
+    @Override
+    public Map<String, BigDecimal> getTaxPercentage() {
+        String sql = "SELECT tax_prefix, percentage FROM tax_codes_master";
+        Map<String, BigDecimal> map = new HashMap<>();
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                map.put(rs.getString("tax_prefix"), rs.getBigDecimal("percentage"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to load tax percentages", e);
+        }
+        return map;
     }
 
     // ----------------------------------------------------------------

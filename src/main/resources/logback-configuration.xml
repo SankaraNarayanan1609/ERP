@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1}.%M() - %msg%n"/>
+        </Console>
+        <File name="FileLogger" fileName="logs/test-execution.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1}.%M() - %msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Quiet the chatty DEBUG logs by default -->
+        <Logger name="com.Vcidex.StoryboardSystems.Utils.Logger.UIActionLogger" level="WARN"/>
+        <Logger name="com.Vcidex.StoryboardSystems.Utils.Logger.NetworkLogger" level="ERROR"/>
+
+        <!-- Application log level -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>

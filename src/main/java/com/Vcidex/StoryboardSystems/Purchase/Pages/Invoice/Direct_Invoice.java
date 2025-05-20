@@ -1,6 +1,5 @@
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Invoice;
 
-import com.Vcidex.StoryboardSystems.Purchase.POJO.InvoiceData;
 import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
 import com.Vcidex.StoryboardSystems.Purchase.PurchaseLogs;
 import org.openqa.selenium.By;

@@ -112,7 +112,7 @@ public class PurchaseOrderDataFactory {
                 .addOnCharges(BigDecimal.valueOf(faker.number().randomDouble(2, 0, 500)))
                 .additionalDiscount(BigDecimal.valueOf(faker.number().randomDouble(2, 0, 200)))
                 .freightCharges(BigDecimal.valueOf(faker.number().randomDouble(2, 0, 300)))
-                .additionalTax(pickRandom(masters.getAdditionalTaxCodes()))
+                .additionalTax(pickRandom(masters.getTaxCodes()))
                 .termsAndConditions(pickRandom(masters.getTermsAndConditions()))
                 .termsEditorText(faker.lorem().paragraph())
                 .build();

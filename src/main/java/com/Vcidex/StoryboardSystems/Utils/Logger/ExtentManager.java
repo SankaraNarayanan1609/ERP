@@ -29,6 +29,11 @@ public class ExtentManager {
 
             extent = new ExtentReports();
             extent.attachReporter(rep);
+
+            // ── Embed system info in “Environment” tab ──
+            extent.setSystemInfo("OS", System.getProperty("os.name"));
+            extent.setSystemInfo("Java", System.getProperty("java.version"));
+            extent.setSystemInfo("Environment", System.getProperty("env.name","unknown"));
             TestContextLogger.info("📜 Extent Report initialized at: " + file);
         }
         return extent;

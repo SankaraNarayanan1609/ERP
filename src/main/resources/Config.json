@@ -1,14 +1,25 @@
 {
   "test": {
-    "appUrl": "https://erplite.storyboarderp.com/",
-    "users": [
+    "applications": [
       {
-        "companyCode": "vcidex",
-        "userName": "Superadmin",
-        "userId": "0",
-        "password": "s"
+        "appName": "StoryboardSystems",
+        "appUrl":  "https://erplite.storyboarderp.com/",
+        "companies": [
+          {
+            "companyCode": "vcidex",
+            "users": [
+              { "userId": "Superadmin", "password": "***" },
+              { "userId": "vcx288", "password": "***" }
+            ]
+          },
+          {
+            "companyCode": "bobatea",
+            "users": [
+              { "userId": "Superadmin", "password": "***" }
+            ]
+          }
+        ]
       }
     ]
   }
 }
-

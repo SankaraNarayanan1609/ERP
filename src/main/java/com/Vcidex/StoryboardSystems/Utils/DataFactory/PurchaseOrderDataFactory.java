@@ -3,68 +3,75 @@ package com.Vcidex.StoryboardSystems.Utils.DataFactory;
 import com.github.javafaker.Faker;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 
-import java.text.SimpleDateFormat;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PurchaseOrderDataFactory {
-
     private static final Faker faker = new Faker();
-    private static final List<String> BRANCHES = Arrays.asList("Chennai", "Bangalore", "Mumbai", "Delhi");
-    private static final List<String> VENDORS = Arrays.asList("Reliance Pvt Ltd", "TCS Suppliers", "HCL Traders", "Infosys Materials");
-    private static final List<String> CURRENCIES = Arrays.asList("INR", "USD", "EUR");
-    private static final List<String> FREQUENCIES = Arrays.asList("Monthly", "Quarterly", "Half Yearly", "Yearly");
-    private static final List<String> TERMS_LIST = Arrays.asList("Standard T&C", "Custom Clause A", "Clause B");
+    private static final List<String> BRANCHES    = Arrays.asList("Chennai","Bangalore","Mumbai","Delhi");
+    private static final List<String> VENDORS     = Arrays.asList("Reliance Pvt Ltd","TCS Suppliers","HCL Traders","Infosys Materials");
+    private static final List<String> CURRENCIES  = Arrays.asList("INR","USD","EUR");
+    private static final List<String> FREQUENCIES = Arrays.asList("Monthly","Quarterly","Half Yearly","Yearly");
+    private static final List<String> TERMS_LIST  = Arrays.asList("Standard T&C","Custom Clause A","Clause B");
 
-    private static Date randomFutureDate(int daysFromNowStart, int daysFromNowEnd) {
-        long startMillis = System.currentTimeMillis() + (daysFromNowStart * 24L * 60 * 60 * 1000);
-        long endMillis = System.currentTimeMillis() + (daysFromNowEnd * 24L * 60 * 60 * 1000);
-        return new Date(ThreadLocalRandom.current().nextLong(startMillis, endMillis));
+    /** Picks a random LocalDate between now+startDays and now+endDays. */
+    private static LocalDate randomDateBetween(int startDaysFromNow, int endDaysFromNow) {
+        long start = LocalDate.now().plusDays(startDaysFromNow).toEpochDay();
+        long end   = LocalDate.now().plusDays(endDaysFromNow).toEpochDay();
+        long day   = ThreadLocalRandom.current().nextLong(start, end + 1);
+        return LocalDate.ofEpochDay(day);
     }
 
     public static PurchaseOrderData createRandomPOData(boolean isRenewal) {
-        Date poDate = new Date(); // today
-        Date expectedDate = randomFutureDate(3, 15);
-        Date renewalDate = isRenewal ? randomFutureDate(30, 90) : null;
-        String frequency = isRenewal ? getRandom(FREQUENCIES) : null;
+        // core dates
+        LocalDate poDate       = LocalDate.now();
+        LocalDate expectedDate = randomDateBetween(3, 15);
+        LocalDate renewalDate  = isRenewal
+                ? randomDateBetween(30, 90)
+                : null;
+        String frequency       = isRenewal
+                ? faker.options().option(FREQUENCIES.toArray(new String[0]))
+                : null;
 
-        PurchaseOrderData data = new PurchaseOrderData();
-        data.setBranchName(getRandom(BRANCHES));
-        data.setPoRefNo("PO-" + faker.number().digits(6));
-        data.setPoDate(poDate);
-        data.setExpectedDate(expectedDate);
-        data.setVendorName(getRandom(VENDORS));
-        data.setBillTo(faker.address().fullAddress());
-        data.setShipTo(faker.address().fullAddress());
-        data.setRequestedBy(faker.name().firstName());
-        data.setDeliveryTerms("Deliver within 7 days");
-        data.setPaymentTerms("Net 30 days");
-        data.setRequestorContactDetails(faker.phoneNumber().phoneNumber());
-        data.setDespatchMode(faker.options().option("Courier", "Hand Delivery", "Email Copy"));
-        data.setCurrency(getRandom(CURRENCIES));
-        data.setCoverNote("Please ensure quality check before dispatch.");
+        // build up the object
+        PurchaseOrderData data = PurchaseOrderData.builder()
+                .branchName(faker.options().option(BRANCHES.toArray(new String[0])))
+                .poRefNo("PO-" + faker.number().digits(6))
+                .poDate(poDate)
+                .expectedDate(expectedDate)
+                .vendorName(faker.options().option(VENDORS.toArray(new String[0])))
+                .billTo(faker.address().fullAddress())
+                .shipTo(faker.address().fullAddress())
+                .requestedBy(faker.name().firstName())
+                .requestorContactDetails(faker.phoneNumber().phoneNumber())
+                .deliveryTerms("Deliver within 7 days")
+                .paymentTerms("Net 30 days")
+                .dispatchMode(faker.options().option("Courier","Hand Delivery","Email Copy"))
+                .currency(faker.options().option(CURRENCIES.toArray(new String[0])))
+                // you could fetch exchange rate from your MasterDataProvider here…
+                .exchangeRate(BigDecimal.valueOf(1.0))
+                .coverNote("Please ensure quality check before dispatch.")
+                .renewal(isRenewal)
+                .renewalDate(renewalDate)
+                .frequency(frequency)
+                // if you have lineItems, you’d set them here; otherwise skip
+                .lineItems(List.of())
+                .addOnCharges(BigDecimal.valueOf(faker.number().randomDouble(2,100,500)))
+                .additionalDiscount(BigDecimal.valueOf(faker.number().randomDouble(2,5,20)))
+                .freightCharges(BigDecimal.valueOf(faker.number().randomDouble(2,100,300)))
+                .additionalTax("GST 18%")
+                .roundOff(BigDecimal.ZERO)   // will be recalculated below
+                .termsAndConditions(faker.options().option(TERMS_LIST.toArray(new String[0])))
+                .termsEditorText("Ensure packaging standards are met.")
+                .build();
 
-        if (isRenewal) {
-            data.setRenewalDate(renewalDate);
-            data.setFrequency(frequency);
-        }
-
-        data.setTermsAndConditions(getRandom(TERMS_LIST));
-        data.setTermsAndConditionsEditor("Ensure packaging standards are met.");
-
-        // Financials
-        data.setAddOnCharges(faker.number().randomDouble(2, 100, 500));
-        data.setAdditionalDiscount(faker.number().randomDouble(2, 5, 20));
-        data.setFreightCharges(faker.number().randomDouble(2, 100, 300));
-        data.setAdditionalTax("GST 18%");
-        data.setRoundOff(faker.number().randomDouble(2, -2, 2));
+        // compute the derived totals
+        data.computeNetAmount();
+        data.computeGrandTotal();
 
         return data;
-    }
-
-    private static <T> T getRandom(List<T> list) {
-        return list.get(faker.random().nextInt(list.size()));
     }
 }

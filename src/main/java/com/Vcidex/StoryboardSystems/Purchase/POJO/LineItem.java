@@ -12,6 +12,7 @@ public class LineItem {
     private BigDecimal price;
     private BigDecimal discountPct;
     private BigDecimal discountAmt;
+    private String     taxPrefix;
     private BigDecimal taxRate;
     private BigDecimal totalAmount;
 
@@ -70,14 +71,19 @@ public class LineItem {
     public void setDiscountAmt(BigDecimal discountAmt) {
         this.discountAmt = discountAmt;
     }
+    public String getTaxPrefix() {
+        return taxPrefix;
+    }
+    public void setTaxPrefix(String taxPrefix) {
+        this.taxPrefix = taxPrefix;
+    }
     public BigDecimal getTaxRate() {
         return taxRate;
     }
     public void setTaxRate(BigDecimal taxRate) {
         this.taxRate = taxRate;
     }
-
-    public BigDecimal getTotalAmount() {
+        public BigDecimal getTotalAmount() {
         return totalAmount;
     }
     public void setTotalAmount(BigDecimal totalAmount) {

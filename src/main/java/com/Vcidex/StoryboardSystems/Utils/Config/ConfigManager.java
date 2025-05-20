@@ -1,133 +1,119 @@
 package com.Vcidex.StoryboardSystems.Utils.Config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Properties;
+import java.util.Set;
 
+/**
+ * Centralized configuration manager.
+ * - Loads all test data (applications/companies/users) from JSON.
+ * - Loads framework settings (browser, timeout, etc.) from properties.
+ */
 public class ConfigManager {
-    private static final Logger logger = LogManager.getLogger(ConfigManager.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
     private static final String JSON_CONFIG_PATH = "src/main/resources/config.json";
+    private static final String PROP_FILE = "config.properties";
     private static JSONObject jsonConfig;
 
-    // Static block to initialize configuration
     static {
-        initializeConfig();
-    }
-
-    /**
-     * ✅ Initialize JSON configuration
-     */
-    private static void initializeConfig() {
         try {
-            if (!Files.exists(Paths.get(JSON_CONFIG_PATH))) {
-                logger.error("❌ Config file '{}' not found!", JSON_CONFIG_PATH);
-                throw new RuntimeException("Config file not found: " + JSON_CONFIG_PATH);
-            }
-
-            String jsonText = new String(Files.readAllBytes(Paths.get(JSON_CONFIG_PATH)));
-                    jsonConfig = new JSONObject(jsonText);
-
-            logger.info("✅ JSON configuration successfully loaded: \n{}", jsonConfig.toString(2));
-        } catch (IOException e) {
-            logger.error("❌ Failed to load JSON configuration: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to initialize JSON configurations.", e);
-        }
-    }
-
-    /**
-     * ✅ Generic method to retrieve JSON config values as String
-     */
-    public static String getConfig(String environment, String key) {
-        try {
-            if (!jsonConfig.has(environment)) {
-                logger.error("❌ Environment '{}' not found in config!", environment);
-                return "";
-            }
-
-            JSONObject envConfig = jsonConfig.getJSONObject(environment);
-            if (!envConfig.has(key)) {
-                logger.error("❌ Key '{}' not found in environment '{}'.", key, environment);
-                return "";
-            }
-
-            String value = envConfig.optString(key, "");
-            logger.info("🔍 Retrieved config '{}' = '{}' from environment '{}'", key, value, environment);
-            return value;
+            String text = new String(Files.readAllBytes(Paths.get(JSON_CONFIG_PATH)));
+            jsonConfig = new JSONObject(text);
+            logger.info("✅ Loaded JSON config: {}", JSON_CONFIG_PATH);
         } catch (Exception e) {
-            logger.error("❌ Error retrieving config '{}' for env '{}': {}", key, environment, e.getMessage());
-            return "";
+            logger.error("❌ Failed to load JSON config {}: {}", JSON_CONFIG_PATH, e.getMessage(), e);
+            throw new RuntimeException(e);
         }
     }
 
     /**
-     * ✅ Retrieves a List of Maps from a JSON array in the config
+     * Retrieves the JSONObject for an application under the given environment.
      */
-    public static List<Map<String, String>> getConfigList(String environment, String key) {
-        List<Map<String, String>> dataList = new ArrayList<>();
-        try {
-            if (!jsonConfig.has(environment) || !jsonConfig.getJSONObject(environment).has(key)) {
-                logger.warn("⚠️ Config key '{}' not found for environment '{}'.", key, environment);
-                return Collections.emptyList();
-            }
-            JSONArray jsonArray = jsonConfig.getJSONObject(environment).getJSONArray(key);
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject obj = jsonArray.getJSONObject(i);
-                Map<String, String> dataMap = new HashMap<>();
-
-                for (String objKey : obj.keySet()) {
-                    dataMap.put(objKey, obj.optString(objKey, ""));
-                }
-                dataList.add(dataMap);
-            }
-        } catch (Exception e) {
-            logger.error("❌ Error retrieving JSON array '{}' for env '{}': {}", key, environment, e.getMessage());
+    public static JSONObject getAppConfig(String env, String appName) {
+        JSONObject envObj = jsonConfig.optJSONObject(env);
+        if (envObj == null) {
+            throw new IllegalArgumentException("Environment not found: " + env);
         }
-        return dataList;
-    }
-
-    public static Map<String, String> getUserById(String environment, String userId) {
-        List<Map<String, String>> users = getConfigList(environment, "users");
-        for (Map<String, String> user : users) {
-            if (user.get("userId").equals(userId)) {
-                return user;
+        JSONArray apps = envObj.optJSONArray("applications");
+        if (apps == null) {
+            throw new IllegalArgumentException("No applications defined for env: " + env);
+        }
+        for (Object o : apps) {
+            JSONObject app = (JSONObject) o;
+            if (appName.equals(app.optString("appName"))) {
+                return app;
             }
         }
-        throw new RuntimeException("❌ User with ID " + userId + " not found in config for environment '" + environment + "'");
+        throw new IllegalArgumentException("App not found: " + appName + " in env: " + env);
     }
 
+    /**
+     * Retrieves the JSONObject for a company under a specific application.
+     */
+    public static JSONObject getCompanyConfig(String env, String appName, String companyCode) {
+        JSONObject app = getAppConfig(env, appName);
+        JSONArray companies = app.optJSONArray("companies");
+        if (companies == null) {
+            throw new IllegalArgumentException("No companies for app: " + appName);
+        }
+        for (Object o : companies) {
+            JSONObject comp = (JSONObject) o;
+            if (companyCode.equals(comp.optString("companyCode"))) {
+                return comp;
+            }
+        }
+        throw new IllegalArgumentException("Company not found: " + companyCode + " in app: " + appName);
+    }
+
+    /**
+     * Retrieves the JSONObject for a user under a specific company.
+     */
+    public static JSONObject getUserConfig(String env, String appName, String companyCode, String userId) {
+        JSONObject comp = getCompanyConfig(env, appName, companyCode);
+        JSONArray users = comp.optJSONArray("users");
+        if (users == null) {
+            throw new IllegalArgumentException("No users for company: " + companyCode);
+        }
+        for (Object o : users) {
+            JSONObject u = (JSONObject) o;
+            if (userId.equals(u.optString("userId"))) {
+                return u;
+            }
+        }
+        throw new IllegalArgumentException("User not found: " + userId + " in company: " + companyCode);
+    }
+
+    /**
+     * Retrieve a framework property (from config.properties) or returns default.
+     */
     public static String getProperty(String key, String defaultValue) {
-        Properties properties = new Properties();
-        String propertiesPath = "config.properties"; // This should match the filename inside resources
-
-        try (InputStream input = ConfigManager.class.getClassLoader().getResourceAsStream(propertiesPath)) {
-            if (input == null) {
-                logger.warn("⚠️ Properties file '{}' not found in resources. Using default for '{}'.", propertiesPath, key);
+        try (InputStream in = ConfigManager.class.getClassLoader().getResourceAsStream(PROP_FILE)) {
+            if (in == null) {
+                logger.warn("Properties file '{}' not found, using default for {}", PROP_FILE, key);
                 return defaultValue;
             }
-
-            properties.load(input);
-            String value = properties.getProperty(key, defaultValue);
-            logger.info("🔍 Retrieved property '{}' = '{}'", key, value);
-            return value;
-        } catch (IOException e) {
-            logger.error("❌ Error loading properties file '{}': {}", propertiesPath, e.getMessage());
+            Properties props = new Properties();
+            props.load(in);
+            String val = props.getProperty(key, defaultValue);
+            logger.info("🔍 Loaded property '{}' = '{}'", key, val);
+            return val;
+        } catch (Exception e) {
+            logger.error("❌ Failed to load properties: {}", e.getMessage(), e);
             return defaultValue;
         }
     }
 
     /**
-     * ✅ Retrieves all available environment names in the config
+     * Returns all defined environment names.
      */
-    public static Set<String> getAvailableEnvironments() {
+    public static Set<String> getEnvironments() {
         return jsonConfig.keySet();
     }
 }

@@ -1,3 +1,4 @@
+// UIActionLogger.java
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
 import org.slf4j.Logger;
@@ -14,35 +15,48 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
-import com.Vcidex.StoryboardSystems.Utils.ExtentLogUtil;
-import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.CodeLanguage;
+
 
 public class UIActionLogger {
     private static final Logger logger = LoggerFactory.getLogger(UIActionLogger.class);
 
-    /** DEBUG-level click with visibility check. */
     public static void click(WebDriver driver, By locator, String name) {
         boolean visible = false;
         try { visible = driver.findElement(locator).isDisplayed(); } catch (Exception ignore) {}
         logger.debug("UI Click → {} | {} | visible={}", name, locator, visible);
+
+        ExtentTestManager.getTest()
+                .createNode("Click: " + name)
+                .info("Locator: " + locator);
+
         driver.findElement(locator).click();
     }
 
-    /** DEBUG-level type with visibility check. */
     public static void type(WebDriver driver, By locator, String value, String name) {
         boolean visible = false;
         try { visible = driver.findElement(locator).isDisplayed(); } catch (Exception ignore) {}
         logger.debug("UI Type → {} | '{}' | {} | visible={}", name, value, locator, visible);
+
+        ExtentTestManager.getTest()
+                .createNode("Type: " + name)
+                .info("Value: '" + value + "' into " + locator);
+
         driver.findElement(locator).sendKeys(value);
     }
 
-    /** DEBUG-level form submit. */
     public static void submit(WebDriver driver, By locator, String pageName) {
         logger.debug("UI Submit → Page: {} | {}", pageName, locator);
+
+        ExtentTestManager.getTest()
+                .createNode("Submit on: " + pageName)
+                .info("Locator: " + locator);
+
         driver.findElement(locator).submit();
     }
 
-    /** ERROR-level failure hook: screenshot + console logs. */
     public static void failure(WebDriver driver, String context) {
         logger.error("UI Failure context: {}", context);
         captureScreenshot(driver, context);
@@ -57,22 +71,22 @@ public class UIActionLogger {
         }
     }
 
-    /** for arbitrary UI-layer debug messages */
     public static void debug(String message) {
         logger.debug(message);
     }
 
-    /** if you need generic info: */
     public static void info(String message) {
         logger.info(message);
     }
 
-    /** Helper to save DOM snapshot into the Extent report. */
     public static void snapshot(WebDriver driver, String context) {
         try {
             String html = driver.getPageSource();
-            String block = ExtentLogUtil.wrapLog("DOM snapshot: " + context, html);
-            ExtentTestManager.getTest().info(block);
+            Markup domBlock = MarkupHelper.createCodeBlock(
+                    "<!-- DOM snapshot: " + context + " -->\n" + html,
+                    "html"
+            );
+            ExtentTestManager.getTest().info(domBlock);
         } catch (Exception e) {
             logger.warn("Could not capture DOM snapshot: {}", e.getMessage());
         }
@@ -80,8 +94,11 @@ public class UIActionLogger {
 
     private static void captureScreenshot(WebDriver driver, String name) {
         try {
-            Path target = Path.of("logs/screenshots", name.replaceAll("\\W+","_") + ".png");
-            Files.createDirectories(target.getParent());
+            Path targetDir = Path.of("logs", "screenshots");
+            Files.createDirectories(targetDir);
+            String fileName = name.replaceAll("\\W+","_")
+                    + "_" + System.currentTimeMillis() + ".png";
+            Path target = targetDir.resolve(fileName);
             Files.copy(
                     ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE).toPath(),
                     target,

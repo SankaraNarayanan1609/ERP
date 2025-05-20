@@ -2,7 +2,6 @@ package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 
 import com.Vcidex.StoryboardSystems.Purchase.Business.DirectPurchaseOrderLogger;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
-import com.Vcidex.StoryboardSystems.Purchase.PurchaseBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
