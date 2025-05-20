@@ -22,7 +22,7 @@ public class DirectPOTest extends TestBase {
             @Optional("Superadmin")     String userId
     ) {
         ExtentTestManager.createTest("DirectPO Creation & Submit", "Purchase");
-        TestContextLogger.logTestStart("DirectPOTest", driver); // Cannot resolve symbol 'driver'
+        TestContextLogger.logTestStart("DirectPOTest", driver);
 
         new LoginManager(driver).login(appName, companyCode, userId);
         directPOPage = new DirectPO(driver);

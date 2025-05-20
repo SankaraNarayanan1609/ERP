@@ -1000,3 +1000,28 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
 Command: [a4e7aff7b7cc53d83051afa726ebd921, findElement {value=//ng-select[@formcontrolname='currency_code'], using=xpath}]
 Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.96, chrome: {chromedriverVersion: 135.0.7049.95 (de2eb485a195..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49778}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49778/devtoo..., se:cdpVersion: 135.0.7049.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
 Session ID: a4e7aff7b7cc53d83051afa726ebd921 | Action: findElement
+2025-05-20 22:43:53 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250520_224400.html
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOTest ===
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 047dd398-9598-42d7-8fda-4c3a373f9b20
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Session ID: 2fec1ca49280c3575251fe8d9e111eeb
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-20 22:44:00 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-20 22:44:00 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 047dd398-9598-42d7-8fda-4c3a373f9b20
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - Session ID: 2fec1ca49280c3575251fe8d9e111eeb
+2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-20 22:44:17 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-20 22:44:17 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
