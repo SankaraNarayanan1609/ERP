@@ -2,24 +2,25 @@
   "test": {
     "applications": [
       {
-        "appName": "StoryboardSystems",
-        "appUrl":  "https://erplite.storyboarderp.com/",
+        "appName":  "StoryboardSystems",
+        "appUrl":   "https://erplite.storyboarderp.com/",
+        "apiBase":  "https://erplite.storyboarderp.com",
         "companies": [
           {
             "companyCode": "vcidex",
             "users": [
-              { "userId": "Superadmin", "password": "***" },
-              { "userId": "vcx288", "password": "***" }
-            ]
-          },
-          {
-            "companyCode": "bobatea",
-            "users": [
-              { "userId": "Superadmin", "password": "***" }
+              { "userId": "Superadmin", "password": "s" },
+              { "userId": "vcx288",      "password": "s" }
             ]
           }
         ]
       }
-    ]
+    ],
+    "auth": {
+      "authUrl":      "https://erplite.storyboarderp.com",
+      "tokenPath":    "/Storyboardapi/api/token",
+      "clientId":     "YOUR_CLIENT_ID",
+      "clientSecret": "YOUR_CLIENT_SECRET"
+    }
   }
 }

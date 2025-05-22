@@ -1,58 +1,73 @@
+// src/test/java/com/Vcidex/StoryboardSystems/PurchaseTest/DirectPOTest.java
 package com.Vcidex.StoryboardSystems.PurchaseTest;
 
 import com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager;
+import com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.DirectPO;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import com.Vcidex.StoryboardSystems.Utils.Logger.TestContextLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ValidationLogger;
-import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import com.Vcidex.StoryboardSystems.TestBase;
-import org.openqa.selenium.WebDriver;
+import com.aventstack.extentreports.ExtentTest;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 public class DirectPOTest extends TestBase {
-    private DirectPO directPOPage;
+    private NavigationManager nav;
+    private DirectPO          directPOPage;
+    private ExtentTest        rootTest;
+
+    @BeforeClass
+    public void beforeClass() {
+        nav = new NavigationManager(driver);
+    }
 
     @BeforeMethod
-    @Parameters({"appName","companyCode","userId"})
+    @Parameters({ "appName", "companyCode", "userId" })
     public void setupTest(
             @Optional("StoryboardSystems") String appName,
-            @Optional("vcidex")         String companyCode,
-            @Optional("Superadmin")     String userId
+            @Optional("vcidex")            String companyCode,
+            @Optional("Superadmin")        String userId
     ) {
-        ExtentTestManager.createTest("DirectPO Creation & Submit", "Purchase");
-        TestContextLogger.logTestStart("DirectPOTest", driver);
+        rootTest = ExtentTestManager.createTest("DirectPO Creation & Submit", "Purchase");
+        ExtentTest loginNode = ExtentTestManager.createNode("🔑 Login");
+        new LoginManager(driver, loginNode).login(appName, companyCode, userId);
 
-        new LoginManager(driver).login(appName, companyCode, userId);
+        nav.goTo("Purchase", "Purchase", "Purchase Order");
         directPOPage = new DirectPO(driver);
         ValidationLogger.reset();
     }
 
     @Test(description = "Create and submit a direct purchase order (fully dynamic)")
     public void testCreateAndSubmitDirectPO() {
-        // **ZERO hard-coding**: factory picks everything at random
-        PurchaseOrderData poData = factory.create(/* renewalRequired= */ false);
+        ExtentTest dataNode = ExtentTestManager.createNode("🛠 Generate PO Test Data");
+        PurchaseOrderData poData = factory.create(false);
+        dataNode.pass("✅ Successfully generated PurchaseOrderData");
 
-        directPOPage.fillForm(poData);
-        String poRef = directPOPage.submitAndCaptureRef();
+        ExtentTest fillNode = ExtentTestManager.createNode("📝 Fill Direct PO Form");
+        directPOPage.fillForm(poData, fillNode);
+
+        ExtentTest submitNode = ExtentTestManager.createNode("🚀 Submit & Capture Ref");
+        String poRef = directPOPage.submitAndCaptureRef(submitNode);
 
         ValidationLogger.assertTrue(
                 "PO reference generated",
                 poRef != null && !poRef.isEmpty(),
-                driver
+                submitNode
         );
     }
 
-    @AfterMethod
-    public void tearDownTest() {
+    @AfterMethod(alwaysRun = true)
+    public void tearDownTest(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            rootTest.fail("❌ Test failed; see details below");
+        }
         TestContextLogger.logTestEnd("DirectPOTest");
     }
 
     @AfterClass(alwaysRun = true)
-    public void tearDownSuite() {
+    public void afterClass() {
         ExtentTestManager.flushReports();
-        driver.quit();
-        ThreadSafeDriverManager.removeDriver();
     }
 }

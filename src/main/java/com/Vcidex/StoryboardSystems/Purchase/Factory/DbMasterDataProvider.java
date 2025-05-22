@@ -89,8 +89,10 @@ public class DbMasterDataProvider implements MasterDataProvider { // Class 'DbMa
             while (rs.next()) {
                 rates.put(rs.getString("currency_code"), rs.getBigDecimal("exchange_rate"));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to load currency rates", e);
+        } catch (SQLException sqe) {
+            // only include the SQL plus the SQLError msg, not the whole stack
+            String msg = "Query failed: " + sql + " | " + sqe.getMessage();
+            throw new RuntimeException(msg);
         }
         return rates;
     }
@@ -124,8 +126,10 @@ public class DbMasterDataProvider implements MasterDataProvider { // Class 'DbMa
             while (rs.next()) {
                 map.put(rs.getString("tax_prefix"), rs.getBigDecimal("percentage"));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to load tax percentages", e);
+        } catch (SQLException sqe) {
+            // only include the SQL plus the SQLError msg, not the whole stack
+            String msg = "Query failed: " + sql + " | " + sqe.getMessage();
+            throw new RuntimeException(msg);
         }
         return map;
     }
@@ -144,8 +148,10 @@ public class DbMasterDataProvider implements MasterDataProvider { // Class 'DbMa
             while (rs.next()) {
                 list.add(mapper.map(rs));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Query failed: " + sql, e);
+        } catch (SQLException sqe) {
+            // only include the SQL plus the SQLError msg, not the whole stack
+            String msg = "Query failed: " + sql + " | " + sqe.getMessage();
+            throw new RuntimeException(msg);
         }
         return list;
     }

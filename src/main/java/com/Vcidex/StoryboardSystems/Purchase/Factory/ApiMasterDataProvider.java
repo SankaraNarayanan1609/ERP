@@ -1,21 +1,25 @@
+// src/main/java/com/Vcidex/StoryboardSystems/Purchase/Factory/ApiMasterDataProvider.java
 package com.Vcidex.StoryboardSystems.Purchase.Factory;
 
-import com.Vcidex.StoryboardSystems.Purchase.POJO.Vendor;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.Employee;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.Product;
-
+import com.Vcidex.StoryboardSystems.Purchase.POJO.Vendor;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.common.mapper.TypeRef;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 
 public class ApiMasterDataProvider implements MasterDataProvider {
+    private static final Logger log = LoggerFactory.getLogger(ApiMasterDataProvider.class);
+
     private final String baseUrl;
     private final String authToken;
 
@@ -24,141 +28,125 @@ public class ApiMasterDataProvider implements MasterDataProvider {
         this.authToken = authToken;
     }
 
-    @Override
-    public List<String> getBranches() {
-        return given()
-                .baseUri(baseUrl)
-                .auth().oauth2(authToken)
-                .when()
-                .get("https://erplite.storyboarderp.com/v4/api/system/SysMstBranch")
-                .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                .extract()
-                // each branch object has a "branch_name" field:
-                .jsonPath().getList("data.branch_name", String.class);
-    }
-    @Override
-    public List<Employee> getEmployees() {
-        return given()
-                .baseUri(baseUrl)
-                .auth().oauth2(authToken)
-                .when()
-                .get("https://erplite.storyboarderp.com/v4/api/system/SysMstEmployeeSummary")
-                .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                // employee POJO fields (user_gid, user_name, employee_joiningdate…)
-                .extract().jsonPath().getList("data", Employee.class);
-    }
-    @Override
-    public List<Vendor> getVendors() {
-        return given()
-                .baseUri(baseUrl)
-                .auth().oauth2(authToken)
-                .when()
-                .get("https://erplite.storyboarderp.com/v4/api/pmr/PmrMstVendorregister")
-                .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                // vendor POJO should have matching fields (vendor_code, vendor_companyname, etc.)
-                .extract().jsonPath().getList("data", Vendor.class);
-    }
-    @Override
-    public List<Product> getProducts() {
-        return given()
-                .baseUri(baseUrl)
-                .auth().oauth2(authToken)
-                .when()
-                .get("https://erplite.storyboarderp.com/v4/api/pmr/ProductSummary")
-                .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                // product POJO fields should line up with your JSON (product_code, product_name…)
-                .extract().jsonPath().getList("data", Product.class);
+    private <T> List<T> safeGetList(String path, Function<Response, List<T>> extractor) {
+        try {
+            Response resp = given()
+                    .baseUri(baseUrl)
+                    .auth().oauth2(authToken)
+                    .when()
+                    .get(path);
+
+            if (resp.statusCode() != 200) {
+                log.warn("GET {} returned status {} → empty list", path, resp.statusCode());
+                return Collections.emptyList();
+            }
+            return extractor.apply(resp);
+        } catch (Exception e) {
+            log.error("Error calling {}: {}", path, e.getMessage());
+            return Collections.emptyList();
+        }
     }
 
-    @SuppressWarnings("unchecked")
-    private List<Map<String, String>> fetchCurrencyList() {
-        return given()
-                .baseUri(baseUrl)
-                .auth().oauth2(authToken)
-                .when()
-                .get("https://erplite.storyboarderp.com/v4/api/pmr/PmrMstCurrencySummary")
-                .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                // the top-level array is named "currency_list"
-                .extract()
-                .jsonPath()
-                .getObject(
-                        "currency_list",
-                        new TypeRef<List<Map<String, String>>>() {}
-                );
+    @Override
+    public List<String> getBranches() {
+        return safeGetList(
+                "/v4/api/system/SysMstBranch",
+                r -> r.jsonPath().getList("data.branch_name", String.class)
+        );
+    }
+
+    @Override
+    public List<Employee> getEmployees() {
+        return safeGetList(
+                "/v4/api/system/SysMstEmployeeSummary",
+                r -> r.then().contentType(ContentType.JSON)
+                        .extract().jsonPath().getList("data", Employee.class)
+        );
+    }
+
+    @Override
+    public List<Vendor> getVendors() {
+        return safeGetList(
+                "/v4/api/pmr/PmrMstVendorregister",
+                r -> r.then().contentType(ContentType.JSON)
+                        .extract().jsonPath().getList("data", Vendor.class)
+        );
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        return safeGetList(
+                "/v4/api/pmr/ProductSummary",
+                r -> r.then().contentType(ContentType.JSON)
+                        .extract().jsonPath().getList("data", Product.class)
+        );
+    }
+
+    private List<Map<String,String>> fetchCurrencyList() {
+        return safeGetList(
+                "/v4/api/pmr/PmrMstCurrencySummary",
+                r -> r.then().contentType(ContentType.JSON)
+                        .extract().jsonPath()
+                        .getObject("currency_list", new TypeRef<List<Map<String,String>>>(){})
+        );
     }
 
     @Override
     public List<String> getCurrencies() {
         return fetchCurrencyList().stream()
                 .map(m -> m.get("currency_code"))
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Map<String, BigDecimal> getCurrencyRates() {
         return fetchCurrencyList().stream()
+                .filter(m -> m.get("currency_code") != null && m.get("exchange_rate") != null)
                 .collect(Collectors.toMap(
                         m -> m.get("currency_code"),
-                        m -> new BigDecimal(m.get("exchange_rate"))
+                        m -> {
+                            try { return new BigDecimal(m.get("exchange_rate")); }
+                            catch (Exception e) { return BigDecimal.ZERO; }
+                        }
                 ));
     }
 
     @Override
     public List<String> getTermsAndConditions() {
-        return given()
-                .baseUri(baseUrl)
-                .auth().oauth2(authToken)
-                .when()
-                .get("https://erplite.storyboarderp.com/v4/api/pmr/PmrMstTermsconditionssummary")
-                .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                // your sample JSON uses "template_name" for each item
-                .extract().jsonPath().getList("data.template_name", String.class);
+        return safeGetList(
+                "/v4/api/pmr/PmrMstTermsconditionssummary",
+                r -> r.then().contentType(ContentType.JSON)
+                        .extract().jsonPath().getList("data.template_name", String.class)
+        );
     }
 
-    @SuppressWarnings("unchecked")
-    private List<Map<String, String>> fetchTaxList() {
-        return given()
-                .baseUri(baseUrl)
-                .auth().oauth2(authToken)
-                .when()
-                .get("https://erplite.storyboarderp.com/v4/api/pmr/PmrMstTaxSummary")
-                .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                .extract()
-                .jsonPath()
-                .getObject(
-                        "data",
-                        new TypeRef<List<Map<String, String>>>() {}
-                );
+    private List<Map<String,String>> fetchTaxList() {
+        return safeGetList(
+                "/v4/api/pmr/PmrMstTaxSummary",
+                r -> r.then().contentType(ContentType.JSON)
+                        .extract().jsonPath().getObject("data", new TypeRef<List<Map<String,String>>>(){})
+        );
     }
 
     @Override
     public List<String> getTaxCodes() {
         return fetchTaxList().stream()
                 .map(m -> m.get("tax_prefix"))
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    @Override//Method does not override method from its superclass
-    public Map<String, BigDecimal> getTaxPercentage() { // 'getTaxPercentage()' in 'com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider' clashes with 'getTaxPercentage()' in 'com.Vcidex.StoryboardSystems.Purchase.Factory.MasterDataProvider'; attempting to use incompatible return type
+    @Override
+    public Map<String, BigDecimal> getTaxPercentage() {
         return fetchTaxList().stream()
+                .filter(m -> m.get("tax_prefix") != null && m.get("percentage") != null)
                 .collect(Collectors.toMap(
                         m -> m.get("tax_prefix"),
-                        m -> new BigDecimal(m.get("percentage"))
+                        m -> {
+                            try { return new BigDecimal(m.get("percentage")); }
+                            catch (Exception e) { return BigDecimal.ZERO; }
+                        }
                 ));
     }
-
 }

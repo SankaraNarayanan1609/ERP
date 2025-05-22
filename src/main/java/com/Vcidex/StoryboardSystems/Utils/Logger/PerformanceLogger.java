@@ -3,46 +3,58 @@ package com.Vcidex.StoryboardSystems.Utils.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class PerformanceLogger {
     private static final Logger logger = LoggerFactory.getLogger(PerformanceLogger.class);
-    private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-    private static final ConcurrentHashMap<String,Long> timers  = new ConcurrentHashMap<>();
-    private static final ConcurrentHashMap<String,Long> summary = new ConcurrentHashMap<>();
 
-    private static String ts() {
-        return LocalDateTime.now().format(fmt);
-    }
-
-    private static String bucketKey(String key) {
-        return Thread.currentThread().getId() + ":" + key;
-    }
+    // start timestamps
+    private static final ConcurrentMap<String, Long> starts = new ConcurrentHashMap<>();
+    // accumulated durations
+    private static final ConcurrentMap<String, AtomicLong> totals = new ConcurrentHashMap<>();
 
     public static void start(String key) {
-        timers.put(bucketKey(key), System.currentTimeMillis());
+        starts.put(key, System.currentTimeMillis());
     }
 
     public static void end(String key) {
-        String b = bucketKey(key);
-        Long start = timers.remove(b);
+        Long start = starts.remove(key);
         if (start != null) {
-            long delta = System.currentTimeMillis() - start;
-            // only log debug when >100ms
-            if (delta > 100) {
-                logger.debug("PERF → {} took {}ms [{}]", key, delta, ts());
-            }
-            summary.merge(key, delta, Long::sum);
+            long elapsed = System.currentTimeMillis() - start;
+            totals.computeIfAbsent(key, k -> new AtomicLong()).addAndGet(elapsed);
         }
     }
 
+    /**
+     * Print a summary of all durations logged so far,
+     * handling keys that have no "_" or "." gracefully.
+     */
     public static void printSummary() {
-        summary.forEach((k, total) -> {
-            String[] parts = k.split(":",2);
-            logger.info("PERF SUMMARY → {} total {}ms (thread {})",
-                    parts[1], total, parts[0]);
+        if (totals.isEmpty()) {
+            logger.info("⏱ No performance data to report.");
+            return;
+        }
+
+        logger.info("⏱ Performance summary:");
+        totals.forEach((key, atomicMs) -> {
+            long ms = atomicMs.get();
+
+            // Derive a more friendly label:
+            String label;
+            if (key.contains("_")) {
+                label = key.substring(key.indexOf("_") + 1);
+            } else if (key.contains(".")) {
+                label = key.substring(key.lastIndexOf(".") + 1);
+            } else {
+                label = key;
+            }
+
+            logger.info("    {} → {} ms", label, ms);
         });
+
+        // Clear out collected data so next test starts fresh:
+        totals.clear();
     }
 }

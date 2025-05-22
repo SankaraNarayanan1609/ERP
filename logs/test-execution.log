@@ -1025,3 +1025,1326 @@ Session ID: a4e7aff7b7cc53d83051afa726ebd921 | Action: findElement
 2025-05-20 22:44:00 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
 2025-05-20 22:44:17 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
 2025-05-20 22:44:17 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 09:15:59 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_091615.html
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOTest ===
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 18c86862-2f8a-44c2-b8ef-995ebec10c96
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Session ID: e2bc04f0a649552e47aa57336ff9f53a
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 09:16:15 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 09:16:15 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 18c86862-2f8a-44c2-b8ef-995ebec10c96
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - Session ID: e2bc04f0a649552e47aa57336ff9f53a
+2025-05-21 09:16:15 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 09:16:19 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 09:16:19 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 09:16:48 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 09:17:19 [main] ERROR ErrorLogger.logException() - ❌ [2025-05-21 09:17:19.797] Exception in: LoginManager.login
+2025-05-21 09:17:19 [main] ERROR ErrorLogger.logException() - Type: org.openqa.selenium.TimeoutException
+2025-05-21 09:17:19 [main] ERROR ErrorLogger.logException() - Message: Expected condition failed: waiting for visibility of element located by By.xpath: //b[normalize-space()='Member Dashboard'] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.94 (fa0be0b33deb..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49310}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49310/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: e2bc04f0a649552e47aa57336ff9f53a
+2025-05-21 09:17:19 [main] ERROR ErrorLogger.logException() - Stacktrace:
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //b[normalize-space()='Member Dashboard'] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.94 (fa0be0b33deb..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49310}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49310/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: e2bc04f0a649552e47aa57336ff9f53a
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager.login(LoginManager.java:88)
+	at com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest.setupTest(DirectPOTest.java:27)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+
+2025-05-21 09:17:20 [main] ERROR ErrorLogger.logException() - Screenshot saved: logs\screenshots\LoginManager_login_1747799239814.png
+2025-05-21 09:17:21 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 09:20:00 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_092024.html
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOTest ===
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: e56d4977-dc1e-43c5-a0de-451c24a74f01
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Session ID: 3a2fc16321c03d6d8787d7be501992b6
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 09:20:25 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 09:20:25 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: e56d4977-dc1e-43c5-a0de-451c24a74f01
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - Session ID: 3a2fc16321c03d6d8787d7be501992b6
+2025-05-21 09:20:25 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 09:20:29 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 09:20:29 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 09:20:35 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 09:20:59 [main] INFO  LoginManager.login() - Login successful for Superadmin
+2025-05-21 09:21:00 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 11:20:03 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_112012.html
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 11:20:13 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 11:20:13 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 15b8370a-5e3e-4bdd-9884-3f872ee5e8f0
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.logTestStart() - Session ID: 978e0c6067da9c8d3eaa62da80a6865d
+2025-05-21 11:20:13 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 11:20:14 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 11:20:14 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:20:19 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 11:20:22 [main] INFO  LoginManager.login() - Login successful for Superadmin
+2025-05-21 11:21:07 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_112110.html
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 11:21:10 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 11:21:10 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 4f52eabe-3f73-459a-8c91-8248d508370d
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.logTestStart() - Session ID: fd341df026abca82bccc5be4a3e1a6b9
+2025-05-21 11:21:10 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 11:21:57 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 11:21:57 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:22:01 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 11:22:03 [main] INFO  LoginManager.login() - Login successful for Superadmin
+2025-05-21 11:37:00 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_113704.html
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 11:37:05 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 11:37:05 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 4232a7b6-13c9-414f-b797-61f9ed56dce5
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.logTestStart() - Session ID: a6eb2d4f9b750c27fade8c9ab0e06ac4
+2025-05-21 11:37:05 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 11:37:08 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 11:37:08 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:37:13 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 11:37:16 [main] INFO  LoginManager.login() - Login successful for Superadmin
+2025-05-21 11:37:16 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 11:37:16 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 11025 ms
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 4232a7b6-13c9-414f-b797-61f9ed56dce5
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestStart() - Session ID: a6eb2d4f9b750c27fade8c9ab0e06ac4
+2025-05-21 11:37:16 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 11:37:16 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-21 11:54:15 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_115421.html
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 11:54:21 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 11:54:21 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 4cf3f8c2-fc16-40cc-8559-277ac9689db6
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.logTestStart() - Session ID: 6ccd8457cc263583520fdb789fec27fc
+2025-05-21 11:54:21 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 11:54:24 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 11:54:24 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:54:29 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 11:54:31 [main] INFO  LoginManager.login() - Login successful for Superadmin
+2025-05-21 11:54:31 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 11:54:31 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9878 ms
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 4cf3f8c2-fc16-40cc-8559-277ac9689db6
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestStart() - Session ID: 6ccd8457cc263583520fdb789fec27fc
+2025-05-21 11:54:31 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 11:54:31 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-21 11:55:11 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_115513.html
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 11:55:13 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 11:55:13 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 6becb82c-6715-4306-8215-891e26b736fe
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.logTestStart() - Session ID: 526b2619912a73f0f2f443c56dd93b2b
+2025-05-21 11:55:13 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 11:55:17 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 11:55:17 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 11:55:17 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 11:55:20 [main] INFO  LoginManager.login() - Login successful for Superadmin
+2025-05-21 11:55:20 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 11:55:20 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 6596 ms
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 6becb82c-6715-4306-8215-891e26b736fe
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestStart() - Session ID: 526b2619912a73f0f2f443c56dd93b2b
+2025-05-21 11:55:20 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 11:55:20 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-21 12:00:18 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_120021.html
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 12:00:21 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 12:00:21 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 89e3ea77-2599-47b0-9d9a-aa741c4404d7
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.logTestStart() - Session ID: a27fe41e9a99d205b87bad90be7a06e8
+2025-05-21 12:00:21 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 12:00:25 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 12:00:25 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 12:00:29 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 12:00:31 [main] INFO  LoginManager.login() - Login successful for Superadmin
+2025-05-21 12:00:31 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 12:00:31 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9731 ms
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 89e3ea77-2599-47b0-9d9a-aa741c4404d7
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestStart() - Session ID: a27fe41e9a99d205b87bad90be7a06e8
+2025-05-21 12:00:31 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 12:00:31 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-21 12:00:35 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 12:00:35 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 12:00:35 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 12:02:41 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_120243.html
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 12:02:44 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 12:02:44 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 39d20c2b-13e0-4928-b615-1e4d57c6e2db
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.logTestStart() - Session ID: 5612a5d959d992e8aee81e5c57be204b
+2025-05-21 12:02:44 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 12:02:47 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 12:02:47 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 12:02:51 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 12:02:53 [main] ERROR ErrorLogger.logException() - ❌ [2025-05-21 12:02:53.032] Exception in: LoginManager.login
+2025-05-21 12:02:53 [main] ERROR ErrorLogger.logException() - Type: org.openqa.selenium.ElementClickInterceptedException
+2025-05-21 12:02:53 [main] ERROR ErrorLogger.logException() - Message: element click intercepted: Element is not clickable at point (675, 1017)
+  (Session info: chrome=136.0.7103.114)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [5612a5d959d992e8aee81e5c57be204b, clickElement {id=f.88518B70BC413B00E8B09E58D794B8CE.d.7117CFD9F2C62A670B245AD482DDD59A.e.27}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.94 (fa0be0b33deb..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50430}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50430/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (5612a5d959d992e8aee81e5c57be204b)] -> xpath: //button[@id='kt_sign_in_submit']]
+Session ID: 5612a5d959d992e8aee81e5c57be204b
+2025-05-21 12:02:53 [main] ERROR ErrorLogger.logException() - Stacktrace:
+org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (675, 1017)
+  (Session info: chrome=136.0.7103.114)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [5612a5d959d992e8aee81e5c57be204b, clickElement {id=f.88518B70BC413B00E8B09E58D794B8CE.d.7117CFD9F2C62A670B245AD482DDD59A.e.27}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.94 (fa0be0b33deb..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50430}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50430/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (5612a5d959d992e8aee81e5c57be204b)] -> xpath: //button[@id='kt_sign_in_submit']]
+Session ID: 5612a5d959d992e8aee81e5c57be204b
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at com.Vcidex.StoryboardSystems.Utils.Logger.UIActionLogger.click(UIActionLogger.java:56)
+	at com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager.login(LoginManager.java:98)
+	at com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest.setupTest(DirectPOTest.java:28)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+
+2025-05-21 12:02:53 [main] ERROR ErrorLogger.logException() - Screenshot saved: logs\screenshots\LoginManager_login_1747809173045.png
+2025-05-21 12:02:53 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 12:02:53 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9222 ms
+2025-05-21 12:02:53 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 12:02:53 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 12:02:53 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 12:02:54 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 12:16:43 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_121646.html
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 12:16:46 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 12:16:46 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: c9b8deee-d0a6-42ef-aee9-0665bdc22a92
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.logTestStart() - Session ID: b697a1a4c76a8caf9115acf66c155e4b
+2025-05-21 12:16:46 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 12:16:49 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 12:16:49 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 12:16:53 [main] INFO  LoginManager.login() - Logging in user=Superadmin company=vcidex
+2025-05-21 12:16:55 [main] ERROR ErrorLogger.logException() - ❌ [2025-05-21 12:16:55.399] Exception in: LoginManager.login
+2025-05-21 12:16:55 [main] ERROR ErrorLogger.logException() - Type: org.openqa.selenium.ElementClickInterceptedException
+2025-05-21 12:16:55 [main] ERROR ErrorLogger.logException() - Message: element click intercepted: Element is not clickable at point (675, 996)
+  (Session info: chrome=136.0.7103.114)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [b697a1a4c76a8caf9115acf66c155e4b, clickElement {id=f.C25E583CE29A7A9B6756A7C5F8844D55.d.FBF5B80781FC0C47A5E64EFEA5296716.e.27}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.94 (fa0be0b33deb..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50580}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50580/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (b697a1a4c76a8caf9115acf66c155e4b)] -> xpath: //button[@id='kt_sign_in_submit']]
+Session ID: b697a1a4c76a8caf9115acf66c155e4b
+2025-05-21 12:16:55 [main] ERROR ErrorLogger.logException() - Stacktrace:
+org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (675, 996)
+  (Session info: chrome=136.0.7103.114)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [b697a1a4c76a8caf9115acf66c155e4b, clickElement {id=f.C25E583CE29A7A9B6756A7C5F8844D55.d.FBF5B80781FC0C47A5E64EFEA5296716.e.27}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.94 (fa0be0b33deb..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50580}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50580/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (b697a1a4c76a8caf9115acf66c155e4b)] -> xpath: //button[@id='kt_sign_in_submit']]
+Session ID: b697a1a4c76a8caf9115acf66c155e4b
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at com.Vcidex.StoryboardSystems.Utils.Logger.UIActionLogger.click(UIActionLogger.java:56)
+	at com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager.login(LoginManager.java:98)
+	at com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest.setupTest(DirectPOTest.java:32)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+
+2025-05-21 12:16:55 [main] ERROR ErrorLogger.logException() - Screenshot saved: logs\screenshots\LoginManager_login_1747810015404.png
+2025-05-21 12:16:55 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 12:16:55 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9073 ms
+2025-05-21 12:16:55 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 12:16:55 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 12:16:55 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 12:16:56 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 12:34:21 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_123424.html
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 12:34:24 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 12:34:24 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: b8201001-5709-4e58-852c-3f3bdb5707f0
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.logTestStart() - Session ID: 84602d71b116056e25899954e169b6a0
+2025-05-21 12:34:24 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 12:34:28 [main] INFO  LoginManager.login() - Navigated to https://erplite.storyboarderp.com/
+2025-05-21 12:34:28 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 12:34:34 [main] ERROR UIActionLogger.failure() - UI Failure context: Click ▶ Login Button
+2025-05-21 12:34:34 [main] ERROR UIActionLogger.captureScreenshot() - Screenshot saved: logs\screenshots\Click_Login_Button_1747811074139.png
+2025-05-21 12:34:34 [main] ERROR UIActionLogger.failure() - BROWSER-CONSOLE SEVERE | https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js 0:1322690 "ERROR" TypeError: Cannot read properties of undefined (reading 'segments')
+    at A.isInPaymentsPage (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:536751)
+    at template (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:537326)
+    at k0.runInContext (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:1323209)
+    at G0 (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:1325384)
+    at ch (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:1334918)
+    at uh (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:1336122)
+    at rv (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:1335985)
+    at fh (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:1336264)
+    at ch (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:1335641)
+    at If (https://erplite.storyboarderp.com/v4/main.b6e325a784392d35.js:1:1334640)
+2025-05-21 12:34:34 [main] ERROR UIActionLogger.failure() - UI Failure context: Login Button click
+2025-05-21 12:34:34 [main] ERROR UIActionLogger.captureScreenshot() - Screenshot saved: logs\screenshots\Login_Button_click_1747811074340.png
+2025-05-21 12:34:34 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 12:34:34 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9472 ms
+2025-05-21 12:34:34 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 12:34:34 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 12:34:34 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 12:34:35 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 13:07:57 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_130800.html
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: dbd3bcb6-de8c-45ec-82e1-cbb8a87eefd7
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.logTestStart() - Session ID: 67cb126328379eb69a1c5d0362af0461
+2025-05-21 13:08:00 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 13:08:00 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 13:08:05 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 13:08:40 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 13:08:40 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 13:08:41 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 14:07:21 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 14:07:26 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_140726.html
+2025-05-21 14:07:26 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 14:07:26 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 14:07:26 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: b8ed1a67-9280-47d4-af68-b81180c71ba2
+2025-05-21 14:07:27 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 14:07:27 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 14:07:27 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 14:07:27 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 14:07:27 [main] INFO  TestContextLogger.logTestStart() - Session ID: e038e679d03f047dd769e1ceb73b2be7
+2025-05-21 14:07:27 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 14:07:27 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 14:07:30 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 14:07:36 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 14:07:36 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9210 ms
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: b8ed1a67-9280-47d4-af68-b81180c71ba2
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestStart() - Session ID: e038e679d03f047dd769e1ceb73b2be7
+2025-05-21 14:07:36 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 14:07:36 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-21 14:07:38 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 14:07:38 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 14:07:39 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 14:13:02 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_141304.html
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: aeb3330f-1f5b-4a0c-b1b7-2ea8e65c2153
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.logTestStart() - Session ID: 20f746fce185c56487a683ff208affc8
+2025-05-21 14:13:05 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 14:13:05 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 14:13:08 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 14:13:14 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 14:13:14 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 8971 ms
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: aeb3330f-1f5b-4a0c-b1b7-2ea8e65c2153
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestStart() - Session ID: 20f746fce185c56487a683ff208affc8
+2025-05-21 14:13:14 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 14:13:14 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-21 14:13:16 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 14:13:16 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 14:13:17 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 15:31:46 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_153150.html
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 15:31:51 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 15:31:51 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: e1001821-d63f-4014-9381-e8988f71cd99
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.logTestStart() - Session ID: a29af0ccefe680b2a1070694572c9b50
+2025-05-21 15:31:51 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 15:31:54 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 15:32:00 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 15:32:00 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9612 ms
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: e1001821-d63f-4014-9381-e8988f71cd99
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestStart() - Session ID: a29af0ccefe680b2a1070694572c9b50
+2025-05-21 15:32:00 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 15:32:00 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-21 15:32:03 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 15:32:03 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 15:32:04 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-21 21:25:33 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250521_212538.html
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-21 21:25:38 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-21 21:25:38 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: d56a95f3-149f-4563-9a11-bdddb36d9347
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.logTestStart() - Session ID: e9c4ca47ec6a2129dd1399f2cf56c55a
+2025-05-21 21:25:38 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-21 21:26:21 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-21 21:26:21 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 42997 ms
+2025-05-21 21:26:21 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-21 21:26:21 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-21 21:26:21 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-21 21:26:22 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 09:19:41 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_091952.html
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 09:19:53 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 09:19:53 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 062fdb05-41bb-4fed-86cb-b9c131911afe
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.logTestStart() - Session ID: 052606e5ba24486ec946a4546090e5c3
+2025-05-22 09:19:53 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 09:20:11 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 09:20:27 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 09:20:27 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 33314 ms
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 062fdb05-41bb-4fed-86cb-b9c131911afe
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestStart() - Session ID: 052606e5ba24486ec946a4546090e5c3
+2025-05-22 09:20:27 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 09:20:27 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 09:20:32 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 09:20:32 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 09:20:33 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 09:34:53 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_093457.html
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 09:34:58 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 09:34:58 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: f92eb92c-7989-4263-be39-3c92037b8696
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.logTestStart() - Session ID: b8d51b9832ba43f896547694ccdd424c
+2025-05-22 09:34:58 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 09:35:02 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 09:35:10 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 09:35:10 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 12150 ms
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: f92eb92c-7989-4263-be39-3c92037b8696
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestStart() - Session ID: b8d51b9832ba43f896547694ccdd424c
+2025-05-22 09:35:10 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 09:35:10 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 09:35:14 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 09:35:14 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 09:35:15 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 11:49:14 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_114920.html
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 11:49:20 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 11:49:20 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 2e0c33f8-27ab-4aa8-b278-e013077d0f75
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.logTestStart() - Session ID: 61d6ff20993a61d586bf0a2088026ec7
+2025-05-22 11:49:20 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 11:49:24 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 11:49:30 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 11:49:30 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 10121 ms
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 2e0c33f8-27ab-4aa8-b278-e013077d0f75
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestStart() - Session ID: 61d6ff20993a61d586bf0a2088026ec7
+2025-05-22 11:49:30 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 11:49:30 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 11:49:35 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 11:49:35 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 11:49:36 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 14:43:39 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_144344.html
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 14:43:44 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 14:43:44 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 591da239-3b37-4c34-ad05-a12604addc10
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.logTestStart() - Session ID: cf9411dc9af67ab24ca46084cab5eee8
+2025-05-22 14:43:44 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 14:43:48 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 14:43:53 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 14:43:53 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9238 ms
+2025-05-22 14:43:53 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 14:43:53 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 14:43:53 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 14:43:54 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 14:44:16 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_144419.html
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 14:44:19 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 14:44:19 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 50a136f1-64e4-439a-815b-1034bc4fdae0
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.logTestStart() - Session ID: 0d1ab93a80c7b734b67a34cd5038d3cb
+2025-05-22 14:44:19 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 14:44:20 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 14:44:26 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 14:44:26 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 6278 ms
+2025-05-22 14:44:26 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 14:44:26 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 14:44:26 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 14:44:26 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 14:46:03 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_144606.html
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 14:46:06 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 14:46:06 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 0c130ccf-ee2b-40c5-abd9-094e4026819e
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.logTestStart() - Session ID: 20d6cb9e79ba702054c615d0060491d9
+2025-05-22 14:46:06 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 14:46:10 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 14:46:17 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 14:46:17 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 10379 ms
+2025-05-22 14:46:17 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 14:46:17 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 14:46:17 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 14:46:17 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 14:54:08 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_145412.html
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 14:54:12 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 14:54:12 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 3061883a-e692-449d-ab24-ac69379415eb
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.logTestStart() - Session ID: 2cb2504d59ced6e8887562aa28d9f5ea
+2025-05-22 14:54:12 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 14:54:15 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 14:54:21 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 14:54:21 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 8692 ms
+2025-05-22 14:54:21 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 14:54:21 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 14:54:21 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 14:54:21 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 15:03:40 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_150343.html
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 15:03:44 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 15:03:44 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 4d935a73-74d0-4f17-b4fe-5dd83a77d098
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.logTestStart() - Session ID: 499b5f18379429b40d8ca663f9269332
+2025-05-22 15:03:44 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 15:03:47 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 15:03:53 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 15:03:53 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9189 ms
+2025-05-22 15:03:53 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 15:03:53 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 15:03:53 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 15:03:53 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 15:30:03 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_153007.html
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 15:30:07 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 15:30:07 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 574d9f5f-3e77-4893-87e7-3f367b094b72
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.logTestStart() - Session ID: 3385c0518fc63b5baca170d613928c94
+2025-05-22 15:30:07 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 15:30:11 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 15:30:16 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 15:30:16 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9280 ms
+2025-05-22 15:30:16 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 15:30:20 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 15:30:20 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 574d9f5f-3e77-4893-87e7-3f367b094b72
+2025-05-22 15:30:20 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 15:30:20 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 15:30:20 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 15:30:20 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 15:30:20 [main] INFO  TestContextLogger.logTestStart() - Session ID: 3385c0518fc63b5baca170d613928c94
+2025-05-22 15:30:20 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 15:30:20 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 15:30:24 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 15:30:24 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 15:30:25 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 16:01:20 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_160125.html
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 16:01:26 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 16:01:26 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 215532e8-a0a0-49ba-a16b-b4e6191ef7d0
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.logTestStart() - Session ID: 333254ef9ef49cb7cc50945ecf674c15
+2025-05-22 16:01:26 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:01:29 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:01:35 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 16:01:35 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9082 ms
+2025-05-22 16:01:35 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 16:01:38 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 16:01:38 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 215532e8-a0a0-49ba-a16b-b4e6191ef7d0
+2025-05-22 16:01:38 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:01:38 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:01:38 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:01:38 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:01:38 [main] INFO  TestContextLogger.logTestStart() - Session ID: 333254ef9ef49cb7cc50945ecf674c15
+2025-05-22 16:01:38 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:01:38 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 16:01:44 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 16:01:44 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 16:01:45 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 16:23:40 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_162344.html
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 16:23:44 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 16:23:44 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 1348b5d3-836e-4bc1-bd6a-ec5aa01f3f9b
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.logTestStart() - Session ID: ea009825d543dc39b140c4bd739f6899
+2025-05-22 16:23:44 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:23:48 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:23:53 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 16:23:53 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9152 ms
+2025-05-22 16:23:53 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 16:23:54 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 16:23:54 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 16:23:54 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 16:24:06 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_162410.html
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 16:24:10 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 16:24:10 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 8e994080-90f3-47e9-afa3-e140137d51ef
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.logTestStart() - Session ID: 3a45ebb762cc6c3b163a78985b8aa1b2
+2025-05-22 16:24:10 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:24:14 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:24:32 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 16:24:32 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 21631 ms
+2025-05-22 16:24:32 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 16:24:36 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 16:24:36 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 8e994080-90f3-47e9-afa3-e140137d51ef
+2025-05-22 16:24:36 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:24:36 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:24:36 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:24:36 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:24:36 [main] INFO  TestContextLogger.logTestStart() - Session ID: 3a45ebb762cc6c3b163a78985b8aa1b2
+2025-05-22 16:24:36 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:24:36 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 16:24:41 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 16:24:41 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 16:24:42 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 16:28:41 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_162845.html
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 16:28:46 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 16:28:46 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 285634e0-84b9-44c1-b433-387a70469b26
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.logTestStart() - Session ID: 784aaff0a70ab1c235bae42c25e4da3a
+2025-05-22 16:28:46 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:28:49 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:28:56 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 16:28:56 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 10336 ms
+2025-05-22 16:28:56 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 16:28:59 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 16:28:59 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 285634e0-84b9-44c1-b433-387a70469b26
+2025-05-22 16:28:59 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:28:59 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:28:59 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:28:59 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:28:59 [main] INFO  TestContextLogger.logTestStart() - Session ID: 784aaff0a70ab1c235bae42c25e4da3a
+2025-05-22 16:28:59 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:28:59 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 16:29:05 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 16:29:05 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 16:29:05 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 16:34:00 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_163404.html
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 16:34:04 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 16:34:04 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 721f3b84-cef1-4699-a70a-6b91f37f0bcd
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.logTestStart() - Session ID: 82352bb11f2a54757345cafff3d3da95
+2025-05-22 16:34:04 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:34:08 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:34:40 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 16:34:40 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 35203 ms
+2025-05-22 16:34:40 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 16:35:10 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 16:35:10 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 16:35:11 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 16:35:18 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_163522.html
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 16:35:22 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 16:35:22 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: c8502594-4250-44d9-bdb7-f04c72e44f41
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.logTestStart() - Session ID: a9ccdee7483500107574429f3be42f62
+2025-05-22 16:35:22 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:35:25 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 16:35:31 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 16:35:31 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9221 ms
+2025-05-22 16:35:31 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 16:35:34 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 16:35:34 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: c8502594-4250-44d9-bdb7-f04c72e44f41
+2025-05-22 16:35:34 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 16:35:34 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 16:35:34 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 16:35:34 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 16:35:34 [main] INFO  TestContextLogger.logTestStart() - Session ID: a9ccdee7483500107574429f3be42f62
+2025-05-22 16:35:34 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 16:35:34 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 16:35:40 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 16:35:40 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 16:35:40 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 17:08:57 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_170901.html
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 17:09:02 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 17:09:02 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 7a604084-4a74-4a23-a684-6cd01bddb2d2
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.logTestStart() - Session ID: 8576196cc0ff154ad97f0104e76f5b5b
+2025-05-22 17:09:02 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 17:09:05 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 17:09:11 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 17:09:11 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9239 ms
+2025-05-22 17:09:11 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 17:09:15 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 17:09:15 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 7a604084-4a74-4a23-a684-6cd01bddb2d2
+2025-05-22 17:09:15 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 17:09:15 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 17:09:15 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 17:09:15 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 17:09:15 [main] INFO  TestContextLogger.logTestStart() - Session ID: 8576196cc0ff154ad97f0104e76f5b5b
+2025-05-22 17:09:15 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 17:09:15 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 17:09:21 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 17:09:21 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 17:09:21 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 17:14:40 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_171444.html
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 17:14:44 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 17:14:44 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 5a7f4fb2-7cf7-4d7a-949b-8838fabe8ce3
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.logTestStart() - Session ID: 3b935e4810f48ad136457ea999574382
+2025-05-22 17:14:44 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 17:14:47 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 17:14:53 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 17:14:53 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 9097 ms
+2025-05-22 17:14:53 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 5a7f4fb2-7cf7-4d7a-949b-8838fabe8ce3
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestStart() - Session ID: 3b935e4810f48ad136457ea999574382
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 17:14:57 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 17:14:57 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 17:14:57 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 17:14:58 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 17:18:15 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_171818.html
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 17:18:18 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 17:18:18 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 3d65cf1a-eb1c-4b78-b49c-fbdbdcdd9f19
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.logTestStart() - Session ID: af69f053ad2bbcb328e3a0017a61a2d0
+2025-05-22 17:18:18 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 17:18:19 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 17:18:24 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 17:18:24 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 5855 ms
+2025-05-22 17:18:24 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 17:18:28 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 17:18:28 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 3d65cf1a-eb1c-4b78-b49c-fbdbdcdd9f19
+2025-05-22 17:18:28 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 17:18:28 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 17:18:28 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 17:18:28 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 17:18:28 [main] INFO  TestContextLogger.logTestStart() - Session ID: af69f053ad2bbcb328e3a0017a61a2d0
+2025-05-22 17:18:28 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 17:18:28 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 17:18:29 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 17:18:29 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 17:18:29 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 17:21:52 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_172156.html
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 17:21:56 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 17:21:56 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 7134e2f6-1649-4317-b6bd-644369713af1
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.logTestStart() - Session ID: bab8112fa3223df750ba85d00845d850
+2025-05-22 17:21:56 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 17:21:56 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 17:22:02 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 17:22:02 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 6376 ms
+2025-05-22 17:22:02 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 17:22:06 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 17:22:06 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 7134e2f6-1649-4317-b6bd-644369713af1
+2025-05-22 17:22:06 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 17:22:06 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 17:22:06 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 17:22:06 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 17:22:06 [main] INFO  TestContextLogger.logTestStart() - Session ID: bab8112fa3223df750ba85d00845d850
+2025-05-22 17:22:06 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 17:22:06 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 17:22:10 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 17:22:10 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 17:22:10 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 18:01:01 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 18:01:04 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 18:01:06 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 18:01:06 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 18:01:06 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 18:01:06 [Thread-4] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 18:01:25 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 18:01:28 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 18:01:30 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 18:01:30 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 18:01:30 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 18:01:31 [Thread-4] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 19:22:36 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 19:22:41 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 19:22:45 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 19:22:45 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 19:22:45 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 19:22:45 [Thread-4] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 19:26:35 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 19:26:38 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 19:26:42 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 19:26:42 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 19:26:42 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 19:26:42 [Thread-4] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 19:30:53 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 19:30:56 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_193102.html
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 19:31:02 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: b3b2f875-59a0-4414-a0c4-3f269f61ba0f
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.logTestStart() - Session ID: db9d28e1a0335593c8e909edab0def29
+2025-05-22 19:31:02 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 19:31:02 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 19:31:06 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 19:31:06 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 3714 ms
+2025-05-22 19:31:06 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: b3b2f875-59a0-4414-a0c4-3f269f61ba0f
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestStart() - Session ID: db9d28e1a0335593c8e909edab0def29
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 19:31:10 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 19:31:10 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 19:31:10 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 19:31:11 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 19:43:50 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 19:43:54 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 19:43:57 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 19:43:57 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 19:43:57 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 19:43:58 [Thread-4] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-22 19:56:04 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 19:56:07 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_195611.html
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 19:56:12 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 1f82825f-2cac-4d2d-94d6-b08203aa9a3e
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.logTestStart() - Session ID: fa42ad4e70b77190d6255814d1a1744d
+2025-05-22 19:56:12 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 19:56:12 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 19:56:16 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 19:56:16 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 3838 ms
+2025-05-22 19:56:16 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 1f82825f-2cac-4d2d-94d6-b08203aa9a3e
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestStart() - Session ID: fa42ad4e70b77190d6255814d1a1744d
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 19:56:20 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 19:56:20 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 19:56:20 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 19:56:21 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 19:58:27 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 19:58:30 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_195834.html
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 19:58:35 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 27f7967a-694b-419e-a007-47ae0c73a990
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.logTestStart() - Session ID: 282d77fc4fa2e186cccd0369213b36a4
+2025-05-22 19:58:35 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 19:58:35 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 19:58:38 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 19:58:38 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 3415 ms
+2025-05-22 19:58:38 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestStart() - === TEST START: DirectPOPage init ===
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 27f7967a-694b-419e-a007-47ae0c73a990
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestStart() - Session ID: 282d77fc4fa2e186cccd0369213b36a4
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 19:58:43 [main] INFO  ValidationLogger.reset() - 🔄 Reset ValidationLogger for test='null' | JVM user='SankaraNarayanan' | Java='21.0.1' | OS='Windows 10 10.0' | Thread=1
+2025-05-22 19:58:43 [main] WARN  ApiMasterDataProvider.safeGetList() - GET /v4/api/system/SysMstBranch returned status 404 – returning empty list
+2025-05-22 19:58:43 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 19:58:43 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 19:58:44 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 20:00:18 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 20:00:21 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_200025.html
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 20:00:26 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 9e405e02-fb23-4c91-911d-2d6e07efe575
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.logTestStart() - Session ID: f1611b3b1148f02d09b6bfd38de4fdb9
+2025-05-22 20:00:26 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 20:00:26 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 20:00:29 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 20:00:29 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 3139 ms
+2025-05-22 20:00:29 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 20:00:59 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 20:00:59 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 20:01:00 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-22 20:18:31 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-22 20:18:35 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250522_201859.html
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-22 20:19:00 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.logTestStart() - === TEST START: Login ===
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.logTestStart() - TestRun ID: 7dd06cec-b42c-4687-b0da-3b110cf97481
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.logTestStart() - Thread ID: 1
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.logTestStart() - Environment: unknown | BaseURL: unknown
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.logTestStart() - Java Version: 21.0.1
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.logTestStart() - Browser: chrome 136.0.7103.114
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.logTestStart() - Session ID: 71de2cb65eb2d2523af982d8a8e7c08f
+2025-05-22 20:19:00 [main] INFO  TestContextLogger.logTestStart() - OS: Windows 10 10.0
+2025-05-22 20:20:03 [main] INFO  PerformanceLogger.printSummary() - ⏱ Performance summary:
+2025-05-22 20:20:03 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     login → 63651 ms
+2025-05-22 20:20:03 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: Login ===
+2025-05-22 20:20:04 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-22 20:20:04 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-22 20:20:05 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.

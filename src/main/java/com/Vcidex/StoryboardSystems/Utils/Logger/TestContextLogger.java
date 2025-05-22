@@ -18,8 +18,8 @@ public class TestContextLogger {
         logger.info("TestRun ID: {}", TEST_RUN_ID);
         logger.info("Thread ID: {}", Thread.currentThread().getId());
         logger.info("Environment: {} | BaseURL: {}",
-                System.getProperty("env.name","unknown"),
-                System.getProperty("base.url","unknown")
+                System.getProperty("env.name", "unknown"),
+                System.getProperty("base.url", "unknown")
         );
         logger.info("Java Version: {}", System.getProperty("java.version"));
 
@@ -29,7 +29,7 @@ public class TestContextLogger {
             try {
                 String session = ((RemoteWebDriver) driver).getSessionId().toString();
                 logger.info("Session ID: {}", session);
-            } catch (Exception ignore) {}
+            } catch (Exception ignore) { }
         }
 
         logger.info("OS: {} {}", System.getProperty("os.name"), System.getProperty("os.version"));
@@ -37,8 +37,12 @@ public class TestContextLogger {
 
     /** Call at @AfterMethod or via listener on test end. */
     public static void logTestEnd(String testName) {
-        // Summarize any performance metrics if you wish:
-        PerformanceLogger.printSummary();
+        // Attempt to print performance summary, but never let it crash the test teardown
+        try {
+            PerformanceLogger.printSummary();
+        } catch (Exception e) {
+            logger.error("Failed to print performance summary: {}", e.getMessage());
+        }
         logger.info("=== TEST END: {} ===", testName);
     }
 

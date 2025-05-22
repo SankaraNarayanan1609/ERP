@@ -11,11 +11,6 @@ import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.Set;
 
-/**
- * Centralized configuration manager.
- * - Loads all test data (applications/companies/users) from JSON.
- * - Loads framework settings (browser, timeout, etc.) from properties.
- */
 public class ConfigManager {
     private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
     private static final String JSON_CONFIG_PATH = "src/main/resources/config.json";
@@ -33,9 +28,8 @@ public class ConfigManager {
         }
     }
 
-    /**
-     * Retrieves the JSONObject for an application under the given environment.
-     */
+    // ────────────────────────────────────────────────────────────────────────────
+
     public static JSONObject getAppConfig(String env, String appName) {
         JSONObject envObj = jsonConfig.optJSONObject(env);
         if (envObj == null) {
@@ -54,9 +48,6 @@ public class ConfigManager {
         throw new IllegalArgumentException("App not found: " + appName + " in env: " + env);
     }
 
-    /**
-     * Retrieves the JSONObject for a company under a specific application.
-     */
     public static JSONObject getCompanyConfig(String env, String appName, String companyCode) {
         JSONObject app = getAppConfig(env, appName);
         JSONArray companies = app.optJSONArray("companies");
@@ -72,9 +63,6 @@ public class ConfigManager {
         throw new IllegalArgumentException("Company not found: " + companyCode + " in app: " + appName);
     }
 
-    /**
-     * Retrieves the JSONObject for a user under a specific company.
-     */
     public static JSONObject getUserConfig(String env, String appName, String companyCode, String userId) {
         JSONObject comp = getCompanyConfig(env, appName, companyCode);
         JSONArray users = comp.optJSONArray("users");
@@ -90,9 +78,21 @@ public class ConfigManager {
         throw new IllegalArgumentException("User not found: " + userId + " in company: " + companyCode);
     }
 
-    /**
-     * Retrieve a framework property (from config.properties) or returns default.
-     */
+    /** New: load the "auth" block under each env */
+    public static JSONObject getAuthConfig(String env) {
+        JSONObject envObj = jsonConfig.optJSONObject(env);
+        if (envObj == null) {
+            throw new IllegalArgumentException("Environment not found: " + env);
+        }
+        JSONObject authObj = envObj.optJSONObject("auth");
+        if (authObj == null) {
+            throw new IllegalArgumentException("No auth block defined for env: " + env);
+        }
+        return authObj;
+    }
+
+    // ────────────────────────────────────────────────────────────────────────────
+
     public static String getProperty(String key, String defaultValue) {
         try (InputStream in = ConfigManager.class.getClassLoader().getResourceAsStream(PROP_FILE)) {
             if (in == null) {
@@ -110,9 +110,6 @@ public class ConfigManager {
         }
     }
 
-    /**
-     * Returns all defined environment names.
-     */
     public static Set<String> getEnvironments() {
         return jsonConfig.keySet();
     }

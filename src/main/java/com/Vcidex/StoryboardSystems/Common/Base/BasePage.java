@@ -4,47 +4,43 @@ import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.PerformanceLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.UIActionLogger;
-import com.aventstack.extentreports.ExtentTest;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.Objects;
 
-/**
- * BasePage providing common WebDriver interactions
- * with unified logging, performance timing, and error handling.
- */
 public class BasePage {
-    protected WebDriver driver;
-    protected WebDriverWait wait;
-    protected Actions actions;
-    protected JavascriptExecutor jsExecutor;
+    protected final WebDriver driver;
+    protected final WebDriverWait wait;
+    protected final Actions actions;
+    protected final JavascriptExecutor jsExecutor;
+    protected final ExtentTest test;
+
+    private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
     private static final int TIMEOUT = Integer.parseInt(
             ConfigManager.getProperty("timeout", "10")
     );
-    private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
-    protected ExtentTest test = ExtentTestManager.getTest();
 
     public BasePage(WebDriver driver) {
-        this.driver = Objects.requireNonNull(driver, "Driver must be set");
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
-        this.actions = new Actions(driver);
+        this(driver, ExtentTestManager.getTest());
+    }
+
+    public BasePage(WebDriver driver, ExtentTest node) {
+        this.driver = Objects.requireNonNull(driver, "Driver must not be null");
+        this.test   = Objects.requireNonNull(node,   "ExtentTest node must not be null");
+        this.wait   = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+        this.actions    = new Actions(driver);
         this.jsExecutor = (JavascriptExecutor) driver;
     }
 
-    // ---------------- Element Interaction ----------------
-
-
-     /**
-      * Find element with presence check and debug-only logging
-      */
     public WebElement findElement(By locator) {
         try {
             WebElement el = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -56,55 +52,30 @@ public class BasePage {
         }
     }
 
-    /**
-     * Click action wrapped with logging and error handling.
-     */
+    // ───────────── Element Interaction ──────────────────────────────────────────
+
+    /** Directly delegate to your UIActionLogger so you get only its two lines. */
     public void click(By locator, String name) {
-        performAction(
-                () -> UIActionLogger.click(driver, locator, name),
-                "Click: " + name
-        );
+        UIActionLogger.click(driver, locator, name, test);
     }
 
-    public void click(By locator) {
-        click(locator, locator.toString());
+    /** Ditto for typing text. */
+    protected void type(By locator, String value, String name) {
+        UIActionLogger.type(driver, locator, value, name, test);
     }
 
-    /**
-     * Type action wrapped with logging and error handling.
-     */
-    public void type(By locator, String value, String name) {
-        performAction(
-                () -> UIActionLogger.type(driver, locator, value, name),
-                "Type '" + value + "' into " + name
-        );
-    }
-
-    public void type(By locator, String value) {
-        type(locator, value, locator.toString());
-    }
-
-    /**
-     * Submit form wrapped with logging and error handling.
-     */
+    /** Ditto for form submits. */
     public void submit(By locator, String pageName) {
-        performAction(
-                () -> UIActionLogger.submit(driver, locator, pageName),
-                "Submit: " + pageName
-        );
+        UIActionLogger.submit(driver, locator, pageName, test);
     }
 
-    // ---------------- Waits & Reads ----------------
+    // ───────────── Waits & Reads ────────────────────────────────────────────────
 
-    /**
-     * Wait until visible, with performance timing and error capture.
-     */
     public WebElement waitUntilVisible(By locator) {
         String key = "waitVisible:" + locator;
         PerformanceLogger.start(key);
         try {
-            WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-            return el;
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (Exception e) {
             ErrorLogger.logException(e, key, driver);
             throw e;
@@ -120,10 +91,6 @@ public class BasePage {
         );
     }
 
-    public String getText(By locator) {
-        return getText(locator, locator.toString());
-    }
-
     public String getAttribute(By locator, String attribute) {
         return performGet(
                 () -> findElement(locator).getAttribute(attribute),
@@ -131,7 +98,7 @@ public class BasePage {
         );
     }
 
-    // ---------------- Dropdowns & Misc ----------------
+    // ───────────── Dropdowns & Misc ────────────────────────────────────────────
 
     public void selectByText(By locator, String value) {
         performAction(
@@ -167,7 +134,7 @@ public class BasePage {
         );
     }
 
-    // ---------------- Utilities ----------------
+    // ───────────── Utilities ───────────────────────────────────────────────────
 
     private <T> T performGet(SupplierWithException<T> supplier, String description) {
         try {
@@ -182,16 +149,10 @@ public class BasePage {
         }
     }
 
-    private void performAction(Runnable action, String description) {
-        try {
-            test.info("🚀 " + description);
-            action.run();
-            test.pass("✅ " + description);
-        } catch (Exception e) {
-            test.fail("❌ " + description + " | " + e.getMessage());
-            ErrorLogger.logException(e, description, driver);
-            throw e;
-        }
+    protected void performAction(Runnable action, String description) {
+        test.info("🚀 " + description);
+        action.run();
+        test.pass("✅ " + description);
     }
 
     @FunctionalInterface
