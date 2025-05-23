@@ -18,9 +18,9 @@
     ],
     "auth": {
       "authUrl":      "https://erplite.storyboarderp.com",
-      "tokenPath":    "/Storyboardapi/api/token",
-      "clientId":     "YOUR_CLIENT_ID",
-      "clientSecret": "YOUR_CLIENT_SECRET"
+      "tokenPath":    "/storyboardapi/api/Login/UserLogin",
+      "clientId":     "Superadmin",
+      "clientSecret": "s"
     }
   }
 }

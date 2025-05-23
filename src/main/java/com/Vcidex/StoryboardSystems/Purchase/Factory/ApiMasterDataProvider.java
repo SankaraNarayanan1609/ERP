@@ -1,9 +1,13 @@
-// src/main/java/com/Vcidex/StoryboardSystems/Purchase/Factory/ApiMasterDataProvider.java
 package com.Vcidex.StoryboardSystems.Purchase.Factory;
 
 import com.Vcidex.StoryboardSystems.Purchase.POJO.Employee;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.Product;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.Vendor;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.RestAssured;
+import io.restassured.config.ObjectMapperConfig;
+import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.common.mapper.TypeRef;
@@ -19,6 +23,16 @@ import static io.restassured.RestAssured.given;
 
 public class ApiMasterDataProvider implements MasterDataProvider {
     private static final Logger log = LoggerFactory.getLogger(ApiMasterDataProvider.class);
+
+    static {
+        RestAssured.config = RestAssuredConfig.config()
+                .objectMapperConfig(new ObjectMapperConfig()
+                        .jackson2ObjectMapperFactory((cls, charset) ->
+                                new ObjectMapper()
+                                        .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+                        )
+                );
+    }
 
     private final String baseUrl;
     private final String authToken;
@@ -42,7 +56,7 @@ public class ApiMasterDataProvider implements MasterDataProvider {
             }
             return extractor.apply(resp);
         } catch (Exception e) {
-            log.error("Error calling {}: {}", path, e.getMessage());
+            log.error("Error calling {}: {}", path, e.getMessage(), e);
             return Collections.emptyList();
         }
     }
@@ -50,7 +64,7 @@ public class ApiMasterDataProvider implements MasterDataProvider {
     @Override
     public List<String> getBranches() {
         return safeGetList(
-                "/v4/api/system/SysMstBranch",
+                "/StoryboardAPI/api/SysMstBranch/BranchSummary",
                 r -> r.jsonPath().getList("data.branch_name", String.class)
         );
     }
@@ -58,7 +72,7 @@ public class ApiMasterDataProvider implements MasterDataProvider {
     @Override
     public List<Employee> getEmployees() {
         return safeGetList(
-                "/v4/api/system/SysMstEmployeeSummary",
+                "/StoryboardAPI/api/Employeelist/GetEmployeeSummary",
                 r -> r.then().contentType(ContentType.JSON)
                         .extract().jsonPath().getList("data", Employee.class)
         );
@@ -67,7 +81,7 @@ public class ApiMasterDataProvider implements MasterDataProvider {
     @Override
     public List<Vendor> getVendors() {
         return safeGetList(
-                "/v4/api/pmr/PmrMstVendorregister",
+                "/StoryboardAPI/api/PmrMstVendorRegister/GetVendorregisterSummary",
                 r -> r.then().contentType(ContentType.JSON)
                         .extract().jsonPath().getList("data", Vendor.class)
         );
@@ -76,15 +90,15 @@ public class ApiMasterDataProvider implements MasterDataProvider {
     @Override
     public List<Product> getProducts() {
         return safeGetList(
-                "/v4/api/pmr/ProductSummary",
+                "/StoryboardAPI/api/PmrMstProduct/GetProductSummary",
                 r -> r.then().contentType(ContentType.JSON)
-                        .extract().jsonPath().getList("data", Product.class)
+                        .extract().jsonPath().getList("product_list", Product.class)
         );
     }
 
     private List<Map<String,String>> fetchCurrencyList() {
         return safeGetList(
-                "/v4/api/pmr/PmrMstCurrencySummary",
+                "/StoryboardAPI/api/PmrMstCurrency/GetPmrCurrencySummary",
                 r -> r.then().contentType(ContentType.JSON)
                         .extract().jsonPath()
                         .getObject("currency_list", new TypeRef<List<Map<String,String>>>(){})
@@ -115,7 +129,7 @@ public class ApiMasterDataProvider implements MasterDataProvider {
     @Override
     public List<String> getTermsAndConditions() {
         return safeGetList(
-                "/v4/api/pmr/PmrMstTermsconditionssummary",
+                "/StoryboardAPI/api/PmrMstTermsConditions/GetTermsConditionsSummary",
                 r -> r.then().contentType(ContentType.JSON)
                         .extract().jsonPath().getList("data.template_name", String.class)
         );
@@ -123,7 +137,7 @@ public class ApiMasterDataProvider implements MasterDataProvider {
 
     private List<Map<String,String>> fetchTaxList() {
         return safeGetList(
-                "/v4/api/pmr/PmrMstTaxSummary",
+                "/StoryboardAPI/api/PmrMstTax/GetTaxSummary",
                 r -> r.then().contentType(ContentType.JSON)
                         .extract().jsonPath().getObject("data", new TypeRef<List<Map<String,String>>>(){})
         );

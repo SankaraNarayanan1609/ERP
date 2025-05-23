@@ -10,22 +10,22 @@ import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.TestContextLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import com.aventstack.extentreports.ExtentTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class DirectPO extends BasePage {
     private final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    //Click Direct PO Button
-    private final By directPOButton = By.xpath("//button[@data-bs-target='#myModaladd' and normalize-space(.)='Direct PO']");
+    // Spinner/backdrop that may block clicks; adjust to your app’s selector
+    private final By loadingOverlay = By.cssSelector(".spinner-overlay, .modal-backdrop");
 
-    /** NEW: click the Direct PO button to open the form dialog */
+    // “Direct PO” button
+    private final By directPOButton = By.xpath("//button[@data-bs-target='#myModaladd' and normalize-space(.)='Direct PO']");
 
     // Header locators
     private final By branchNameDropdown    = By.xpath("//ng-select[@formcontrolname='branch_name']");
@@ -92,8 +92,26 @@ public class DirectPO extends BasePage {
     public void openDirectPOModal(ExtentTest node) {
         PerformanceLogger.start("openDirectPOModal");
         try {
-            UIActionLogger.click(driver, directPOButton, "Open Direct PO Modal", node);
-            // wait for the form’s first field to be visible (adjust as needed)
+            // 1) wait for any overlay/spinner to vanish
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingOverlay));
+
+            // 2) scroll the button into view
+            WebElement btn = driver.findElement(directPOButton);
+            ((JavascriptExecutor) driver)
+                    .executeScript("arguments[0].scrollIntoView({block: 'center'});", btn);
+
+            // 3) wait until it's clickable
+            btn = wait.until(ExpectedConditions.elementToBeClickable(directPOButton));
+
+            // 4) try normal click, fallback to JS if intercepted
+            try {
+                UIActionLogger.click(driver, directPOButton, "Open Direct PO Modal", node);
+            } catch (ElementClickInterceptedException ex) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+                node.info("⚡ Fallback JS click used to open Direct PO modal");
+            }
+
+            // 5) wait for the modal’s first field
             wait.until(ExpectedConditions.visibilityOfElementLocated(branchNameDropdown));
             node.pass("✅ Direct PO modal opened");
         } catch (Exception e) {
@@ -104,19 +122,10 @@ public class DirectPO extends BasePage {
         }
     }
 
-
-    /**
-     * Fill the Direct PO form, grouped into three report sections:
-     *   1) DetailsGroup
-     *   2) ProductGroup
-     *   3) FinGroup
-     */
-
-
     public void fillForm(PurchaseOrderData d, ExtentTest rootNode) {
         PerformanceLogger.start("DirectPO_fillForm");
         try {
-            // ─── 1) DetailsGroup ─────────────────────────────────────────────────
+            // 1) DetailsGroup
             ExtentTest detailsNode = rootNode.createNode("🔧 Details Group");
             UIActionLogger.click(driver, branchNameDropdown,    "Select Branch", detailsNode);
             selectByText(branchNameDropdown, d.getBranchName());
@@ -152,28 +161,28 @@ public class DirectPO extends BasePage {
                 UIActionLogger.click(driver, renewalNoRadio,   "Renewal No",        detailsNode);
             }
 
-            // ─── 2) ProductGroup ─────────────────────────────────────────────────
+            // 2) ProductGroup
             ExtentTest productNode = rootNode.createNode("📦 Product Group");
-            for (int i = 0; i < d.getLineItems().size(); i++) {
-                LineItem li = d.getLineItems().get(i);
-
+            List<LineItem> items = d.getLineItems();
+            for (int i = 0; i < items.size(); i++) {
+                LineItem li = items.get(i);
                 UIActionLogger.click(driver, addProductBtn,      "Add Product", productNode);
                 selectByText(productGroupDropdown, li.getProductGroup());
                 selectByText(productCodeDropdown,  li.getProductCode());
                 selectByText(productNameDropdown,  li.getProductName());
 
-                UIActionLogger.type(driver, descriptionInput,    li.getDescription(),      "Description",      productNode);
-                UIActionLogger.type(driver, quantityInput,       String.valueOf(li.getQuantity()), "Quantity", productNode);
-                UIActionLogger.type(driver, priceInput,          li.getPrice().toPlainString(),    "Price",    productNode);
-                UIActionLogger.type(driver, discountInput,       li.getDiscountPct().toPlainString(), "Discount%", productNode);
-                UIActionLogger.type(driver, discountValueInput,  li.getDiscountAmt().toPlainString(),  "Discount Amt", productNode);
+                UIActionLogger.type(driver, descriptionInput,   li.getDescription(),      "Description",      productNode);
+                UIActionLogger.type(driver, quantityInput,      String.valueOf(li.getQuantity()), "Quantity", productNode);
+                UIActionLogger.type(driver, priceInput,         li.getPrice().toPlainString(),    "Price",    productNode);
+                UIActionLogger.type(driver, discountInput,      li.getDiscountPct().toPlainString(), "Discount%", productNode);
+                UIActionLogger.type(driver, discountValueInput, li.getDiscountAmt().toPlainString(),  "Discount Amt", productNode);
 
-                UIActionLogger.click(driver, taxPrefixDropdown,  "Tax Prefix", productNode);
+                UIActionLogger.click(driver, taxPrefixDropdown, "Tax Prefix", productNode);
                 selectByText(taxPrefixDropdown, li.getTaxPrefix());
-                UIActionLogger.type(driver, taxRateInput,        li.getTaxRate().toPlainString(),  "Tax Rate", productNode);
+                UIActionLogger.type(driver, taxRateInput,       li.getTaxRate().toPlainString(),  "Tax Rate", productNode);
 
-                UIActionLogger.click(driver, saveProductBtn,     "Save Product", productNode);
-                waitUntilVisible(totalAmountInput);
+                UIActionLogger.click(driver, saveProductBtn,    "Save Product", productNode);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(totalAmountInput));
 
                 li.computeTotal();
                 ValidationLogger.assertEquals(
@@ -185,12 +194,12 @@ public class DirectPO extends BasePage {
                 );
             }
 
-            // ─── 3) FinGroup ────────────────────────────────────────────────────
+            // 3) Financials Group
             ExtentTest finNode = rootNode.createNode("🏁 Financials Group");
             UIActionLogger.click(driver, termsDropdown,       "Select T&C",     finNode);
             selectByText(termsDropdown, d.getTermsAndConditions());
             findElement(termsEditor).sendKeys(d.getTermsEditorText());
-            waitUntilVisible(netAmountInput);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(netAmountInput));
 
             UIActionLogger.type(driver, addOnChargesInput,      d.getAddOnCharges().toPlainString(),      "Add-On Charges",      finNode);
             UIActionLogger.type(driver, additionalDiscountInput, d.getAdditionalDiscount().toPlainString(), "Additional Discount", finNode);
@@ -221,13 +230,12 @@ public class DirectPO extends BasePage {
         }
     }
 
-    /** Overload: submit under given node */
     public String submitAndCaptureRef(ExtentTest node) {
         PerformanceLogger.start("submitAndCaptureRef");
         try {
             UIActionLogger.click(driver, submitBtn, "Submit PO", node);
-            waitUntilVisible(poRefNoInput);
-            String ref = getAttribute(poRefNoInput, "value");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(poRefNoInput));
+            String ref = findElement(poRefNoInput).getAttribute("value");
             node.info("Captured PO Ref: " + ref);
             return ref;
         } catch (Exception e) {
@@ -238,7 +246,6 @@ public class DirectPO extends BasePage {
         }
     }
 
-    /** Backwards‐compatible: submit under root test */
     public String submitAndCaptureRef() {
         return submitAndCaptureRef(ExtentTestManager.getTest());
     }
@@ -326,7 +333,7 @@ public class DirectPO extends BasePage {
     private void setDate(By locator, LocalDate date, String label, ExtentTest node) {
         PerformanceLogger.start("setDate");
         try {
-            String formatted = date.format(fmt); // Cannot resolve symbol 'fmt'
+            String formatted = date.format(fmt);
             UIActionLogger.type(driver, locator, formatted, label, node);
             findElement(locator).sendKeys(Keys.ENTER);
         } finally {

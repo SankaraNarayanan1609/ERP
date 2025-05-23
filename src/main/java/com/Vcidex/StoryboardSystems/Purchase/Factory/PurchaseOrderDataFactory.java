@@ -68,24 +68,24 @@ public class PurchaseOrderDataFactory {
         for (int i = 0; i < lineCount; i++) {
             Product p = pickRandom(products, "Product");
             LineItem li = new LineItem();
-            li.setProductGroup(p.getGroup());
+            li.setProductGroup(p.getProductGroupName());
             li.setProductCode(p.getCode());
             li.setProductName(p.getName());
             li.setDescription(p.getDescription());
             li.setQuantity(faker.number().numberBetween(1, 100));
-            li.setPrice(p.getPrice());
+            li.setPrice(p.getCostPrice());
 
             // split discount into percent vs amount
             BigDecimal pct = BigDecimal.valueOf(
                     faker.number().randomDouble(2, 0, 20)
             );
-            BigDecimal amt = p.getPrice()
+            BigDecimal amt = p.getCostPrice()
                     .multiply(pct)
                     .divide(BigDecimal.valueOf(100));
             li.setDiscountPct(pct);
             li.setDiscountAmt(amt);
 
-            li.setTaxRate(p.getTaxRate());
+            li.setTaxRate(p.getTax1());
             li.computeTotal();  // sets totalAmount
             items.add(li);
         }

@@ -13,8 +13,12 @@
     </Appenders>
 
     <Loggers>
-        <!-- Application log level -->
-        <Root level="info">
+        <Logger name="com.Vcidex.StoryboardSystems.Purchase.Factory" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="INFO">
+            <!-- Console will get INFO+, File will get INFO+ -->
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLogger"/>
         </Root>
