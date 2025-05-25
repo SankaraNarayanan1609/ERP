@@ -59,12 +59,12 @@ public class DbMasterDataProvider implements MasterDataProvider { // Class 'DbMa
                 "SELECT prod_group, prod_code, prod_name, description, price, tax_rate FROM product_master",
                 rs -> {
                     Product p = new Product();
-                    p.setGroup(rs.getString("prod_group"));
+                    p.setProductGroupName(rs.getString("prod_group"));
                     p.setCode(rs.getString("prod_code"));
                     p.setName(rs.getString("prod_name"));
                     p.setDescription(rs.getString("description"));
-                    p.setPrice(rs.getBigDecimal("price"));
-                    p.setTaxRate(rs.getBigDecimal("tax_rate"));
+                    p.setCostPrice(rs.getBigDecimal("price"));
+                    p.setTax1(rs.getBigDecimal("tax_rate"));
                     return p;
                 }
         );

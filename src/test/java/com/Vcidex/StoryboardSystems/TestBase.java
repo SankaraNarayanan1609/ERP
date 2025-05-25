@@ -5,84 +5,53 @@ import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
 import com.Vcidex.StoryboardSystems.Purchase.Factory.PurchaseOrderDataFactory;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
-import io.restassured.response.Response;
+import com.Vcidex.StoryboardSystems.Utils.Logger.UIActionLogger;
 import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
-
-import static io.restassured.RestAssured.given;
 
 public abstract class TestBase {
     private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
 
     protected static PurchaseOrderDataFactory factory;
-    protected WebDriver driver;
+    protected WebDriver               driver;
+
+    /** Called by LoginManager after a successful API-login */
+    public static void initDataFactory(String bearerToken) {
+        String env     = System.getProperty("env", "test");
+        JSONObject app = ConfigManager.getAppConfig(env, "StoryboardSystems");
+        String apiBase = app.getString("apiBase");
+        ApiMasterDataProvider apiProvider =
+                new ApiMasterDataProvider(apiBase, bearerToken);
+        factory = new PurchaseOrderDataFactory(apiProvider);
+        logger.info("✅ Initialized data factory with API token");
+    }
 
     @BeforeSuite(alwaysRun = true)
     public void setupSuite() {
-        // ── 1) WebDriver ────────────────────────────────────────────────────────
+        // 1) Create the “raw” driver
+        WebDriver raw;
         String browser = System.getProperty("browser", "chrome");
         switch (browser.toLowerCase()) {
-            case "chrome":
-                driver = new ChromeDriver();
-                break;
-            case "firefox":
-                driver = new FirefoxDriver();
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported browser: " + browser);
+            case "chrome":  raw = new ChromeDriver();  break;
+            case "firefox": raw = new FirefoxDriver(); break;
+            default: throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
-        driver.manage().window().maximize();
+        raw.manage().window().maximize();
+
+        // 2) Decorate with our UI listener
+        WebDriverListener listener = new UIEventListener();
+        driver = new EventFiringDecorator(listener).decorate(raw);
+
         ThreadSafeDriverManager.setDriver(driver);
-
-        // ── 2) OAuth2 client_credentials ──────────────────────────────────────
-        String env           = System.getProperty("env", "test");
-        JSONObject auth      = ConfigManager.getAuthConfig(env);
-        String authUrl       = auth.getString("authUrl");
-        String tokenPath     = auth.getString("tokenPath");
-        String clientId      = auth.getString("clientId");
-        String clientSecret  = auth.getString("clientSecret");
-
-        String accessToken = "";
-        try {
-            Response resp = given()
-                    .baseUri(authUrl)
-                    .contentType("application/x-www-form-urlencoded")
-                    .formParam("grant_type",    "client_credentials")
-                    .formParam("client_id",     clientId)
-                    .formParam("client_secret", clientSecret)
-                    .when()
-                    .post(tokenPath);
-
-
-            // ←— LOGGING ADDED HERE —————————————————————————————
-            logger.error("Token request returned HTTP {}: {}",
-                    resp.statusCode(),
-                    resp.asString());
-            // ————————————————————————————————————————————————
-
-            if (resp.statusCode() == 200) {
-                accessToken = resp.jsonPath().getString("access_token");
-            } else {
-                System.err.println("⚠️ Warning: token endpoint returned "
-                        + resp.statusCode() + " – proceeding with empty token");
-            }
-        } catch (Exception e) {
-            logger.error("Error fetching OAuth token: {}", e.getMessage(), e);
-            System.err.println("⚠️ Warning: error fetching OAuth token ("
-                    + e.getMessage() + ") – proceeding with empty token");
-        }
-
-        // ── 3) Data‐factory ─────────────────────────────────────────────────────
-        JSONObject app     = ConfigManager.getAppConfig(env, "StoryboardSystems");
-        String     apiBase = app.getString("apiBase");
-        ApiMasterDataProvider apiProvider =
-                new ApiMasterDataProvider(apiBase, accessToken);
-        factory = new PurchaseOrderDataFactory(apiProvider);
+        logger.info("🚀 WebDriver initialized with UIEventListener");
     }
 
     @AfterSuite(alwaysRun = true)
@@ -90,6 +59,53 @@ public abstract class TestBase {
         ThreadSafeDriverManager.removeDriver();
         if (driver != null) {
             driver.quit();
+        }
+    }
+
+    /**
+     * A lightweight listener that hooks into clicks, sendKeys and navigation
+     * and delegates to your existing UIActionLogger.
+     */
+    private static class UIEventListener implements WebDriverListener {
+        @Override
+        public void beforeGet(WebDriver driver, String url) {
+            UIActionLogger.debug("Navigate ▶ " + url);
+        }
+        @Override
+        public void afterGet(WebDriver driver, String url) {
+            UIActionLogger.debug("Landed on ▶ " + url);
+        }
+        @Override
+        public void beforeClick(WebElement element) {
+            UIActionLogger.debug("Click ▶ " + describe(element));
+        }
+        @Override
+        public void afterClick(WebElement element) {
+            // note: here we only have the element, not the original By,
+            // so this logs the action—your page-objects still drive the details
+            UIActionLogger.click(driverOf(element), byOf(element), describe(element));
+        }
+        @Override
+        public void beforeSendKeys(WebElement element, CharSequence... keys) {
+            UIActionLogger.debug("Type ▶ " + describe(element) + " : '" + String.join("", keys) + "'");
+        }
+        @Override
+        public void afterSendKeys(WebElement element, CharSequence... keys) {
+            UIActionLogger.type(driverOf(element), byOf(element), String.join("", keys), describe(element));
+        }
+
+        // ── Helpers ─────────────────────────────────────────────────────────
+        private String describe(WebElement el) {
+            try { return el.toString(); }
+            catch (Exception e) { return "<unknown>"; }
+        }
+        private org.openqa.selenium.By byOf(WebElement el) {
+            // fallback if you can't extract the real locator:
+            return org.openqa.selenium.By.xpath(el.toString());
+        }
+        private WebDriver driverOf(WebElement el) {
+            // every WebElement wraps an internal RemoteWebDriver:
+            return ((org.openqa.selenium.remote.RemoteWebElement) el).getWrappedDriver();
         }
     }
 }

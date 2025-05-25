@@ -1,7 +1,8 @@
 // src/test/java/com/Vcidex/StoryboardSystems/PurchaseTest/DirectPOTest.java
 package com.Vcidex.StoryboardSystems.PurchaseTest;
 
-import com.Vcidex.StoryboardSystems.Common.Authentication.LoginManager;
+import com.Vcidex.StoryboardSystems.Listeners.LogoutDetector;
+import com.Vcidex.StoryboardSystems.LoginManager;
 import com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.DirectPO;
@@ -12,6 +13,8 @@ import com.Vcidex.StoryboardSystems.TestBase;
 import com.aventstack.extentreports.ExtentTest;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+
+@Listeners(LogoutDetector.class)
 
 public class DirectPOTest extends TestBase {
     private NavigationManager nav;
