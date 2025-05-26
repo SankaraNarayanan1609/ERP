@@ -6,6 +6,7 @@ import com.Vcidex.StoryboardSystems.LoginManager;
 import com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order.DirectPO;
+import com.Vcidex.StoryboardSystems.Utils.DebugUtils;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import com.Vcidex.StoryboardSystems.Utils.Logger.TestContextLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ValidationLogger;
@@ -37,10 +38,18 @@ public class DirectPOTest extends TestBase {
         ExtentTest loginNode = ExtentTestManager.createNode("🔑 Login");
         new LoginManager(driver, loginNode).login(appName, companyCode, userId);
 
+        DebugUtils.waitForAngular(driver);
+        DebugUtils.logSessionToken(driver, "After Login");
+        DebugUtils.logBrowserConsole(driver, "After Login");
+
+        driver.navigate().refresh();
+
         nav.goTo("Purchase", "Purchase", "Purchase Order");
+
         directPOPage = new DirectPO(driver);
         ValidationLogger.reset();
     }
+
 
     @Test(description = "Create and submit a direct purchase order (fully dynamic)")
     public void testCreateAndSubmitDirectPO() {
