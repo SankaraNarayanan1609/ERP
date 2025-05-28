@@ -1,10 +1,8 @@
 package com.Vcidex.StoryboardSystems.Utils;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 
 public class DebugUtils {
-    // Wait for Angular apps to finish (safe to call always, skips if not Angular)
     public static void waitForAngular(WebDriver driver) {
         if (!(driver instanceof JavascriptExecutor)) return;
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -28,7 +26,6 @@ public class DebugUtils {
         }
     }
 
-    // Print session/auth token at a step
     public static void logSessionToken(WebDriver driver, String step) {
         if (!(driver instanceof JavascriptExecutor)) return;
         try {
@@ -40,7 +37,6 @@ public class DebugUtils {
         }
     }
 
-    // Print browser console logs at a step
     public static void logBrowserConsole(WebDriver driver, String step) {
         try {
             System.out.println("--- BROWSER LOGS [" + step + "] ---");
