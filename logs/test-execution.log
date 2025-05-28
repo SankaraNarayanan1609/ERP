@@ -8077,3 +8077,414 @@ Session ID: 992a80a32fdefbf53ddd836d45638332
 2025-05-28 17:57:10 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
 2025-05-28 17:57:10 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
 2025-05-28 17:57:10 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-28 20:31:56 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-28 20:32:02 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-28 20:32:04 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-28 20:32:30 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI automation.
+2025-05-28 20:32:34 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-05-28 20:32:34 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer l37slBaLJQF2lbEBUx8L-eALzjBjvNdYMO7AeNWOM0oFifq0TPSwEjYZBl9V_R8789TVNBKVorBwoO_iJUDXYiMfAfBu-r6vU30C1FQjZ6ik5T4Jsdwo6sEZskxuu3MR1qOAoLm2n23pflXnCEgTXdqHx-U7Lf-1lcK2Pil-a0eIqjjsv4Ln7cjbzFisdlKNwDPBJ1MvmBZQ7KlSrTTBI5hW7c6oDZVtZIPEkelcqfNKuN95mrhLwbfCgtF_zqvTjeWoYKszK_J_mV3B40tdMljXpWBqBetYop61rR82lwI
+2025-05-28 20:32:35 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250528_203234.html
+2025-05-28 20:32:35 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-28 20:33:10 [main] INFO  TestBase.initDataFactory() - ✅ Initialized data factory with API token
+2025-05-28 20:34:18 [main] ERROR UIActionLogger.failure() - UI Failure context: goTo(Purchase→Purchase→Purchase Order)
+2025-05-28 20:34:18 [main] ERROR UIActionLogger.captureScreenshot() - Screenshot saved: logs\screenshots\goTo_Purchase_Purchase_Purchase_Order__1748444658088.png
+2025-05-28 20:34:18 [main] ERROR ErrorLogger.logException() - ❌ [2025-05-28 20:34:18.394] Exception in: Navigation timeout to Purchase
+2025-05-28 20:34:18 [main] ERROR ErrorLogger.logException() - Type: org.openqa.selenium.TimeoutException
+2025-05-28 20:34:18 [main] ERROR ErrorLogger.logException() - Message: Expected condition failed: waiting for element to be clickable: By.xpath: //ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='Purchase Order']] (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$DEJ5mYpk
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52612}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52612/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 88568388aeb094e2a61e932c5bdfa52b
+2025-05-28 20:34:18 [main] ERROR ErrorLogger.logException() - Stacktrace:
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='Purchase Order']] (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$DEJ5mYpk
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52612}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52612/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 88568388aeb094e2a61e932c5bdfa52b
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.clickSubmenuWithHover(NavigationManager.java:142)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.goTo(NavigationManager.java:180)
+	at com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest.setupTest(DirectPOTest.java:68)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+
+2025-05-28 20:34:18 [main] ERROR ErrorLogger.logException() - Screenshot saved: logs\screenshots\Navigation_timeout_to_Purchase_1748444658408.png
+2025-05-28 20:34:18 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-28 20:34:18 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-28 20:34:19 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-28 20:38:02 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-28 20:38:06 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-28 20:38:06 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-28 20:38:11 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI automation.
+2025-05-28 20:38:15 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-05-28 20:38:15 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer gD86pBJdf-DYXNMDPneAjArfxXRxIZs6qhLeXr6jV8rTEI0qndXwxodAg5iC_ueSubKlNj-pxmfTvdqG6Yqjn2Uko_RHKQEEFl_Gf7W5yG86yp7ZT9qOc6iiEZe2ZTZK5jAin48ZurfBn45fRfEsIszTwTJZfzj0f2BPE_rMhfWuKVPfeOWdwv7QK68diM9hTFQbpkU2CVhZvGLUUWcUSMKy91y5qlPMk8osBfPxQfihbpju5uZ1034qeKhVAh3FAwnytfe-XJFfZIyfAeIO2BQ1kOkPML8SKRh63-NFc5s
+2025-05-28 20:38:16 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250528_203815.html
+2025-05-28 20:38:16 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-28 20:38:50 [main] INFO  TestBase.initDataFactory() - ✅ Initialized data factory with API token
+2025-05-28 20:39:58 [main] ERROR UIActionLogger.failure() - UI Failure context: goTo(Purchase→Purchase→Purchase Order)
+2025-05-28 20:39:58 [main] ERROR UIActionLogger.captureScreenshot() - Screenshot saved: logs\screenshots\goTo_Purchase_Purchase_Purchase_Order__1748444998192.png
+2025-05-28 20:39:58 [main] ERROR ErrorLogger.logException() - ❌ [2025-05-28 20:39:58.433] Exception in: Navigation timeout to Purchase
+2025-05-28 20:39:58 [main] ERROR ErrorLogger.logException() - Type: org.openqa.selenium.TimeoutException
+2025-05-28 20:39:58 [main] ERROR ErrorLogger.logException() - Message: Expected condition failed: waiting for element to be clickable: By.xpath: //ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='Purchase Order']] (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$2R51kIWg
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52888}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52888/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6430a9a861294a59c756460021df13da
+2025-05-28 20:39:58 [main] ERROR ErrorLogger.logException() - Stacktrace:
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='Purchase Order']] (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$2R51kIWg
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52888}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52888/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6430a9a861294a59c756460021df13da
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.clickSubmenuWithHover(NavigationManager.java:142)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.goTo(NavigationManager.java:180)
+	at com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest.setupTest(DirectPOTest.java:68)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+
+2025-05-28 20:39:58 [main] ERROR ErrorLogger.logException() - Screenshot saved: logs\screenshots\Navigation_timeout_to_Purchase_1748444998441.png
+2025-05-28 20:39:58 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-28 20:39:58 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-28 20:39:59 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-28 20:50:10 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-28 20:50:15 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-28 20:50:20 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-28 20:50:23 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI automation.
+2025-05-28 20:50:27 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-05-28 20:50:27 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer X1_mo7i5KFUCbmNOYIvAasfCJrhXwBEAT8xLBL7dLt9kfBAZESUoG_XZPM6X5b8JYbMc9w-Q_8ZqWpumW2zgzG-gZ7lzqLGjXcuPptyNkycQ6b1oRUQ5-N0x9jLhcEMq3d_U9vBFGly5VMhCNN3vi8C3cCnwnTP40rNvMlvDwOsGi3SNs1CeSZ4fS4mnno5vawaNlzcsZfaA5QYrvv4iBe7VzU7g3GIrACiBTefTtd0aiJSbcuK1VYBJY_AwyeI46ZR3ShuD59Q_TzN-SzAKfQXzLpHG0uaxMd6mTux4FCY
+2025-05-28 20:50:28 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250528_205027.html
+2025-05-28 20:50:28 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-28 20:51:02 [main] INFO  TestBase.initDataFactory() - ✅ Initialized data factory with API token
+2025-05-28 20:52:10 [main] ERROR UIActionLogger.failure() - UI Failure context: goTo(Purchase→Purchase→Purchase Order)
+2025-05-28 20:52:10 [main] ERROR UIActionLogger.captureScreenshot() - Screenshot saved: logs\screenshots\goTo_Purchase_Purchase_Purchase_Order__1748445730707.png
+2025-05-28 20:52:10 [main] ERROR ErrorLogger.logException() - ❌ [2025-05-28 20:52:10.931] Exception in: Navigation timeout to Purchase
+2025-05-28 20:52:10 [main] ERROR ErrorLogger.logException() - Type: org.openqa.selenium.TimeoutException
+2025-05-28 20:52:10 [main] ERROR ErrorLogger.logException() - Message: Expected condition failed: waiting for element to be clickable: By.xpath: //ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='Purchase Order']] (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$BUEu1zFt
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53016}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53016/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 70a9cbc0b73cfb8eeaf8517999aa1c20
+2025-05-28 20:52:10 [main] ERROR ErrorLogger.logException() - Stacktrace:
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='Purchase Order']] (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$BUEu1zFt
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53016}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53016/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 70a9cbc0b73cfb8eeaf8517999aa1c20
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.clickSubmenuWithHover(NavigationManager.java:142)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.goTo(NavigationManager.java:180)
+	at com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest.setupTest(DirectPOTest.java:68)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+
+2025-05-28 20:52:11 [main] ERROR ErrorLogger.logException() - Screenshot saved: logs\screenshots\Navigation_timeout_to_Purchase_1748445730940.png
+2025-05-28 20:52:11 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-28 20:52:11 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-28 20:52:12 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-28 21:31:30 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-28 21:31:35 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-28 21:31:37 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-28 21:31:40 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI automation.
+2025-05-28 21:31:44 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-05-28 21:31:44 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer oInb4cS86ctcwrQY8tXj98NCBgftesCtCokzs_5loIK8jxhhe4lv8Ls3v2a0Y9ZemDW9XlHfmHNLw9PQOCKCmpAK-NGG5rQTixk9zxBWjF9lLzF58XCR5NxaSgogMGSUOcFJwT1Zqml09uHkXL8PsoyoL2dJ7XqhNwib0NUlYA2ShX7TBNJ0IBKyhjXbgFUazVCurS05jxy9BdI3dZahhl33SwPXRF6KCax-Z6RYcw3pDT86uKoszO28nPua3k34lXFoolruR75ljOyH7rCzh-S5VP9Gg-fEJtvamS3GpsxhImnlh1qqlkKEaBvztQD5
+2025-05-28 21:31:45 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250528_213144.html
+2025-05-28 21:31:45 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-28 21:32:20 [main] INFO  TestBase.initDataFactory() - ✅ Initialized data factory with API token
+2025-05-28 21:34:27 [main] ERROR UIActionLogger.failure() - UI Failure context: goTo(Purchase→Purchase→Purchase Order)
+2025-05-28 21:34:27 [main] ERROR UIActionLogger.captureScreenshot() - Screenshot saved: logs\screenshots\goTo_Purchase_Purchase_Purchase_Order__1748448267609.png
+2025-05-28 21:34:27 [main] ERROR UIActionLogger.lambda$failure$0() - BROWSER-CONSOLE SEVERE | https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js 0:1328720 "ERROR" Error: Uncaught (in promise): TypeError: Cannot read properties of undefined (reading 'type')
+TypeError: Cannot read properties of undefined (reading 'type')
+    at v.value (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:1:81572)
+    at v.value (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:1:90009)
+    at new v (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:21156)
+    at https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:50013
+    at v.invoke (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:6549)
+    at h.run (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:1915)
+    at Ii.runOutsideAngular (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1394612)
+    at j.createElement (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:49976)
+    at B.<anonymous> (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:48960)
+    at B._execute (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1213106)
+    at v.value (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:1:81572)
+    at v.value (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:1:90009)
+    at new v (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:21156)
+    at https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:50013
+    at v.invoke (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:6549)
+    at h.run (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:1915)
+    at Ii.runOutsideAngular (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1394612)
+    at j.createElement (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:49976)
+    at B.<anonymous> (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:48960)
+    at B._execute (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1213106)
+    at Y (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:15964)
+    at https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:16815
+    at v.invokeTask (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:7167)
+    at Object.onInvokeTask (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1393559)
+    at v.invokeTask (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:7088)
+    at h.runTask (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:2532)
+    at T (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:9184)
+2025-05-28 21:34:27 [main] ERROR ErrorLogger.logException() - ❌ [2025-05-28 21:34:27.898] Exception in: Navigation error to Purchase
+2025-05-28 21:34:27 [main] ERROR ErrorLogger.logException() - Type: java.lang.RuntimeException
+2025-05-28 21:34:27 [main] ERROR ErrorLogger.logException() - Message: Could not click submenu 'Purchase Order' under menu 'Purchase'
+2025-05-28 21:34:27 [main] ERROR ErrorLogger.logException() - Stacktrace:
+java.lang.RuntimeException: Could not click submenu 'Purchase Order' under menu 'Purchase'
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.clickSubmenuWithHoverAndRetry(NavigationManager.java:135)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.goTo(NavigationManager.java:147)
+	at com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest.setupTest(DirectPOTest.java:68)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.cssSelector: ul.sublevel-nav (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$cEfGvbuu
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53357}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53357/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ff8be652c6b321f4cc59a9a110b0dbab
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.clickSubmenuWithHoverAndRetry(NavigationManager.java:105)
+	... 31 more
+
+2025-05-28 21:34:28 [main] ERROR ErrorLogger.logException() - Screenshot saved: logs\screenshots\Navigation_error_to_Purchase_1748448267907.png
+2025-05-28 21:34:28 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-28 21:34:28 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-28 21:34:28 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-28 21:39:02 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-28 21:39:06 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-28 21:39:07 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-28 21:39:11 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI automation.
+2025-05-28 21:39:14 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-05-28 21:39:14 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer p7UX5Ypd6NnET9Wq6XVePYV47jEa92wQUV6eG0Nr5h6XQWSpwLHTty_ETpfgyv6hVe6YhhIzeji029tPk6dLAhaepcozPnaY9tZ0YH7PfEsd616oN2eVbr1qto_RnF-bIWMj_ltvTTWYmIsYSnXwJIqyZWAFSvPC6Wgd6-zQnh12ZQqkrJxJwJNX4nfv7NU_W0Va3Mbq_KIPc72GLccIPUofhObqT5VmsTtB_ktEYsFfRkBqieLRJX0QCm0cDXw2S5S02xb597tbrmIhBjJr20vB1ssocCafFDEnX3LH3LYzRiiUpkN9MqcIPmC8ONbQ
+2025-05-28 21:39:15 [main] INFO  TestContextLogger.info() - 📜 Extent Report initialized at: C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems/test-output/ExtentReport_20250528_213914.html
+2025-05-28 21:39:15 [main] INFO  TestContextLogger.info() - 📝 Extent Test created: DirectPO Creation & Submit
+2025-05-28 21:39:50 [main] INFO  TestBase.initDataFactory() - ✅ Initialized data factory with API token
+2025-05-28 21:41:56 [main] ERROR UIActionLogger.failure() - UI Failure context: goTo(Purchase→Purchase→Purchase Order)
+2025-05-28 21:41:56 [main] ERROR UIActionLogger.captureScreenshot() - Screenshot saved: logs\screenshots\goTo_Purchase_Purchase_Purchase_Order__1748448716669.png
+2025-05-28 21:41:56 [main] ERROR UIActionLogger.lambda$failure$0() - BROWSER-CONSOLE SEVERE | https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js 0:1328720 "ERROR" Error: Uncaught (in promise): TypeError: Cannot read properties of undefined (reading 'type')
+TypeError: Cannot read properties of undefined (reading 'type')
+    at v.value (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:1:81572)
+    at v.value (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:1:90009)
+    at new v (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:21156)
+    at https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:50013
+    at v.invoke (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:6549)
+    at h.run (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:1915)
+    at Ii.runOutsideAngular (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1394612)
+    at j.createElement (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:49976)
+    at B.<anonymous> (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:48960)
+    at B._execute (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1213106)
+    at v.value (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:1:81572)
+    at v.value (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:1:90009)
+    at new v (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:21156)
+    at https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:50013
+    at v.invoke (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:6549)
+    at h.run (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:1915)
+    at Ii.runOutsideAngular (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1394612)
+    at j.createElement (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:49976)
+    at B.<anonymous> (https://erplite.storyboarderp.com/v4/default-node_modules_ng-apexcharts_fesm2020_ng-apexcharts_mjs.8c685e66bcffd4d0.js:9:48960)
+    at B._execute (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1213106)
+    at Y (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:15964)
+    at https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:16815
+    at v.invokeTask (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:7167)
+    at Object.onInvokeTask (https://erplite.storyboarderp.com/v4/main.dc41ac9da60df605.js:1:1393559)
+    at v.invokeTask (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:7088)
+    at h.runTask (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:2532)
+    at T (https://erplite.storyboarderp.com/v4/polyfills.e4f0d6e9859019ee.js:1:9184)
+2025-05-28 21:41:56 [main] ERROR ErrorLogger.logException() - ❌ [2025-05-28 21:41:56.876] Exception in: Navigation error to Purchase
+2025-05-28 21:41:56 [main] ERROR ErrorLogger.logException() - Type: java.lang.RuntimeException
+2025-05-28 21:41:56 [main] ERROR ErrorLogger.logException() - Message: Could not click submenu 'Purchase Order' under menu 'Purchase'
+2025-05-28 21:41:56 [main] ERROR ErrorLogger.logException() - Stacktrace:
+java.lang.RuntimeException: Could not click submenu 'Purchase Order' under menu 'Purchase'
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.clickSubmenuWithHoverAndRetry(NavigationManager.java:135)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.goTo(NavigationManager.java:147)
+	at com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest.setupTest(DirectPOTest.java:68)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.cssSelector: ul.sublevel-nav (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$2dmtA8D6
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.114, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\SANKAR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53435}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53435/devtoo..., se:cdpVersion: 136.0.7103.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6da56e8661b172a249be39d2794327d4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at com.Vcidex.StoryboardSystems.Common.Navigation.NavigationManager.clickSubmenuWithHoverAndRetry(NavigationManager.java:105)
+	... 31 more
+
+2025-05-28 21:41:57 [main] ERROR ErrorLogger.logException() - Screenshot saved: logs\screenshots\Navigation_error_to_Purchase_1748448716883.png
+2025-05-28 21:41:57 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-28 21:41:57 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-28 21:41:57 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-28 22:27:24 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-28 22:27:28 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-28 22:28:11 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-28 22:28:11 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-28 22:28:11 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-28 22:28:12 [Thread-4] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-28 22:28:20 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-28 22:28:23 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-28 22:29:06 [main] INFO  PerformanceLogger.printSummary() - ⏱ No performance data to report.
+2025-05-28 22:29:06 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
+2025-05-28 22:29:06 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-28 22:29:07 [Thread-4] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-28 22:29:14 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-28 22:29:18 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-28 22:29:43 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-28 22:29:43 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
