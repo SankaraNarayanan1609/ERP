@@ -11068,3 +11068,10 @@ Session ID: 8572d026be9c0d402511d745fe117b76
 2025-05-30 18:05:08 [main] INFO  PerformanceLogger.lambda$printSummary$1() -     openDirectPOModal → 331 ms
 2025-05-30 18:05:08 [main] INFO  TestContextLogger.logTestEnd() - === TEST END: DirectPOTest ===
 2025-05-30 18:05:09 [main] INFO  TestContextLogger.info() - ✅ Reports generated successfully.
+2025-05-30 23:13:17 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-05-30 23:13:24 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized with UIEventListener
+2025-05-30 23:13:50 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-05-30 23:13:50 [main] INFO  TestContextLogger.info() - ⚠️ No reports to flush.
+2025-05-30 23:13:50 [Thread-4] INFO  TestContextLogger.info() - ⚠️ No reports to flush.

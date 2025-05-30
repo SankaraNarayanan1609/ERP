@@ -1,8 +1,8 @@
 package com.Vcidex.StoryboardSystems;
 
 import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
-import com.Vcidex.StoryboardSystems.Purchase.Factory.PurchaseOrderDataFactory;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
+import com.Vcidex.StoryboardSystems.Utils.DataFactory.PurchaseOrderDataFactory;
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import com.Vcidex.StoryboardSystems.Utils.UIEventListener;
 import org.json.JSONObject;
@@ -16,9 +16,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public abstract class TestBase {
     private static final Logger logger = LoggerFactory.getLogger(TestBase.class);

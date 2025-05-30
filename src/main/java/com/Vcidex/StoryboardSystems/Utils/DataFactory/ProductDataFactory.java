@@ -12,7 +12,7 @@ public class ProductDataFactory {
     private static final List<String> PRODUCT_NAMES = Arrays.asList(
             "Laptop", "Smartphone", "Keyboard", "Headphones", "Monitor",
             "Mouse", "Tablet", "Webcam", "Charger", "Power Bank"
-    );
+    ); // Swap this to fetch from LineItem POJO
 
     private static final Faker faker = new Faker();
     private static final Random random = new Random();

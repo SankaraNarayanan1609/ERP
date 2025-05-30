@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Vendor {
+    private String vendorName;
+    public String getVendorName() { return vendorName; }
     private String billing_email;
     private String tax_number;
     private String taxsegment_name;

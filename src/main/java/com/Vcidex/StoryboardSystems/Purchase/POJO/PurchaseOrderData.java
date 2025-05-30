@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import com.Vcidex.StoryboardSystems.Utils.DataFactory.PurchaseOrderDataFactory;
 
 public class PurchaseOrderData {
     // ──────────────────────────────────────────────────────────────────────────
@@ -135,8 +136,8 @@ public class PurchaseOrderData {
     // ──────────────────────────────────────────────────────────────────────────
     public void computeNetAmount() {
         this.netAmount = lineItems.stream()
-                .map(LineItem::getTotalAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .map(LineItem::getTotalAmount) // Related Problem , Cannot resolve method 'getTotalAmount'
+                .reduce(BigDecimal.ZERO, BigDecimal::add); // Cannot resolve method 'add'
     }
 
     public void computeGrandTotal() {
