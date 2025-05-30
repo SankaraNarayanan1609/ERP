@@ -64,7 +64,7 @@ public class DbMasterDataProvider implements MasterDataProvider { // Class 'DbMa
                     p.setName(rs.getString("prod_name"));
                     p.setDescription(rs.getString("description"));
                     p.setCostPrice(rs.getBigDecimal("price"));
-                    p.setTax1(rs.getBigDecimal("tax_rate"));
+                    p.setTax(rs.getBigDecimal("tax_rate"));
                     return p;
                 }
         );

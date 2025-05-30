@@ -80,7 +80,7 @@ public class DirectPO extends BasePage {
 
     // Action buttons
     private final By saveDraftBtn          = By.xpath("//button[text()='Save As Draft']");
-    private final By submitBtn             = By.xpath("//button[@type='submit']");
+    private final By submitBtn             = By.xpath("//button[contains(@class,'btn-success') and contains(@class,'text-white') and .//span[normalize-space()='Submit']]");
     private final By cancelBtn             = By.cssSelector("button.btn-primary.btn-sm.text-white.me-4");
     private final By draftHistoryBtn       = By.cssSelector("button.btn.btn-icon.btn-sm.bg-secondary.cursor-pointer.me-3");
 
@@ -135,7 +135,19 @@ public class DirectPO extends BasePage {
     public String submitAndCaptureRef(ExtentTest node) {
         PerformanceLogger.start("submitAndCaptureRef");
         try {
-            UIActionLogger.click(driver, submitBtn, "Submit PO", node);
+            // Wait for overlays/spinners to disappear
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingOverlay));
+
+            WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", btn);
+
+            try {
+                UIActionLogger.click(driver, submitBtn, "Submit PO", node);
+            } catch (ElementClickInterceptedException ex) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+                node.info("⚡ Fallback JS click used to submit PO");
+            }
+            // Wait for PO number input as confirmation of success
             wait.until(ExpectedConditions.visibilityOfElementLocated(poRefNoInput));
             String ref = findElement(poRefNoInput).getAttribute("value");
             node.info("Captured PO Ref: " + ref);

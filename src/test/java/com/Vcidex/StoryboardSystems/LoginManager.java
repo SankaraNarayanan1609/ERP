@@ -82,7 +82,6 @@ public class LoginManager {
 
         driver.get("https://erplite.storyboarderp.com/v4/#/auth/login");
 
-        // Fill login form
         driver.findElement(companyCodeField).clear();
         driver.findElement(companyCodeField).sendKeys(companyCode);
 
@@ -92,25 +91,28 @@ public class LoginManager {
         driver.findElement(passwordField).clear();
         driver.findElement(passwordField).sendKeys(password);
 
-        // Wait for overlays to disappear before clicking login!
         new WebDriverWait(driver, java.time.Duration.ofSeconds(20))
                 .until(ExpectedConditions.invisibilityOfElementLocated(
                         By.cssSelector(".ngx-spinner-overlay, ngx-spinner, .cdk-overlay-backdrop, .modal-backdrop, .loader")));
 
-        List<WebElement> overlays = driver.findElements(By.cssSelector(".ngx-spinner-overlay, ngx-spinner, .cdk-overlay-backdrop, .modal-backdrop, .loader"));
-        for (WebElement overlay : overlays) {
-            if (overlay.isDisplayed()) {
-                System.out.println("Overlay present: " + overlay.getAttribute("class"));
-            }
-        }
-
         driver.findElement(loginButton).click();
 
-        // Wait for login to finish
-        new WebDriverWait(driver, java.time.Duration.ofSeconds(30))
-                .until(ExpectedConditions.or(
-                        ExpectedConditions.urlContains("/dashboard"), // Adjust as needed
-                        ExpectedConditions.presenceOfElementLocated(postLoginLocator)
-                ));
+        // Wait up to 30s for successful login
+        boolean loggedIn = false;
+        try {
+            new WebDriverWait(driver, java.time.Duration.ofSeconds(30))
+                    .until(ExpectedConditions.or(
+                            ExpectedConditions.urlContains("/dashboard"),
+                            ExpectedConditions.urlContains("/WelcomePage"),
+                            ExpectedConditions.presenceOfElementLocated(postLoginLocator)
+                    ));
+            loggedIn = true;
+        } catch (TimeoutException te) {
+            System.out.println("[DEBUG] Login failed or did not redirect. Current URL: " + driver.getCurrentUrl());
+            System.out.println("[DEBUG] Page source: " + driver.getPageSource());
+        }
+        if (!loggedIn) {
+            throw new RuntimeException("Login failed or timed out; not redirected to dashboard or WelcomePage.");
+        }
     }
 }

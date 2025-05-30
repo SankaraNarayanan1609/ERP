@@ -69,7 +69,7 @@ public class NavigationManager {
                     ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
                 }
                 DebugUtils.waitForAngular(driver);
-                new WebDriverWait(driver, Duration.ofSeconds(10))
+                new WebDriverWait(driver, Duration.ofSeconds(20))
                         .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("ngx-spinner, .cdk-overlay-backdrop, .modal-backdrop, .loader")));
                 // Screenshot after click for debugging
                 try {
@@ -88,86 +88,69 @@ public class NavigationManager {
 
     private void openSideMenuAndSubmenu(String menuLabel, String subMenuLabel, int timeoutSeconds) {
         By menuLocator = By.xpath("//ul[contains(@class,'sidenav-nav')]//a[.//i[@title='" + menuLabel + "']]");
-        By submenuLocator = By.xpath("//ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='" + subMenuLabel + "']]");
+        By submenuSpanLocator = By.xpath("//ul[contains(@class,'sublevel-nav')]//span[contains(@class,'sublevel-link-text') and normalize-space(text())='" + subMenuLabel + "']");
+        By submenuLinkLocator = By.xpath("//ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='" + subMenuLabel + "']]");
 
         Exception last = null;
-        for (int attempt = 0; attempt < 4; attempt++) {
+        for (int attempt = 1; attempt <= 5; attempt++) {
             try {
                 WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
                         .until(ExpectedConditions.visibilityOfElementLocated(menuLocator));
-
-                // Always click to expand, as hover is unreliable
+                new Actions(driver).moveToElement(menu).pause(Duration.ofMillis(600)).perform();
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", menu);
                 menu.click();
-                DebugUtils.waitForAngular(driver);
+                Thread.sleep(600); // Give time for submenu to appear
 
-                // Now wait for submenu container to be visible
-                new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
-                        .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("ul.sublevel-nav")));
-
-                // Now submenu must be visible, try to click it
-                WebElement submenu = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
-                        .until(ExpectedConditions.elementToBeClickable(submenuLocator));
-
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", submenu);
-                submenu.click();
-
-                DebugUtils.waitForAngular(driver);
-                UIActionLogger.click(driver, submenuLocator, subMenuLabel);
-                return; // success!
-            } catch (Exception e) {
-                last = e;
-                System.out.println("[DEBUG] Submenu not open/clickable, retry #" + attempt);
-                try { Thread.sleep(400); } catch (InterruptedException ignored) {}
-            }
-        }
-        throw new RuntimeException("Could not click submenu '" + subMenuLabel + "' under menu '" + menuLabel + "'", last);
-    }
-
-    // Submenu with hover, fallback to JS click, and retry
-    private void clickSubmenuWithHoverAndRetry(String menuLabel, String subMenuLabel, int timeoutSeconds) {
-        By menuLocator = By.xpath("//ul[contains(@class,'sidenav-nav')]//a[.//i[@title='" + menuLabel + "']]");
-        By submenuLocator = By.xpath("//ul[contains(@class,'sublevel-nav')]//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='" + subMenuLabel + "']]");
-        int attempts = 3;
-        Exception last = null;
-        for (int i = 0; i < attempts; i++) {
-            try {
-                // Hover menu to reveal submenu
-                WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
-                        .until(ExpectedConditions.visibilityOfElementLocated(menuLocator));
-                new Actions(driver).moveToElement(menu).perform();
-                Thread.sleep(250);
-
-                // Wait for submenu container
-                new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
-                        .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("ul.sublevel-nav")));
-
-                // Wait for submenu item
-                WebElement submenu = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
-                        .until(ExpectedConditions.elementToBeClickable(submenuLocator));
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", submenu);
-
-                try {
-                    submenu.click();
-                } catch (ElementClickInterceptedException ex) {
-                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", submenu);
+                // Defensive: Wait up to 5 seconds for submenus to be present after menu click
+                List<WebElement> allSubmenus = null;
+                for (int wait=0; wait<5; wait++) {
+                    allSubmenus = driver.findElements(submenuSpanLocator);
+                    if (!allSubmenus.isEmpty()) break;
+                    Thread.sleep(500);
                 }
-                DebugUtils.waitForAngular(driver);
-                // Screenshot after click for debugging
+
+                System.out.println("Attempt #" + attempt + " [DEBUG] Submenus found:");
+                for (WebElement sm : allSubmenus) System.out.println("  -> [" + sm.getText().trim() + "]");
+
+                WebElement submenuSpan = null;
+                for (WebElement sm : allSubmenus) {
+                    if (sm.getText().trim().equals(subMenuLabel)) {
+                        submenuSpan = sm;
+                        break;
+                    }
+                }
+                if (submenuSpan == null) throw new RuntimeException("Submenu '" + subMenuLabel + "' not found in DOM!");
+
+                WebElement submenuLink = submenuSpan.findElement(By.xpath("./ancestor::a[1]"));
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", submenuLink);
+
                 try {
-                    File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-                    java.nio.file.Files.copy(src.toPath(), Paths.get("after_click_" + subMenuLabel.replaceAll("\\s+", "_") + ".png"), StandardCopyOption.REPLACE_EXISTING);
-                } catch (Exception e) {}
-                UIActionLogger.click(driver, submenuLocator, subMenuLabel);
+                    new Actions(driver).moveToElement(submenuLink).pause(Duration.ofMillis(150)).click().perform();
+                } catch (Exception ex) {
+                    try {
+                        submenuLink.click();
+                    } catch (Exception e2) {
+                        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", submenuLink);
+                    }
+                }
+
+                // Wait for URL to update or the header
+                new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
+                        .until(ExpectedConditions.or(
+                                ExpectedConditions.urlContains("purchaseorder"),
+                                ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[contains(text(),'Purchase Order')]"))
+                        ));
+
+                UIActionLogger.click(driver, submenuLinkLocator, subMenuLabel);
                 return;
             } catch (Exception e) {
                 last = e;
-                // Print submenu DOM for debugging
                 try {
-                    System.out.println("[DEBUG] sublevel-nav HTML = " +
-                            driver.findElement(By.cssSelector("ul.sublevel-nav")).getAttribute("outerHTML"));
-                } catch (Exception ignored) {}
-                try { Thread.sleep(750); } catch (InterruptedException ignored) {}
+                    File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                    java.nio.file.Files.copy(src.toPath(), Paths.get("submenu_nav_attempt_" + attempt + ".png"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                } catch (Exception ignore) {}
+                System.out.println("[DEBUG] Submenu click failed attempt #" + attempt + ": " + e.getMessage());
+                try { Thread.sleep(600); } catch (InterruptedException ignored) {}
             }
         }
         throw new RuntimeException("Could not click submenu '" + subMenuLabel + "' under menu '" + menuLabel + "'", last);
@@ -221,30 +204,6 @@ public class NavigationManager {
     public void navigatePath(Map<String, String> labelToContainerClass) {
         for (Map.Entry<String, String> step : labelToContainerClass.entrySet()) {
             clickNavWithRetry(step.getKey(), step.getValue(), NAV_TIMEOUT);
-        }
-    }
-
-    // Angular wait utility
-    public static void waitForAngular(WebDriver driver) {
-        if (!(driver instanceof JavascriptExecutor)) return;
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        try {
-            js.executeAsyncScript(
-                    "var callback = arguments[arguments.length - 1];" +
-                            "if (window.getAllAngularTestabilities) {" +
-                            "  var testabilities = window.getAllAngularTestabilities();" +
-                            "  var count = testabilities.length;" +
-                            "  var done = false;" +
-                            "  function check() {" +
-                            "    if (!done && testabilities.every(function(t){return t.isStable()})) {" +
-                            "      done = true; callback('ready');" +
-                            "    } else { setTimeout(check, 100); }" +
-                            "  }" +
-                            "  check();" +
-                            "} else { callback('notAngular'); }"
-            );
-        } catch (Exception e) {
-            System.out.println("Angular wait skipped: " + e);
         }
     }
 }

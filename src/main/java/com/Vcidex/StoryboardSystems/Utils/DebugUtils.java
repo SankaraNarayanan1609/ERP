@@ -21,8 +21,8 @@ public class DebugUtils {
                             "  check();" +
                             "} else { callback('notAngular'); }"
             );
-        } catch (Exception e) {
-            System.out.println("Angular wait skipped: " + e);
+        } catch (ScriptTimeoutException | JavascriptException e) {
+            System.out.println("Angular wait skipped: " + e.toString());
         }
     }
 

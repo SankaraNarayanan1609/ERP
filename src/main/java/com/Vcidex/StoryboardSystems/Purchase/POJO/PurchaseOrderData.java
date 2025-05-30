@@ -144,9 +144,12 @@ public class PurchaseOrderData {
                 .add(addOnCharges)
                 .subtract(additionalDiscount)
                 .add(freightCharges);
+
+        // Clean additionalTax for BigDecimal conversion
         BigDecimal taxAmt = interim.multiply(
-                new BigDecimal(additionalTax.replace("%",""))
-                        .divide(BigDecimal.valueOf(100))
+                new BigDecimal(
+                        additionalTax.replace("%","").trim().replaceAll("[^\\d.\\-]", "")
+                ).divide(BigDecimal.valueOf(100))
         );
         BigDecimal rawTotal = interim.add(taxAmt);
         this.roundOff   = rawTotal.setScale(0, BigDecimal.ROUND_HALF_UP)

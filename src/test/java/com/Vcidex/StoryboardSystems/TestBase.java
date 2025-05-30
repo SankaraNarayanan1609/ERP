@@ -27,6 +27,10 @@ public abstract class TestBase {
     protected WebDriver driver;
 
     public static void initDataFactory(String bearerToken) {
+        // If token starts with "Bearer ", strip it.
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+            bearerToken = bearerToken.substring("Bearer ".length());
+        }
         String env = System.getProperty("env", "test");
         JSONObject app = ConfigManager.getAppConfig(env, "StoryboardSystems");
         String apiBase = app.getString("apiBase");
@@ -35,7 +39,7 @@ public abstract class TestBase {
         logger.info("✅ Initialized data factory with API token");
     }
 
-    protected String extractTokenFromLocalStorage() {
+    protected String extractTokenFromLocalStorage() { // Method 'extractTokenFromLocalStorage()' is never used
         return (String) ((JavascriptExecutor) driver)
                 .executeScript("return window.localStorage.getItem('token');");
     }

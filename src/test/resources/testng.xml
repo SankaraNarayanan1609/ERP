@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Storyboard Suite">
-    <test name="Purchase Tests">
-        <classes>
-            <!-- only this exact test class will run -->
-            <class name="com.Vcidex.StoryboardSystems.PurchaseTest.DirectPOTest"/>
-        </classes>
-    </test>
-</suite>

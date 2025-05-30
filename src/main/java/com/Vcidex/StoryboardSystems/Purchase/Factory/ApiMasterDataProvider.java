@@ -1,8 +1,6 @@
 package com.Vcidex.StoryboardSystems.Purchase.Factory;
 
-import com.Vcidex.StoryboardSystems.Purchase.POJO.Employee;
-import com.Vcidex.StoryboardSystems.Purchase.POJO.Product;
-import com.Vcidex.StoryboardSystems.Purchase.POJO.Vendor;
+import com.Vcidex.StoryboardSystems.Purchase.POJO.*;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
@@ -22,6 +20,7 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 
 public class ApiMasterDataProvider implements MasterDataProvider {
+
     private static final Logger log = LoggerFactory.getLogger(ApiMasterDataProvider.class);
 
     static {
@@ -38,10 +37,16 @@ public class ApiMasterDataProvider implements MasterDataProvider {
     private final String authToken;
 
     public ApiMasterDataProvider(String baseUrl, String authToken) {
-        this.baseUrl   = baseUrl;
-        this.authToken = authToken;
+        this.baseUrl = baseUrl;
+        // Defensive: if token still has "Bearer " prefix, strip it
+        if (authToken != null && authToken.startsWith("Bearer ")) {
+            this.authToken = authToken.substring("Bearer ".length());
+        } else {
+            this.authToken = authToken;
+        }
     }
 
+    // --- Shared Utility for all API list fetches ---
     private <T> List<T> safeGetList(String path, Function<Response, List<T>> extractor) {
         try {
             Response resp = given()
@@ -61,32 +66,49 @@ public class ApiMasterDataProvider implements MasterDataProvider {
         }
     }
 
+    // --- BRANCHES ---
     @Override
     public List<String> getBranches() {
+        List<Branch> allBranches = getAllBranchObjects();
+        return allBranches.stream()
+                .map(Branch::getBranchName)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+    }
+
+    public List<Branch> getAllBranchObjects() {
         return safeGetList(
                 "/StoryboardAPI/api/SysMstBranch/BranchSummary",
-                r -> r.jsonPath().getList("data.branch_name", String.class)
+                r -> r.jsonPath().getList("branch_list1", Branch.class)
         );
     }
 
+    // --- EMPLOYEES ---
     @Override
     public List<Employee> getEmployees() {
-        return safeGetList(
+        List<Employee> employees = safeGetList(
                 "/StoryboardAPI/api/Employeelist/GetEmployeeSummary",
                 r -> r.then().contentType(ContentType.JSON)
-                        .extract().jsonPath().getList("data", Employee.class)
+                        .extract().jsonPath().getList("Getemployee_lists", Employee.class)
         );
+        log.info("Fetched and mapped {} employees into POJO class.", employees.size());
+        for (Employee emp : employees) {
+            log.debug("Employee POJO: {}", emp);
+        }
+        return employees;
     }
 
+    // --- VENDORS ---
     @Override
     public List<Vendor> getVendors() {
         return safeGetList(
                 "/StoryboardAPI/api/PmrMstVendorRegister/GetVendorregisterSummary",
                 r -> r.then().contentType(ContentType.JSON)
-                        .extract().jsonPath().getList("data", Vendor.class)
+                        .extract().jsonPath().getList("Getvendor_lists", Vendor.class)
         );
     }
 
+    // --- PRODUCTS ---
     @Override
     public List<Product> getProducts() {
         return safeGetList(
@@ -96,21 +118,27 @@ public class ApiMasterDataProvider implements MasterDataProvider {
         );
     }
 
-    private List<Map<String,String>> fetchCurrencyList() {
-        return safeGetList(
-                "/StoryboardAPI/api/PmrMstCurrency/GetPmrCurrencySummary",
-                r -> r.then().contentType(ContentType.JSON)
-                        .extract().jsonPath()
-                        .getObject("currency_list", new TypeRef<List<Map<String,String>>>(){})
-        );
-    }
-
+    // --- CURRENCIES ---
     @Override
     public List<String> getCurrencies() {
-        return fetchCurrencyList().stream()
+        return getAllCurrencyObjects().stream()
                 .map(m -> m.get("currency_code"))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+    }
+
+    // Full currency objects (as Map) for more details (for MasterData.allMasters)
+    public List<Map<String, String>> getAllCurrencyObjects() {
+        return fetchCurrencyList();
+    }
+
+    // Helper for currency
+    private List<Map<String, String>> fetchCurrencyList() {
+        return safeGetList(
+                "/StoryboardAPI/api/PmrMstCurrency/GetPmrCurrencySummary",
+                r -> r.then().contentType(ContentType.JSON)
+                        .extract().jsonPath().getObject("currency_list", new TypeRef<List<Map<String, String>>>() {})
+        );
     }
 
     @Override
@@ -126,40 +154,59 @@ public class ApiMasterDataProvider implements MasterDataProvider {
                 ));
     }
 
-    @Override
-    public List<String> getTermsAndConditions() {
+    // --- TERMS AND CONDITIONS ---
+    public List<TermsAndConditions> getAllTermsObjects() {
         return safeGetList(
                 "/StoryboardAPI/api/PmrMstTermsConditions/GetTermsConditionsSummary",
                 r -> r.then().contentType(ContentType.JSON)
-                        .extract().jsonPath().getList("data.template_name", String.class)
+                        .extract().jsonPath().getList("Gettemplate_list", TermsAndConditions.class)
         );
     }
 
-    private List<Map<String,String>> fetchTaxList() {
+    @Override
+    public List<String> getTermsAndConditions() {
+        return getAllTermsObjects().stream()
+                .map(TermsAndConditions::getTemplateName)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+    }
+
+    // --- TAX ---
+    private List<Tax> fetchTaxList() {
         return safeGetList(
                 "/StoryboardAPI/api/PmrMstTax/GetTaxSummary",
                 r -> r.then().contentType(ContentType.JSON)
-                        .extract().jsonPath().getObject("data", new TypeRef<List<Map<String,String>>>(){})
+                        .extract().jsonPath().getList("pmrtax_list", Tax.class)
         );
+    }
+
+    public List<Tax> getAllTaxObjects() {
+        return fetchTaxList();
     }
 
     @Override
     public List<String> getTaxCodes() {
-        return fetchTaxList().stream()
-                .map(m -> m.get("tax_prefix"))
+        List<Tax> taxes = fetchTaxList();
+        List<String> codes = taxes.stream()
+                .map(Tax::getTaxPrefix)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+        System.out.println("DEBUG: Tax codes = " + codes);
+        return codes;
     }
 
     @Override
     public Map<String, BigDecimal> getTaxPercentage() {
         return fetchTaxList().stream()
-                .filter(m -> m.get("tax_prefix") != null && m.get("percentage") != null)
+                .filter(m -> m.getTaxPrefix() != null && m.getPercentage() != null)
                 .collect(Collectors.toMap(
-                        m -> m.get("tax_prefix"),
+                        Tax::getTaxPrefix,
                         m -> {
-                            try { return new BigDecimal(m.get("percentage")); }
-                            catch (Exception e) { return BigDecimal.ZERO; }
+                            try {
+                                return new BigDecimal(m.getPercentage().trim());
+                            } catch (Exception e) {
+                                return BigDecimal.ZERO;
+                            }
                         }
                 ));
     }

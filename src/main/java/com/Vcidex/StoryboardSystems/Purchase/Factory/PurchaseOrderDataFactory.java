@@ -30,9 +30,8 @@ public class PurchaseOrderDataFactory {
         String branchName = pickRandom(masters.getBranches(), "Branch");
 
         Vendor vendor = pickRandom(masters.getVendors(), "Vendor");
-        String vendorName    = vendor.getName();
-        String vendorDetails = vendor.getDetails();
-        String billTo        = vendor.getBranchAddress();
+        String vendorName    = vendor.getVendor_companyname();
+        String billTo        = vendor.getAddress1();
 
         LocalDate poDate       = LocalDate.now();
         LocalDate expectedDate = poDate.plusDays(faker.number().numberBetween(1, 30));
@@ -40,8 +39,8 @@ public class PurchaseOrderDataFactory {
         String shipTo = faker.address().fullAddress();
 
         Employee employee = pickRandom(masters.getEmployees(), "Employee");
-        String requestedBy             = employee.getName();
-        String requestorContactDetails = employee.getContact();
+        String requestedBy             = employee.getUserName();
+        //String requestorContactDetails = employee.getContact();
 
         String deliveryTerms = faker.number().numberBetween(1, 60) + " days";
         String paymentTerms  = faker.number().numberBetween(15, 90) + " days";
@@ -69,24 +68,26 @@ public class PurchaseOrderDataFactory {
             Product p = pickRandom(products, "Product");
             LineItem li = new LineItem();
             li.setProductGroup(p.getProductGroupName());
-            li.setProductCode(p.getCode());
-            li.setProductName(p.getName());
-            li.setDescription(p.getDescription());
+            li.setProductCode(p.getProductGroupCode());
+            li.setProductName(p.getProductName());
+            li.setDescription(p.getProductDesc());
             li.setQuantity(faker.number().numberBetween(1, 100));
-            li.setPrice(p.getCostPrice());
+            li.setPrice(p.getCostPriceDecimal());
 
-            // split discount into percent vs amount
-            BigDecimal pct = BigDecimal.valueOf(
-                    faker.number().randomDouble(2, 0, 20)
-            );
-            BigDecimal amt = p.getCostPrice()
+            BigDecimal pct = BigDecimal.valueOf(faker.number().randomDouble(2, 0, 20));
+            BigDecimal amt = p.getCostPriceDecimal()
                     .multiply(pct)
                     .divide(BigDecimal.valueOf(100));
             li.setDiscountPct(pct);
             li.setDiscountAmt(amt);
 
-            li.setTaxRate(p.getTax1());
-            li.computeTotal();  // sets totalAmount
+            // **FIX BELOW**
+            String taxPrefix = pickRandom(masters.getTaxCodes(), "TaxCode");
+            li.setTaxPrefix(taxPrefix);
+            BigDecimal pctVal = masters.getTaxPercentage().getOrDefault(taxPrefix, BigDecimal.ZERO);
+            li.setTaxRate(pctVal.divide(BigDecimal.valueOf(100)));
+
+            li.computeTotal();
             items.add(li);
         }
 
@@ -97,11 +98,11 @@ public class PurchaseOrderDataFactory {
                 .poDate(poDate)
                 .expectedDate(expectedDate)
                 .vendorName(vendorName)
-                .vendorDetails(vendorDetails)
+                //.vendorDetails(vendorDetails)
                 .billTo(billTo)
                 .shipTo(shipTo)
                 .requestedBy(requestedBy)
-                .requestorContactDetails(requestorContactDetails)
+                //.requestorContactDetails(requestorContactDetails)
                 .deliveryTerms(deliveryTerms)
                 .paymentTerms(paymentTerms)
                 .dispatchMode(dispatchMode)
