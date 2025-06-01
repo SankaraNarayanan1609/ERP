@@ -9,6 +9,7 @@ import com.Vcidex.StoryboardSystems.Utils.Logger.PerformanceLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.TestContextLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
+import com.Vcidex.StoryboardSystems.Utils.FlatpickrDatePicker;
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,7 +17,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -24,17 +24,22 @@ public class DirectPO extends BasePage {
     private final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final WebDriverWait wait;
 
-    // Locators
+    /**
+     * Locators
+     */
     private final By loadingOverlay   = By.cssSelector(".spinner-overlay, .modal-backdrop");
     private final By directPOButton   = By.xpath("//button[contains(.,'Direct PO') and @data-bs-target='#myModaladd']");
 
-    // Header locators
+    /**
+     * Header locators
+     */
     private final By branchNameDropdown    = By.xpath("//ng-select[@formcontrolname='branch_name']");
     private final By poRefNoInput          = By.xpath("//input[@formcontrolname='po_no']");
     private final By poDatePicker          = By.xpath("//input[@formcontrolname='po_date']");
     private final By expectedDatePicker    = By.xpath("//input[@formcontrolname='expected_date']");
     private final By vendorNameDropdown    = By.xpath("//ng-select[@formcontrolname='vendor_companyname']");
-    private final By vendorDetailsInput    = By.xpath("//input[@formcontrolname='vendor_details']");
+
+    //private final By vendorDetailsInput    = By.xpath("//input[@formcontrolname='vendor_details']");
     private final By billToInput           = By.xpath("//textarea[@formcontrolname='address1']");
     private final By shipToInput           = By.xpath("//textarea[@formcontrolname='shipping_address']");
     private final By requestedByDropdown   = By.xpath("//ng-select[@formcontrolname='employee_name']");
@@ -50,7 +55,9 @@ public class DirectPO extends BasePage {
     private final By renewalDatePicker     = By.xpath("//input[@formcontrolname='renewal_date']");
     private final By frequencyDropdown     = By.xpath("//ng-select[@formcontrolname='frequency_terms']");
 
-    // Product‐grid locators
+    /**
+     *Product-grid locators
+     */
     private final By addProductBtn         = By.cssSelector("button.btn.btn-icon.btn-sm.bg-success.me-1");
     private final By productGroupDropdown  = By.xpath("//ng-select[@formcontrolname='productgroup_name']");
     private final By productCodeDropdown   = By.xpath("//ng-select[@formcontrolname='product_code']");
@@ -67,7 +74,9 @@ public class DirectPO extends BasePage {
     private final By editProductBtn        = By.cssSelector("button.btn.btn-icon.btn-sm.bg-etdark.me-2");
     private final By deleteProductBtn      = By.cssSelector("button.btn.btn-icon.btn-sm.bg-danger.me-2");
 
-    // Footer locators
+    /**
+     * Footer locators
+     */
     private final By termsDropdown         = By.xpath("//ng-select[@formcontrolname='template_name']");
     private final By termsEditor           = By.cssSelector(".angular-editor-wrapper");
     private final By netAmountInput        = By.xpath("//input[@formcontrolname='totalamount']");
@@ -78,7 +87,9 @@ public class DirectPO extends BasePage {
     private final By roundOffInput         = By.xpath("//input[@formcontrolname='roundoff']");
     private final By grandTotalInput       = By.xpath("//input[@formcontrolname='grandtotal']");
 
-    // Action buttons
+    /**
+     *     Action buttons
+     */
     private final By saveDraftBtn          = By.xpath("//button[text()='Save As Draft']");
     private final By submitBtn             = By.xpath("//button[contains(@class,'btn-success') and contains(@class,'text-white') and .//span[normalize-space()='Submit']]");
     private final By cancelBtn             = By.cssSelector("button.btn-primary.btn-sm.text-white.me-4");
@@ -90,7 +101,9 @@ public class DirectPO extends BasePage {
         TestContextLogger.logTestStart("DirectPOPage init", driver);
     }
 
-    /** Click the Direct PO button to open the form dialog */
+    /**
+     * Click the Direct PO button to open the Direct PO page
+     **/
     public void openDirectPOModal(ExtentTest node) {
         PerformanceLogger.start("openDirectPOModal");
         try {
@@ -109,7 +122,9 @@ public class DirectPO extends BasePage {
                 node.info("⚡ Fallback JS click used to open Direct PO modal");
             }
 
-            // Wait for the modal’s first field to appear
+            /**
+             * Wait for the modal’s first field to appear
+              */
             wait.until(ExpectedConditions.visibilityOfElementLocated(branchNameDropdown));
             node.pass("✅ Direct PO modal opened");
         } catch (Exception e) {
@@ -123,9 +138,157 @@ public class DirectPO extends BasePage {
     public void fillForm(PurchaseOrderData d, ExtentTest rootNode) {
         PerformanceLogger.start("DirectPO_fillForm");
         try {
-            // (content unchanged, your logic here)
+            // ───────────── HEADER FIELDS ─────────────
+            UIActionLogger.selectFromNgSelect(driver, "branch_name", d.getBranchName(), rootNode);
+            UIActionLogger.type(driver, poRefNoInput, d.getPoRefNo(), "PO Ref No", rootNode);
+
+            String expectedDateStr = d.getExpectedDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            FlatpickrDatePicker.pickFlatpickrDate(driver, expectedDatePicker, expectedDateStr, "Expected Date", rootNode);
+
+            UIActionLogger.selectFromNgSelect(driver, "vendor_companyname", d.getVendorName(), rootNode);
+            UIActionLogger.type(driver, billToInput, d.getBillTo(), "Bill To", rootNode);
+            UIActionLogger.type(driver, shipToInput, d.getShipTo(), "Ship To", rootNode);
+            UIActionLogger.selectFromNgSelect(driver, "employee_name", d.getRequestedBy(), rootNode);
+            UIActionLogger.type(driver, requestorContactInput, d.getRequestorContactDetails(), "Requestor Contact", rootNode);
+
+            UIActionLogger.type(driver, deliveryTermsInput, d.getDeliveryTerms(), "Delivery Terms", rootNode);
+            UIActionLogger.type(driver, paymentTermsInput, d.getPaymentTerms(), "Payment Terms", rootNode);
+            UIActionLogger.type(driver, dispatchModeInput, d.getDispatchMode(), "Dispatch Mode", rootNode);
+
+            UIActionLogger.selectFromNgSelect(driver, "currency_code", d.getCurrency(), rootNode);
+            UIActionLogger.type(driver, exchangeRateInput,
+                    d.getExchangeRate() != null ? d.getExchangeRate().toPlainString() : "",
+                    "Exchange Rate", rootNode);
+
+            UIActionLogger.type(driver, coverNoteInput, d.getCoverNote(), "Cover Note", rootNode);
+
+            // ───────────── RENEWAL (if present) ─────────────
+            if (d.isRenewal()) {
+                findElement(renewalYesRadio).click();
+                String renewalDateStr = d.getRenewalDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                FlatpickrDatePicker.pickFlatpickrDate(driver, renewalDatePicker, renewalDateStr, "Renewal Date", rootNode);
+                UIActionLogger.selectFromNgSelect(driver, "frequency_terms", d.getFrequency(), rootNode);
+            } else {
+                findElement(renewalNoRadio).click();
+            }
+
+            // ───────────── LINE ITEMS ─────────────
+            List<LineItem> lineItems = d.getLineItems();
+            for (int i = 0; i < lineItems.size(); i++) {
+                if (i > 0) {
+                    UIActionLogger.click(driver, addProductBtn, "Add Product Row", rootNode);
+                }
+                LineItem item = lineItems.get(i);
+
+                //
+                // ── MANUAL ng-select, but don’t block on a non-existent <input>
+                //
+                // STEP A: Locate & scroll the <ng-select> container into view
+                By productNameContainer = By.xpath(
+                        "//ng-select[@formcontrolname='product_name']" +
+                                "//div[contains(@class,'ng-select-container')]"
+                );
+                WebElement dropdownElement = findElement(productNameContainer);
+
+                String scrollScript =
+                        "var el = arguments[0];" +
+                                "var rect = el.getBoundingClientRect();" +
+                                "var targetY = window.pageYOffset + rect.top - (window.innerHeight * 0.3);" +
+                                "window.scrollTo(0, targetY);";
+                ((JavascriptExecutor) driver).executeScript(scrollScript, dropdownElement);
+
+                try { Thread.sleep(150); } catch (InterruptedException ignored) {}
+
+                // STEP B: Click the container to open the dropdown
+                dropdownElement.click();
+
+                /**
+                *STEP C: If there is a search <input ng-input> inside the panel, type into it.
+                 *       If not, skip typing and go straight to clicking the option.
+                */
+                String trimmedName = item.getProductName() == null ? "" : item.getProductName().trim();
+                By ngSearchInput = By.xpath(
+                        "//body//div[contains(@class,'ng-dropdown-panel')]//input[contains(@class,'ng-input')]"
+                );
+                try {
+                    WebElement searchInput = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(ngSearchInput)
+                    );
+
+                    // Clear any leftovers and type the product name
+                    searchInput.clear();
+                    searchInput.sendKeys(trimmedName);
+                } catch (TimeoutException e) {
+
+                    // If no searchable input appeared—just proceed to click the option by text.
+                    rootNode.info("ℹ️ No search-box inside ng-dropdown-panel; skipping typing step.");
+                }
+
+                // STEP D: Wait for an <ng-option> whose text contains our trimmedName, then click it.
+                By matchingOption = By.xpath(
+                        "//body//div[contains(@class,'ng-dropdown-panel')]" +
+                                "//div[contains(@class,'ng-option') and contains(normalize-space(.),'" + trimmedName + "')]"
+                );
+                WebElement option = wait.until(
+                        ExpectedConditions.elementToBeClickable(matchingOption)
+                );
+                option.click();
+
+                /**
+                * ── END manual ng-select sequence
+                */
+
+                // ───────── Fill the rest of that row’s fields ─────────
+                UIActionLogger.type(driver, descriptionInput, item.getDescription(), "Description", rootNode);
+                UIActionLogger.type(driver, quantityInput, String.valueOf(item.getQuantity()), "Quantity", rootNode);
+
+                UIActionLogger.type(
+                        driver,
+                        priceInput,
+                        item.getPrice() != null ? item.getPrice().toPlainString() : "",
+                        "Unit Price",
+                        rootNode
+                );
+                UIActionLogger.type(
+                        driver,
+                        discountInput,
+                        item.getDiscountPct() != null ? item.getDiscountPct().toPlainString() : "",
+                        "Discount %",
+                        rootNode
+                );
+                
+                // (add any other fields like discountValue/taxPrefix/taxRate as needed)
+                UIActionLogger.click(driver, saveProductBtn, "Save Product", rootNode);
+            }
+
+            // ───────────── FOOTER / TOTALS ─────────────
+            UIActionLogger.selectFromNgSelect(driver, "template_name", d.getTermsAndConditions(), rootNode);
+
+            if (d.getTermsEditorText() != null && !d.getTermsEditorText().isEmpty()) {
+                WebElement editor = findElement(termsEditor);
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].innerHTML = arguments[1];",
+                        editor, d.getTermsEditorText()
+                );
+                rootNode.info("📝 Filled Terms Editor Text");
+            }
+
+            UIActionLogger.type(driver, addOnChargesInput,
+                    d.getAddOnCharges() != null ? d.getAddOnCharges().toPlainString() : "",
+                    "Add-on Charges", rootNode);
+            UIActionLogger.type(driver, additionalDiscountInput,
+                    d.getAdditionalDiscount() != null ? d.getAdditionalDiscount().toPlainString() : "",
+                    "Additional Discount", rootNode);
+//            UIActionLogger.type(driver, freightChargesInput,
+//                    d.getFreightCharges() != null ? d.getFreightCharges().toPlainString() : "",
+//                    "Freight Charges", rootNode);
+            UIActionLogger.selectFromNgSelect(driver, "tax_name4", d.getAdditionalTax(), rootNode);
+
+            rootNode.pass("✅ All form fields filled from PurchaseOrderData");
+
         } catch (Exception e) {
             ErrorLogger.logException(e, "DirectPOPage.fillForm", driver);
+            rootNode.fail("❌ Exception in fillForm: " + e.getMessage());
             throw e;
         } finally {
             PerformanceLogger.end("DirectPO_fillForm");
@@ -244,7 +407,7 @@ public class DirectPO extends BasePage {
     }
 
     // Helper: type a date then ENTER, logs into the given node
-    private void setDate(By locator, LocalDate date, String label, ExtentTest node) {
+    private void setDate(By locator, java.time.LocalDate date, String label, ExtentTest node) {
         PerformanceLogger.start("setDate");
         try {
             String formatted = date.format(fmt);

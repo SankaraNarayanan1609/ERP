@@ -1,7 +1,7 @@
 package com.Vcidex.StoryboardSystems.Purchase.Factory;
 
 import com.Vcidex.StoryboardSystems.Purchase.POJO.Vendor;
-import com.Vcidex.StoryboardSystems.Purchase.POJO.Employee;
+import com.Vcidex.StoryboardSystems.CmnMasterPOJO.Employee;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.Product;
 
 import java.math.BigDecimal;

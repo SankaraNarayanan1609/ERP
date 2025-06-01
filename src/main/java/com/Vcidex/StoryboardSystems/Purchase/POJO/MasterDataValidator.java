@@ -1,5 +1,7 @@
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
+import com.Vcidex.StoryboardSystems.CmnMasterPOJO.Branch;
+import com.Vcidex.StoryboardSystems.CmnMasterPOJO.Employee;
 import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
 
 import java.util.List;
@@ -20,7 +22,7 @@ public class MasterDataValidator {
         // Vendors
         List<Vendor> vendors = provider.getVendors();
         assertListNotEmpty(vendors, "Vendor");
-        logFirst(vendors, "Vendor", Vendor::getVendor_companyname);
+        logFirst(vendors, "Vendor", Vendor::getVendorName);
 
         // Products
         List<Product> products = provider.getProducts();

@@ -1,5 +1,8 @@
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
+import com.Vcidex.StoryboardSystems.CmnMasterPOJO.Branch;
+import com.Vcidex.StoryboardSystems.CmnMasterPOJO.Employee;
+
 import java.util.List;
 import java.util.Map;
 

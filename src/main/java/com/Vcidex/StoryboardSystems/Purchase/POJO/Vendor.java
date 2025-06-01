@@ -1,11 +1,18 @@
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Vendor {
+    // Robust mapping for vendor name: supports both API fields
+    @JsonProperty("vendorName")
     private String vendorName;
-    public String getVendorName() { return vendorName; }
+
+    @JsonProperty("vendor_companyname")
+    private String vendorCompanyName;
+
+    // Other fields (as before)
     private String billing_email;
     private String tax_number;
     private String taxsegment_name;
@@ -18,7 +25,6 @@ public class Vendor {
     private String email_id;
     private String vendorregister_gid;
     private String vendor_code;
-    private String vendor_companyname;
     private String contactperson_name;
     private String region;
     private String vendor_status;
@@ -29,8 +35,18 @@ public class Vendor {
     private Boolean status;
     private String message;
 
-    // Getters and Setters
+    // Always use a single getter for the display name!
+    public String getVendorName() {
+        if (vendorName != null && !vendorName.trim().isEmpty()) {
+            return vendorName;
+        }
+        if (vendorCompanyName != null && !vendorCompanyName.trim().isEmpty()) {
+            return vendorCompanyName;
+        }
+        return null;
+    }
 
+    // --- Getters/Setters for all other fields (unchanged) ---
     public String getBilling_email() { return billing_email; }
     public void setBilling_email(String billing_email) { this.billing_email = billing_email; }
 
@@ -66,9 +82,6 @@ public class Vendor {
 
     public String getVendor_code() { return vendor_code; }
     public void setVendor_code(String vendor_code) { this.vendor_code = vendor_code; }
-
-    public String getVendor_companyname() { return vendor_companyname; }
-    public void setVendor_companyname(String vendor_companyname) { this.vendor_companyname = vendor_companyname; }
 
     public String getContactperson_name() { return contactperson_name; }
     public void setContactperson_name(String contactperson_name) { this.contactperson_name = contactperson_name; }
