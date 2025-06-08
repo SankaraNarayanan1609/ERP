@@ -1,90 +1,89 @@
+// File: src/main/java/com/Vcidex/StoryboardSystems/Utils/FlatpickrDatePicker.java
 package com.Vcidex.StoryboardSystems.Utils;
 
-import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+import org.openqa.selenium.support.ui.*;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 public class FlatpickrDatePicker {
-
     /**
-     * Selects a date from a Flatpickr-powered date picker by interacting with the UI (month, year, day).
+     * Robustly picks a date in a Flatpickr-based input.
      *
-     * @param driver     WebDriver instance
-     * @param dateInput  Locator for the input element that triggers the calendar
-     * @param dateValue  String in "dd-MM-yyyy" format (e.g., "31-05-2025")
-     * @param name       Field label for logging
-     * @param node       ExtentTest node for logging
+     * @param driver       the WebDriver
+     * @param locator      locator to the element that actually triggers Flatpickr.
+     *                     (It may be an <input class="flatpickr-input">, or a nearby icon/span that your app bound to Flatpickr.)
+     * @param dateToSelect a String in "yyyy-MM-dd" format (e.g. "2025-06-08")
+     * @param label        a friendly label for logging (e.g. "Expected Date")
      */
-    public static void pickFlatpickrDate(WebDriver driver, By dateInput, String dateValue, String name, ExtentTest node) {
+    public static void pickFlatpickrDate(WebDriver driver, By locator, String dateToSelect, String label) {
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(20));
+
         try {
-            // Parse the input date (dd-MM-yyyy)
-            String[] parts = dateValue.split("-");
-            String day = parts[0];
-            int monthIndex = Integer.parseInt(parts[1]) - 1; // Flatpickr is zero-based
-            String year = parts[2];
-            String[] monthNames = {
-                    "January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"
-            };
-            String monthName = monthNames[monthIndex];
-
-            // 1. Click the input to open the picker
-            WebElement input = driver.findElement(dateInput);
-            if (!input.isDisplayed()) {
-                throw new RuntimeException("Date input not visible for " + name);
-            }
-            // Do not remove readonly, just click
-            input.click();
-
-            // 2. Wait for calendar popup to be visible
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
-            WebElement calendar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".flatpickr-calendar.open")));
-
-            // 3. Set month from dropdown
-            WebElement monthSelect = calendar.findElement(By.cssSelector(".flatpickr-monthDropdown-months"));
-            Select selectMonth = new Select(monthSelect);
-            selectMonth.selectByValue(String.valueOf(monthIndex));
-
-            // 4. Set year by typing into the year input or using arrows if typing fails
-            WebElement yearInput = calendar.findElement(By.cssSelector(".flatpickr-current-month input.cur-year"));
+            // 1) Parse the target date (ISO format)
+            LocalDate targetDate;
             try {
-                yearInput.clear();
-                yearInput.sendKeys(year);
-                yearInput.sendKeys(Keys.ENTER); // Often Flatpickr needs Enter to confirm
-            } catch (ElementNotInteractableException ex) {
-                // fallback: use up/down arrows until match, not always needed but for rare UIs
-                int displayedYear = Integer.parseInt(yearInput.getAttribute("value"));
-                int targetYear = Integer.parseInt(year);
-                WebElement arrowUp = calendar.findElement(By.cssSelector(".numInputWrapper .arrowUp"));
-                WebElement arrowDown = calendar.findElement(By.cssSelector(".numInputWrapper .arrowDown"));
-                while (displayedYear != targetYear) {
-                    if (displayedYear < targetYear) {
-                        arrowUp.click();
-                        displayedYear++;
-                    } else {
-                        arrowDown.click();
-                        displayedYear--;
-                    }
-                    Thread.sleep(100); // Allow UI to update
-                }
+                targetDate = LocalDate.parse(dateToSelect, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            } catch (DateTimeParseException e) {
+                throw new RuntimeException("❌ Could not parse date '" + dateToSelect + "' for " + label, e);
             }
 
-            // 5. Click the day by aria-label
-            String ariaLabel = String.format("%s %d, %s", monthName, Integer.valueOf(day), year);
-            By dayLocator = By.xpath("//span[contains(@class,'flatpickr-day') and @aria-label='" + ariaLabel + "' and not(contains(@class, 'prevMonthDay')) and not(contains(@class, 'nextMonthDay'))]");
-            WebElement dayElem = wait.until(ExpectedConditions.elementToBeClickable(dayLocator));
-            dayElem.click();
+            // 2) Scroll the trigger into view and click it (normal click, fallback to JS if blocked)
+            WebElement trigger = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", trigger);
+            try {
+                trigger.click();
+            } catch (ElementClickInterceptedException ex) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", trigger);
+            } catch (WebDriverException e) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", trigger);
+            }
 
-            // 6. Optionally, wait until input value is updated
-            wait.until(ExpectedConditions.attributeContains(input, "value", dateValue));
+            // 3) Wait specifically for the open calendar container (Flatpickr adds “open” when it’s fully visible).
+            By openCalendar = By.cssSelector(".flatpickr-calendar.open");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(openCalendar));
 
-            node.pass("✅ Selected date '" + dateValue + "' for " + name);
+            // 4a) Wait for the month dropdown inside that open calendar
+            By monthDropdownLocator = By.cssSelector(".flatpickr-calendar.open .flatpickr-monthDropdown-months");
+            WebElement monthSelectElement = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(monthDropdownLocator)
+            );
+
+            // 4b) Set the month by visible text
+            Select monthDropdown = new Select(monthSelectElement);
+            String desiredMonthName = targetDate.getMonth()
+                    .getDisplayName(java.time.format.TextStyle.FULL, Locale.ENGLISH);
+            monthDropdown.selectByVisibleText(desiredMonthName);
+
+            // 5) Set the year
+            By yearInputLocator = By.cssSelector(".flatpickr-calendar.open .cur-year");
+            WebElement yearInput = wait.until(ExpectedConditions.elementToBeClickable(yearInputLocator));
+            yearInput.clear();
+            yearInput.sendKeys(String.valueOf(targetDate.getYear()));
+            yearInput.sendKeys(Keys.ENTER);
+
+            // 6) Build a day‐locator that only lives inside the visible (.open) calendar
+            String ariaLabel = desiredMonthName + " " + targetDate.getDayOfMonth() + ", " + targetDate.getYear();
+            By dayLocator = By.cssSelector(
+                    ".flatpickr-calendar.open " +
+                            ".flatpickr-day[aria-label=\"" + ariaLabel + "\"]" +
+                            ":not(.prevMonthDay):not(.nextMonthDay)"
+            );
+            WebElement dayCell = wait.until(ExpectedConditions.elementToBeClickable(dayLocator));
+            dayCell.click();
+
+        } catch (TimeoutException toe) {
+            throw new RuntimeException(
+                    "❌ Could not pick date for " + label +
+                            ": timed out waiting for calendar elements (" + toe.getMessage() + ")", toe
+            );
         } catch (Exception e) {
-            node.fail("❌ Could not pick date for " + name + ": " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException(
+                    "❌ Unexpected error picking date for " + label + ": " + e.getMessage(), e
+            );
         }
     }
 }

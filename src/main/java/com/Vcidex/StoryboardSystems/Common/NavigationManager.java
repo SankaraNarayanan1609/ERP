@@ -1,4 +1,4 @@
-package com.Vcidex.StoryboardSystems.Common.Navigation;
+package com.Vcidex.StoryboardSystems.Common;
 
 import com.Vcidex.StoryboardSystems.Utils.Logger.UIActionLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
@@ -45,7 +45,7 @@ public class NavigationManager {
         }
     }
 
-    // Robust: Wait for clickable, tries Actions and JS, retries on failure
+    // Wait for clickable, tries Actions and JS, retries on failure
     private void clickNavWithRetry(String label, String containerClass, int timeoutSeconds) {
         By locator = By.xpath(buildXpath(label, containerClass));
         int attempts = 3;

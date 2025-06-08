@@ -1,10 +1,10 @@
-package com.Vcidex.StoryboardSystems.Common.Base;
+package com.Vcidex.StoryboardSystems.Common;
 
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.PerformanceLogger;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.Vcidex.StoryboardSystems.Utils.Logger.UIActionLogger;
-import com.Vcidex.StoryboardSystems.Utils.Logger.ExtentTestManager;
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -30,7 +30,7 @@ public class BasePage {
     );
 
     public BasePage(WebDriver driver) {
-        this(driver, ExtentTestManager.getTest());
+        this(driver, ReportManager.getTest());
     }
 
     public BasePage(WebDriver driver, ExtentTest node) {

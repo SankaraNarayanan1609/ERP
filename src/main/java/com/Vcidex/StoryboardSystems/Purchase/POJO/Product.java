@@ -7,7 +7,8 @@ import java.math.BigDecimal;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 
-    @JsonProperty("document_id")
+    @JsonProperty("" +
+            "")
     private String documentId;
 
     @JsonProperty("log_id")
