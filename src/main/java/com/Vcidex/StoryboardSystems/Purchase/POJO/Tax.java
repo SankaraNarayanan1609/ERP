@@ -13,7 +13,8 @@ public class Tax {
 
     public String getTaxPrefix() { return tax_prefix; }
     public void setTaxPrefix(String tax_prefix) { this.tax_prefix = tax_prefix; }
-
+    public String getTaxsegment_name() { return taxsegment_name; }
+    public void setTaxsegment_name(String taxsegment_name) {this.taxsegment_name = taxsegment_name;}
     public String getPercentage() { return percentage; }
     public void setPercentage(String percentage) { this.percentage = percentage; }
 }
