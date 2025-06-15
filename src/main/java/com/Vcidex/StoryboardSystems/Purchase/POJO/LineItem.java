@@ -1,8 +1,10 @@
+// File: src/main/java/com/Vcidex/StoryboardSystems/Purchase/POJO/LineItem.java
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Data;
+
 import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,14 +23,15 @@ public class LineItem {
     private BigDecimal taxRate;
     private BigDecimal totalAmount;
 
-    // Custom calculation
-    public void computeTotal() {
-        if (price == null) throw new IllegalStateException("LineItem price is null for " + productCode);
-        if (discountAmt == null) throw new IllegalStateException("LineItem discountAmt is null for " + productCode);
-        if (taxRate == null) throw new IllegalStateException("LineItem taxRate is null for " + productCode);
-        if (quantity <= 0) throw new IllegalStateException("LineItem quantity is zero or negative for " + productCode);
+    public BigDecimal getDiscount() {
+        return discountPct;
+    }
 
-        BigDecimal sub = price.multiply(BigDecimal.valueOf(quantity)).subtract(discountAmt);
+    /** helper to calculate totalAmount **/
+    public void computeTotal() {
+        BigDecimal sub = price
+                .multiply(BigDecimal.valueOf(quantity))
+                .subtract(discountAmt);
         this.totalAmount = sub.add(sub.multiply(taxRate));
     }
 }

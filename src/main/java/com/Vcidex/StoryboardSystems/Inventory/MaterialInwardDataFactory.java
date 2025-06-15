@@ -1,62 +1,90 @@
+// File: src/main/java/com/Vcidex/StoryboardSystems/Inventory/MaterialInwardDataFactory.java
 package com.Vcidex.StoryboardSystems.Inventory;
 
 import com.Vcidex.StoryboardSystems.Inventory.POJO.MaterialInwardData;
+import com.Vcidex.StoryboardSystems.Purchase.POJO.LineItem;
+import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import com.github.javafaker.Faker;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class MaterialInwardDataFactory {
-    // seed Faker with current time so each run is unique but still “fake”
-    private static final Faker faker = new Faker(new Random(System.currentTimeMillis()));
-    private static final DateTimeFormatter DATE_FMT =
-            DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-    public static MaterialInwardData create() {
+    private static final Faker faker = new Faker(new Random(System.currentTimeMillis()));
+    private static final DateTimeFormatter TS_FMT = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+    /**
+     * Create MaterialInwardData matching a specific number of rows.
+     */
+    public static MaterialInwardData create(int expectedRows) {
         MaterialInwardData d = new MaterialInwardData();
 
-        // use timestamp for DC & Tracking to guarantee real-time uniqueness
-        String ts = LocalDate.now()
-                .format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+        String ts = LocalDate.now().format(TS_FMT)
                 + faker.number().digits(3);
 
         d.setDcNo("DC" + ts);
         d.setTrackingNo("TRK" + ts);
 
-        // real current date & a near-future expected date
-        String today = LocalDate.now().format(DATE_FMT);
-        String exp   = LocalDate.now()
-                .plusDays(faker.number().numberBetween(1,5))
-                .format(DATE_FMT);
+        LocalDate today = LocalDate.now();
+        LocalDate exp = today.plusDays(faker.number().numberBetween(1, 5));
 
         d.setGrnDate(today);
         d.setExpectedDate(exp);
 
-        // realistic dispatch modes
         d.setDispatchMode(
-                faker.options().option("Courier", "Road", "Air", "Sea")
+                faker.options().option(
+                        "AMAZON PICK UP", "APC - Courier Pack Next Day - CP16",
+                        "APC - Liquids (Fragile)", "APC - Mail Pack Next Day - MP16",
+                        "APC - NC Next Day - NC16", "Customer Collection",
+                        "Driver Delivery", "Fedex Next Day Domestic",
+                        "Translink Courier", "Royalmail 48 Tracking"
+                )
         );
 
-        d.setNoOfBoxes(
-                String.valueOf(faker.number().numberBetween(1,5))
-        );
+        d.setNoOfBoxes(String.valueOf(faker.number().numberBetween(1, 5)));
 
-        // your real test-file paths (adjust as needed)
         d.setFilePaths(List.of(
                 "/data/testdocs/" + faker.file().fileName(),
                 "/data/testdocs/" + faker.file().fileName()
         ));
 
-        // simulate 1–3 table rows
-        int rows = faker.number().numberBetween(1,4);
-        Map<Integer,String> qtyMap = new LinkedHashMap<>();
-        for (int i = 1; i <= rows; i++) {
-            // ensure received ≤ some realistic max
+        Map<Integer, String> qtyMap = new LinkedHashMap<>();
+        for (int i = 1; i <= expectedRows; i++) {
             qtyMap.put(i, String.valueOf(faker.number().numberBetween(0, 20)));
         }
         d.setReceivedQtyByRow(qtyMap);
 
         return d;
     }
-}
 
+    /**
+     * Legacy: random row count, delegates to create(int).
+     */
+    public static MaterialInwardData createFromPO(PurchaseOrderData po) {
+        List<LineItem> poLines = po.getLineItems();
+        int rowCount = (poLines == null || poLines.isEmpty()) ? 1 : poLines.size();
+
+        MaterialInwardData data = create(rowCount); // reuse existing generator
+
+        Map<Integer, String> qtyMap = new LinkedHashMap<>();
+        for (int i = 0; i < rowCount; i++) {
+            LineItem line = poLines.get(i);
+            int orderedQty = line.getQuantity(); // assuming quantity in LineItem
+            qtyMap.put(i + 1, String.valueOf(orderedQty));
+        }
+        data.setReceivedQtyByRow(qtyMap);
+
+        // Optional: set for visual assertion or reuse
+//        data.setPoRefNo(po.getPoRefNo());
+//        data.setVendorName(po.getVendorName());
+
+        return data;
+    }
+
+
+}

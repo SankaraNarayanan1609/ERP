@@ -5,18 +5,18 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.Vcidex.StoryboardSystems.Purchase.POJO.LineItem;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder(toBuilder = true)
-public class PurchaseOrderData {
+public class PurchaseInvoiceData {
 
-    // ── existing fields ──
     private String           branchName;
-    private String           poRefNo;
-    private LocalDate        poDate;
-    private LocalDate        expectedDate;
+    private String           invoiceRefNo;
+    private LocalDate        invoiceDate;
+    private LocalDate        dueDate;
     private String           vendorName;
     private String           vendorDetails;
     private String           billTo;
@@ -25,6 +25,7 @@ public class PurchaseOrderData {
     private String           requestorContactDetails;
     private String           deliveryTerms;
     private String           paymentTerms;
+    private String           purchaseType;
     private String           dispatchMode;
     private String           currency;
     private BigDecimal       exchangeRate;
@@ -42,6 +43,10 @@ public class PurchaseOrderData {
     private String           additionalTax;
     private BigDecimal       roundOff;
     private BigDecimal       grandTotal;
+    private String           remarks;
+    private String           billingEmail;
+    private String           termsTemplate;
+    private String           termsContent;
 
     public void computeNetAmount() {
         this.netAmount = lineItems.stream()

@@ -1,12 +1,12 @@
+
 // File: src/main/java/com/Vcidex/StoryboardSystems/Utils/DataFactory/PurchaseOrderDataFactory.java
 package com.Vcidex.StoryboardSystems.Utils.DataFactory;
 
 import com.Vcidex.StoryboardSystems.CmnMasterPOJO.Employee;
+import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseInvoiceData;
 import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.*;
 import com.github.javafaker.Faker;
-import lombok.Builder;  // make sure your PurchaseOrderData uses @Builder
-import lombok.Singular;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -17,23 +17,25 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-public class PurchaseOrderDataFactory {
+public class PurchaseInvoiceDataFactory {
 
     private final ApiMasterDataProvider apiProvider;
     private final Faker faker = new Faker();
     private final Random random = new Random();
 
-    private final List<String>   branchNames;
-    private final List<Vendor>   vendorList;
+    private final List<String> branchNames;
+    private final List<Vendor> vendorList;
     private final List<String>   vendorNames;
     private final List<String>   currencyCodes;
     private final List<String>   termTemplates;
     private final List<String>   dispatchModes = Arrays.asList("Courier", "Hand Delivery", "Email Copy");
+    private final List<String>   paymentModesList = Arrays.asList("0", "7", "15", "30", " 45", "60");
+    private final List<String>   purchaseTypeList = Arrays.asList("Product", "Service");
     private final List<Product>  productList;
     private final List<Tax>      taxList;
     private final List<Employee> employeeList;
 
-    public PurchaseOrderDataFactory(ApiMasterDataProvider apiProvider) {
+    public PurchaseInvoiceDataFactory(ApiMasterDataProvider apiProvider) {
         this.apiProvider   = apiProvider;
         this.vendorList    = safeList(apiProvider.getVendors());
         this.vendorNames   = vendorList.stream()
@@ -73,14 +75,10 @@ public class PurchaseOrderDataFactory {
         return faker.name().firstName();
     }
 
-    public PurchaseOrderData create(boolean isRenewal) {
+    public PurchaseInvoiceData create(boolean isRenewal) {
         // 1) Dates
         LocalDate poDate       = LocalDate.now();
         LocalDate expectedDate = randomDateBetween(3, 15);
-        LocalDate renewalDate  = isRenewal ? randomDateBetween(30, 90) : null;
-        String   frequency     = isRenewal
-                ? faker.options().option("Monthly", "Quarterly", "Half Yearly", "Yearly")
-                : null;
 
         // 2) Vendor & segment
         Vendor chosenVendor   = randomFrom(vendorList);
@@ -179,16 +177,16 @@ public class PurchaseOrderDataFactory {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String nowStamp      = LocalDateTime.now().format(dtf);
         String coverNote = String.format(
-                "PO generated on %s — please inspect goods upon arrival.",
+                "Invoice generated on %s ",
                 nowStamp
         );
 
-        // 9) Assemble PurchaseOrderData
-        PurchaseOrderData data = PurchaseOrderData.builder()
+        // 9) Assemble PurchaseInvoiceData
+        PurchaseInvoiceData data = PurchaseInvoiceData.builder()
                 .branchName(randomFrom(branchNames))
-                .poRefNo("PO-" + faker.number().digits(6))
-                .poDate(poDate)
-                .expectedDate(expectedDate)
+                .invoiceRefNo("PI-" + faker.number().digits(6))
+                .invoiceDate(poDate)
+                .dueDate(expectedDate)
                 .vendorName(vendorName)
                 .billTo(faker.address().fullAddress())
                 .shipTo(faker.address().fullAddress())
@@ -200,9 +198,8 @@ public class PurchaseOrderDataFactory {
                 .currency(randomFrom(currencyCodes))
                 .exchangeRate(BigDecimal.valueOf(faker.number().randomDouble(2, 1, 100)))
                 .coverNote(coverNote)
-                .renewal(isRenewal)
-                .renewalDate(renewalDate)
-                .frequency(frequency)
+                .paymentTerms(randomFrom(paymentModesList))
+                .purchaseType(randomFrom(purchaseTypeList))
                 .lineItems(lineItems)
                 .addOnCharges(BigDecimal.valueOf(faker.number().randomDouble(2, 100, 500)))
                 .additionalDiscount(BigDecimal.valueOf(random.nextDouble() * 15).setScale(2, RoundingMode.HALF_UP))
@@ -220,5 +217,69 @@ public class PurchaseOrderDataFactory {
         data.computeGrandTotal();
 
         return data;
+    }
+
+    public PurchaseInvoiceData createFromPO(PurchaseOrderData po) {
+        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        // Default to "Product" unless we clearly detect "Service"
+        String purchaseType = "Product";
+
+        List<LineItem> lines = po.getLineItems();
+        if (lines != null && !lines.isEmpty()) {
+            LineItem first = lines.get(0);
+            String name = first.getProductName();
+            if (name != null && name.toLowerCase().contains("service")) {
+                purchaseType = "Service";
+            }
+        }
+
+        PurchaseInvoiceData invoice = PurchaseInvoiceData.builder()
+                .branchName(po.getBranchName())
+                .invoiceRefNo("PI-" + faker.number().digits(6)) // new ref
+                .invoiceDate(LocalDate.now())
+                .dueDate(LocalDate.now().plusDays(10))
+                .vendorName(po.getVendorName())
+                .vendorDetails(po.getVendorDetails())
+                .billTo(po.getBillTo())
+                .shipTo(po.getShipTo())
+                .requestedBy(po.getRequestedBy())
+                .requestorContactDetails(po.getRequestorContactDetails())
+                .deliveryTerms(po.getDeliveryTerms())
+                .paymentTerms(po.getPaymentTerms())
+                .purchaseType(purchaseType)  // 🔥 fixed logic here
+                .dispatchMode(po.getDispatchMode())
+                .currency(po.getCurrency())
+                .exchangeRate(po.getExchangeRate())
+                .coverNote("Auto-generated from PO: " + now)
+                .renewal(po.isRenewal())
+                .renewalDate(po.getRenewalDate())
+                .frequency(po.getFrequency())
+                .termsAndConditions(po.getTermsAndConditions())
+                .termsEditorText(po.getTermsEditorText())
+                .lineItems(po.getLineItems())
+                .addOnCharges(po.getAddOnCharges())
+                .additionalDiscount(po.getAdditionalDiscount())
+                .freightCharges(po.getFreightCharges())
+                .additionalTax(po.getAdditionalTax())
+                .roundOff(po.getRoundOff())
+                .remarks("Imported from PO " + po.getPoRefNo())
+                .billingEmail("billing@storyboarderp.com")
+                .termsTemplate("Default Template")
+                .termsContent("Ensure to verify goods and report discrepancies within 2 days.")
+                .build();
+
+        invoice.computeNetAmount();
+        invoice.computeGrandTotal();
+        return invoice;
+    }
+
+    public PurchaseInvoiceData createForReceiveInvoiceOnly() {
+        return PurchaseInvoiceData.builder()
+                .invoiceRefNo("PI-" + faker.number().digits(6))
+                .purchaseType(randomFrom(purchaseTypeList))
+                .paymentTerms(randomFrom(paymentModesList))
+                .dueDate(randomDateBetween(3, 15))
+                .build();
     }
 }

@@ -96,15 +96,7 @@
             <artifactId>json</artifactId>
             <version>20240303</version>
         </dependency>
-
-        <!-- MySQL Connector -->
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>8.3.0</version>
-        </dependency>
-
-
+        
         <!-- Selenium Support -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -162,22 +154,20 @@
             <version>2.19.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-support</artifactId>
-            <version>4.10.0</version>
+            <groupId>org.cornutum.tcases</groupId>
+            <artifactId>tcases-lib</artifactId>
+            <version>4.1.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <!-- 2) Client API (TestCase, CoverageStrategy, etc.) -->
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>9.3.0</version>
+            <groupId>org.cornutum.tcases</groupId>
+            <artifactId>tcases-shell</artifactId>
+            <version>4.1.0</version>
         </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>
@@ -192,16 +182,21 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.cornutum.tcases</groupId>
+                <artifactId>tcases-maven-plugin</artifactId>
+                <version>4.1.0</version>
+                <!-- configuration here if desired -->
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                        <include>**/*Tests.java</include>
-                    </includes>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>

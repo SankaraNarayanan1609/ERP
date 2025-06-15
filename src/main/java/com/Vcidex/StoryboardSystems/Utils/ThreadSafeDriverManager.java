@@ -3,22 +3,18 @@ package com.Vcidex.StoryboardSystems.Utils;
 
 import org.openqa.selenium.WebDriver;
 
+/**
+ * Solely responsible for holding/retrieving the thread-local WebDriver.
+ */
 public class ThreadSafeDriverManager {
-    public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-
-    public static WebDriver driver() {
-        return driver.get();
-    }
-
+    private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
     public static WebDriver getDriver() {
-        return driver.get();
+        return driverThreadLocal.get();
     }
-
-    public static void setDriver(WebDriver driverInstance) {
-        driver.set(driverInstance);
+    public static void setDriver(WebDriver driver) {
+        driverThreadLocal.set(driver);
     }
-
     public static void removeDriver() {
-        driver.remove();
+        driverThreadLocal.remove();
     }
 }

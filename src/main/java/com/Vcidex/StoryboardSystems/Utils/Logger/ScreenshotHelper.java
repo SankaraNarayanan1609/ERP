@@ -12,24 +12,26 @@ import java.time.Instant;
 import java.util.UUID;
 
 /**
- * Handles screenshot file creation.
+ * Solely responsible for capturing and writing PNG screenshots.
  */
 public class ScreenshotHelper {
-    private static final Path DIR = Path.of("logs", "screenshots");
+    private static final Path SCREENSHOT_DIR = Path.of("logs", "screenshots");
     static {
-        try { Files.createDirectories(DIR); } catch (IOException e) {
+        try {
+            Files.createDirectories(SCREENSHOT_DIR);
+        } catch (IOException e) {
             throw new RuntimeException("Could not create screenshot dir", e);
         }
     }
 
     public static Path capture(WebDriver driver, String context) {
         try {
-            String name = context.replaceAll("\\W+","_")
+            String fileName = context.replaceAll("\\W+", "_")
                     + "_" + Instant.now().toEpochMilli()
                     + "_" + UUID.randomUUID() + ".png";
-            Path target = DIR.resolve(name);
+            Path target = SCREENSHOT_DIR.resolve(fileName);
             Files.copy(
-                    ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE).toPath(),
+                    ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE).toPath(),
                     target
             );
             return target;
