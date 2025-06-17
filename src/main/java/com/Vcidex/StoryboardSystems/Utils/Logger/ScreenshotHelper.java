@@ -39,4 +39,12 @@ public class ScreenshotHelper {
             throw new RuntimeException("Screenshot failed: " + e.getMessage(), e);
         }
     }
+    public static Optional<Path> safeCapture(WebDriver driver, String context) {
+        try {
+            Path path = capture(driver, context);
+            return Optional.of(path);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
 }

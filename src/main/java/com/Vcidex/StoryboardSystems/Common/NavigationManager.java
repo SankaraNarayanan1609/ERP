@@ -3,7 +3,7 @@ package com.Vcidex.StoryboardSystems.Common;
 
 import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.step;
 
-import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.Layer;
+import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.PerformanceLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.aventstack.extentreports.ExtentTest;
@@ -35,25 +35,25 @@ public class NavigationManager extends BasePage {
         PerformanceLogger.start("Navigation: " + module + "→" + menu + "→" + subMenu);
 
         // 1) Click module button
-        step(Layer.UI, "Click module: " + module, () -> {
+        step(MasterLogger.Layer.UI, "Click module: " + module, () -> {
             clickNavItem(module, "head-content-left");
             return null;
         });
 
         // 2) Expand side menu & click menu
-        step(Layer.UI, "Click side menu: " + menu, () -> {
+        step(MasterLogger.Layer.UI, "Click side menu: " + menu, () -> {
             clickNavItem(menu, "sidenav-nav");
             return null;
         });
 
         // 3) Click submenu
-        step(Layer.UI, "Click submenu: " + subMenu, () -> {
+        step(MasterLogger.Layer.UI, "Click submenu: " + subMenu, () -> {
             clickNavItem(subMenu, "sublevel-nav");
             return null;
         });
 
         // 4) Wait for page load (URL or header check)
-        step(Layer.UI, "Verify page loaded for: " + subMenu, () -> {
+        step(MasterLogger.Layer.UI, "Verify page loaded for: " + subMenu, () -> {
             wait.until(d ->
                     d.getCurrentUrl().toLowerCase().contains(subMenu.replaceAll("\\s+", "").toLowerCase())
                             || d.findElements(By.xpath("//*[contains(text(),'" + subMenu + "')]")).size() > 0
@@ -62,6 +62,17 @@ public class NavigationManager extends BasePage {
         });
 
         PerformanceLogger.end("Navigation: " + module + "→" + menu + "→" + subMenu);
+    }
+
+    /**
+     * Wait until a specific element becomes invisible (e.g., spinner, overlay).
+     */
+    public void waitUntilInvisible(By locator, String message) {
+        Object Layer;
+        step(MasterLogger.Layer.WAIT, message, () -> { // Cannot resolve symbol 'WAIT'
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            return null;
+        });
     }
 
     /**

@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 
-public class ApiMasterDataProvider implements MasterDataProvider {
+    public class ApiMasterDataProvider implements MasterDataProvider {
 
     private static final Logger log = LoggerFactory.getLogger(ApiMasterDataProvider.class);
 

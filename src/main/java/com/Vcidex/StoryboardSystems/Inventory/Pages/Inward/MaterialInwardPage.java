@@ -16,6 +16,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 public class MaterialInwardPage extends BasePage {
     private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -187,14 +188,21 @@ public class MaterialInwardPage extends BasePage {
         PerformanceLogger.end("MaterialInward.clickBack");
     }
 
-    public void fillInwardDetails(MaterialInwardData d, ExtentTest node) {
-        fillHeader(d, node);
-        selectDispatchMode(d.getDispatchMode(), node);
-        fillDispatchDetails(d, node);
-        assertRowCount(d.getReceivedQtyByRow().size(), node);
-        d.getReceivedQtyByRow().forEach((row, val) ->
-                enterReceivedQty(row, val, node)
-        );
-        clickSubmit(node);
+    // MaterialInwardPage.java
+    public void fillInwardDetails(MaterialInwardData data, ExtentTest node) {
+        ReportManager.setTest(node);
+        PerformanceLogger.start("MaterialInward.fillInwardDetails");
+
+        step(Layer.UI, "Fill received quantity for all PO rows", () -> {
+            Map<Integer, String> qtyMap = data.getReceivedQtyByRow();
+            for (Map.Entry<Integer, String> entry : qtyMap.entrySet()) {
+                int rowIndex = entry.getKey();
+                String qty = entry.getValue();
+                enterReceivedQty(rowIndex, qty, node); // ✅ Use existing robust method
+            }
+            return null;
+        });
+
+        PerformanceLogger.end("MaterialInward.fillInwardDetails");
     }
 }

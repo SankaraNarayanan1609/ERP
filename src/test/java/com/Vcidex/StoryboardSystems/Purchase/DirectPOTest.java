@@ -23,6 +23,7 @@ import com.Vcidex.StoryboardSystems.Utils.DataFactory.PurchaseInvoiceDataFactory
 import com.Vcidex.StoryboardSystems.Utils.DebugUtils;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.Vcidex.StoryboardSystems.Utils.MasterDataLoader;
+import static com.Vcidex.StoryboardSystems.Utils.PurchaseHelper.getNonServiceItemCount;
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.*;
@@ -99,6 +100,18 @@ public class DirectPOTest extends TestBase {
         ExtentTest miFillNode = rootTest.createNode("📝 Fill Material Inward");
         miPage.fillInwardDetails(miData, miFillNode);
 
+        // ✅ Assert that the number of rows in the Material Inward table
+        // matches the number of PO lines (excluding SERVICE product types)
+        int expectedRowCount = (int) poData.getLineItems().stream()
+                .filter(line -> line.getProduct() != null)
+                .filter(line -> {
+                    String pt = line.getProduct().getProductType();
+                    return pt == null || !pt.equalsIgnoreCase("service");
+                })
+                .count();
+
+        miPage.assertRowCount(expectedRowCount, rootTest.createNode("✅ Assert Product Lines in Inward"));
+
         ExtentTest verifyNode = rootTest.createNode("🔎 Verify new inward in summary");
         miPage.clickBack(verifyNode);
         miPage.assertInwardListed(miData.getDcNo(), verifyNode);
@@ -125,7 +138,7 @@ public class DirectPOTest extends TestBase {
         SinglePaymentPage paymentPage = paymentNav.openSinglePayment(poData.getVendorName(), invoiceData.getInvoiceRefNo());
 
         ExtentTest paymentFillNode = rootTest.createNode("📝 Fill Payment Form");
-        paymentPage.fillPaymentForm(paymentData, paymentFillNode); // Expected 5 arguments but found 2
+        paymentPage.fillPaymentForm(paymentData, paymentFillNode);
 
         ExtentTest paymentSubmitNode = rootTest.createNode("🚀 Submit Payment");
         paymentPage.submitPayment(paymentSubmitNode);

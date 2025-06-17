@@ -1,4 +1,3 @@
-// ReportManager.java
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -6,7 +5,9 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,20 +21,27 @@ public class ReportManager {
 
     private static synchronized void initialize() {
         if (extent == null) {
-            String ts   = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String name = System.getProperty("report.name", DEFAULT_NAME);
-            new File(REPORT_DIR).mkdirs();
+            try {
+                String ts   = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                String name = System.getProperty("report.name", DEFAULT_NAME);
+                Path reportPath = Path.of(REPORT_DIR);
+                Files.createDirectories(reportPath);
 
-            ExtentSparkReporter spark = new ExtentSparkReporter(REPORT_DIR + name + "_" + ts + ".html");
-            spark.config().setReportName("Storyboard Systems Report");
-            spark.config().setDocumentTitle("Storyboard Systems Test Report");
-            spark.config().setTimelineEnabled(true);
+                String reportFileName = reportPath.resolve(name + "_" + ts + ".html").toString();
+                ExtentSparkReporter spark = new ExtentSparkReporter(reportFileName);
 
-            extent = new ExtentReports();
-            extent.attachReporter(spark);
-            extent.setSystemInfo("OS", System.getProperty("os.name"));
-            extent.setSystemInfo("Java", System.getProperty("java.version"));
-            extent.setSystemInfo("Environment", System.getProperty("env.name", "unknown"));
+                spark.config().setReportName("Storyboard Systems Report");
+                spark.config().setDocumentTitle("Storyboard Systems Test Report");
+                spark.config().setTimelineEnabled(true);
+
+                extent = new ExtentReports();
+                extent.attachReporter(spark);
+                extent.setSystemInfo("OS", System.getProperty("os.name"));
+                extent.setSystemInfo("Java", System.getProperty("java.version"));
+                extent.setSystemInfo("Environment", System.getProperty("env.name", "unknown"));
+            } catch (IOException e) {
+                throw new RuntimeException("❌ Failed to initialize report directory: " + REPORT_DIR, e);
+            }
         }
     }
 

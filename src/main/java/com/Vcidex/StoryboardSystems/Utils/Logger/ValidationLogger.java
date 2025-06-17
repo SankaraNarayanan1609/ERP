@@ -151,4 +151,11 @@ public class ValidationLogger {
         }
         return "n/a";
     }
+    private static void logResult(boolean isPass, String label, String details, int step, String test, String method, String session) {
+        if (isPass) {
+            logger.debug("[{}.{}] Step#{} PASS ✅ {} {}", test, method, step, label, details);
+        } else {
+            logger.error("[{}.{}] Step#{} FAIL ❌ {} {}", test, method, step, label, details);
+        }
+    }
 }

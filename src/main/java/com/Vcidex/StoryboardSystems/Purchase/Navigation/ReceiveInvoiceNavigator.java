@@ -15,6 +15,8 @@ public class ReceiveInvoiceNavigator {
     private final NavigationManager nav;
     private final ExtentTest        rootTest;
 
+    private static final By SPINNER_OVERLAY = By.cssSelector(".ngx-spinner-overlay");
+
     public ReceiveInvoiceNavigator(
             WebDriver driver,
             NavigationManager nav,
@@ -37,28 +39,25 @@ public class ReceiveInvoiceNavigator {
             return null;
         });
 
-        // Step 1: Assert we're on Invoice Summary
-    MasterLogger.step(Layer.VALIDATION, "Validate page title is 'Invoice Summary'", () -> { // Cannot resolve symbol 'ASSERT'
+        MasterLogger.step(Layer.VALIDATION, "Validate page title is 'Invoice Summary'", () -> {
             By invoiceSummaryTitle = By.xpath("//h3[contains(@class,'card-title') and normalize-space()='Invoice Summary']");
             nav.waitUntilVisible(invoiceSummaryTitle, "Waiting for Invoice Summary title");
             return null;
         });
 
-        // Step 2: Click "+ Receive Invoice"
         MasterLogger.step(Layer.UI, "Click '+ Receive Invoice' button", () -> {
             By receiveInvoiceBtn = By.xpath("//button[contains(@title,'Receive Invoice')]");
+            nav.waitUntilInvisible(SPINNER_OVERLAY, "Waiting for spinner overlay to disappear"); // Cannot resolve method 'waitUntilInvisible' in 'NavigationManager'
             nav.waitUntilClickable(receiveInvoiceBtn).click();
             return null;
         });
 
-        // Step 3: Assert we are on the Receive Invoice page
-        MasterLogger.step(Layer.VALIDATION, "Validate page title is 'Receive Invoice'", () -> { // Cannot resolve symbol 'ASSERT'
+        MasterLogger.step(Layer.VALIDATION, "Validate page title is 'Receive Invoice'", () -> {
             By receiveInvoiceTitle = By.xpath("//h2[contains(@class,'card-title') and normalize-space()='Receive Invoice']");
             nav.waitUntilVisible(receiveInvoiceTitle, "Waiting for Receive Invoice title");
             return null;
         });
 
-        // Step 4: Click the Select button for the given Order Ref No
         MasterLogger.step(Layer.UI, "Click 'Select' button for Order Ref No: " + orderRefNo, () -> {
             String xpath = String.format(
                     "//table[@id='invoice_list']//tr[td[normalize-space()='%s']]/td[last()]//button[contains(text(),'Select')]",

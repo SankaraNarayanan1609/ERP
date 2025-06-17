@@ -1,4 +1,3 @@
-// ErrorLogger.java
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
 import org.slf4j.Logger;
@@ -11,14 +10,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
-/**
- * Logs exception details and known-issue annotations.
- * Delegates diagnostics (screenshots+console) to DiagnosticsLogger.
- */
 public class ErrorLogger {
-    private static final Logger logger = LoggerFactory.getLogger(ErrorLogger.class);
+    private static final Logger log = LoggerFactory.getLogger(ErrorLogger.class);
     private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-    private static final Map<String,String> KNOWN_ISSUES = Map.of(
+    private static final Map<String, String> KNOWN_ISSUES = Map.of(
             "StaleElementReferenceException", "JIRA-1234"
     );
 
@@ -27,19 +22,19 @@ public class ErrorLogger {
     }
 
     public static void logException(Exception e, String context, WebDriver driver) {
-        logger.error("❌ [{}] Exception in: {}", ts(), context);
-        logger.error("Type: {}", e.getClass().getName());
-        logger.error("Message: {}", e.getMessage());
+        log.error("❌ [{}] Exception in: {}", ts(), context);
+        log.error("Type: {}", e.getClass().getName());
+        log.error("Message: {}", e.getMessage());
 
         StringWriter sw = new StringWriter();
         e.printStackTrace(new PrintWriter(sw));
-        logger.error("Stacktrace:\n{}", sw);
+        log.error("Stacktrace:\n{}", sw);
 
         DiagnosticsLogger.onFailure(driver, context);
 
         KNOWN_ISSUES.forEach((key, jira) -> {
             if (e.getClass().getSimpleName().contains(key)) {
-                logger.error("Known issue: {} → {}", key, jira);
+                log.error("Known issue: {} → {}", key, jira);
             }
         });
     }

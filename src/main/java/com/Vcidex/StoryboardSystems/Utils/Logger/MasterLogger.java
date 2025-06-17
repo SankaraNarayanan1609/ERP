@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 
 public class MasterLogger {
 
-    public enum Layer { UI, API, DB, VALIDATION, ASSERT }
+    public enum Layer { UI, API, DB, VALIDATION, ASSERT, WAIT }
 
     @FunctionalInterface
     public interface SupplierWithException<T> {
@@ -56,6 +56,19 @@ public class MasterLogger {
             node.fail("❌ " + actionName + " → " + rc + " – " + e.getMessage());
             DiagnosticsLogger.onFailure(ReportManager.getDriver(), actionName);
             throw new RuntimeException(e);
+        }
+    }
+
+    public static void stepWithTimer(String key, Runnable step) {
+        PerformanceLogger.start(key);
+        try {
+            step.run();
+            ReportManager.getTest().pass("✅ " + key + " (timed)");
+        } catch (Exception e) {
+            ReportManager.getTest().fail("❌ " + key + ": " + e.getMessage());
+            throw e;
+        } finally {
+            PerformanceLogger.end(key);
         }
     }
 
