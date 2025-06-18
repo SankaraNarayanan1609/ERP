@@ -1,6 +1,6 @@
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 
-import com.Vcidex.StoryboardSystems.Common.Base.BasePage;
+import com.Vcidex.StoryboardSystems.Common.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

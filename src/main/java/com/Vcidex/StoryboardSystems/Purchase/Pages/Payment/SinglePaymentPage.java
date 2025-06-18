@@ -1,3 +1,10 @@
+/**
+ * Page Object representing the UI for performing a single payment against an invoice.
+ * It handles filling out payment fields and submitting the form.
+ *
+ * This class is used during automation of payment flow after invoice generation.
+ */
+
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Payment;
 
 import com.Vcidex.StoryboardSystems.Common.BasePage;
@@ -12,25 +19,45 @@ import java.time.format.DateTimeFormatter;
 import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.step;
 
 public class SinglePaymentPage extends BasePage {
+
+    // Date formatter for display/debug (not actively used here)
     private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    // ─── Input Locators ─────────────────────────────────────────────
+    // ─── UI Locators ──────────────────────────────────────────────────────────
+
+    // Form fields for entering payment details
     private final By paymentDateInput     = By.xpath("//input[@formcontrolname='payment_date']");
     private final By paymentRemarksInput  = By.xpath("//textarea[@formcontrolname='payment_remarks']");
     private final By paymentNoteInput     = By.xpath("//textarea[@formcontrolname='payment_note']");
     private final By paymentModeDropdown  = By.xpath("//ng-select[@formcontrolname='payment_mode']");
-    private final By submitBtn            = By.xpath("//button[contains(.,'Submit') and contains(@class,'btn-success')]");
 
-    // Payment Amount cell input field in the table (first row assumed)
+    // Table field for entering the actual payment amount (assumes 1st row)
     private final By paymentAmountInput   = By.xpath("(//table[@id='singlepayment_list']//input[@type='text'])[1]");
 
-    // Outstanding value for reference (same row)
-    private final By outstandingValueCell = By.xpath("(//table[@id='singlepayment_list']//td)[7]"); // 7th <td> is Outstanding
+    // Table cell showing the outstanding value to be paid (7th column)
+    private final By outstandingValueCell = By.xpath("(//table[@id='singlepayment_list']//td)[7]");
 
+    // Button to submit payment
+    private final By submitBtn            = By.xpath("//button[contains(.,'Submit') and contains(@class,'btn-success')]");
+
+    /**
+     * Constructor that initializes this Page Object with the WebDriver.
+     *
+     * @param driver Selenium WebDriver instance
+     */
     public SinglePaymentPage(WebDriver driver) {
         super(driver);
     }
 
+    /**
+     * Fills the payment form using direct string values.
+     *
+     * @param date    payment date as string
+     * @param remarks short description or reason
+     * @param note    additional note
+     * @param mode    payment mode (e.g., Cash)
+     * @param node    ExtentTest node for logging
+     */
     public void fillPaymentForm(String date, String remarks, String note, String mode, ExtentTest node) {
         ReportManager.setTest(node);
         PerformanceLogger.start("Payment_fillForm");
@@ -55,6 +82,7 @@ public class SinglePaymentPage extends BasePage {
             return null;
         });
 
+        // Set the payment amount equal to the outstanding amount (displayed in table)
         step(Layer.UI, "Fetch and match Outstanding Amount", () -> {
             String value = findElement(outstandingValueCell).getText().split("/")[0].trim(); // e.g., "7,770.18"
             findElement(paymentAmountInput).clear();
@@ -65,7 +93,13 @@ public class SinglePaymentPage extends BasePage {
         PerformanceLogger.end("Payment_fillForm");
     }
 
-    // New overload method
+    /**
+     * Overloaded method to fill the form using a POJO object (PaymentData).
+     * Helps in clean test writing with data factories.
+     *
+     * @param data PaymentData object containing all fields
+     * @param node ExtentTest node for reporting
+     */
     public void fillPaymentForm(PaymentData data, ExtentTest node) {
         fillPaymentForm(
                 data.getPaymentDate().toString(),
@@ -76,6 +110,11 @@ public class SinglePaymentPage extends BasePage {
         );
     }
 
+    /**
+     * Submits the payment form and waits for any network/spinner to clear.
+     *
+     * @param node ExtentTest logger node
+     */
     public void submitPayment(ExtentTest node) {
         ReportManager.setTest(node);
         step(Layer.UI, "Click Submit", () -> {

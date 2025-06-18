@@ -1,3 +1,8 @@
+/**
+ * Represents a product available for purchase in the ERP system.
+ * Contains multiple attributes related to pricing, UOM, type, tax, and availability.
+ */
+
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -6,7 +11,7 @@ import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
-
+    // Identifiers
     @JsonProperty("" +
             "")
     private String documentId;
@@ -14,6 +19,7 @@ public class Product {
     @JsonProperty("log_id")
     private String logId;
 
+    // Product type & group
     @JsonProperty("producttype_name")
     private String productTypeName;
 
@@ -23,6 +29,7 @@ public class Product {
     @JsonProperty("productgroup_code")
     private String productGroupCode;
 
+    // Pricing & Tax
     @JsonProperty("product_price")
     private String productPrice;
 
@@ -32,6 +39,7 @@ public class Product {
     @JsonProperty("cost_price")
     private String costPrice;
 
+    // UOM details
     @JsonProperty("productuomclass_code")
     private String productUomClassCode;
 
@@ -41,6 +49,7 @@ public class Product {
     @JsonProperty("productuomclass_name")
     private String productUomClassName;
 
+    // Technical flags
     @JsonProperty("stockable")
     private String stockable;
 
@@ -59,6 +68,7 @@ public class Product {
     @JsonProperty("lead_time")
     private String leadTime;
 
+    // Display names
     @JsonProperty("product_gid")
     private String productGid;
 
@@ -92,6 +102,7 @@ public class Product {
     @JsonProperty("batch_flag")
     private String batchFlag;
 
+    // Alternate names (from other APIs)
     @JsonProperty("productgroupname")
     private String productGroupnameAlt;
 
@@ -113,6 +124,7 @@ public class Product {
     @JsonProperty("tax1")
     private String tax1;
 
+    // Status
     @JsonProperty("status")
     private Boolean status; // Boolean field
 
@@ -237,6 +249,9 @@ public class Product {
         try { return new BigDecimal(productPrice); } catch (Exception e) { return BigDecimal.ZERO; }
     }
 
+    /**
+     * Converts product price to BigDecimal. Used for calculations or comparison.
+     */
     public BigDecimal getCostPriceDecimal() {
         try { return new BigDecimal(costPrice); } catch (Exception e) { return BigDecimal.ZERO; }
     }

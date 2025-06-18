@@ -7,7 +7,6 @@ import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.Layer;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.aventstack.extentreports.ExtentTest;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MaterialInwardNavigator {

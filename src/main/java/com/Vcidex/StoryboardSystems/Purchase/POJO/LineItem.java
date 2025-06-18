@@ -1,4 +1,3 @@
-
 /**
  * Represents a single product or service entry in a Purchase Order (PO).
  *

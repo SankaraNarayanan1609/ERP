@@ -1,12 +1,19 @@
-
 /**
- * POJO representing the complete Purchase Order form structure used in automation.
+ * ─────────────────────────────────────────────────────────────────────────────
+ * POJO: PurchaseOrderData
+ * Represents the full set of data required to fill and submit a Direct Purchase Order (PO).
  *
- * This class:
- * - Holds both header fields and line items
- * - Contains business logic to calculate net and grand totals
- * - Is used directly by Page classes like DirectPO
- * - Is populated dynamically using PurchaseOrderDataFactory
+ * 🧱 Structured Into:
+ *  - PO Header Info (branch, vendor, address, etc.)
+ *  - Renewal Info (AMC-related fields)
+ *  - Terms & Conditions
+ *  - Line Items (products/services being purchased)
+ *  - Financial Summary (net, charges, discount, tax, total)
+ *
+ * 🔄 Lifecycle:
+ *  - Filled by factory (PurchaseOrderDataFactory)
+ *  - Consumed by Page Object (DirectPO.java)
+ *  - Verified post-submission in validations
  */
 
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
@@ -39,101 +46,48 @@ import lombok.Data;                // Lombok: Auto-generates getters, setters, t
 @Builder(toBuilder = true)
 public class PurchaseOrderData {
 
-    // ─── PO Header Fields ────────────────────────────────────────────────────
-
-    /** Branch under which the PO is being raised */
+    // ─── PO Header Fields ─────────────────────────────
+    // Core information like branch, vendor, and contact
     private String branchName;
-
-    /** PO Reference Number (unique) */
     private String poRefNo;
-
-    /** Date when PO is created */
     private LocalDate poDate;
-
-    /** Expected delivery date */
     private LocalDate expectedDate;
-
-    /** Vendor's name */
     private String vendorName;
-
-    /** Additional vendor details (may not be used) */
     private String vendorDetails;
-
-    /** Billing address */
     private String billTo;
-
-    /** Shipping address */
     private String shipTo;
-
-    /** Name of the requestor employee */
     private String requestedBy;
-
-    /** Contact details of the requestor */
     private String requestorContactDetails;
-
-    /** Delivery terms entered by user */
     private String deliveryTerms;
-
-    /** Payment terms agreed with vendor */
     private String paymentTerms;
-
-    /** Dispatch mode like Courier, Email, etc. */
     private String dispatchMode;
-
-    /** Currency used in PO (e.g., INR, USD) */
     private String currency;
-
-    /** Exchange rate (if foreign currency is used) */
     private BigDecimal exchangeRate;
-
-    /** Cover note written inside PO (HTML formatted in editor) */
     private String coverNote;
 
-    // ─── Renewal (AMC/Contract-based) Fields ─────────────────────────────────
-
-    /** Whether this PO is renewal-based (true = yes) */
+    // ─── Renewal Settings ─────────────────────────────
+    // Optional fields used for AMC or subscription flows
     private boolean renewal;
-
-    /** If renewal = true, this is the renewal date */
     private LocalDate renewalDate;
-
-    /** Frequency of renewal (e.g., Monthly, Quarterly) */
     private String frequency;
 
     // ─── Terms and Conditions ────────────────────────────────────────────────
-
-    /** Predefined terms or generated from backend */
     private String termsAndConditions;
-
-    /** Editable rich-text terms written in Angular editor */
     private String termsEditorText;
 
     // ─── Product Line Items ──────────────────────────────────────────────────
-
-    /** List of products/services being purchased */
     private List<LineItem> lineItems;
 
     // ─── Financial Summary Fields ────────────────────────────────────────────
-
-    /** Sum of all product line totals */
     private BigDecimal netAmount;
-
-    /** Any manual charges added (e.g., installation, packaging) */
     private BigDecimal addOnCharges;
-
-    /** Extra discount given on total */
     private BigDecimal additionalDiscount;
-
-    /** Freight or delivery charges added */
     private BigDecimal freightCharges;
-
-    /** Additional tax percentage string (e.g., "18%") */
     private String additionalTax;
 
-    /** Round-off value (auto calculated) */
+    // ─── Financial Totals ─────────────────────────────
+    // Auto-calculated or derived summary values
     private BigDecimal roundOff;
-
-    /** Final grand total after applying all logic */
     private BigDecimal grandTotal;
 
     // ─── Calculation Methods ─────────────────────────────────────────────────

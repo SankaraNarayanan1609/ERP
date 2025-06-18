@@ -1,3 +1,8 @@
+/**
+ * Represents a Vendor (Supplier) entity. Used for populating vendor dropdowns, and
+ * mapped during PO, GRN, and Invoice creation in the Purchase module.
+ */
+
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -5,14 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Vendor {
-    // Robust mapping for vendor name: supports both API fields
+
     @JsonProperty("vendorName")
-    private String vendorName;
+    private String vendorName;  // May contain the main display name
 
     @JsonProperty("vendor_companyname")
-    private String vendorCompanyName;
+    private String vendorCompanyName; // Alternative field for name (from different API format)
 
-    // Other fields (as before)
+    // Contact & tax fields
     private String billing_email;
     private String tax_number;
     private String taxsegment_name;
@@ -23,6 +28,8 @@ public class Vendor {
     private String city;
     private String contact_telephonenumber;
     private String email_id;
+
+    // Identifiers and codes
     private String vendorregister_gid;
     private String vendor_code;
     private String contactperson_name;
@@ -32,21 +39,21 @@ public class Vendor {
     private String mintsoft_flag;
     private String supplier_id;
     private String vendor_gid;
-    private Boolean status;
-    private String message;
 
-    // Always use a single getter for the display name!
+    private Boolean status;  // Is vendor currently active
+    private String message;  // Optional message from backend (e.g., validation info)
+
+    /**
+     * This is the display-safe vendor name used in dropdowns.
+     * It prioritizes `vendorName`, and falls back to `vendorCompanyName`.
+     */
     public String getVendorName() {
-        if (vendorName != null && !vendorName.trim().isEmpty()) {
-            return vendorName;
-        }
-        if (vendorCompanyName != null && !vendorCompanyName.trim().isEmpty()) {
-            return vendorCompanyName;
-        }
+        if (vendorName != null && !vendorName.trim().isEmpty()) return vendorName;
+        if (vendorCompanyName != null && !vendorCompanyName.trim().isEmpty()) return vendorCompanyName;
         return null;
     }
 
-    // --- Getters/Setters for all other fields (unchanged) ---
+    // ─── Getters & Setters for Remaining Fields ─────────────────────────────
     public String getBilling_email() { return billing_email; }
     public void setBilling_email(String billing_email) { this.billing_email = billing_email; }
 

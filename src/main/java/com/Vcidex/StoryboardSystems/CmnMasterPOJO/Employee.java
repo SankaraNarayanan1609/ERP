@@ -1,25 +1,38 @@
+/**
+ * Represents an employee or system user for assignment in workflows, approvals,
+ * purchase creation, and various ERP roles.
+ */
 package com.Vcidex.StoryboardSystems.CmnMasterPOJO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
+
+    // Unique identifiers
     private String user_gid;
+    private String employee_gid;
+    private String designation_gid;
+    private String department_gid;
+    private String branch_gid;
+
+    // User metadata
     private String useraccess;
     private String entity_name;
     private String user_name;
     private String employee_joiningdate;
     private String employee_gender;
     private String emp_address;
-    private String designation_name;
-    private String designation_gid;
-    private String employee_gid;
-    private String branch_name;
-    private String user_status;
-    private String department_gid;
-    private String department_name;
-    private String branch_gid;
 
+    // Designation/Role
+    private String designation_name;
+    private String department_name;
+    private String branch_name;
+
+    // User login/status info
+    private String user_status;
+
+    // ─── Getters and Setters ───
     public String getUserGid() { return user_gid; }
     public void setUserGid(String user_gid) { this.user_gid = user_gid; }
 

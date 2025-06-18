@@ -1,3 +1,10 @@
+/**
+ * Factory class to create test data for payment flows.
+ * It generates a valid PaymentData object using the associated invoice.
+ *
+ * Used in automation frameworks to simulate payment creation dynamically.
+ */
+
 package com.Vcidex.StoryboardSystems.Utils.DataFactory;
 
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseInvoiceData;
@@ -12,32 +19,35 @@ public class PaymentDataFactory {
     private final Faker faker = new Faker(new Random(System.currentTimeMillis()));
 
     /**
-     * Generate PaymentData based on the Invoice context.
+     * Create a valid PaymentData object from a given Invoice.
      *
-     * Rules:
-     * - Payment Date >= Invoice Date
-     * - Payment Mode = "Cash" only for now
-     * - Payment Amount = Outstanding amount from Invoice (rounded to 2 decimals)
+     * Business Rules:
+     * - Payment Date ≥ Invoice Date
+     * - Mode is always "Cash" (can be extended)
+     * - Amount must match invoice grand total
+     *
+     * @param invoice Invoice object as input
+     * @return populated PaymentData instance
      */
     public PaymentData createFromInvoice(PurchaseInvoiceData invoice) {
         PaymentData data = new PaymentData();
 
-        // 1) Reference Invoice
+        // Step 1: Link to invoice reference number
         data.setInvoiceRefNo(invoice.getInvoiceRefNo());
 
-        // 2) Payment Date >= Invoice Date
+        // Step 2: Set payment date ≥ invoice date
         LocalDate invoiceDate = invoice.getInvoiceDate();
         LocalDate paymentDate = invoiceDate.plusDays(faker.number().numberBetween(0, 3));
         data.setPaymentDate(paymentDate);
 
-        // 3) Remarks and Notes
+        // Step 3: Add remarks and notes
         data.setPaymentRemarks("Auto-payment for invoice " + invoice.getInvoiceRefNo());
         data.setPaymentNote("Paid via automation on " + paymentDate);
 
-        // 4) Payment Mode: currently fixed as "Cash"
+        // Step 4: Hardcoded payment mode for now
         data.setPaymentMode("Cash");
 
-        // 5) Payment Amount = Grand Total from invoice
+        // Step 5: Match payment amount to invoice total
         data.setPaymentAmount(invoice.getGrandTotal());
 
         return data;

@@ -1,3 +1,10 @@
+/**
+ * POJO class that holds data for creating a payment transaction.
+ * Used in both test data (factories) and UI forms (Page Object).
+ *
+ * It includes references to invoice, payment details, and amounts.
+ */
+
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
 import lombok.Data;
@@ -7,13 +14,17 @@ import java.time.LocalDate;
 
 @Data
 public class PaymentData {
-    private String invoiceRefNo;          // Reference to the Invoice
-    private LocalDate paymentDate;        // Date of Payment
-    private String paymentRemarks;        // Remarks for the payment
-    private String paymentNote;           // Additional note
-    private String paymentMode;           // Payment mode (Cash only for now)
-    private BigDecimal paymentAmount;     // Amount to be paid (matches outstanding)
 
+    private String invoiceRefNo;      // Invoice against which payment is made
+    private LocalDate paymentDate;    // When payment is recorded
+    private String paymentRemarks;    // Short text for context
+    private String paymentNote;       // Additional note/instruction
+    private String paymentMode;       // Mode of payment (e.g., Cash, UPI, NEFT)
+    private BigDecimal paymentAmount; // Actual amount paid
+
+    /**
+     * Full constructor used in tests or backend models.
+     */
     public PaymentData(String invoiceRefNo, LocalDate paymentDate, String paymentRemarks,
                        String paymentNote, String paymentMode, BigDecimal paymentAmount) {
         this.invoiceRefNo = invoiceRefNo;
@@ -24,7 +35,8 @@ public class PaymentData {
         this.paymentAmount = paymentAmount;
     }
 
-    public PaymentData() {
-        // Default constructor
-    }
+    /**
+     * Default constructor for deserialization or manual field population.
+     */
+    public PaymentData() {}
 }

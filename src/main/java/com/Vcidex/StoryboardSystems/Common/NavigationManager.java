@@ -1,4 +1,14 @@
 // File: src/main/java/com/Vcidex/StoryboardSystems/Common/NavigationManager.java
+
+/**
+ * NavigationManager is responsible for handling all top-level and side-menu navigation
+ * within the SBS ERP application UI.
+ *
+ * It provides multiple flexible methods to go from one module to another and ensures
+ * that spinners/loaders/overlays are handled during page transitions.
+ *
+ * This class extends BasePage to reuse WebDriver, WebDriverWait, JavaScriptExecutor, and logger utilities.
+ */
 package com.Vcidex.StoryboardSystems.Common;
 
 import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.step;
@@ -9,50 +19,64 @@ import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.aventstack.extentreports.ExtentTest;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.Map;
 
 public class NavigationManager extends BasePage {
-    private static final int NAV_TIMEOUT = 20; // seconds
+
+    // Navigation timeout duration in seconds
+    private static final int NAV_TIMEOUT = 20;
+
+    // Converted timeout into Duration object (used by waits)
     private static final Duration TIMEOUT = Duration.ofSeconds(NAV_TIMEOUT);
+
+    // CSS selectors for various types of overlays/spinners that must disappear before interacting with the page
     private static final By OVERLAYS = By.cssSelector(
             "ngx-spinner, .cdk-overlay-backdrop, .modal-backdrop, .loader"
     );
 
+    /**
+     * Constructor that passes WebDriver to the BasePage class.
+     *
+     * @param driver WebDriver instance from test setup
+     */
     public NavigationManager(WebDriver driver) {
         super(driver);
     }
 
     /**
-     * Navigate top‐level module → side menu → submenu.
+     * Navigate using 3-step structured flow: top-level module → side menu → submenu.
+     * Used for standard application flows like "Purchase → PO → Direct PO".
+     *
+     * @param module  Top-level module name (e.g., "Purchase")
+     * @param menu    Menu name in side nav (e.g., "PO")
+     * @param subMenu Submenu name under the menu (e.g., "Direct PO")
      */
     public void goTo(String module, String menu, String subMenu) {
         ExtentTest test = ReportManager.getTest();
         PerformanceLogger.start("Navigation: " + module + "→" + menu + "→" + subMenu);
 
-        // 1) Click module button
+        // Step 1: Click on the top module like Purchase, Sales, Inventory etc.
         step(MasterLogger.Layer.UI, "Click module: " + module, () -> {
             clickNavItem(module, "head-content-left");
             return null;
         });
 
-        // 2) Expand side menu & click menu
+        // Step 2: Click on the side menu within that module
         step(MasterLogger.Layer.UI, "Click side menu: " + menu, () -> {
             clickNavItem(menu, "sidenav-nav");
             return null;
         });
 
-        // 3) Click submenu
+        // Step 3: Click on the submenu item under the selected menu
         step(MasterLogger.Layer.UI, "Click submenu: " + subMenu, () -> {
             clickNavItem(subMenu, "sublevel-nav");
             return null;
         });
 
-        // 4) Wait for page load (URL or header check)
+        // Step 4: Wait until the target page is loaded (validated using URL or page header)
         step(MasterLogger.Layer.UI, "Verify page loaded for: " + subMenu, () -> {
             wait.until(d ->
                     d.getCurrentUrl().toLowerCase().contains(subMenu.replaceAll("\\s+", "").toLowerCase())
@@ -65,18 +89,24 @@ public class NavigationManager extends BasePage {
     }
 
     /**
-     * Wait until a specific element becomes invisible (e.g., spinner, overlay).
+     * Waits for a given element (usually a spinner or overlay) to become invisible.
+     * Useful to ensure page has finished loading before proceeding.
+     *
+     * @param locator CSS or XPath locator for the element
+     * @param message Step description for logging
      */
     public void waitUntilInvisible(By locator, String message) {
-        Object Layer;
-        step(MasterLogger.Layer.WAIT, message, () -> { // Cannot resolve symbol 'WAIT'
+        step(MasterLogger.Layer.WAIT, message, () -> {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
             return null;
         });
     }
 
     /**
-     * Backwards‐compatible: click a sequence of labels globally.
+     * Fallback navigation method for older flows where we only have a sequence of labels
+     * without needing module/menu separation.
+     *
+     * @param labels Sequence of clickable text labels (e.g., {"Purchase", "PO", "Direct PO"})
      */
     public void goTo(String... labels) {
         for (String label : labels) {
@@ -85,7 +115,9 @@ public class NavigationManager extends BasePage {
     }
 
     /**
-     * Flexible map‐based navigation.
+     * Dynamic map-based navigation, allowing different container class mappings for each label.
+     *
+     * @param labelToContainerClass Map where key = label text, value = container class name
      */
     public void navigatePath(Map<String, String> labelToContainerClass) {
         for (var e : labelToContainerClass.entrySet()) {
@@ -94,45 +126,57 @@ public class NavigationManager extends BasePage {
     }
 
     /**
-     * Click a navigation item by label and container class, with retries.
+     * Attempts to click a navigation item using either direct click or JavaScript fallback.
+     * Retries up to 3 times if interaction fails.
+     *
+     * @param label          The text label of the clickable element (e.g., "Purchase")
+     * @param containerClass Optional container class to narrow down search (e.g., "sidenav-nav")
      */
     private void clickNavItem(String label, String containerClass) {
         By locator = By.xpath(buildXpath(label, containerClass));
 
-        // wait for any overlay to disappear
+        // Ensure spinners/overlays are not present before interaction
         waitForOverlayClear();
 
-        // retry loop
         for (int attempt = 1; attempt <= 3; attempt++) {
             try {
-                // ensure clickable
+                // Wait until element is clickable
                 WebElement el = waitUntilClickable(locator);
 
-                // try normal click
                 try {
+                    // Try normal Selenium click
                     el.click();
                 } catch (WebDriverException e) {
-                    // fallback to JS
+                    // If click fails, use JavaScript to click (useful for hidden/obstructed elements)
                     jsExecutor.executeScript("arguments[0].click();", el);
                 }
 
-                // short pause for Angular/spinners
+                // Wait again in case the click triggers loaders/spinners
                 waitForOverlayClear();
                 return;
+
             } catch (Exception e) {
+                // If all 3 attempts fail, throw meaningful error
                 if (attempt == 3) {
                     throw new RuntimeException(
                             "Failed to click nav item '" + label + "' in '" + containerClass + "' after 3 tries", e
                     );
                 }
-                // pause before retry
-                try { Thread.sleep(500); } catch (InterruptedException ignored) {}
+
+                // Wait before retrying
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ignored) {}
             }
         }
     }
 
     /**
-     * Build the XPath for a nav label and container.
+     * Builds the XPath expression to locate a clickable navigation element.
+     *
+     * @param label          The visible text to match
+     * @param containerClass Specific container class (e.g., 'sidenav-nav') to scope the search
+     * @return XPath string that can be used to locate the element
      */
     private static String buildXpath(String label, String containerClass) {
         if ("head-content-left".equals(containerClass)) {
@@ -149,11 +193,13 @@ public class NavigationManager extends BasePage {
                     + "//a[.//span[contains(@class,'sublevel-link-text') and normalize-space(text())='"
                     + label + "']]";
         }
+
         if (containerClass != null && !containerClass.isEmpty()) {
             return "//*[contains(@class,'" + containerClass + "')]"
                     + "//*[normalize-space(text())='" + label + "']";
         }
-        // global fallback
+
+        // Fallback XPath for generic clickable element with matching label
         return "//*[normalize-space(text())='" + label + "']";
     }
 }

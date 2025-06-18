@@ -2,9 +2,10 @@
   "test": {
     "applications": [
       {
-        "appName":  "StoryboardSystems",
-        "appUrl":   "https://erplite.storyboarderp.com/",
-        "apiBase":  "https://erplite.storyboarderp.com",
+        "appName": "StoryboardSystems",
+        "appUrl": "https://erplite.storyboarderp.com/",
+        "apiBase": "https://erplite.storyboarderp.com",
+        "loginUrl": "https://erplite.storyboarderp.com/v4/#/auth/login",
         "companies": [
           {
             "companyCode": "vcidex",
@@ -17,9 +18,9 @@
       }
     ],
     "auth": {
-      "authUrl":      "https://erplite.storyboarderp.com",
-      "tokenPath":    "/storyboardapi/api/Login/UserLogin",
-      "clientId":     "Superadmin",
+      "authUrl": "https://erplite.storyboarderp.com",
+      "tokenPath": "/storyboardapi/api/Login/UserLogin",
+      "clientId": "Superadmin",
       "clientSecret": "s"
     }
   }
