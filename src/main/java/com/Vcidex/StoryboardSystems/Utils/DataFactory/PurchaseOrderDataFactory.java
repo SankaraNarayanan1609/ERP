@@ -17,7 +17,9 @@ package com.Vcidex.StoryboardSystems.Utils.DataFactory;
 
 import com.Vcidex.StoryboardSystems.CmnMasterPOJO.Employee;
 import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
+import com.Vcidex.StoryboardSystems.Purchase.Model.PurchaseTestInput;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.*;
+import com.Vcidex.StoryboardSystems.Purchase.Model.PurchaseTestInput;
 import com.github.javafaker.Faker;
 import lombok.Builder;
 import lombok.Singular;
@@ -272,5 +274,24 @@ public class PurchaseOrderDataFactory {
         data.computeGrandTotal();
 
         return data;
+    }
+
+    /**
+     * Generates PurchaseOrderData using test input parameters (from T-way scenario).
+     * @param input PurchaseTestInput instance containing product type, entry type, and currency
+     * @return PurchaseOrderData object aligned to test input
+     */
+    public PurchaseOrderData generateDataFor(PurchaseTestInput input) {
+        // Step 1: Create a normal PO with standard data
+        PurchaseOrderData poData = create(false);
+
+        // Step 2: Override dynamic fields based on scenario input
+        poData.setProductType(input.getProductType());  // Already defined in POJO
+        poData.setCurrencyCode(input.getCurrency());    // Already defined in POJO
+
+        // Step 3: (Optional) Use entryType in logging or conditional logic
+        System.out.println("📌 EntryType for test: " + input.getEntryType());
+
+        return poData;
     }
 }

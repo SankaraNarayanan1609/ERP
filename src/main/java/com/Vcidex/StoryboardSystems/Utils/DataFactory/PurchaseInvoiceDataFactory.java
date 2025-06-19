@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class PurchaseInvoiceDataFactory {
 
     private final ApiMasterDataProvider apiProvider;
-    private final Faker faker = new Faker();
+    private static final Faker faker = new Faker();
     private final Random random = new Random();
 
     // ─── Cached master data lists ─────────────────────────────
@@ -230,7 +230,7 @@ public class PurchaseInvoiceDataFactory {
     /**
      * Clone data from a Purchase Order and reuse it to create a linked Invoice.
      */
-    public PurchaseInvoiceData createFromPO(PurchaseOrderData po) {
+    public static PurchaseInvoiceData createFromPO(PurchaseOrderData po) {
         String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String purchaseType = "Product";
 

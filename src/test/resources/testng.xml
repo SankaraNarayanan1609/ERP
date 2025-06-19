@@ -1,25 +1,8 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Purchase-TWise-Suite">
-
-    <test name="Pairwise (2-way)">
-        <parameter name="tWay" value="2"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="PurchaseFlowSuite" parallel="methods" thread-count="4">
+    <test name="T-Way Purchase Flow">
         <classes>
-            <class name="com.Vcidex.StoryboardSystems.Purchase.PurchaseFlowTest"/>
+            <class name="com.Vcidex.StoryboardSystems.Purchase.PurchaseFlowTcasesTest"/>
         </classes>
     </test>
-
-    <test name="Three-Way (3-way)">
-        <parameter name="tWay" value="3"/>
-        <classes>
-            <class name="com.Vcidex.StoryboardSystems.Purchase.PurchaseFlowTest"/>
-        </classes>
-    </test>
-
-    <test name="Four-Way (4-way)">
-        <parameter name="tWay" value="4"/>
-        <classes>
-            <class name="com.Vcidex.StoryboardSystems.Purchase.PurchaseFlowTest"/>
-        </classes>
-    </test>
-
 </suite>

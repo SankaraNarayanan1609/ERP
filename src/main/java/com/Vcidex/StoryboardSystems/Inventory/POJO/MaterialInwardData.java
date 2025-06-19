@@ -6,6 +6,8 @@
  */
 package com.Vcidex.StoryboardSystems.Inventory.POJO;
 
+import com.Vcidex.StoryboardSystems.Purchase.POJO.LineItem;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -93,6 +95,22 @@ public class MaterialInwardData {
 
     public MaterialInwardData withReceivedQtyByRow(Map<Integer, String> map) {
         setReceivedQtyByRow(map);
+        return this;
+    }
+
+    // Line items from corresponding PO (for comparison/validation)
+    private List<LineItem> lineItems;
+
+    public List<LineItem> getLineItems() {
+        return lineItems;
+    }
+
+    public void setLineItems(List<LineItem> lineItems) {
+        this.lineItems = lineItems;
+    }
+
+    public MaterialInwardData withLineItems(List<LineItem> lineItems) {
+        setLineItems(lineItems);
         return this;
     }
 }

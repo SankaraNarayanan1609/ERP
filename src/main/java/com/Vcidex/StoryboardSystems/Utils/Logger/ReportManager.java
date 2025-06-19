@@ -15,7 +15,6 @@ public class ReportManager {
     private static ExtentReports extent;
     private static final ThreadLocal<ExtentTest> testThreadLocal = new ThreadLocal<>();
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
-
     private static final String REPORT_DIR   = System.getProperty("user.dir") + "/test-output/";
     private static final String DEFAULT_NAME = "ExtentReport";
 

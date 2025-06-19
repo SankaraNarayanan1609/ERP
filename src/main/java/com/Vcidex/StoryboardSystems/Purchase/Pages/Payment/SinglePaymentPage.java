@@ -110,6 +110,12 @@ public class SinglePaymentPage extends BasePage {
         );
     }
 
+    public void makePayment(PaymentData data, ExtentTest node) {
+        fillPaymentForm(data, node);
+        submitPayment(node);
+    }
+
+
     /**
      * Submits the payment form and waits for any network/spinner to clear.
      *

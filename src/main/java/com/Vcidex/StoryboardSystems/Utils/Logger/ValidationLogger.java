@@ -1,3 +1,28 @@
+// File: ValidationLogger.java
+
+/**
+ * ─────────────────────────────────────────────────────────────────────────────
+ * ValidationLogger.java
+ *
+ * ✅ Purpose:
+ *   Centralized utility to log validation/assertion steps in tests.
+ *
+ * 🔍 Features:
+ *   - Auto-increments validation step count
+ *   - Prints readable PASS/FAIL logs for every validation
+ *   - Logs to ExtentReport (via node) and SLF4J logger
+ *   - Captures screenshots on failure via ErrorLogger
+ *   - Tracks session ID, method, and test for traceability
+ *
+ * 🔄 Usage:
+ *   - Use assertEquals() and assertTrue() with WebDriver or ExtentTest
+ *   - Step counter resets at the start of each test
+ *
+ * ❌ Does not support soft assertions (by user decision)
+ *
+ * 🧠 Designed to support both Web UI and group-based reporting
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
 import com.Vcidex.StoryboardSystems.Utils.TestContext;
@@ -7,21 +32,24 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
 
-/**
- * Centralized validation logger for assertions.
- * Tracks step counts per test, auto-injects test/method names,
- * records driver session ID, delegates screenshots on failure,
- * and now supports grouping under any ExtentTest node.
- */
 public class ValidationLogger {
+
     private static final Logger logger = LoggerFactory.getLogger(ValidationLogger.class);
     private static final AtomicInteger counter = new AtomicInteger(0);
 
-    /** Reset step counter at test start. */
+    // Thread-safe failure collector for soft assertions
+    private static final ThreadLocal<List<String>> threadFailures =
+            ThreadLocal.withInitial(ArrayList::new);
+
+    // ─────────────────────────────────────────────────────────────────────────────
+
     public static void reset() {
         counter.set(0);
+        threadFailures.get().clear();
         logger.info(
                 "🔄 Reset ValidationLogger for test='{}' | JVM user='{}' | Java='{}' | OS='{}' | Thread={}",
                 TestContext.getCurrentTestName(),
@@ -32,130 +60,110 @@ public class ValidationLogger {
         );
     }
 
-    //
-    // ─── EXISTING DRIVER-BASED API ────────────────────────────────────────────────
-    //
+    // ────────────────────────────────────────────────
+    // Assertions with WebDriver – takes screenshot
+    // ────────────────────────────────────────────────
 
     public static void assertEquals(String label, String expected, String actual, WebDriver driver) {
-        int step       = counter.incrementAndGet();
-        String test    = TestContext.getCurrentTestName();
-        String method  = getCallingMethod();
+        int step = counter.incrementAndGet();
+        String test = TestContext.getCurrentTestName();
+        String method = getCallingMethod();
         String session = getSessionId(driver);
 
         if (expected.equals(actual)) {
-            logger.debug(
-                    "[{}.{}] Step#{} PASS ✅ {} (expected='{}') session={}",
-                    test, method, step, label, expected, session
-            );
+            logger.debug("[{}.{}] Step#{} PASS ✅ {} (expected='{}') session={}",
+                    test, method, step, label, expected, session);
         } else {
-            logger.error(
-                    "[{}.{}] Step#{} FAIL ❌ {} (expected='{}', actual='{}') session={}",
-                    test, method, step, label, expected, actual, session
-            );
-            ErrorLogger.logException(
-                    new Exception(label + ": expected '" + expected + "' but got '" + actual + "'"),
-                    test + ":" + label,
-                    driver
-            );
+            String failMsg = label + ": expected='" + expected + "', actual='" + actual + "'";
+            logger.error("[{}.{}] Step#{} FAIL ❌ {} session={}", test, method, step, failMsg, session);
+            threadFailures.get().add(failMsg);
+            ErrorLogger.logException(new Exception(failMsg), test + ":" + label, driver);
         }
     }
 
     public static void assertTrue(String label, boolean condition, WebDriver driver) {
-        int step       = counter.incrementAndGet();
-        String test    = TestContext.getCurrentTestName();
-        String method  = getCallingMethod();
+        int step = counter.incrementAndGet();
+        String test = TestContext.getCurrentTestName();
+        String method = getCallingMethod();
         String session = getSessionId(driver);
 
         if (condition) {
-            logger.debug(
-                    "[{}.{}] Step#{} PASS ✅ {} session={}",
-                    test, method, step, label, session
-            );
+            logger.debug("[{}.{}] Step#{} PASS ✅ {} session={}", test, method, step, label, session);
         } else {
-            logger.error(
-                    "[{}.{}] Step#{} FAIL ❌ {} session={}",
-                    test, method, step, label, session
-            );
-            ErrorLogger.logException(
-                    new Exception(label + " was false"),
-                    test + ":" + label,
-                    driver
-            );
+            String failMsg = label + " was false";
+            logger.error("[{}.{}] Step#{} FAIL ❌ {} session={}", test, method, step, failMsg, session);
+            threadFailures.get().add(failMsg);
+            ErrorLogger.logException(new Exception(failMsg), test + ":" + label, driver);
         }
     }
 
-    //
-    // ─── NEW OVERLOADS FOR GROUPED NODES ──────────────────────────────────────────
-    //
+    // ────────────────────────────────────────────────
+    // Assertions with ExtentTest – for grouped logs
+    // ────────────────────────────────────────────────
 
-    /**
-     * Assert equals inside a specific ExtentTest node, for grouping under your custom sections.
-     */
     public static void assertEquals(String label, String expected, String actual, ExtentTest node) {
-        int step      = counter.incrementAndGet();
-        String test   = TestContext.getCurrentTestName();
+        int step = counter.incrementAndGet();
+        String test = TestContext.getCurrentTestName();
         String method = getCallingMethod();
 
         if (expected.equals(actual)) {
-            logger.debug(
-                    "[{}.{}] Step#{} PASS ✅ {} (expected='{}')",
-                    test, method, step, label, expected
-            );
+            logger.debug("[{}.{}] Step#{} PASS ✅ {} (expected='{}')", test, method, step, label, expected);
             node.pass("Step#" + step + " ✅ " + label + " (expected='" + expected + "')");
         } else {
-            logger.error(
-                    "[{}.{}] Step#{} FAIL ❌ {} (expected='{}', actual='{}')",
-                    test, method, step, label, expected, actual
-            );
-            node.fail("Step#" + step + " ❌ " + label +
-                    " (expected='" + expected + "', actual='" + actual + "')");
+            String failMsg = label + ": expected='" + expected + "', actual='" + actual + "'";
+            logger.error("[{}.{}] Step#{} FAIL ❌ {}", test, method, step, failMsg);
+            node.fail("Step#" + step + " ❌ " + failMsg);
+            threadFailures.get().add(failMsg);
         }
     }
 
-    /**
-     * Assert true inside a specific ExtentTest node.
-     */
     public static void assertTrue(String label, boolean condition, ExtentTest node) {
-        int step      = counter.incrementAndGet();
-        String test   = TestContext.getCurrentTestName();
+        int step = counter.incrementAndGet();
+        String test = TestContext.getCurrentTestName();
         String method = getCallingMethod();
 
         if (condition) {
-            logger.debug(
-                    "[{}.{}] Step#{} PASS ✅ {}",
-                    test, method, step, label
-            );
+            logger.debug("[{}.{}] Step#{} PASS ✅ {}", test, method, step, label);
             node.pass("Step#" + step + " ✅ " + label + " (condition is true)");
         } else {
-            logger.error(
-                    "[{}.{}] Step#{} FAIL ❌ {}",
-                    test, method, step, label
-            );
-            node.fail("Step#" + step + " ❌ " + label + " (condition is false)");
+            String failMsg = label + " condition was false";
+            logger.error("[{}.{}] Step#{} FAIL ❌ {}", test, method, step, failMsg);
+            node.fail("Step#" + step + " ❌ " + failMsg);
+            threadFailures.get().add(failMsg);
         }
     }
 
-    // ──────────────────────────── Internals ────────────────────────────
+    // ────────────────────────────────────────────────
+    // Soft assertion summary (call once at end)
+    // ────────────────────────────────────────────────
 
-    /** Get the name of the method that called into this logger. */
+    public static void assertAll(String context) {
+        List<String> failures = threadFailures.get();
+        if (!failures.isEmpty()) {
+            String summary = String.join("\n", failures);
+            ReportManager.getTest().fail("❌ Validation failed in [" + context + "]:\n" + summary);
+            threadFailures.get().clear();
+            throw new AssertionError("Validation failed in [" + context + "]:\n" + summary);
+        } else {
+            ReportManager.getTest().pass("✅ All validations passed in [" + context + "]");
+        }
+    }
+
+    // ────────────────────────────────────────────────
+    // Internal helpers
+    // ────────────────────────────────────────────────
+
     private static String getCallingMethod() {
         return Thread.currentThread().getStackTrace()[3].getMethodName();
     }
 
-    /** Fetch the Selenium session ID if available (for driver‐based logs). */
     private static String getSessionId(WebDriver driver) {
         if (driver instanceof RemoteWebDriver) {
             try {
                 return ((RemoteWebDriver) driver).getSessionId().toString();
-            } catch (Exception ignored) { }
+            } catch (Exception ignored) {
+            }
         }
         return "n/a";
-    }
-    private static void logResult(boolean isPass, String label, String details, int step, String test, String method, String session) {
-        if (isPass) {
-            logger.debug("[{}.{}] Step#{} PASS ✅ {} {}", test, method, step, label, details);
-        } else {
-            logger.error("[{}.{}] Step#{} FAIL ❌ {} {}", test, method, step, label, details);
-        }
     }
 }

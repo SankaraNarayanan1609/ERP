@@ -48,4 +48,8 @@ public class ScreenshotHelper {
             return Optional.empty();
         }
     }
+
+    public static String captureBase64(WebDriver driver) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+    }
 }

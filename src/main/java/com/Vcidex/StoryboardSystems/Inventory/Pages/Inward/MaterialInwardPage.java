@@ -188,6 +188,16 @@ public class MaterialInwardPage extends BasePage {
         PerformanceLogger.end("MaterialInward.clickBack");
     }
 
+    public void createInwardEntry(MaterialInwardData data, ExtentTest node) {
+        clickAddInward(node);
+        fillHeader(data, node);
+        selectDispatchMode(data.getDispatchMode(), node);
+        fillDispatchDetails(data, node);
+        fillInwardDetails(data, node);
+        clickSubmit(node);
+        clickBack(node);
+    }
+
     // MaterialInwardPage.java
     public void fillInwardDetails(MaterialInwardData data, ExtentTest node) {
         ReportManager.setTest(node);

@@ -31542,3 +31542,24 @@ Session ID: ab954a0c5c3967db1691573741416c3f
 2025-06-18 17:36:17 [main] INFO  TestContextLogger.info() - [69375c9b-af41-4598-9cf1-49e075117101] 🛑 All tests finished; flushing report.
 2025-06-18 17:36:18 [main] INFO  TestContextLogger.info() - [69375c9b-af41-4598-9cf1-49e075117101] ✅ Reports generated successfully.
 2025-06-18 17:36:18 [main] INFO  TestBase.teardownSuite() - 🔴 WebDriver session ended
+2025-06-19 12:24:40 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-19 16:27:42 [main] WARN  TestNGContentHandler.warn() - It is strongly recommended to add "<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.1.dtd" >" at the top of the suite file [C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\testng.xml] otherwise TestNG may fail or not work as expected.
+2025-06-19 16:27:42 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\IdeaProjects\StoryboardsSystems\src\test\resources\testng.xml
+
+2025-06-19 16:27:42 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-19 16:27:53 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-19 16:28:03 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-19 16:28:03 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-19 16:28:03 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer x_XoZ0Zt2TMUcKtEan53PTHRDZxjAiL0AxsaLEeDOC-T3KB8TG2fY0aMtwTtJXezOKVdYKplqrgDcx9YPbuglg3ZQX4ayGDGqtulAD3-nEtJvOwAoutOkBb6RXyFVT1ZfAEl2RVKOK7gdkKaPczjq7X-uZYVxusmC6YLlcl1rFZjygXiqjtdciR_Bnvv3LwDCAMpzynC7rFpGMyFC_ITC9uAnWzLnt3aNjNtw079GX-dDqDjOLoDfkIwz7EwWvBH_lUu-cGT8jg9sNBvFyE1Yyrz5j7znuPzLPVZElaNpSQ
+2025-06-19 16:28:03 [TestNG-test-T-Way Purchase Flow-1] INFO  TestContextLogger.info() - [2895fe3d-0264-4cfa-a7d7-5c69d8dd9e39] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-19 16:28:03 [TestNG-test-T-Way Purchase Flow-1] INFO  TestContextLogger.info() - [2895fe3d-0264-4cfa-a7d7-5c69d8dd9e39] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-19 16:28:03 [TestNG-test-T-Way Purchase Flow-1] INFO  TestContextLogger.info() - [2895fe3d-0264-4cfa-a7d7-5c69d8dd9e39] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-19 16:28:03 [TestNG-test-T-Way Purchase Flow-1] INFO  TestContextLogger.info() - [2895fe3d-0264-4cfa-a7d7-5c69d8dd9e39] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-19 16:28:03 [TestNG-test-T-Way Purchase Flow-1] INFO  TestContextLogger.info() - [2895fe3d-0264-4cfa-a7d7-5c69d8dd9e39] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-19 16:28:03 [TestNG-test-T-Way Purchase Flow-1] INFO  TestContextLogger.info() - [2895fe3d-0264-4cfa-a7d7-5c69d8dd9e39] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-19 16:28:03 [TestNG-test-T-Way Purchase Flow-1] INFO  TestContextLogger.info() - [2895fe3d-0264-4cfa-a7d7-5c69d8dd9e39] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-19 16:28:03 [TestNG-test-T-Way Purchase Flow-1] INFO  TestContextLogger.info() - [2895fe3d-0264-4cfa-a7d7-5c69d8dd9e39] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-19 16:28:03 [main] INFO  TestBase.teardownSuite() - 🔴 WebDriver session ended

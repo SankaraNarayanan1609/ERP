@@ -23,6 +23,7 @@ import java.math.RoundingMode;     // For rounding logic in tax/grand total
 import java.time.LocalDate;        // Represents dates like PO date, expected date
 import java.util.List;             // Used for holding multiple LineItems
 
+import com.Vcidex.StoryboardSystems.Purchase.Model.ProductType;
 import lombok.Builder;             // Lombok: Auto-generates builder pattern for this POJO
 import lombok.Data;                // Lombok: Auto-generates getters, setters, toString, equals, hashCode
 
@@ -89,6 +90,17 @@ public class PurchaseOrderData {
     // Auto-calculated or derived summary values
     private BigDecimal roundOff;
     private BigDecimal grandTotal;
+
+    private ProductType productType;
+    private String currencyCode;
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
+    }
 
     // ─── Calculation Methods ─────────────────────────────────────────────────
 
