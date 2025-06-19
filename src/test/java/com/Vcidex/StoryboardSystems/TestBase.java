@@ -47,6 +47,8 @@ public abstract class TestBase {
     protected WebDriver driver;
 
     protected String appName;       // E.g., "StoryboardSystems"
+    protected String baseUrl;  // API base URL from config.json
+    protected String token;    // Token pulled after UI login
     protected String companyCode;   // E.g., "vcidex"
     protected String userId;        // E.g., "vcx288"
     private String loginUrl;        // URL pulled from config.json

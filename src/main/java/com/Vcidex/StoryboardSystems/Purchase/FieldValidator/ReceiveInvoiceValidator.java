@@ -24,40 +24,40 @@ public class ReceiveInvoiceValidator {
         ValidationLogger.reset();
 
         // Branch Name
-        ValidationLogger.assertEquals("Branch Name", poData.getBranchName(), invoicePage.getBranchName(), driver);
+        ValidationLogger.assertEquals("Branch Name", poData.getBranchName(), invoicePage.getBranchName(), (ExtentTest) driver);
 
         // Vendor Name
-        ValidationLogger.assertEquals("Vendor Name", poData.getVendorName(), invoicePage.getVendorName(), driver);
+        ValidationLogger.assertEquals("Vendor Name", poData.getVendorName(), invoicePage.getVendorName(), (ExtentTest) driver);
 
         // Bill To / Vendor Details
-        ValidationLogger.assertEquals("Vendor Details (Bill To)", poData.getBillTo(), invoicePage.getBillTo(), driver);
+        ValidationLogger.assertEquals("Vendor Details (Bill To)", poData.getBillTo(), invoicePage.getBillTo(), (ExtentTest) driver);
 
         // Ship To
-        ValidationLogger.assertEquals("Ship To", poData.getShipTo(), invoicePage.getShipTo(), driver);
+        ValidationLogger.assertEquals("Ship To", poData.getShipTo(), invoicePage.getShipTo(), (ExtentTest) driver);
 
         // Delivery Terms
-        ValidationLogger.assertEquals("Delivery Terms", poData.getDeliveryTerms(), invoicePage.getDeliveryTerms(), driver);
+        ValidationLogger.assertEquals("Delivery Terms", poData.getDeliveryTerms(), invoicePage.getDeliveryTerms(), (ExtentTest) driver);
 
         // Payment Terms
-        ValidationLogger.assertEquals("Payment Terms", poData.getPaymentTerms(), invoicePage.getPaymentTerms(), driver);
+        ValidationLogger.assertEquals("Payment Terms", poData.getPaymentTerms(), invoicePage.getPaymentTerms(), (ExtentTest) driver);
 
         // Dispatch Mode
-        ValidationLogger.assertEquals("Dispatch Mode", poData.getDispatchMode(), invoicePage.getDispatchMode(), driver);
+        ValidationLogger.assertEquals("Dispatch Mode", poData.getDispatchMode(), invoicePage.getDispatchMode(), (ExtentTest) driver);
 
         // Currency
-        ValidationLogger.assertEquals("Currency", poData.getCurrency(), invoicePage.getCurrency(), driver);
+        ValidationLogger.assertEquals("Currency", poData.getCurrency(), invoicePage.getCurrency(), (ExtentTest) driver);
 
         // Exchange Rate
-        ValidationLogger.assertEquals("Exchange Rate", poData.getExchangeRate().toPlainString(), invoicePage.getExchangeRate(), driver);
+        ValidationLogger.assertEquals("Exchange Rate", poData.getExchangeRate().toPlainString(), invoicePage.getExchangeRate(), (ExtentTest) driver);
 
         // Terms & Conditions Text
-        ValidationLogger.assertEquals("Terms and Conditions (Editor)", poData.getTermsEditorText(), invoicePage.getTermsEditorText(), driver);
+        ValidationLogger.assertEquals("Terms and Conditions (Editor)", poData.getTermsEditorText(), invoicePage.getTermsEditorText(), (ExtentTest) driver);
 
         // Net Amount
-        ValidationLogger.assertEquals("Net Amount", poData.getNetAmount().toPlainString(), invoicePage.getNetAmount(), driver);
+        ValidationLogger.assertEquals("Net Amount", poData.getNetAmount().toPlainString(), invoicePage.getNetAmount(), (ExtentTest) driver);
 
         // Grand Total
-        ValidationLogger.assertEquals("Grand Total", poData.getGrandTotal().toPlainString(), invoicePage.getGrandTotal(), driver);
+        ValidationLogger.assertEquals("Grand Total", poData.getGrandTotal().toPlainString(), invoicePage.getGrandTotal(), (ExtentTest) driver);
 
         // TODO: Loop through Line Items
         // (Optional for now—if needed, we can compare each LineItem in a separate method.)

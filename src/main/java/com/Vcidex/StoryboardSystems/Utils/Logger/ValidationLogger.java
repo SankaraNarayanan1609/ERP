@@ -32,6 +32,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.ArrayList;
@@ -64,22 +65,20 @@ public class ValidationLogger {
     // Assertions with WebDriver – takes screenshot
     // ────────────────────────────────────────────────
 
-    public static void assertEquals(String label, String expected, String actual, WebDriver driver) {
+    public static void assertEquals(String label, BigDecimal expected, BigDecimal actual, ExtentTest node) {
         int step = counter.incrementAndGet();
         String test = TestContext.getCurrentTestName();
         String method = getCallingMethod();
-        String session = getSessionId(driver);
 
-        if (expected.equals(actual)) {
-            logger.debug("[{}.{}] Step#{} PASS ✅ {} (expected='{}') session={}",
-                    test, method, step, label, expected, session);
+        if (expected.compareTo(actual) == 0) {
+            logger.debug("[{}.{}] Step#{} PASS ✅ {} (expected='{}')", test, method, step, label, expected);
+            node.pass("Step#" + step + " ✅ " + label + " (expected='" + expected + "')");
         } else {
-            String failMsg = label + ": expected='" + expected + "', actual='" + actual + "'";
-            logger.error("[{}.{}] Step#{} FAIL ❌ {} session={}", test, method, step, failMsg, session);
-            threadFailures.get().add(failMsg);
-            ErrorLogger.logException(new Exception(failMsg), test + ":" + label, driver);
+            logger.error("[{}.{}] Step#{} FAIL ❌ {} (expected='{}', actual='{}')", test, method, step, label, expected, actual);
+            node.fail("Step#" + step + " ❌ " + label + " (expected='" + expected + "', actual='" + actual + "')");
         }
     }
+
 
     public static void assertTrue(String label, boolean condition, WebDriver driver) {
         int step = counter.incrementAndGet();

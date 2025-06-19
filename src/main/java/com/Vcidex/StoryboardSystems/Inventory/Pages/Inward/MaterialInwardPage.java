@@ -152,7 +152,7 @@ public class MaterialInwardPage extends BasePage {
                     "Table row count",
                     String.valueOf(expected),
                     String.valueOf(rows.size()),
-                    driver
+                    (ExtentTest) driver
             );
             return null;
         });

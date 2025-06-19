@@ -14,6 +14,8 @@ import org.openqa.selenium.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+
 
 public class ReceiveInvoicePage extends BasePage {
 
@@ -36,6 +38,16 @@ public class ReceiveInvoicePage extends BasePage {
     private final By submitBtn            = By.xpath("//button[@type='submit' and contains(.,'Submit')]");
 
     // ──────── New Getters (for cross-page validation only) ───────────────────────
+
+    public String getInvoiceRefNo() {
+        return findElement(invoiceRefInput).getAttribute("value").trim();
+    }
+
+    public LocalDate getInvoiceDate() {
+        String dateStr = findElement(invoiceDateInput).getAttribute("value").trim();
+        return LocalDate.parse(dateStr, fmt);
+    }
+
 
     public String getBranchName() {
         return getDropdownValue("branch_name");
