@@ -90,7 +90,8 @@ public class ReportManager {
     public static void flush() {
         if (extent != null) {
             extent.flush();
-            TestContextLogger.info("✅ Reports generated successfully.");
+            System.out.println("✅ Extent Report flushed.");
+            System.out.println("📁 Report is saved under: " + REPORT_DIR);
         } else {
             TestContextLogger.info("⚠️ No reports to flush.");
         }

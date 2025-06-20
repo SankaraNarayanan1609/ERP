@@ -61,22 +61,32 @@ public class PurchaseOrderDataFactory {
      * This ensures every PO created uses valid business-specific data.
      */
     public PurchaseOrderDataFactory(ApiMasterDataProvider apiProvider) {
-        this.apiProvider   = apiProvider;
+        this.apiProvider = apiProvider;
+
+        // Ensure base URL is not null or empty before proceeding
+        if (apiProvider == null || apiProvider.getBaseUrl() == null || apiProvider.getBaseUrl().isEmpty()) { // Cannot resolve method 'getBaseUrl' in 'ApiMasterDataProvider'
+            throw new IllegalArgumentException("Base URL for API is missing or invalid.");
+        }
+
+        // Ensure token is valid
+        if (apiProvider.getAuthToken() == null || apiProvider.getAuthToken().isEmpty()) { // Cannot resolve method 'getAuthToken' in 'ApiMasterDataProvider'
+            throw new IllegalArgumentException("Auth token is missing or invalid.");
+        }
 
         // Pull vendor objects and cache both objects and names
-        this.vendorList    = safeList(apiProvider.getVendors());
-        this.vendorNames   = vendorList.stream()
+        this.vendorList = safeList(apiProvider.getVendors());
+        this.vendorNames = vendorList.stream()
                 .map(Vendor::getVendorName)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
         // Load all other master data used in PO creation
-        this.branchNames   = safeList(apiProvider.getBranches());
+        this.branchNames = safeList(apiProvider.getBranches());
         this.currencyCodes = safeList(apiProvider.getCurrencies());
         this.termTemplates = safeList(apiProvider.getTermsAndConditions());
-        this.productList   = safeList(apiProvider.getProducts());
-        this.taxList       = safeList(apiProvider.getAllTaxObjects());
-        this.employeeList  = safeList(apiProvider.getEmployees());
+        this.productList = safeList(apiProvider.getProducts());
+        this.taxList = safeList(apiProvider.getAllTaxObjects());
+        this.employeeList = safeList(apiProvider.getEmployees());
     }
 
     /**
@@ -136,8 +146,12 @@ public class PurchaseOrderDataFactory {
 
         // ─── Step 2: Choose a vendor and resolve tax segment ──────
         Vendor chosenVendor  = randomFrom(vendorList);
+        System.out.println("\n🟡 [DEBUG] Vendor Selection");
+        System.out.println("   → Selected Vendor: " + (chosenVendor != null ? chosenVendor.getVendorName() : "❌ null"));
+
         String vendorName    = chosenVendor != null ? chosenVendor.getVendorName() : null;
         String vendorSegment = chosenVendor != null ? chosenVendor.getTaxsegment_name() : null;
+        System.out.println("   → Vendor Segment: " + vendorSegment);
 
         // Match tax entries by vendor segment
         List<Tax> matchingTaxes = taxList.stream()
@@ -166,14 +180,26 @@ public class PurchaseOrderDataFactory {
 
         // Fallback if no products matched tax criteria
         if (filteredProducts.isEmpty()) {
+            System.out.println("⚠️ No products matched tax criteria. Falling back to non-service products.");
             filteredProducts = new ArrayList<>(nonServiceProducts);
         }
+
+        // Final safety fallback if even non-service products are missing
+        if (filteredProducts.isEmpty()) {
+            throw new RuntimeException("❌ No valid products available for line item creation. Check master data.");
+        }
+
 
         // ─── Step 4: Build Line Items ──────────────────────────────
         int itemCount = faker.number().numberBetween(1, 4);  // 1 to 3 line items
         List<LineItem> lineItems = new ArrayList<>();
 
         for (int i = 0; i < itemCount; i++) {
+
+            System.out.println("\n🟡 [DEBUG] Product Filtering by Tax Prefix");
+            System.out.println("   → Filtered Products: " + filteredProducts.size());
+            filteredProducts.forEach(p -> System.out.println("     • " + p.getProductName() + " | Tax = " + p.getTax()));
+
             Product product = randomFrom(filteredProducts);
             if (product == null) continue;
 
@@ -201,6 +227,13 @@ public class PurchaseOrderDataFactory {
 
             // Assign tax
             Tax tax = randomFrom(matchingTaxes);
+
+            System.out.println("\n🟡 [DEBUG] Tax Matching for Vendor Segment");
+            System.out.println("   → Matching Taxes Found: " + matchingTaxes.size());
+            matchingTaxes.forEach(t -> System.out.println("     • " + t.getTaxPrefix() + " (" + t.getPercentage() + ")"));
+
+
+
             BigDecimal taxRate = BigDecimal.ZERO;
             String taxPrefix = "GST 0%";
 
@@ -228,6 +261,13 @@ public class PurchaseOrderDataFactory {
             item.computeTotal(); // Calculate line item total = (qty × price - discount + tax)
             lineItems.add(item);
         }
+
+        // ✅ Add debug log here to inspect generated line items before assembly
+        System.out.println("\n🟡 [DEBUG] Line Items to be Added = " + lineItems.size());
+        lineItems.forEach(li ->
+                System.out.println("     • " + li.getProductName() + " | Code = " + li.getProductCode() +
+                        " | Qty = " + li.getQuantity() + " | Price = ₹" + li.getPrice())
+        );
 
         // ─── Step 5: Additional Fields for Header ──────────────────
         String mobile       = faker.regexify("[6-9]\\d{9}");
@@ -269,9 +309,21 @@ public class PurchaseOrderDataFactory {
                 .termsEditorText("Ensure packaging standards are met.")
                 .build();
 
+        // 🔧 Debug log to inspect generated line items
+        System.out.println("\n🟡 [DEBUG] Line Items to be Added = " + lineItems.size());
+        lineItems.forEach(li ->
+                System.out.println("     • " + li.getProductName() + " | Code = " + li.getProductCode() +
+                        " | Qty = " + li.getQuantity() + " | Price = ₹" + li.getPrice())
+        );
+
         // ─── Step 7: Final Calculations ────────────────────────────
         data.computeNetAmount();
         data.computeGrandTotal();
+
+        System.out.println("\n🟢 [DEBUG] Header Assembly Complete:");
+        System.out.println("   → Currency: " + data.getCurrency());
+        System.out.println("   → Branch: " + data.getBranchName());
+        System.out.println("   → Grand Total: ₹" + data.getGrandTotal());
 
         return data;
     }

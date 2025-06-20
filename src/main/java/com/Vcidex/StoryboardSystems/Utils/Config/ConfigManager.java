@@ -166,7 +166,6 @@ public class ConfigManager {
     // ──────────────────────────────────────────────────────────────────────────────
     // SECTION: Properties File Fallback
     // ──────────────────────────────────────────────────────────────────────────────
-
     /**
      * Loads a simple key-value from config.properties in classpath.
      * Useful for fallback settings like `browser=chrome`, `timeout=30`
@@ -193,6 +192,24 @@ public class ConfigManager {
             logger.error("❌ Failed to load properties: {}", e.getMessage(), e);
             return defaultValue;
         }
+    }
+
+    /**
+     * Fetches the "apiBase" value for a given environment and application.
+     *
+     * @param env     The environment key (e.g., "test", "staging")
+     * @param appName The application name to lookup under that environment
+     * @return The apiBase URL as a string
+     */
+    public static String getApiBase(String env, String appName) {
+        JSONObject appConfig = getAppConfig(env, appName); // Get the app block
+        String apiBase = appConfig.optString("apiBase", null);
+
+        if (apiBase == null || apiBase.isEmpty()) {
+            throw new IllegalArgumentException("API Base URL is missing in config for app: " + appName + " in env: " + env);
+        }
+
+        return apiBase;
     }
 
     // ──────────────────────────────────────────────────────────────────────────────

@@ -37,3 +37,8 @@ build/
 ### Mac OS ###
 .DS_Store
 .qodo
+
+# Ignore test output, screenshots, and logs
+test-output/
+screenshots/
+logs/

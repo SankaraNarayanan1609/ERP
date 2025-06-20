@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 
-    public class ApiMasterDataProvider implements MasterDataProvider {
+public class ApiMasterDataProvider implements MasterDataProvider {
 
     private static final Logger log = LoggerFactory.getLogger(ApiMasterDataProvider.class);
 
@@ -29,8 +29,7 @@ import static io.restassured.RestAssured.given;
         RestAssured.config = RestAssuredConfig.config()
                 .objectMapperConfig(new ObjectMapperConfig()
                         .jackson2ObjectMapperFactory((cls, charset) ->
-                                new ObjectMapper()
-                                        .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+                                new ObjectMapper().setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
                         )
                 );
     }
@@ -39,13 +38,29 @@ import static io.restassured.RestAssured.given;
     private final String authToken;
 
     public ApiMasterDataProvider(String baseUrl, String authToken) {
+        // Defensive checks for base URL and token
+        if (baseUrl == null || baseUrl.isEmpty()) {
+            throw new IllegalArgumentException("Base URL cannot be null or empty.");
+        }
         this.baseUrl = baseUrl;
-        // Defensive: if token still has "Bearer " prefix, strip it
+
+        // Remove the "Bearer " prefix if present in the token
         if (authToken != null && authToken.startsWith("Bearer ")) {
             this.authToken = authToken.substring("Bearer ".length());
-        } else {
+        } else if (authToken != null) {
             this.authToken = authToken;
+        } else {
+            throw new IllegalArgumentException("Auth token cannot be null or empty.");
         }
+    }
+
+    // Getter methods
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public String getAuthToken() {
+        return authToken;
     }
 
     // --- Shared Utility for all API list fetches ---

@@ -25,12 +25,18 @@ public class PurchaseFlowFactory {
         return poFactory.create(isRenewal);
     }
 
-    public MaterialInwardData createInwardFromPO(PurchaseOrderData po, List<PurchaseOrderLine> poLines) {
-        MaterialInwardData inward = MaterialInwardDataFactory.createFromPO(po); // ✅ static call
+    public MaterialInwardData createInwardFromPO(PurchaseOrderData po) {
+        MaterialInwardData inward = MaterialInwardDataFactory.createFromPO(po);
+
+        List<PurchaseOrderLine> poLines = po.getLineItems().stream()
+                .map(li -> new PurchaseOrderLine(li.getProductName(), li.getQuantity()))
+                .toList();
+
         for (int i = 0; i < poLines.size(); i++) {
             int orderedQty = poLines.get(i).getOrderedQty();
             inward.getReceivedQtyByRow().put(i + 1, String.valueOf(orderedQty));
         }
+
         return inward;
     }
 

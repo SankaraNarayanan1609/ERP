@@ -103,4 +103,32 @@ public class MasterLogger {
             default -> e.getClass().getSimpleName();
         };
     }
+
+    @FunctionalInterface
+    public interface StepBlock {
+        Void execute() throws Exception;
+    }
+
+    public static void step(String message, StepBlock action) {
+        step(Layer.UI, message, ReportManager.getTest(), action);
+    }
+
+    public static void step(Layer layer, String message, ExtentTest node, StepBlock action) {
+        try {
+            action.execute();
+            node.pass("✅ " + message);
+        } catch (Exception e) {
+            String rc = determineCode(layer, e);
+            node.fail("❌ " + message + " → " + rc + " – " + e.getMessage());
+            DiagnosticsLogger.onFailure(ReportManager.getDriver(), message);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static StepBlock wrap(Runnable r) {
+        return () -> {
+            r.run();
+            return null;
+        };
+    }
 }

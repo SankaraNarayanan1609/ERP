@@ -31570,3 +31570,727 @@ Session ID: ab954a0c5c3967db1691573741416c3f
 2025-06-19 23:23:43 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
 2025-06-19 23:23:49 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
 2025-06-19 23:24:08 [main] INFO  TestBase.teardownSuite() - 🔴 WebDriver session ended
+2025-06-20 09:30:04 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 09:30:04 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 09:30:12 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 09:30:23 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 09:30:23 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 09:30:23 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:30:24 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 09:30:25 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-06-20 09:30:55 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392055430_5e7beb0b-a42b-4c99-bf0a-6ee2fc595693.png
+2025-06-20 09:30:55 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:30:55 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:30:56 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392055992_ac40af67-375c-4714-95a2-7a8a45997964.png
+2025-06-20 09:30:56 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:30:56 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:30:56 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 09:31:26 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392086832_3dcc4377-dcb0-4ac8-b7e2-f04ddff2ebf6.png
+2025-06-20 09:31:27 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:31:27 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:31:27 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392087082_d504bb5e-21ef-44c4-8ca0-4fe27ffd9cde.png
+2025-06-20 09:31:27 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:31:27 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:31:27 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 09:31:57 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392117565_3f1bdce6-77ee-4436-b24a-98e7bb1ce9eb.png
+2025-06-20 09:31:57 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:31:57 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:31:57 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392117819_de2b04f9-fe7f-4301-9e5c-4bb6e67a78e2.png
+2025-06-20 09:31:58 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:31:58 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:31:58 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 09:32:28 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392148367_6b094917-6c87-410f-b6cb-cb442e4ecc15.png
+2025-06-20 09:32:28 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:32:28 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:32:28 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392148614_6cbd421f-da62-410b-8fb7-a9b1e98347dd.png
+2025-06-20 09:32:28 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:32:28 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:32:28 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 09:32:59 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392179221_eac5240e-1332-4bbe-b025-303e428f5e78.png
+2025-06-20 09:32:59 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:32:59 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:32:59 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392179482_a6fd7c00-fe8b-4ee0-90c5-3e4e8e662fcc.png
+2025-06-20 09:32:59 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:32:59 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:32:59 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 09:33:30 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392209948_ad15749a-4c38-4003-a329-ba6923af8fc8.png
+2025-06-20 09:33:30 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:33:30 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:33:30 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392210209_3bcea34e-1567-45aa-a131-1a3dd5edddb3.png
+2025-06-20 09:33:30 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:33:30 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:33:30 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 09:34:00 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392240804_ab124540-0a77-48fb-b910-2130e71e7a4d.png
+2025-06-20 09:34:01 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:34:01 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:34:01 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392241089_4d3b82b2-3d35-4efe-a0dc-813549c09492.png
+2025-06-20 09:34:01 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:34:01 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:34:01 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 09:34:31 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392271573_103a6087-916e-4a0d-99c8-33a91f2704dd.png
+2025-06-20 09:34:31 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:34:31 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:34:31 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392271830_8e2702d4-f02a-4e82-9b64-7d0ab24c2418.png
+2025-06-20 09:34:32 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:34:32 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:34:32 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 09:35:02 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392302450_28470b0d-395e-4d4c-95a5-7e6ab807cf67.png
+2025-06-20 09:35:02 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:35:02 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:35:02 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392302696_e621cb31-ff00-49be-9089-41ab6c3d66dc.png
+2025-06-20 09:35:02 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:35:02 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:35:02 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 09:35:33 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392333229_3e90ad4d-00b3-48d6-80a9-1631748079b7.png
+2025-06-20 09:35:33 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:35:33 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:35:33 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392333498_357dbe6b-2b15-4717-bcba-5df1ccd0f7ee.png
+2025-06-20 09:35:33 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:35:33 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:35:33 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 09:36:04 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392364033_db77327d-e198-4f1c-b257-fff7c9abe304.png
+2025-06-20 09:36:04 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:36:04 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:36:04 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392364310_cd5a3c2f-22e6-45fe-8e52-a8879b0addd7.png
+2025-06-20 09:36:04 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:36:04 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:36:04 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 09:36:34 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392394806_84db9670-8ea4-44b1-a708-50dd56fd0aae.png
+2025-06-20 09:36:35 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:36:35 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:36:35 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392395053_2d78f693-ffc3-452d-892c-a8e79ba19859.png
+2025-06-20 09:36:35 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:36:35 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:36:35 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 09:37:05 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392425522_dbb07b8f-0b34-4592-849b-2da2fb693557.png
+2025-06-20 09:37:05 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:37:05 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:37:05 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392425752_631ad4a5-4a22-4b46-9d54-35beabba179b.png
+2025-06-20 09:37:05 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:37:05 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:37:05 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 09:37:36 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392456340_0469f303-9169-44a0-bf64-f2a0687d2993.png
+2025-06-20 09:37:36 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:37:36 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:37:36 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392456604_29310385-4d2d-4511-81da-de81b7ad6ad5.png
+2025-06-20 09:37:36 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:37:36 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:37:36 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 09:38:07 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392487208_344804b9-3550-4bd6-835d-e10f268ba1bb.png
+2025-06-20 09:38:07 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:38:07 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:38:07 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392487426_8132aa78-1db8-4423-a985-97dd6ea911bd.png
+2025-06-20 09:38:07 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:38:07 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:38:07 [main] INFO  TestContextLogger.info() - [2837e899-bd70-4711-aaf1-a7bf6f8738e8] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 09:38:38 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750392517893_73d95b39-7189-41a8-ba0f-fd7b0082aedd.png
+2025-06-20 09:38:38 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:38:38 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:38:38 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750392518170_547d0319-5d29-4ba7-992a-996917d725d3.png
+2025-06-20 09:38:38 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer iWAUgzbOk4Q9kQcFkbuC_hW6f3essqrfrLBp-cwPlu19sMYyiHJEQtbbIWceyWE0A8joQymvjqnEebFksJAwdNbrfNmX5IsXq-JoWl17YvodoKkmO3IS2hvIbktu7QOuQGuNKx-21IrTpjvnfxBbG2XRNw3Ndla9nAxn5LoIC83bKnf5a7Sym-AG6W5SzqDSQTRiHwDSL4hZ35MlY6Rn4QHj-66cp5RfzPZYjdNqgN0YYhawKuvzCB4W3nDMKaUjgfBRshzjvespCs7US-0QwSGSF9pWLL0kRryi_-XDjD4
+2025-06-20 09:38:38 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 09:38:38 [main] INFO  TestBase.teardownSuite() - 🔴 WebDriver session ended
+2025-06-20 10:57:26 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 10:57:26 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 10:57:31 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 10:57:41 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 10:57:42 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 10:57:42 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:57:42 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 10:57:42 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-06-20 10:58:12 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397292863_9a456b09-faba-45af-8eab-223fea50bed9.png
+2025-06-20 10:58:13 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:58:13 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 10:58:13 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397293125_1746220c-6094-442a-ba6f-8b595dd90a9c.png
+2025-06-20 10:58:13 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:58:13 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 10:58:13 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 10:58:43 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397323654_8da9d085-d55a-4d6f-a7ce-1cc861e88a57.png
+2025-06-20 10:58:43 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:58:43 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 10:58:43 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397323873_b8409d03-c78a-46d3-abfa-3d02de230f50.png
+2025-06-20 10:58:44 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:58:44 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 10:58:44 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 10:59:14 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397354264_54a8a8da-a9dc-46dc-9130-ba5aaa57415c.png
+2025-06-20 10:59:14 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:59:14 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 10:59:14 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397354536_09c3ea75-6117-492a-a513-f0c0e12e98ed.png
+2025-06-20 10:59:14 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:59:14 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 10:59:14 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 10:59:45 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397384882_ef4bde75-6548-4dbd-b8f9-83d5e0d8fa6e.png
+2025-06-20 10:59:45 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:59:45 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 10:59:45 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397385168_9ee20cbe-3f74-4796-a1a3-e774afde1ff0.png
+2025-06-20 10:59:45 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 10:59:45 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 10:59:45 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 11:00:15 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397415611_c7e4a6bc-e714-4086-b8a3-aabd8d772978.png
+2025-06-20 11:00:15 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:00:15 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:00:16 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397415925_281175f1-fcb8-4d45-bd40-ae8b35f8d1df.png
+2025-06-20 11:00:16 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:00:16 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:00:16 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 11:00:46 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397446248_b9dfda22-3cdb-47b7-b3a4-dcfad6dbd20f.png
+2025-06-20 11:00:46 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:00:46 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:00:46 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397446470_0af950c4-56c8-414c-a6b9-b4b8a6656da9.png
+2025-06-20 11:00:46 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:00:46 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:00:46 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 11:01:16 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397476878_d6c7a90c-b386-4291-92dd-78c316a4c83b.png
+2025-06-20 11:01:17 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:01:17 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:01:17 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397477146_b9f9ad1e-4444-4722-a67d-a46c00ca0e7d.png
+2025-06-20 11:01:17 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:01:17 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:01:17 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 11:01:47 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397507594_4c4262c6-7f55-49ba-89c5-6fafe19e21ec.png
+2025-06-20 11:01:47 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:01:47 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:01:48 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397507888_17cf4e43-a21e-456f-afa5-4e6b0fde4b03.png
+2025-06-20 11:01:48 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:01:48 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:01:48 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 11:02:18 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397538263_e47f0032-59dc-4c05-a059-58f077b04083.png
+2025-06-20 11:02:18 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:02:18 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:02:18 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397538511_a9b1218e-c44c-4d4f-abe3-07fc63ae8271.png
+2025-06-20 11:02:18 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:02:18 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:02:18 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 11:02:49 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397568888_bae77a6b-16d7-449d-91c8-2fc2ac9f81c7.png
+2025-06-20 11:02:49 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:02:49 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:02:49 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397569144_a0e7cdde-4671-435b-8c58-4f3524cc9ea7.png
+2025-06-20 11:02:49 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:02:49 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:02:49 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 11:03:19 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397599844_a4228955-e3d8-4a2e-acad-df0fa363277d.png
+2025-06-20 11:03:20 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:03:20 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:03:20 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397600094_f79a93f8-5d1b-440d-9624-4e4ff29de2a7.png
+2025-06-20 11:03:20 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:03:20 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:03:20 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 11:03:50 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397630506_32965870-f0db-43ea-bb19-1b1568c1fe14.png
+2025-06-20 11:03:50 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:03:50 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:03:50 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397630799_0164e828-ecbd-4a77-bfb4-4693d735ce10.png
+2025-06-20 11:03:51 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:03:51 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:03:51 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 11:04:21 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397661245_dda8f13a-18ac-4fa5-8935-6dd12278d8d9.png
+2025-06-20 11:04:21 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:04:21 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:04:21 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397661508_067aae27-7644-4d8d-af57-641a17a4a679.png
+2025-06-20 11:04:21 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:04:21 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:04:21 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 11:04:52 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397691896_02902ba1-7c93-4a30-acbe-e778ed5ea524.png
+2025-06-20 11:04:52 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:04:52 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:04:52 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397692187_d75041ed-0b9d-4c4f-8a6a-1d8780826f5f.png
+2025-06-20 11:04:52 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:04:52 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:04:52 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 11:05:22 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397722597_ef60529b-d5d9-4ada-8613-ec1df0877019.png
+2025-06-20 11:05:22 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:05:22 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:05:23 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397722877_3fe5e4b4-f081-4661-a9f5-d3d9a8763cfd.png
+2025-06-20 11:05:23 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:05:23 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:05:23 [main] INFO  TestContextLogger.info() - [6a26edfb-f026-4ad4-b880-f00ec5eb870d] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 11:05:53 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Click_Direct_PO_button_1750397753379_5ccb2471-0326-4389-ad52-676edcf304d2.png
+2025-06-20 11:05:53 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Click: Direct PO button: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:05:53 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:05:53 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Open_Direct_PO_modal_1750397753692_15c94245-271a-41d4-b51f-ce95e5b9124a.png
+2025-06-20 11:05:53 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Open Direct PO modal: Bearer VBgfdsVqOxlRnyZMgZ6XxW9XUm95R6LP5xsnU_RY1dOs-MTcCV5e4ffZBp7JD3Ua97C3T0q_QJeBmveq7EvAk8Gos9RelTNwg35sQec1cBcsu-kOek6WQcRMVwCdmzpDsGLchpCUur81ipd7q0KbpleH7dMANnghLdxX9hzyxjrjzyAoeKeMkr5LshTfXuiYewaqlHlCHqxYSX5wVEGkjJnGxvjUPeTTtcPg-bwh9ux3Ence6n5BYSHBCHRIwgzsml4_lvN3PtiaK5VFps4DG6jhc49VtDHR_OjnMYiN2Zg
+2025-06-20 11:05:53 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 11:05:54 [main] INFO  TestBase.teardownSuite() - 🔴 WebDriver session ended
+2025-06-20 12:57:08 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 12:57:08 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 12:57:14 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 12:57:22 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 12:57:22 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 12:57:22 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:23 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 12:57:23 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-06-20 12:57:30 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404450256_b5af525e-7df2-4681-991d-4554502c6ce1.png
+2025-06-20 12:57:30 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:30 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:30 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 12:57:33 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404453721_9bda8f2d-edfa-485a-bf79-628bd52761ca.png
+2025-06-20 12:57:34 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:34 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:34 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 12:57:36 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404456860_210d9b72-d6c3-49d9-8fff-e8c96405c2dc.png
+2025-06-20 12:57:37 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:37 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:37 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 12:57:39 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404459436_599575a1-5aa7-46b5-b252-ba430295d70c.png
+2025-06-20 12:57:39 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:39 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:39 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 12:57:42 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404462216_6bcc0827-50a1-4afe-af47-18a99cef0855.png
+2025-06-20 12:57:42 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:42 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:42 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 12:57:44 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404464887_45c8c2c5-9e03-49d6-9b4c-5df69fabcd04.png
+2025-06-20 12:57:45 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:45 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:45 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 12:57:47 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404467458_6c2c7aec-36b9-464a-a648-a020b5dfd9c8.png
+2025-06-20 12:57:47 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:47 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:47 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 12:57:51 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404470884_ff7cf4a1-1af0-4668-906a-c07694ddb65e.png
+2025-06-20 12:57:51 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:51 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:51 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 12:57:53 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404473267_75dcc3b1-bc65-4ec0-aaf5-e0fa40473f97.png
+2025-06-20 12:57:53 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:53 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:53 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 12:57:56 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404476240_fc094968-97eb-4f4d-a8b9-f07b7fd60603.png
+2025-06-20 12:57:56 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:56 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:56 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 12:57:59 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404479469_b746c240-1e7b-4730-92be-7dfc3c013149.png
+2025-06-20 12:57:59 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:57:59 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:57:59 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 12:58:02 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404482215_008caedc-aa52-4c9b-8793-6efe604ba21c.png
+2025-06-20 12:58:02 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:58:02 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:58:02 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 12:58:05 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404485112_1383435a-0b63-4e1b-9d17-376ae4e67fae.png
+2025-06-20 12:58:05 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:58:05 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:58:05 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 12:58:07 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404487721_cf8c712e-57d7-4eba-b7e6-cb8edbb05c88.png
+2025-06-20 12:58:08 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:58:08 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:58:08 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 12:58:10 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404490608_abe49030-0fb7-4799-b26c-f2727a12587e.png
+2025-06-20 12:58:10 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:58:10 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:58:10 [main] INFO  TestContextLogger.info() - [717a7d06-1624-4fcd-a3d2-a0728c70f25e] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 12:58:13 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750404493408_0741f1a6-7359-4db8-84a4-94e169bef1df.png
+2025-06-20 12:58:13 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer U9Hy52XF7iwSk-P5sdiKXW7cB6ZlIvHSxhqhKOfo3gg5kamkbymVcr6DCwAW9toxK8F6FORT9-UxbZ2RpnBD_UEt-vNdS80YZkLrGbv_4RCYxZWIAF93oYW8jG5n1W8n50xhuHkUWR5KITycOg2VKqHw7w6Yz-U8Ybpf2qkH8pZVkcEMJpPHUl_hEBY7fJeY-NACib0AfQ1p5Iilg4TsK3OGKRb8xsn0pO9tU69MaNAwISXUqReoMzAnPf8nP9Zh4YjvvvkBSHxwNjRXW9WjuVYc_gL-e2VOEM9WkS78Na0
+2025-06-20 12:58:13 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 12:58:14 [main] INFO  TestBase.teardownSuite() - 🔴 WebDriver session ended
+2025-06-20 13:06:25 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 13:06:25 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 13:06:28 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 13:07:01 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 13:07:01 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 13:07:01 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:01 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 13:07:02 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-06-20 13:07:13 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405033228_79b8df3d-02c6-4879-8a7c-b2082d52b7c1.png
+2025-06-20 13:07:13 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:13 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:13 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 13:07:16 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405036016_76e2a8f7-10e5-4073-bde1-71f68153ae71.png
+2025-06-20 13:07:16 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:16 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:16 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 13:07:18 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405038611_0d3d0daf-b02e-4ac2-a49b-dca3b123ceca.png
+2025-06-20 13:07:18 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:18 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:18 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 13:07:21 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405041348_12f4e35f-bdb7-4119-a473-9b8fa6d4bcb1.png
+2025-06-20 13:07:21 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:21 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:21 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 13:07:23 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405043854_6e017a0d-45db-44c3-a1a9-91dfb438da2f.png
+2025-06-20 13:07:24 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:24 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:24 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 13:07:26 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405046322_2f534af8-64bc-4c76-80fc-6923a8904b4a.png
+2025-06-20 13:07:26 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:26 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:26 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 13:07:29 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405049110_7ddc142d-f595-4627-aab7-0f3ca319dc24.png
+2025-06-20 13:07:29 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:29 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:29 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 13:07:31 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405051677_55109dae-14ae-49f6-bc77-bd56d792de75.png
+2025-06-20 13:07:32 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:32 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:32 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 13:07:34 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405054354_09063fee-c250-452a-ab3e-e5c725574cd5.png
+2025-06-20 13:07:34 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:34 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:34 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 13:07:37 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405057252_7d2ec3c0-45af-4051-9994-c3053a15130c.png
+2025-06-20 13:07:37 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:37 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:37 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 13:07:40 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405060088_19cc1ce4-55ae-4ad1-88d1-6b65784a5988.png
+2025-06-20 13:07:40 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:40 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:40 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 13:07:42 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405062600_91e894a3-5d0a-4e2d-9292-deb1bd292b00.png
+2025-06-20 13:07:42 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:42 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:42 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 13:07:45 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405065507_6461d0d3-d69b-4ed9-9bc7-28cd5b126ed4.png
+2025-06-20 13:07:45 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:45 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:45 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 13:07:48 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405068136_7446cadb-5595-420c-bd52-cf733f5eeb60.png
+2025-06-20 13:07:48 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:48 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:48 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 13:07:50 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405070711_de740360-c2fc-4316-9c0c-bc076057ed08.png
+2025-06-20 13:07:51 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:51 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 13:07:51 [main] INFO  TestContextLogger.info() - [d70838d1-c53d-4f06-ac7b-821811adcb56] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 13:07:53 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750405073400_6813c772-76f0-414d-aed7-2f800e1267c6.png
+2025-06-20 13:07:53 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer kCL0IdwfBrJVYIDEp6e2cFvDqJSFkzPlMKCHU45bbwqFFovFx5HTQ8nMvRH1vIBT0g8-xeK99ErvU9XPhtUkCd756eAwdesGP9QhI3Ar0fNSxz6F27fWYknNcqjxF4xq7KwepUhz-uG69CTWmmkbzfwZNXGQmo605JavcwPTTXZMebRGSW1AM1krPHXmaYP-UPc59PgAl8dxIjhAOcZVCBxjy9n76q6yOB5hD-hbpnMgvT2F0E-Avyqu31GsrDcCoPM641u9FbzdeRW_OLpu7GQ2Tyw3lVnqPOcfUxL1vGU
+2025-06-20 13:07:53 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 14:02:11 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 14:02:11 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 14:02:16 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 14:02:42 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 14:02:42 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 14:02:42 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer qZvs5riW9VH4i25bzvea4OG8F2aE3kDPIvF8d6alWv72mn0fEUHRuyQUGTmfMW3RHPD7eumVzTHCjLkMOv7y2iQJ2GHk_Jtq3vyJlQlOOaZEhFSG8XVHJZyKT8HL8BOHzyKwST9uSGH7QygE2g-njROWP4JG6u-46oIHUvBUL3YJok_MpBpjBC6jK2kwnaCG9_J8VkdAufEJKTVegz937g3GTlunEnyEutWZqMRr8FAgbuMG5N_FqGkn6qB4oaO6mDfxSvo6Km_J3vlEZDsuKInoYrrS7TxM2_Dgo1x9li8
+2025-06-20 14:02:42 [main] INFO  TestContextLogger.info() - [894511e7-9e71-4bd4-b4e0-b4fb19bc2d71] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 14:02:42 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-06-20 14:03:22 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750408402381_fc3be9f2-5860-4b22-ad69-3db006b93e09.png
+2025-06-20 14:03:22 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer qZvs5riW9VH4i25bzvea4OG8F2aE3kDPIvF8d6alWv72mn0fEUHRuyQUGTmfMW3RHPD7eumVzTHCjLkMOv7y2iQJ2GHk_Jtq3vyJlQlOOaZEhFSG8XVHJZyKT8HL8BOHzyKwST9uSGH7QygE2g-njROWP4JG6u-46oIHUvBUL3YJok_MpBpjBC6jK2kwnaCG9_J8VkdAufEJKTVegz937g3GTlunEnyEutWZqMRr8FAgbuMG5N_FqGkn6qB4oaO6mDfxSvo6Km_J3vlEZDsuKInoYrrS7TxM2_Dgo1x9li8
+2025-06-20 14:03:22 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 14:03:22 [main] INFO  TestContextLogger.info() - [894511e7-9e71-4bd4-b4e0-b4fb19bc2d71] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 14:03:56 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750408436048_e9294d09-10d4-439a-932a-7d99a3667631.png
+2025-06-20 14:03:56 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer qZvs5riW9VH4i25bzvea4OG8F2aE3kDPIvF8d6alWv72mn0fEUHRuyQUGTmfMW3RHPD7eumVzTHCjLkMOv7y2iQJ2GHk_Jtq3vyJlQlOOaZEhFSG8XVHJZyKT8HL8BOHzyKwST9uSGH7QygE2g-njROWP4JG6u-46oIHUvBUL3YJok_MpBpjBC6jK2kwnaCG9_J8VkdAufEJKTVegz937g3GTlunEnyEutWZqMRr8FAgbuMG5N_FqGkn6qB4oaO6mDfxSvo6Km_J3vlEZDsuKInoYrrS7TxM2_Dgo1x9li8
+2025-06-20 14:03:56 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 14:03:56 [main] INFO  TestContextLogger.info() - [894511e7-9e71-4bd4-b4e0-b4fb19bc2d71] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 14:54:07 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 14:54:07 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 14:54:09 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 14:54:21 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 14:54:21 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 14:54:21 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer 8n5PzV7EEZGT4kjRBDSOwMVHYyrgeOfjeh6Bw8vXMxF-ndunIj0lyFSq1S3ngHPXfH_lr_KATvpL-Xo-ZCfK3h-Ng1slwROZPDPhPIwKrWOLMuxaYfXLNzb8PvGYxKXXpcqtS4XAtDbHfvmplZv0lUYMEMVkeoaF5aVaDYuIoTzUvFEVWVv5p3ltuWEOyWR3aXh7ccrWzxpmL0Z9UquXrZKBuhpjI4UgMe0Nj9iLvmAZaDGwV_7yh1C1TTswXjUODm74fX46z_swRTTyU43t_0mQtC3lu4w4Af031tmLqGc
+2025-06-20 14:54:21 [main] INFO  TestContextLogger.info() - [cfaa51f1-79e8-452f-99cf-5e2c292e189c] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 14:54:21 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'timeout' = '30'
+2025-06-20 14:55:01 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Select_Branch_1750411500971_ef54be28-475f-4e8f-9ffc-2ac556762ac5.png
+2025-06-20 14:55:01 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Select Branch: Bearer 8n5PzV7EEZGT4kjRBDSOwMVHYyrgeOfjeh6Bw8vXMxF-ndunIj0lyFSq1S3ngHPXfH_lr_KATvpL-Xo-ZCfK3h-Ng1slwROZPDPhPIwKrWOLMuxaYfXLNzb8PvGYxKXXpcqtS4XAtDbHfvmplZv0lUYMEMVkeoaF5aVaDYuIoTzUvFEVWVv5p3ltuWEOyWR3aXh7ccrWzxpmL0Z9UquXrZKBuhpjI4UgMe0Nj9iLvmAZaDGwV_7yh1C1TTswXjUODm74fX46z_swRTTyU43t_0mQtC3lu4w4Af031tmLqGc
+2025-06-20 14:55:01 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 14:55:01 [main] ERROR DiagnosticsLogger.onFailure() - 🖼️ Screenshot saved: logs\screenshots\Fill_header_fields_1750411501193_a6711629-3c95-4db5-a872-6821f2b1d1a3.png
+2025-06-20 14:55:01 [main] ERROR DiagnosticsLogger.onFailure() - 🪪 Session token @ Fill header fields: Bearer 8n5PzV7EEZGT4kjRBDSOwMVHYyrgeOfjeh6Bw8vXMxF-ndunIj0lyFSq1S3ngHPXfH_lr_KATvpL-Xo-ZCfK3h-Ng1slwROZPDPhPIwKrWOLMuxaYfXLNzb8PvGYxKXXpcqtS4XAtDbHfvmplZv0lUYMEMVkeoaF5aVaDYuIoTzUvFEVWVv5p3ltuWEOyWR3aXh7ccrWzxpmL0Z9UquXrZKBuhpjI4UgMe0Nj9iLvmAZaDGwV_7yh1C1TTswXjUODm74fX46z_swRTTyU43t_0mQtC3lu4w4Af031tmLqGc
+2025-06-20 14:55:01 [main] INFO  ConfigManager.getProperty() - 🔍 Loaded property 'console.logging.enabled' = 'false'
+2025-06-20 14:55:01 [main] INFO  TestContextLogger.info() - [cfaa51f1-79e8-452f-99cf-5e2c292e189c] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:04:29 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:04:29 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:04:40 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:04:42 [main] INFO  TestContextLogger.info() - [8d27a507-649f-4f2a-a6e6-40ed90cef3b9] ⚠️ No reports to flush.
+2025-06-20 15:05:11 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:05:11 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:05:13 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:06:06 [main] INFO  TestContextLogger.info() - [35523fd7-acc4-4fab-99fb-86433a47d8bb] ⚠️ No reports to flush.
+2025-06-20 15:24:09 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:24:09 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:24:13 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:24:23 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 15:24:23 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 15:24:23 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer UrGIUGJi79phl9aeG-eYFgBw_xuaJE-8m8De0TvbQEwrK6WxlDIdaXSYGgtpCAS2N2JTKJWQufoYe5DvcBjzb6qJbBg3-yGaitn56vO09-Zp_nx_l9JjbJfsUybi9xKXXQMojAobzQZW1MjLXg9_vU1g-1MFyHmGqUgVYFu2SLRWsyyv1Qm6p85AsANDNFsOKkHhwxjYfKUI11yfsEkBuVvfFPtRgrq1KdTLt21zkp7Ek_vLjMi4FXUhjlCqBpGBHeM-1A8g-NumMANOYr1idARF5FjXBGHIbV-4eK6wAFM
+2025-06-20 15:24:23 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:24:24 [main] INFO  TestContextLogger.info() - [e4df2fc8-f61d-4a2a-9f31-09b95e0b4cb0] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:25:45 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:25:45 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:25:48 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:25:57 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 15:25:57 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 15:25:57 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer 76rGRn8NqVEC4ZBRBC2BfHNy8OZmZbruPqIdf0-Iysl4onxTyX8JOiNFS1EeABB0KTFY3eowintK7xykYBAnvQLcH7T6UEtLTXbN2VWzQp3R4vVQFro7u5FkGYb6VHuCsA_Ll8_UuO7LLiSLbe5TeqN4dMYlgISlaqgNGfmFphHJtOoHhQXTQhTFMntF4Wg0PQ1LJ7i4CuxD8R3vAo0Yd72oLv0tAFrjgYLKyDUBNVmEjh7AFP2HUNQozCb6XFibpSRkP8otz7ymoZdrvoZe6iB3lAr7BsQeA4t-bWEM65c
+2025-06-20 15:25:57 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:25:58 [main] INFO  TestContextLogger.info() - [ced0aee0-d7e4-42c2-9a8f-e8ecd4a8f847] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:28:59 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:28:59 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:29:02 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:29:12 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 15:29:12 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 15:29:12 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer IeV9jMgMtABZafFEQn-NK9bIS68vLBAHFJXdCYMvlBps-9nRU9DO5782mirGbQiXVB6LQkdXD2hUbDEd4-URm1W5X7-RPF6pCbcB8M0sWt_RlBlqNTuqQWUvBhHwPi_7JmSI9F-6QDVVQIJP_AI_MRw1hZj4pwuejUrOAHUzXG2QsBmsfdqmI98YB4jEd2EoFCCujBfhzR1bEJvCJZEa41asM_SJZgcIoyk1piS8YSRY8TVrgUJJ8Y9lQjneEp4elL7Hm2Qklap10m_8oNt7tapkr4yvhv87HUngXwh5OUs
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:29:13 [main] INFO  TestContextLogger.info() - [dd2f613d-f6bc-4db2-9668-8feafed6331f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:32:16 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:32:16 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:32:19 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:32:31 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 15:32:31 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 15:32:31 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer BWXNVNvZF9EzrKwY66x70qsHJajpCPR_AS_DWQgFwhhWUJeJTYBTA2H0LABnWIi6T_ftEF63v0Jttv-Dk1SSABA66aMWT5yMMoOKPdlPwl3ImCcOFrbbaWxIEnu_XAwHUmCVaH3fZ5f2c_EPVdp1Q5WyxcBq8LwtHI57eQFvNIEgIo-AWoc-7SuD1z06HvFK5VQHW7iCJCeLgfsnQm1zofVWn99RwEatKn2GZldr8F76cuo8nAC68RqWsOdiORh6mybB5D9hoL_CTaQZg03LtC1QqCOL7OB1uaXEHjYRQkE
+2025-06-20 15:32:31 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:32:31 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:32:31 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:32:31 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:32:31 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:32:31 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:32:31 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:32:31 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:32:32 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:32:32 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:32:32 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:32:32 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:32:32 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:32:32 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:32:32 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:32:32 [main] INFO  TestContextLogger.info() - [f47f5e35-206f-4788-ba86-ac28f241235f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:39:47 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:39:47 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:39:51 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:40:01 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 15:40:01 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 15:40:01 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer 0k-tJErrElQ71d2uorlNhGZ2IbsYX9y7bLsu-e_3SRJeN3ZhPmU_Ui51_Otg_yM0gFVTZhA6d2ECuXWd1ipBVRBfd6arVYZBmAMLkGRvuGjvPoX8Y6WecuPyW6rddK04un5x75tO4whP_-AO_bQWiUj5z2jYrppv0mE_O1NFHZRUEsQlFsj5WMoMvbVIrbY3niIBRCBDfbVnwGhXq0QE8V_cdpw22df09TdIvdUKf2VP1jsvE95YjK8dSToI3FOQdf8dNFlHLwdgA1vlAyF1WazdSYBPGyIbh4DpftjqO38
+2025-06-20 15:40:02 [main] INFO  TestContextLogger.info() - [abc54ea9-289f-42e3-9799-95f5960e40ad] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:40:12 [main] INFO  TestContextLogger.info() - [abc54ea9-289f-42e3-9799-95f5960e40ad] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:40:22 [main] INFO  TestContextLogger.info() - [abc54ea9-289f-42e3-9799-95f5960e40ad] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:40:32 [main] INFO  TestContextLogger.info() - [abc54ea9-289f-42e3-9799-95f5960e40ad] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:40:42 [main] INFO  TestContextLogger.info() - [abc54ea9-289f-42e3-9799-95f5960e40ad] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:40:52 [main] INFO  TestContextLogger.info() - [abc54ea9-289f-42e3-9799-95f5960e40ad] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:52:20 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:52:20 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:52:23 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:52:32 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 15:52:32 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 15:52:32 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer 8XsXDraeUkthyqNbGjs2UDKXZC9MYzNxjX87dnuaVURSrMueVQsi_0L3S7WECCwr8_6C_8-mSCy4yvo-HmcLmy_vw_T2T_E-7ouOuXxY_wecXq36vejA0cLaQXIPv8GIxe5phevwXTT6WFuoFT1n1-kVVfbIpOBlKxZ1Q6UyWplNC6-SOSo0AJzmASAGEpiP5pkgAxKrDusV-RbSlLTdbkFhnf6rPpCGaFZXUy95plsOp4dnBu5mBFMj2Y6cQfzBPTHyUnjL5YAx60HTgoph7Al2xepVrNw8Q_MdPZaFpy4
+2025-06-20 15:52:32 [main] INFO  TestContextLogger.info() - [9a06154d-673c-47f6-9bc4-aa218cf98eeb] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:52:42 [main] INFO  TestContextLogger.info() - [9a06154d-673c-47f6-9bc4-aa218cf98eeb] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:52:52 [main] INFO  TestContextLogger.info() - [9a06154d-673c-47f6-9bc4-aa218cf98eeb] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:56:47 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 15:56:47 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 15:56:50 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 15:57:01 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 15:57:01 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 15:57:01 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer i_igC-9eu4xK_llpwhsehuVizvTCXrkNMUGKpEHeLNZnZuSR5fgw_yTuD3pr0VYay9X5g0lvmKaREH2IPSypxeyDPy39b0R1cAYty_69A6OPsakPXt_21Meaw064zaKOmgGSLbKGw5dNNVDcNyvRWWmx8BCNf3gP_zGWA6tC846QoYSzqlsvX0DGf928ToKdfIs7BZOfGo0giKWUrH1EWICTPadfnHgf5hmVaFcn_LIiDnUqjuHk-zutY0iPfzntSz-rEIlZZpmgHBbDwO3QlZ-ru5Qem7TI0PEDmnSRRR0
+2025-06-20 15:57:02 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:57:12 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 15:57:22 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:57:32 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 15:57:42 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:57:52 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 15:58:02 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:58:12 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 15:58:22 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:58:32 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 15:58:42 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:58:52 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 15:59:02 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:59:12 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 15:59:22 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 15:59:32 [main] INFO  TestContextLogger.info() - [9a733192-beda-4a37-9cde-afbb1dfdccf6] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:02:54 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 16:02:54 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 16:02:57 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 16:03:07 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 16:03:07 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 16:03:07 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer VnKlwxdPCt7ZzduVi4NmI6ZuKCLQfPZkqM3ei-8rT9eaEhOx5pD2bMS_KYBwkuzxWT8qiCacWs9h2OFZZIxyj5KSoopAUQjozslk38pl-_TIVam_gkabIvAneyJ8-2m4SVt0k1gVk28f-HN-atqxeG-ybC25GowGc6ECiT3p99yf5H4fQtTIjyXGdY6b0Do7SvyjHitZXyOGXyfmzqUwh2s7_XmFEKfoxS-3ps_rRucOOnEZsr_RnfmM8OLxXEVJbUQGNXTOYFk23EGlaZvxJASncCF-HyC-oGQHjgMIKo8
+2025-06-20 16:03:08 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:03:18 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:03:28 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:03:38 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:03:48 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:03:58 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:04:08 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:04:18 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:04:28 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:04:38 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:04:48 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:04:58 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:05:08 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:05:18 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:05:28 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:05:38 [main] INFO  TestContextLogger.info() - [41c553c7-9d97-407e-afe7-b5fcf80130d9] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:09:27 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 16:09:27 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 16:09:31 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 16:09:39 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 16:09:39 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 16:09:39 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer 6POG91iCMes-vXn3Z5fyFU_s5ydC4QCOHsagH5PKxsGgJv7tEZVMKec6NdWS7oIlqDTt9t1O0_6LmyeXll84CHcsO67hEbIqPUxDARPC7G0vz6gfygKT-6M3nxEhdYp0q5wcgJihLzwBX75LvkXpTZU8W8KgVrQdl_PDeibaxkbVYqk3NHAmrs2McqiascBNimus0Kd_A58KjoW3nWF6Y2wQs937ruN-HfMGX6RXs7KVSFfN19l9pWV4XrorTfuk_UUxhJI44j8zu5HZdVDc8z8mWViIJoffYAQtKwBh8A0
+2025-06-20 16:09:39 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:09:49 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:09:59 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:10:09 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:10:19 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:10:29 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:10:39 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:10:50 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:11:00 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:11:10 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:11:20 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:11:30 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:11:40 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:11:50 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:12:00 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:12:10 [main] INFO  TestContextLogger.info() - [1585f091-1cae-4812-a5fb-e977695d387f] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:28:07 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 16:28:07 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 16:28:12 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 16:28:50 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 16:28:50 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 16:28:50 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer ehh9HSDB7aZwwZWCaUzto0v_gD16ZSE8zWDv-JdcPwAimzTVthv2uDmY2HrLqYHv1tc4JhMHjCy0IDgG1tmuI9EwGZMF1gbJ0vRhSRBL1cu53nixxtp9zLwPv7pd-BUPEmYbxMcWVdZfad0LmlE0VHNoP3Kq0WItcQ1ZVplhNZqdUHVpQAo4cmkusa5M9OwxJEIM_tFCKU-bjBoCBXICaHKf1tFEDdpdSGlQflQrF99GX0AgLpSdcyJFeTtzR4-PcWOQSlO5ZsWUemIdpdwg0B-iaJ8X940DVcSkeONoqSk
+2025-06-20 16:28:50 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:29:00 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:29:10 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:29:20 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:29:31 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:29:41 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:29:51 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:30:01 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:30:11 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:30:21 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:30:31 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:30:41 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:30:51 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:31:01 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:31:11 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:31:21 [main] INFO  TestContextLogger.info() - [ca17690d-940e-400b-a238-fe25c0888bee] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:47:20 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 16:47:20 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 16:47:23 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 16:47:46 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 16:47:46 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 16:47:46 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer 6v12ZQ5HO7_5F5lbaxNlQR886jti3llHd0bEjlg_SHPh8_w8_bCIewRKO2zQyv54jj9DNtErEBm1GfaQUc42SqktY9nTXc0tLBsUrJ1SsO1eeCxwj9MlYiYKKY9Wq2kFUVcnM4qRypTrpmG-xvUMHhm0So_22TH4zYmmjxteFKnjTrXoxj0S8-Fe2Tnj9WOqS2p78VocE9IEQ119--C5vzUVZUAuTE8iUpgviwf4dnI9TFZhRz_p9OWLlejbOEI6lnttHq3nMvLJ8m6-2087WZ3vurJ2zlHsRo03w_ADKSs
+2025-06-20 16:47:46 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:47:56 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:48:06 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:48:16 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:48:26 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:48:36 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:48:46 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:48:56 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:49:06 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:49:16 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:49:26 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:49:36 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:49:46 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:49:56 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:50:06 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:50:16 [main] INFO  TestContextLogger.info() - [6819f5cf-923b-45e6-8548-142041c16ef0] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:55:22 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 16:55:22 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 16:55:26 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 16:56:37 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 16:56:37 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 16:56:37 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer sP5u3xhhlBoWlIG6l_fhGpRR5eZhkhT_gKSIQwGJjksOaQo67J8XIgqJWaXyajjr4zIk4959lSLNEyHvB1OOdEMXaBs7IfJC0tdQr9_ma10jOqP7C_IkJwkpPIS_cpvOhxJiDX2tHaf8rTxw1FFAD3HRJ-yiZTfqmRtyBjACTinblOMRb3HGyIu4Rfh1kZU6w8t_NKGr74b26ZzE4-Q5tPhAls0zW7yTnCvU82DG7Abz4Rv6mO12-KDl2YXgUlSQx9KhhgQC5H5bL_1EEHabAvH75Ug8ZbcUfDQQ6ENG03k
+2025-06-20 16:56:38 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:56:48 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 16:56:58 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:57:08 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 16:57:18 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:57:28 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 16:57:38 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:57:48 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: SERVICE | PURCHASE_AGREEMENT | GBP
+2025-06-20 16:57:58 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:58:08 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_PO | GBP
+2025-06-20 16:58:18 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:58:28 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: SERVICE | PI_PO | GBP
+2025-06-20 16:58:38 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:58:48 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: PHYSICAL | PURCHASE_AGREEMENT | INR
+2025-06-20 16:58:58 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 16:59:08 [main] INFO  TestContextLogger.info() - [d202f707-6d31-4add-98cf-c5fbff30d8a5] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_INVOICE | INR
+2025-06-20 17:22:04 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 17:22:04 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 17:22:19 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 17:23:19 [main] INFO  TestBase.setupSession() - ✅ Logged in via UI
+2025-06-20 17:23:19 [main] INFO  TestBase.setupSession() - 🔎 Post-login URL: https://erplite.storyboarderp.com/v4/#/auth/WelcomePage
+2025-06-20 17:23:19 [main] INFO  TestBase.setupSession() - 🔑 Post-login token: Bearer UJYHl1TFlasq4CGQSJ-EqOvPv0W-OgCmbVV76ujeLVrIVJ0dkTqqgT_rCpH2tXM_f56fDqiKRSvINmFLAtYPT5dPbI5XyXpbQIUqogm6QUohv-V8dQjwe57IpzGwaHRH1LizcbtySQX1-8gCNgJNJIgIcAJyDgmim2mbzuhP5lrb6R5-5o_3RU2dtWARKi_yW0q9zSpYkvx0_JQiNsa3-KTgAtnSOCTqmZfbKjOlVy_os7I_00ZpFeGnz2GrsP2sZ7uNh0ZeNwVOUpdGdC-O5onhjLhN2lEHw8WgaNqlz6s
+2025-06-20 17:23:19 [main] INFO  TestContextLogger.info() - [6d50c2a2-48a7-4799-bf36-e7dae07ff8fc] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 17:23:29 [main] INFO  TestContextLogger.info() - [6d50c2a2-48a7-4799-bf36-e7dae07ff8fc] 📝 Extent Test created: T-way Test: PHYSICAL | PI_PO | INR
+2025-06-20 17:23:39 [main] INFO  TestContextLogger.info() - [6d50c2a2-48a7-4799-bf36-e7dae07ff8fc] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 17:23:49 [main] INFO  TestContextLogger.info() - [6d50c2a2-48a7-4799-bf36-e7dae07ff8fc] 📝 Extent Test created: T-way Test: SERVICE | DIRECT_PO | INR
+2025-06-20 17:23:59 [main] INFO  TestContextLogger.info() - [6d50c2a2-48a7-4799-bf36-e7dae07ff8fc] 📝 Extent Test created: T-way Test: PHYSICAL | DIRECT_INVOICE | GBP
+2025-06-20 20:29:37 [main] INFO  ConfigManager.<clinit>() - ✅ Loaded JSON config: src/main/resources/config.json
+2025-06-20 20:32:07 [main] INFO  Utils.info() - [TestNG] Running:
+  C:\Users\SankaraNarayanan\AppData\Local\JetBrains\IdeaIC2023.3\temp-testng-customsuite.xml
+
+2025-06-20 20:32:07 [main] INFO  TestBase.setupSuite() - App Config: {"companies":[{"companyCode":"vcidex","users":[{"password":"s","userId":"Superadmin"},{"password":"s","userId":"vcx288"}]}],"appName":"StoryboardSystems","loginUrl":"https://erplite.storyboarderp.com/v4/#/auth/login","apiBase":"https://erplite.storyboarderp.com","appUrl":"https://erplite.storyboarderp.com/"}
+2025-06-20 20:32:07 [main] INFO  TestBase.setupSuite() - API Base URL: https://erplite.storyboarderp.com
+2025-06-20 20:32:16 [main] INFO  TestBase.setupSuite() - 🚀 WebDriver initialized and registered
+2025-06-20 20:32:59 [main] INFO  TestContextLogger.info() - [9ff8542e-759b-485b-ba03-f60015fea611] ⚠️ No reports to flush.

@@ -1,7 +1,7 @@
 package com.Vcidex.StoryboardSystems.Utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -16,6 +16,7 @@ import java.util.logging.Level;
 
 public class WebDriverFactory {
 
+    // ─── Global Browser Mode Settings ─────────────────────────────────────────────
     private static final boolean HEADLESS_MODE = false;
     private static final Duration IMPLICIT_WAIT = Duration.ofSeconds(10);
     private static final Duration PAGE_LOAD_TIMEOUT = Duration.ofSeconds(30);
@@ -25,13 +26,19 @@ public class WebDriverFactory {
         CHROME, FIREFOX, EDGE
     }
 
+    /**
+     * Get WebDriver with default browser and default headless flag
+     */
     public static WebDriver getDriver() {
         WebDriver driver = ThreadSafeDriverManager.getDriver();
         if (driver != null) return driver;
 
-        return getDriver("chrome", HEADLESS_MODE); // Default fallback
+        return getDriver("chrome", HEADLESS_MODE); // Default
     }
 
+    /**
+     * Creates a WebDriver for given browser in headless/GUI mode
+     */
     public static WebDriver getDriver(String browser, boolean headless) {
         WebDriver driver = ThreadSafeDriverManager.getDriver();
         if (driver != null) return driver;
@@ -51,16 +58,25 @@ public class WebDriverFactory {
             }
         };
 
+        // ─── Maximize + GUI Positioning ──────────────────────────────────────────
         driver.manage().window().maximize();
+        driver.manage().window().setPosition(new Point(0, 0)); // Force visible position
+        driver.manage().window().setSize(new Dimension(1280, 800)); // Standard test resolution
+
         driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT);
         driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT);
         driver.manage().timeouts().scriptTimeout(SCRIPT_TIMEOUT);
 
         ThreadSafeDriverManager.setDriver(driver);
-        System.out.println("✅ WebDriver Initialized for browser: " + browser);
+        System.out.println("✅ WebDriver Initialized for browser: " + browser.toUpperCase() +
+                " | Headless Mode: " + headless);
+
         return driver;
     }
 
+    /**
+     * Safely shuts down and removes the current driver.
+     */
     public static void quitDriver() {
         WebDriver driver = ThreadSafeDriverManager.getDriver();
         if (driver != null) {
@@ -70,6 +86,7 @@ public class WebDriverFactory {
         }
     }
 
+    // ─── Chrome Config ─────────────────────────────────────────────
     private static ChromeOptions getChromeOptions(boolean headless) {
         ChromeOptions options = new ChromeOptions();
         if (headless || HEADLESS_MODE) {
@@ -87,6 +104,7 @@ public class WebDriverFactory {
         return options;
     }
 
+    // ─── Edge Config ───────────────────────────────────────────────
     private static EdgeOptions getEdgeOptions(boolean headless) {
         EdgeOptions options = new EdgeOptions();
         if (headless || HEADLESS_MODE) {
@@ -100,6 +118,7 @@ public class WebDriverFactory {
         return options;
     }
 
+    // ─── Firefox Config ─────────────────────────────────────────────
     private static FirefoxOptions getFirefoxOptions(boolean headless) {
         FirefoxOptions options = new FirefoxOptions();
         if (headless || HEADLESS_MODE) {

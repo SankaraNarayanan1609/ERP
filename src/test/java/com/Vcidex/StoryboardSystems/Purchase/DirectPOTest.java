@@ -198,7 +198,7 @@ public class DirectPOTest extends TestBase {
         poPage.submitDirectPO(rootTest.createNode("🚀 Submit Direct PO")); // Submit the form
 
         // ─── Step 2: Material Inward (GRN) ───────────────────────────────
-        MaterialInwardData miData = flowFactory.createInwardFromPO(poData, poPage.getLineItems());
+        MaterialInwardData miData = flowFactory.createInwardFromPO(poData);
         MaterialInwardPage miPage = inwardNav.openAddInwardModal(); // Open inward screen
 
         inwardNav.selectPurchaseOrder(miPage, poData.getPoRefNo()); // Select PO inside inward

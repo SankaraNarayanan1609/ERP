@@ -19,8 +19,6 @@
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 
 // ─── Logging Utilities ───────────────────────────────────────────────
-import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.step;
-import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.group;
 
 // ─── Core Framework Components ──────────────────────────────────────
 import com.Vcidex.StoryboardSystems.Common.BasePage; // Base class for all page objects
@@ -43,6 +41,8 @@ import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
+        import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.*;
 
 public class DirectPO extends BasePage {
 
@@ -91,6 +91,8 @@ public class DirectPO extends BasePage {
     private final By cancelBtn          = By.cssSelector("button.btn-primary.btn-sm.text-white.me-4");
     private final By draftHistoryBtn    = By.cssSelector("button.btn.btn-icon.btn-sm.bg-secondary.cursor-pointer.me-3");
 
+    private final List<LineItem> addedLineItems = new ArrayList<>();
+
     /**
      * Constructs the DirectPO page object and inherits BasePage functionality.
      *
@@ -128,95 +130,102 @@ public class DirectPO extends BasePage {
      *
      * @return List of product name and quantity as PurchaseOrderLine
      */
-    public List<PurchaseOrderLine> getLineItems() {
-        List<PurchaseOrderLine> lines = new ArrayList<>();
-        List<WebElement> rows = driver.findElements(
-                By.cssSelector("table#yourPOtableId tbody tr")
-        );
-        for (WebElement row : rows) {
-            String name = row.findElement(By.cssSelector("td.productColumn")).getText().trim();
-            int qty = Integer.parseInt(row.findElement(By.cssSelector("td.qtyColumn")).getText().trim());
-            lines.add(new PurchaseOrderLine(name, qty));
-        }
-        return lines;
-    }
-
-    /**
-     * Fills the Direct PO form fields using dynamic test data.
-     *
-     * @param d    Data object representing the PO to be filled
-     * @param node ExtentTest reporting node
-     */
     public void fillForm(PurchaseOrderData d, ExtentTest node) {
         ReportManager.setTest(node);
         PerformanceLogger.start("DirectPO_fillForm");
 
-        group("Fill Direct PO form", () -> {
-            waitForOverlayClear();
+        // ─── Runtime Debugging for Initial Diagnosis ───────────────────────────────
+        System.out.println("✅ Entered fillForm() for DirectPO");
+        System.out.println("➡️  PO Ref No: " + d.getPoRefNo());
+        System.out.println("➡️  Vendor Name: " + d.getVendorName());
+        System.out.println("➡️  Branch Name: " + d.getBranchName());
+        System.out.println("➡️  Currency: " + d.getCurrency());
+        System.out.println("➡️  Product Line Items Count: " + (d.getLineItems() == null ? "NULL" : d.getLineItems().size()));
+        System.out.println("➡️  Is Renewal Flow: " + d.isRenewal());
 
-            /**
-             * Each step() logs a UI interaction into ExtentReport with a description.
-             * It's part of custom logging via MasterLogger.
-             */
+        // ─── Temporarily Skip Logic for Debugging ─────────────────────────────────
+        // Comment everything below if you are only testing debug entry and data
+
+        group("Fill Direct PO form", () -> {
+            step("Wait for overlay to clear", wrap(this::waitForOverlayClear));
 
             step(Layer.UI, "Fill header fields", () -> {
-                selectFromNgSelect("branch_name", d.getBranchName());
-                type(poRefNoInput, d.getPoRefNo(), "PO Ref No");
-                FlatpickrDatePicker.pickDateAndClose(driver, poDatePicker, d.getPoDate().format(fmt), "PO Date");
-                FlatpickrDatePicker.pickDateAndClose(driver, expectedDatePicker, d.getExpectedDate().format(fmt), "Expected Date");
-                selectFromNgSelect("vendor_companyname", d.getVendorName());
-                type(billToInput, d.getBillTo(), "Bill To");
-                type(shipToInput, d.getShipTo(), "Ship To");
-                selectFromNgSelect("employee_name", d.getRequestedBy());
-                type(requestorContact, d.getRequestorContactDetails(), "Contact");
-                type(deliveryTermsInput, d.getDeliveryTerms(), "Delivery Terms");
-                type(paymentTermsInput, d.getPaymentTerms(), "Payment Terms");
-                type(dispatchModeInput, d.getDispatchMode(), "Dispatch Mode");
-                selectFromNgSelect("currency_code", d.getCurrency());
-                type(exchangeRateInput, d.getExchangeRate() != null ? d.getExchangeRate().toPlainString() : "", "Exchange Rate");
-                type(coverNoteInput, d.getCoverNote(), "Cover Note");
+                step("Select Branch", wrap(() -> {
+                    System.out.println("🟡 Trying to select branch: " + d.getBranchName());
+                    selectFromNgSelect("branch_name", d.getBranchName());
+                    System.out.println("🟢 Branch selected");
+                }));
+                step("Type PO Ref No", wrap(() -> {
+                    System.out.println("🟡 Typing PO Ref No: " + d.getPoRefNo());
+                    type(poRefNoInput, d.getPoRefNo(), "PO Ref No");
+                    System.out.println("🟢 PO Ref typed");
+                }));                step("Pick PO Date", wrap(() -> FlatpickrDatePicker.pickDateAndClose(driver, poDatePicker, d.getPoDate().format(fmt), "PO Date")));
+                step("Pick Expected Date", wrap(() -> FlatpickrDatePicker.pickDateAndClose(driver, expectedDatePicker, d.getExpectedDate().format(fmt), "Expected Date")));
+                step("Select Vendor", wrap(() -> {
+                    System.out.println("🟡 Trying to select vendor: " + d.getVendorName());
+                    selectFromNgSelect("vendor_companyname", d.getVendorName());
+                    System.out.println("🟢 Vendor selected");
+                }));                step("Type Bill To", wrap(() -> type(billToInput, d.getBillTo(), "Bill To")));
+                step("Type Ship To", wrap(() -> type(shipToInput, d.getShipTo(), "Ship To")));
+                step("Select Requested By", wrap(() -> selectFromNgSelect("employee_name", d.getRequestedBy())));
+                step("Type Requestor Contact", wrap(() -> type(requestorContact, d.getRequestorContactDetails(), "Contact")));
+                step("Type Delivery Terms", wrap(() -> type(deliveryTermsInput, d.getDeliveryTerms(), "Delivery Terms")));
+                step("Type Payment Terms", wrap(() -> type(paymentTermsInput, d.getPaymentTerms(), "Payment Terms")));
+                step("Type Dispatch Mode", wrap(() -> type(dispatchModeInput, d.getDispatchMode(), "Dispatch Mode")));
+                step("Select Currency", wrap(() -> selectFromNgSelect("currency_code", d.getCurrency())));
+                step("Type Exchange Rate", wrap(() -> type(exchangeRateInput, d.getExchangeRate() != null ? d.getExchangeRate().toPlainString() : "", "Exchange Rate")));
+                step("Type Cover Note", wrap(() -> type(coverNoteInput, d.getCoverNote(), "Cover Note")));
                 return null;
             });
 
             if (d.isRenewal()) {
-                step(Layer.UI, "Handle Renewal flow", () -> {
-                    click(renewalYesRadio, "Renewal Yes");
-                    FlatpickrDatePicker.pickDateAndClose(driver, renewalDatePicker, d.getRenewalDate().format(fmt), "Renewal Date");
-                    selectFromNgSelect("frequency_terms", d.getFrequency());
-                    return null;
+                group("Renewal flow", () -> {
+                    step("Click Renewal Yes", wrap(() -> click(renewalYesRadio, "Renewal Yes")));
+                    step("Pick Renewal Date", wrap(() -> FlatpickrDatePicker.pickDateAndClose(driver, renewalDatePicker, d.getRenewalDate().format(fmt), "Renewal Date")));
+                    step("Select Frequency", wrap(() -> selectFromNgSelect("frequency_terms", d.getFrequency())));
                 });
             } else {
-                click(renewalNoRadio, "Renewal No");
+                step("Click Renewal No", wrap(() -> click(renewalNoRadio, "Renewal No")));
             }
 
-            // Loop through line items and fill product details
             List<LineItem> items = d.getLineItems();
+
+            // 🔧 Debug: Print all line items being passed to UI form
+            System.out.println("🔧 DEBUG: Line Items to be added = " + items.size());
+            items.forEach(li -> System.out.println(" - " + li.getProductName() + " | " + li.getProductCode()));
+
             for (int i = 0; i < items.size(); i++) {
                 int row = i + 1;
                 LineItem it = items.get(i);
 
                 group("Product row " + row, () -> {
-                    click(addProductBtn, "Add Product");
-                    selectFromNgSelect("product_name", it.getProductName());
-
-                    // Manual description typing (textarea)
-                    WebElement desc = findElement(descriptionInput);
-                    desc.clear();
-                    desc.sendKeys(it.getDescription());
-
-                    type(quantityInput, String.valueOf(it.getQuantity()), "Quantity");
-                    type(priceInput, it.getPrice() != null ? it.getPrice().toPlainString() : "0", "Price");
-
-                    String discount = it.getDiscountPct() != null
-                            ? it.getDiscountPct().toPlainString() : "0";
-                    type(discountInput, discount, "Discount %");
-
-                    click(saveProductBtn, "Save Product");
-                    waitForOverlayClear();
+                    step("Click Add Product", wrap(() -> click(addProductBtn, "Add Product")));
+                    step("Select Product", wrap(() -> {
+                        System.out.println("🔍 Attempting to select product: " + it.getProductName() + " | Code: " + it.getProductCode());
+                        if (it.getProductName() == null || it.getProductName().trim().isEmpty()) {
+                            System.out.println("❌ Product name is null or empty. Skipping this line item.");
+                            return;
+                        }
+                        selectFromNgSelect("product_name", it.getProductName());
+                        System.out.println("✅ Selected product: " + it.getProductName());
+                    }));
+                    step("Enter Description", wrap(() -> {
+                        WebElement desc = findElement(descriptionInput);
+                        desc.clear();
+                        desc.sendKeys(it.getDescription());
+                    }));
+                    step("Enter Quantity", wrap(() -> type(quantityInput, String.valueOf(it.getQuantity()), "Quantity")));
+                    step("Enter Price", wrap(() -> type(priceInput, it.getPrice() != null ? it.getPrice().toPlainString() : "0", "Price")));
+                    step("Enter Discount", wrap(() -> {
+                        String discount = it.getDiscountPct() != null ? it.getDiscountPct().toPlainString() : "0";
+                        type(discountInput, discount, "Discount %");
+                    }));
+                    step("Click Save Product", wrap(() -> click(saveProductBtn, "Save Product")));
+                    step("Wait for overlay", wrap(this::waitForOverlayClear));
+                    addedLineItems.add(it);
                 });
             }
 
-            // Write custom terms using JS editor
             step(Layer.UI, "Fill Terms and Conditions", () -> {
                 WebElement editor = findElement(termsEditor);
                 jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", editor);
@@ -235,7 +244,13 @@ public class DirectPO extends BasePage {
      */
     public void submitDirectPO(ExtentTest submitNode) {
         ReportManager.setTest(submitNode);
+        System.out.println("📄 [UI] Table row count = " + driver.findElements(By.cssSelector("table tbody tr")).size());
+        driver.findElements(By.cssSelector("table tbody tr")).forEach(row -> {
+            System.out.println("   - " + row.getText());
+        });
+
         click(submitBtn, "Submit");
+
         waitForAngularRequestsToFinish();
         waitForOverlayClear();
     }
@@ -307,5 +322,12 @@ public class DirectPO extends BasePage {
             throw new AssertionError("Expected " + expected + " but was " + actual);
         }
         PerformanceLogger.end("assertGrandTotal");
+    }
+    /**
+     * Returns all line items that were added in the form.
+     * Used for chaining data to Inward and Invoice steps.
+     */
+    public List<LineItem> getLineItems() {
+        return new ArrayList<>(addedLineItems); // Return a defensive copy
     }
 }

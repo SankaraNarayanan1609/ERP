@@ -1,15 +1,3 @@
-/**
- * TestBase is the parent (super) class for all Selenium test classes.
- *
- * It handles:
- * - Reading environment variables
- * - Launching browser
- * - Logging into the application
- * - Registering WebDriver with listener, reporting, and thread manager
- *
- * All test classes like `DirectPOTest` extend this base class.
- */
-
 package com.Vcidex.StoryboardSystems;
 
 // ─── Imports ─────────────────────────────────────────────────────────────
@@ -65,11 +53,22 @@ public abstract class TestBase {
             bearerToken = bearerToken.substring("Bearer ".length());
         }
 
+        // Get environment and app configuration
         String env = System.getProperty("env", "test");
-        JSONObject app = ConfigManager.getAppConfig(env, "StoryboardSystems");
-        String apiBase = app.getString("apiBase");
+        JSONObject appConfig = ConfigManager.getAppConfig(env, "StoryboardSystems");
 
-        // Factory uses API data and Faker to create PO test data
+        // Fetch apiBase from the config
+        String apiBase = appConfig.getString("apiBase");
+
+        // Validate apiBase to ensure it is not null or empty
+        if (apiBase == null || apiBase.isEmpty()) {
+            throw new IllegalArgumentException("Base URL cannot be null or empty.");
+        }
+
+        // Fetch the auth token
+        String authToken = ConfigManager.getAuthConfig("test").getString("apiToken");
+
+        // Initialize the data factory with the apiBase and authToken
         factory = new PurchaseOrderDataFactory(new ApiMasterDataProvider(apiBase, bearerToken));
         logger.info("✅ Initialized data factory with API token");
     }
@@ -125,6 +124,11 @@ public abstract class TestBase {
         JSONObject appConfig = ConfigManager.getAppConfig(env, appName);
         loginUrl = appConfig.getString("loginUrl");
 
+        // Log the configuration to verify apiBase
+        logger.info("App Config: {}", appConfig);
+        String apiBase = appConfig.getString("apiBase");
+        logger.info("API Base URL: {}", apiBase);
+
         // Select browser from Maven CLI or default to Chrome
         String browser = System.getProperty("browser", "chrome").toLowerCase();
 
@@ -168,18 +172,21 @@ public abstract class TestBase {
 
         // Perform UI login and token fetch
         setupSession();
+
+        // Initialize the Data Factory here
+        String bearerToken = (String)((JavascriptExecutor) driver).executeScript("return window.localStorage.getItem('token');");
+        initDataFactory(bearerToken);
     }
 
     /**
      * Cleans up driver after all tests complete.
      */
     @AfterSuite(alwaysRun = true)
-    public void teardownSuite() {
-        ThreadSafeDriverManager.removeDriver();
-
-        if (driver != null) {
-            driver.quit();
-            logger.info("🔴 WebDriver session ended");
+    public void tearDownSuite() {
+        try {
+            ReportManager.flush(); // Always try to write the report
+        } catch (Exception e) {
+            System.err.println("❌ Failed to flush Extent Report: " + e.getMessage());
         }
     }
 }
