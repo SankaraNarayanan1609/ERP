@@ -15,8 +15,6 @@ public class ReceiveInvoiceNavigator {
     private final NavigationManager nav;
     private final ExtentTest        rootTest;
 
-    private static final By SPINNER_OVERLAY = By.cssSelector(".ngx-spinner-overlay");
-
     public ReceiveInvoiceNavigator(
             WebDriver driver,
             NavigationManager nav,
@@ -40,27 +38,42 @@ public class ReceiveInvoiceNavigator {
         });
 
         MasterLogger.step(Layer.VALIDATION, "Validate page title is 'Invoice Summary'", () -> {
-            By invoiceSummaryTitle = By.xpath("//h3[contains(@class,'card-title') and normalize-space()='Invoice Summary']");
+            By invoiceSummaryTitle = By.xpath(
+                    "//h3[contains(@class,'card-title') and normalize-space()='Invoice Summary']"
+            );
             nav.waitUntilVisible(invoiceSummaryTitle, "Waiting for Invoice Summary title");
             return null;
         });
 
         MasterLogger.step(Layer.UI, "Click '+ Receive Invoice' button", () -> {
+            // clear any lingering overlay
+            nav.waitForOverlayClear();
             By receiveInvoiceBtn = By.xpath("//button[contains(@title,'Receive Invoice')]");
-            nav.waitUntilInvisible(SPINNER_OVERLAY, "Waiting for spinner overlay to disappear"); // Cannot resolve method 'waitUntilInvisible' in 'NavigationManager'
+            nav.waitForOverlayClear();
             nav.waitUntilClickable(receiveInvoiceBtn).click();
+            // wait again in case a new overlay appears
+            nav.waitForOverlayClear();
             return null;
         });
 
         MasterLogger.step(Layer.VALIDATION, "Validate page title is 'Receive Invoice'", () -> {
-            By receiveInvoiceTitle = By.xpath("//h2[contains(@class,'card-title') and normalize-space()='Receive Invoice']");
+            By receiveInvoiceTitle = By.xpath(
+                    "//h2[contains(@class,'card-title') and normalize-space()='Receive Invoice']"
+            );
             nav.waitUntilVisible(receiveInvoiceTitle, "Waiting for Receive Invoice title");
             return null;
         });
 
         MasterLogger.step(Layer.UI, "Click 'Select' button for Order Ref No: " + orderRefNo, () -> {
+            // wait for the invoice table to render
+            nav.waitUntilVisible(
+                    By.cssSelector("table#purchaseOrderList tbody tr"),
+                    "Waiting for Receive-Invoice PO list to render"
+            );
+
             String xpath = String.format(
-                    "//table[@id='invoice_list']//tr[td[normalize-space()='%s']]/td[last()]//button[contains(text(),'Select')]",
+                    "//table[@id='purchaseOrderList']//tr[td[normalize-space()='%s']]" +
+                            "//button[normalize-space()='Select']",
                     orderRefNo
             );
             By selectBtnForPO = By.xpath(xpath);

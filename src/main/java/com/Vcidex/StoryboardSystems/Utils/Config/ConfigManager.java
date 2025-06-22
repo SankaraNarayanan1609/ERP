@@ -143,26 +143,6 @@ public class ConfigManager {
         throw new IllegalArgumentException("User not found: " + userId + " in company: " + companyCode);
     }
 
-    /**
-     * Fetches the "auth" block for a given environment. Used to get login token info or credentials.
-     *
-     * @param env Environment name (e.g., "test")
-     * @return JSONObject containing auth configuration (e.g., login URLs, credentials)
-     */
-    public static JSONObject getAuthConfig(String env) {
-        JSONObject envObj = jsonConfig.optJSONObject(env);
-        if (envObj == null) {
-            throw new IllegalArgumentException("Environment not found: " + env);
-        }
-
-        JSONObject authObj = envObj.optJSONObject("auth");
-        if (authObj == null) {
-            throw new IllegalArgumentException("No auth block defined for env: " + env);
-        }
-
-        return authObj;
-    }
-
     // ──────────────────────────────────────────────────────────────────────────────
     // SECTION: Properties File Fallback
     // ──────────────────────────────────────────────────────────────────────────────

@@ -1,19 +1,16 @@
-/**
- * Represents a product available for purchase in the ERP system.
- * Contains multiple attributes related to pricing, UOM, type, tax, and availability.
- */
-
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
+import com.Vcidex.StoryboardSystems.Purchase.Model.ProductType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
     // Identifiers
-    @JsonProperty("" +
-            "")
+    @JsonProperty("document_id")
     private String documentId;
 
     @JsonProperty("log_id")
@@ -55,9 +52,6 @@ public class Product {
 
     @JsonProperty("productuom_name")
     private String productUomName;
-
-    @JsonProperty("product_type")
-    private String productType;
 
     @JsonProperty("Status")
     private String statusString;
@@ -124,139 +118,119 @@ public class Product {
     @JsonProperty("tax1")
     private String tax1;
 
-    // Status
     @JsonProperty("status")
-    private Boolean status; // Boolean field
+    private Boolean status;
 
     @JsonProperty("message")
     private String message;
 
-    // Getters and Setters for ALL fields
-
-    public String getDocumentId() { return documentId; }
-    public void setDocumentId(String documentId) { this.documentId = documentId; }
-
-    public String getLogId() { return logId; }
-    public void setLogId(String logId) { this.logId = logId; }
-
-    public String getProductTypeName() { return productTypeName; }
-    public void setProductTypeName(String productTypeName) { this.productTypeName = productTypeName; }
-
-    public String getProductGroupName() { return productGroupName; }
-    public void setProductGroupName(String productGroupName) { this.productGroupName = productGroupName; }
-
-    public String getProductGroupCode() { return productGroupCode; }
-    public void setProductGroupCode(String productGroupCode) { this.productGroupCode = productGroupCode; }
-
-    public String getProductPrice() { return productPrice; }
-    public void setProductPrice(String productPrice) { this.productPrice = productPrice; }
-
-    public String getMrpPrice() { return mrpPrice; }
-    public void setMrpPrice(String mrpPrice) { this.mrpPrice = mrpPrice; }
-
-    public String getCostPrice() { return costPrice; }
-    public void setCostPrice(String costPrice) { this.costPrice = costPrice; }
-
-    public String getProductUomClassCode() { return productUomClassCode; }
-    public void setProductUomClassCode(String productUomClassCode) { this.productUomClassCode = productUomClassCode; }
-
-    public String getProductUomCode() { return productUomCode; }
-    public void setProductUomCode(String productUomCode) { this.productUomCode = productUomCode; }
-
-    public String getProductUomClassName() { return productUomClassName; }
-    public void setProductUomClassName(String productUomClassName) { this.productUomClassName = productUomClassName; }
-
-    public String getStockable() { return stockable; }
-    public void setStockable(String stockable) { this.stockable = stockable; }
-
-    public String getProductUomName() { return productUomName; }
-    public void setProductUomName(String productUomName) { this.productUomName = productUomName; }
-
-    public String getProductType() { return productType; }
-    public void setProductType(String productType) { this.productType = productType; }
-
-    public String getStatusString() { return statusString; }
-    public void setStatusString(String statusString) { this.statusString = statusString; }
-
-    public String getSerialFlag() { return serialFlag; }
-    public void setSerialFlag(String serialFlag) { this.serialFlag = serialFlag; }
-
-    public String getLeadTime() { return leadTime; }
-    public void setLeadTime(String leadTime) { this.leadTime = leadTime; }
-
-    public String getProductGid() { return productGid; }
-    public void setProductGid(String productGid) { this.productGid = productGid; }
-
-    public String getProductName() { return productName; }
-    public void setProductName(String productName) { this.productName = productName; }
-
-    public String getProductCode() { return productCode; }
-    public void setProductCode(String productCode) { this.productCode = productCode; }
-
-    public String getCreatedBy() { return createdBy; }
-    public void setCreatedBy(String createdBy) { this.createdBy = createdBy; }
-
-    public String getCreatedDate() { return createdDate; }
-    public void setCreatedDate(String createdDate) { this.createdDate = createdDate; }
-
-    public String getProductDesc() { return productDesc; }
-    public void setProductDesc(String productDesc) { this.productDesc = productDesc; }
-
-    public String getCurrencyCode() { return currencyCode; }
-    public void setCurrencyCode(String currencyCode) { this.currencyCode = currencyCode; }
-
-    public String getAvgLeadTime() { return avgLeadTime; }
-    public void setAvgLeadTime(String avgLeadTime) { this.avgLeadTime = avgLeadTime; }
-
-    public String getPurchaseWarrantyFlag() { return purchaseWarrantyFlag; }
-    public void setPurchaseWarrantyFlag(String purchaseWarrantyFlag) { this.purchaseWarrantyFlag = purchaseWarrantyFlag; }
-
-    public String getExpiryTrackingFlag() { return expiryTrackingFlag; }
-    public void setExpiryTrackingFlag(String expiryTrackingFlag) { this.expiryTrackingFlag = expiryTrackingFlag; }
-
-    public String getBatchFlag() { return batchFlag; }
-    public void setBatchFlag(String batchFlag) { this.batchFlag = batchFlag; }
-
-    public String getProductGroupnameAlt() { return productGroupnameAlt; }
-    public void setProductGroupnameAlt(String productGroupnameAlt) { this.productGroupnameAlt = productGroupnameAlt; }
-
-    public String getProductTypeNameAlt() { return productTypeNameAlt; }
-    public void setProductTypeNameAlt(String productTypeNameAlt) { this.productTypeNameAlt = productTypeNameAlt; }
-
-    public String getProductUomClassNameAlt() { return productUomClassNameAlt; }
-    public void setProductUomClassNameAlt(String productUomClassNameAlt) { this.productUomClassNameAlt = productUomClassNameAlt; }
-
-    public String getProductUomNameAlt() { return productUomNameAlt; }
-    public void setProductUomNameAlt(String productUomNameAlt) { this.productUomNameAlt = productUomNameAlt; }
-
-    public String getSku() { return sku; }
-    public void setSku(String sku) { this.sku = sku; }
-
-    public String getTax() { return tax; }
-    public void setTax(String tax) { this.tax = tax; }
-
-    public String getTax1() { return tax1; }
-    public void setTax1(String tax1) { this.tax1 = tax1; }
-
-    public Boolean getStatus() { return status; }
-    public void setStatus(Boolean status) { this.status = status; }
-
-    public String getMessage() { return message; }
-    public void setMessage(String message) { this.message = message; }
-
-    // Utility methods for number conversion
-    public BigDecimal getProductPriceDecimal() {
-        try { return new BigDecimal(productPrice); } catch (Exception e) { return BigDecimal.ZERO; }
-    }
+    // —— NEW FIELDS FOR JSON “product_type” —— //
 
     /**
-     * Converts product price to BigDecimal. Used for calculations or comparison.
+     * Holds the raw JSON value of “product_type” (e.g. "Services", "", etc.).
      */
+    @JsonIgnore
+    private String productTypeRaw;
+
+    /**
+     * The enum‐mapped version of productTypeRaw.
+     * May be null if raw is blank or unrecognized.
+     */
+    private ProductType type;
+
+    // --------------------------------------------------------------------
+    // Getters & setters for all other fields (omitted here for brevity)
+    // --------------------------------------------------------------------
+    public String getDocumentId()         { return documentId; }
+    public String getLogId()              { return logId; }
+    public String getProductTypeName()    { return productTypeName; }
+    public String getProductGroupName()   { return productGroupName; }
+    public String getProductGroupCode()   { return productGroupCode; }
+    public String getProductPrice()       { return productPrice; }
+    public String getMrpPrice()           { return mrpPrice; }
+    public String getCostPrice()          { return costPrice; }
+    public String getProductUomClassCode(){ return productUomClassCode; }
+    public String getProductUomCode()     { return productUomCode; }
+    public String getProductUomClassName(){ return productUomClassName; }
+    public String getStockable()          { return stockable; }
+    public String getProductUomName()     { return productUomName; }
+    public String getStatusString()       { return statusString; }
+    public String getSerialFlag()         { return serialFlag; }
+    public String getLeadTime()           { return leadTime; }
+    public String getProductGid()         { return productGid; }
+    public String getProductName()        { return productName; }
+    public String getProductCode()        { return productCode; }
+    public String getCreatedBy()          { return createdBy; }
+    public String getCreatedDate()        { return createdDate; }
+    public String getProductDesc()        { return productDesc; }
+    public String getCurrencyCode()       { return currencyCode; }
+    public String getAvgLeadTime()        { return avgLeadTime; }
+    public String getPurchaseWarrantyFlag(){ return purchaseWarrantyFlag; }
+    public String getExpiryTrackingFlag() { return expiryTrackingFlag; }
+    public String getBatchFlag()          { return batchFlag; }
+    public String getProductGroupnameAlt(){ return productGroupnameAlt; }
+    public String getProductTypeNameAlt() { return productTypeNameAlt; }
+    public String getProductUomClassNameAlt(){ return productUomClassNameAlt; }
+    public String getProductUomNameAlt()  { return productUomNameAlt; }
+    public String getSku()                { return sku; }
+    public String getTax()                { return tax; }
+    public String getTax1()               { return tax1; }
+    public Boolean getStatus()            { return status; }
+    public String getMessage()            { return message; }
+    // --------------------------------------------------------------------
+    // (just copy/paste all of your existing getters/setters up to getMrpPriceDecimal())
+    // --------------------------------------------------------------------
+
+    public BigDecimal getProductPriceDecimal() {
+        try { return new BigDecimal(productPrice); }
+        catch (Exception e) { return BigDecimal.ZERO; }
+    }
+
     public BigDecimal getCostPriceDecimal() {
-        try { return new BigDecimal(costPrice); } catch (Exception e) { return BigDecimal.ZERO; }
+        try { return new BigDecimal(costPrice); }
+        catch (Exception e) { return BigDecimal.ZERO; }
     }
 
     public BigDecimal getMrpPriceDecimal() {
-        try { return new BigDecimal(mrpPrice); } catch (Exception e) { return BigDecimal.ZERO; }
+        try { return new BigDecimal(mrpPrice); }
+        catch (Exception e) { return BigDecimal.ZERO; }
+    }
+
+    // --------------------------------------------------------------------
+    // Jackson handling for “product_type” → raw + enum
+    // --------------------------------------------------------------------
+
+    /**
+     * Called by Jackson with the raw JSON value.
+     * Blank or unknown strings just yield a null‐type.
+     */
+    @JsonProperty("product_type")
+    public void setProductTypeRaw(String raw) {
+        this.productTypeRaw = raw;
+        if (raw == null || raw.trim().isEmpty()) {
+            this.type = null;
+        } else {
+            try {
+                this.type = ProductType.fromApiString(raw);
+            } catch (IllegalArgumentException ex) {
+                // unknown value → null
+                this.type = null;
+            }
+        }
+    }
+
+    /** Hide the raw string from Jackson to avoid duplicate‐getter conflicts. */
+    @JsonIgnore
+    public String getProductTypeRaw() {
+        return productTypeRaw;
+    }
+
+    /**
+     * Expose the enum. Jackson will use this on serialization,
+     * and you can safely do product.getProductType() in your code.
+     */
+    @JsonProperty("product_type")
+    public ProductType getProductType() {
+        return type;
     }
 }

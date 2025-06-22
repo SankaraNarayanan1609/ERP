@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 
 import java.time.Duration;
+import java.io.File;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.jsReturnsValue;
 
@@ -42,35 +43,30 @@ public abstract class TestBase {
     private String loginUrl;        // URL pulled from config.json
 
     /**
-     * Initializes test data factory using token.
-     * This is called in DirectPOTest to allow PO data generation.
+     * Initializes test data factory using token from UI login.
      *
-     * @param bearerToken token from localStorage (from UI login)
+     * @param bearerToken full "Bearer …" token from localStorage
      */
     public static void initDataFactory(String bearerToken) {
-        // Remove "Bearer " prefix if present
+        // strip off the "Bearer " prefix, if present
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             bearerToken = bearerToken.substring("Bearer ".length());
         }
 
-        // Get environment and app configuration
+        // load your app config to get the API base URL
         String env = System.getProperty("env", "test");
         JSONObject appConfig = ConfigManager.getAppConfig(env, "StoryboardSystems");
-
-        // Fetch apiBase from the config
         String apiBase = appConfig.getString("apiBase");
-
-        // Validate apiBase to ensure it is not null or empty
         if (apiBase == null || apiBase.isEmpty()) {
             throw new IllegalArgumentException("Base URL cannot be null or empty.");
         }
 
-        // Fetch the auth token
-        String authToken = ConfigManager.getAuthConfig("test").getString("apiToken");
-
-        // Initialize the data factory with the apiBase and authToken
-        factory = new PurchaseOrderDataFactory(new ApiMasterDataProvider(apiBase, bearerToken));
-        logger.info("✅ Initialized data factory with API token");
+        // **DON'T** read apiToken from config.json (it doesn’t exist);
+        // just pass the UI-login token into your data factory
+        factory = new PurchaseOrderDataFactory(
+                new ApiMasterDataProvider(apiBase, bearerToken)
+        );
+        logger.info("✅ Initialized data factory with UI login token");
     }
 
     /**
@@ -107,6 +103,8 @@ public abstract class TestBase {
      * - Logs in
      * - Registers driver with listeners and reports
      */
+
+
     @BeforeSuite(alwaysRun = true)
     @Parameters({ "appName", "companyCode", "userId" })
     public void setupSuite(
@@ -116,21 +114,24 @@ public abstract class TestBase {
     ) {
         String env = System.getProperty("env", "test");
 
-        // Fallbacks for XML/CLI parameters
-        this.appName     = paramAppName != null ? paramAppName     : "StoryboardSystems";
+        // fallback parameters
+        this.appName     = paramAppName     != null ? paramAppName     : "StoryboardSystems";
         this.companyCode = paramCompanyCode != null ? paramCompanyCode : "vcidex";
-        this.userId      = paramUserId != null ? paramUserId       : "vcx288";
+        this.userId      = paramUserId      != null ? paramUserId      : "vcx288";
 
         JSONObject appConfig = ConfigManager.getAppConfig(env, appName);
         loginUrl = appConfig.getString("loginUrl");
 
-        // Log the configuration to verify apiBase
         logger.info("App Config: {}", appConfig);
-        String apiBase = appConfig.getString("apiBase");
-        logger.info("API Base URL: {}", apiBase);
+        logger.info("API Base URL: {}", appConfig.getString("apiBase"));
 
-        // Select browser from Maven CLI or default to Chrome
+        // pick browser
         String browser = System.getProperty("browser", "chrome").toLowerCase();
+
+        // ─── generate a unique temp profile for Chrome ─────────────────────────
+        String tmpDir     = System.getProperty("java.io.tmpdir");
+        String profileDir = tmpDir + File.separator + "chrome-profile-" + System.currentTimeMillis();
+        new File(profileDir).mkdirs();
 
         WebDriver raw = switch (browser) {
             case "chrome" -> {
@@ -139,20 +140,19 @@ public abstract class TestBase {
                 opts.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                 opts.setExperimentalOption("useAutomationExtension", false);
                 opts.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+                // point ChromeDriver at our fresh profile
+                opts.addArguments("--user-data-dir=" + profileDir);
 
                 ChromeDriver chromeDriver = new ChromeDriver(opts);
                 JavascriptExecutor js = chromeDriver;
-
                 try {
-                    // Stealth techniques to hide "webdriver" from detection
                     js.executeScript("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})");
-                    js.executeScript("Object.defineProperty(navigator, 'plugins', {get: () => [1,2,3]})");
-                    js.executeScript("Object.defineProperty(navigator, 'languages', {get: () => ['en-US','en']})");
+                    js.executeScript("Object.defineProperty(navigator, 'plugins',   {get: () => [1,2,3]})");
+                    js.executeScript("Object.defineProperty(navigator, 'languages',{get: () => ['en-US','en']})");
                     js.executeScript("window.chrome = { runtime: {} };");
                 } catch (Exception e) {
                     logger.warn("⚠️ Stealth JS patch failed: {}", e.getMessage());
                 }
-
                 yield chromeDriver;
             }
 
@@ -161,20 +161,30 @@ public abstract class TestBase {
             default -> throw new IllegalArgumentException("Unsupported browser: " + browser);
         };
 
-        // Register WebDriver with framework's listener and thread-safe wrapper
+        // register and wrap your driver
         WebDriverListener listener = new UIEventListener();
         driver = new EventFiringDecorator(listener).decorate(raw);
+
+        // now set your window + timeouts on the decorated driver
         driver.manage().window().maximize();
 
+        // give async scripts up to 60s instead of the default 30
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
+
+        // (optional) other timeouts
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+
+        // register for reporting / thread-safety
         ThreadSafeDriverManager.setDriver(driver);
         ReportManager.setDriver(driver);
-        logger.info("🚀 WebDriver initialized and registered");
 
-        // Perform UI login and token fetch
+        logger.info("🚀 WebDriver initialized and registered with 60s script timeout");
+
+        // login and init data factory
         setupSession();
-
-        // Initialize the Data Factory here
-        String bearerToken = (String)((JavascriptExecutor) driver).executeScript("return window.localStorage.getItem('token');");
+        String bearerToken = (String)((JavascriptExecutor) driver)
+                .executeScript("return window.localStorage.getItem('token');");
         initDataFactory(bearerToken);
     }
 

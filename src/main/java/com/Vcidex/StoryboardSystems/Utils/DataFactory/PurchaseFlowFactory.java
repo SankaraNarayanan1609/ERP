@@ -1,3 +1,5 @@
+// File: src/main/java/com/Vcidex/StoryboardSystems/Utils/DataFactory/PurchaseFlowFactory.java
+
 package com.Vcidex.StoryboardSystems.Utils.DataFactory;
 
 import com.Vcidex.StoryboardSystems.Inventory.MaterialInwardDataFactory;
@@ -6,6 +8,7 @@ import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseInvoiceData;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderLine;
+import com.Vcidex.StoryboardSystems.Purchase.Model.PurchaseTestInput;
 
 import java.util.List;
 
@@ -21,8 +24,11 @@ public class PurchaseFlowFactory {
         // No need to initialize MaterialInwardDataFactory — it is static-only
     }
 
-    public PurchaseOrderData createDirectPO(boolean isRenewal) {
-        return poFactory.create(isRenewal);
+    /**
+     * Build a Direct PO using the full T-way input (so we honor service vs physical).
+     */
+    public PurchaseOrderData createDirectPO(PurchaseTestInput input) {
+        return poFactory.create(input);
     }
 
     public MaterialInwardData createInwardFromPO(PurchaseOrderData po) {

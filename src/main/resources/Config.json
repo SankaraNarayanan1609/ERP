@@ -16,12 +16,6 @@
           }
         ]
       }
-    ],
-    "auth": {
-      "authUrl": "https://erplite.storyboarderp.com",
-      "tokenPath": "/storyboardapi/api/Login/UserLogin",
-      "clientId": "Superadmin",
-      "clientSecret": "s"
-    }
+    ]
   }
 }

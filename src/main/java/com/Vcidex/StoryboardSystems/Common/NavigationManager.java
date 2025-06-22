@@ -34,8 +34,7 @@ public class NavigationManager extends BasePage {
 
     // CSS selectors for various types of overlays/spinners that must disappear before interacting with the page
     private static final By OVERLAYS = By.cssSelector(
-            "ngx-spinner, .cdk-overlay-backdrop, .modal-backdrop, .loader"
-    );
+            ".ngx-spinner-overlay, .cdk-overlay-backdrop, .modal-backdrop, .loader");
 
     /**
      * Constructor that passes WebDriver to the BasePage class.

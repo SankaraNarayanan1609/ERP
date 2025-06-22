@@ -27,7 +27,7 @@ public class MasterDataValidator {
         // Products
         List<Product> products = provider.getProducts();
         assertListNotEmpty(products, "Product");
-        logFirst(products, "Product", Product::getProductName);
+        logFirst(products, "Product", Product::getProductName); // Cannot resolve method 'getProductName'
 
         // Taxes
         List<Tax> taxes = provider.getAllTaxObjects();

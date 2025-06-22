@@ -185,6 +185,23 @@ public abstract class BasePage {
         }
     }
 
+    public void waitForAngular() {
+        new WebDriverWait(driver, Duration.ofSeconds(30))
+                .until(wd -> {
+                    Object out = ((JavascriptExecutor)wd).executeAsyncScript(
+                            "var cb = arguments[arguments.length-1];" +
+                                    "if (window.getAllAngularTestabilities) {" +
+                                    "  var testabilities = window.getAllAngularTestabilities();" +
+                                    "  function check() {" +
+                                    "    if (testabilities.every(t=>t.isStable())) cb(true);" +
+                                    "    else setTimeout(check,100);" +
+                                    "  } check();" +
+                                    "} else { cb(true); }"
+                    );
+                    return Boolean.TRUE.equals(out);
+                });
+    }
+
     /**
      * Waits for Angular apps to finish pending tasks using testability APIs.
      */

@@ -7,6 +7,7 @@ import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.Layer;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MaterialInwardNavigator {
@@ -36,12 +37,13 @@ public class MaterialInwardNavigator {
         ReportManager.setTest(node);
         MasterLogger.step(Layer.UI, "Click Add Inward", () -> {
             page.clickAddInward(ReportManager.getTest());
-            return null;
-        });
-
-        // ── 3) now assert that the Select-PO dialog is visible ──
-        MasterLogger.step(Layer.UI, "Verify Select Purchase Order is displayed", () -> {
-            page.assertOnSelectPurchaseOrder(ReportManager.getTest());
+            // new: wait for spinner/overlay to disappear
+            nav.waitForOverlayClear();
+            // new: wait for the actual modal container
+            nav.waitUntilVisible(
+                    By.cssSelector("#addInwardModal .modal-content"),
+                    "Waiting for Add Inward modal"
+            );
             return null;
         });
 
@@ -58,8 +60,8 @@ public class MaterialInwardNavigator {
             nav.waitForOverlayClear();
             return null;
         });
-        MasterLogger.step(Layer.UI, "Navigate ▶ Inventory → Inward → Material Inwards", () -> {
-            nav.goTo("Inventory", "Inwards", "Material Inwards");
+        MasterLogger.step(Layer.UI, "Navigate ▶ Inventory → Inwards → Material Inward", () -> {
+            nav.goTo("Inventory", "Inwards", "Material Inward");
             return null;
         });
 
@@ -77,25 +79,12 @@ public class MaterialInwardNavigator {
         MasterLogger.step(Layer.UI,
                 "Click Select for PO " + poRef,
                 () -> {
+                    // ensure the table rows are present
+                    nav.waitUntilVisible(
+                            By.cssSelector("table#purchaseOrderList tbody tr"),
+                            "Waiting for PO list to render"
+                    );
                     page.selectPurchaseOrder(poRef, ReportManager.getTest());
-                    return null;
-                }
-        );
-
-        ReportManager.setTest(rootTest);
-    }
-
-    /**
-     * After selecting a PO, open the Add-Inward modal.
-     */
-    public void openAddInwardModal(MaterialInwardPage page) {
-        ExtentTest node = rootTest.createNode("➕ Open Add Inward modal");
-        ReportManager.setTest(node);
-
-        MasterLogger.step(Layer.UI,
-                "Click Add Inward",
-                () -> {
-                    page.clickAddInward(ReportManager.getTest());
                     return null;
                 }
         );

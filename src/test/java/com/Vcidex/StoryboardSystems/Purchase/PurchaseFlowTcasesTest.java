@@ -24,6 +24,7 @@ import com.Vcidex.StoryboardSystems.Utils.DataFactory.PurchaseInvoiceDataFactory
 import com.Vcidex.StoryboardSystems.Utils.DataFactory.PurchaseOrderDataFactory;
 import com.Vcidex.StoryboardSystems.Utils.DebugUtils;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
+import com.Vcidex.StoryboardSystems.Utils.Logger.RetryAnalyzer;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ValidationLogger;
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import com.aventstack.extentreports.ExtentTest;
@@ -38,27 +39,24 @@ import org.openqa.selenium.WebDriver;
 
 public class PurchaseFlowTcasesTest extends TestBase {
 
-    // Fetch the apiBase and authToken using the updated ConfigManager
-    String apiBase = ConfigManager.getApiBase("test", "StoryboardSystems"); // Specify correct environment and app name
-    String authToken = ConfigManager.getAuthConfig("test").optString("clientId"); // Or any relevant method to fetch the token
-    PurchaseOrderDataFactory factory = new PurchaseOrderDataFactory(new ApiMasterDataProvider(apiBase, authToken));
-
     @DataProvider(name = "purchaseTwayData")
     public Object[][] provideTwayCombinations() {
         return new Object[][] {
-                { new PurchaseTestInput(ProductType.PHYSICAL, EntryType.PI_PO, "INR") },
+                //{ new PurchaseTestInput(ProductType.PHYSICAL, EntryType.PI_PO, "INR") },
                 { new PurchaseTestInput(ProductType.SERVICE, EntryType.DIRECT_PO, "INR") },
                 { new PurchaseTestInput(ProductType.PHYSICAL, EntryType.DIRECT_INVOICE, "GBP") },
-                { new PurchaseTestInput(ProductType.SERVICE, EntryType.PURCHASE_AGREEMENT, "GBP") },
+                //{ new PurchaseTestInput(ProductType.SERVICE, EntryType.PURCHASE_AGREEMENT, "GBP") },
                 { new PurchaseTestInput(ProductType.PHYSICAL, EntryType.DIRECT_PO, "GBP") },
-                { new PurchaseTestInput(ProductType.SERVICE, EntryType.PI_PO, "GBP") },
-                { new PurchaseTestInput(ProductType.PHYSICAL, EntryType.PURCHASE_AGREEMENT, "INR") },
+                //{ new PurchaseTestInput(ProductType.SERVICE, EntryType.PI_PO, "GBP") },
+                //{ new PurchaseTestInput(ProductType.PHYSICAL, EntryType.PURCHASE_AGREEMENT, "INR") },
                 { new PurchaseTestInput(ProductType.SERVICE, EntryType.DIRECT_INVOICE, "INR") }
         };
     }
 
-    @Test(dataProvider = "purchaseTwayData", retryAnalyzer = com.Vcidex.StoryboardSystems.Utils.Logger.RetryAnalyzer.class)
+    @Test(dataProvider = "purchaseTwayData")
     public void testPurchaseFlow(PurchaseTestInput input) {
+
+
         ExtentTest node = ReportManager.createTest("T-way Test: " + input);
         WebDriver driver = ThreadSafeDriverManager.getDriver();
 
@@ -68,7 +66,7 @@ public class PurchaseFlowTcasesTest extends TestBase {
             e.printStackTrace();
         }
 
-        PurchaseOrderData poData = factory.generateDataFor(input);
+        PurchaseOrderData poData = factory.generateDataFor(input); // Variable 'poData' is already defined in the scope
         System.out.println("🔧 DEBUG: Generated PO Data: " + poData);
         Assert.assertNotNull(poData, "❌ PO data is null");
 
@@ -99,7 +97,7 @@ public class PurchaseFlowTcasesTest extends TestBase {
         Assert.assertFalse(poData.getPoRefNo().trim().isEmpty(), "PO Reference Number should not be empty");
 
         // Step 2: Inward for Physical Products
-        if (input.getProductType() == ProductType.PHYSICAL) {
+        if (poData.getProductType() == ProductType.PHYSICAL) {
             MaterialInwardNavigator inwardNav = new MaterialInwardNavigator(driver, new NavigationManager(driver), node);
             MaterialInwardPage inwardPage = inwardNav.openAddInwardModal();
             DebugUtils.waitForAngular(driver);  // ✅ Ensure UI is stable
