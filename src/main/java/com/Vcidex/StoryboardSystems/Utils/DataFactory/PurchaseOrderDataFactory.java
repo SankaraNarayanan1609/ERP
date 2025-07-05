@@ -5,6 +5,8 @@ import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
 import com.Vcidex.StoryboardSystems.Purchase.Model.ProductType;
 import com.Vcidex.StoryboardSystems.Purchase.Model.PurchaseTestInput;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.*;
+import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger;
+import com.Vcidex.StoryboardSystems.Utils.TaxService;
 import com.github.javafaker.Faker;
 
 import java.math.BigDecimal;
@@ -25,6 +27,8 @@ public class PurchaseOrderDataFactory {
     private final ApiMasterDataProvider apiProvider;
     private final Faker faker = new Faker();
     private final Random random = new Random();
+    private final TaxService taxService;
+
     private final List<String> branchNames;
     private final List<Vendor> vendorList;
     private final List<String> currencyCodes;
@@ -44,6 +48,7 @@ public class PurchaseOrderDataFactory {
         this.productList    = safeList(apiProvider.getProducts());
         this.taxList        = safeList(apiProvider.getAllTaxObjects());
         this.employeeList   = safeList(apiProvider.getEmployees());
+        this.taxService = new TaxService(safeList(apiProvider.getAllTaxObjects()));
     }
 
     private <T> List<T> safeList(List<T> list) {
@@ -71,9 +76,26 @@ public class PurchaseOrderDataFactory {
         return faker.name().firstName();
     }
 
-    /**
-     * Build a random PO, picking line-items exactly of the requested type (SERVICE vs PHYSICAL).
-     */
+    public List<Product> filterByTaxSegment(
+            List<Product> products,
+            Set<String> validPrefixes,
+            Set<String> validGids) {
+        products.forEach(p ->
+                MasterLogger.warn(String.format(
+                        "▶️ Product '%s' has tax='%s', tax1='%s'; allowed prefixes=%s, GIDs=%s",
+                        p.getProductName(), p.getTax(), p.getTax1(), validPrefixes, validGids))
+        );
+        return products.stream()
+                .filter(p -> {
+                    String t0 = p.getTax();
+                    String t1 = p.getTax1();
+                    boolean match0 = t0 != null && (validPrefixes.contains(t0.trim()) || validGids.contains(t0.trim()));
+                    boolean match1 = t1 != null && (validPrefixes.contains(t1.trim()) || validGids.contains(t1.trim()));
+                    return match0 || match1;
+                })
+                .collect(Collectors.toList());
+    }
+
     public PurchaseOrderData create(PurchaseTestInput input) {
         ProductType desiredType = input.getProductType();
 
@@ -83,173 +105,202 @@ public class PurchaseOrderDataFactory {
 
         // 2) pick vendor + segment
         Vendor chosenVendor    = randomFrom(vendorList);
-        String vendorName      = chosenVendor != null ? chosenVendor.getVendorName()       : null;
-        String vendorSegment   = chosenVendor != null ? chosenVendor.getTaxsegment_name() : null;
+        String vendorName      = chosenVendor != null ? chosenVendor.getVendorName() : null;
+        String vendorSegment   = chosenVendor != null && chosenVendor.getTaxsegment_name() != null
+                ? chosenVendor.getTaxsegment_name().trim() : "";
 
-        // 3) load matching-tax
+        // 3) matching taxes
         List<Tax> matchingTaxes = taxList.stream()
                 .filter(t -> t.getTaxsegment_name() != null
-                        && t.getTaxsegment_name().equalsIgnoreCase(vendorSegment))
+                        && t.getTaxsegment_name().trim().equalsIgnoreCase(vendorSegment))
                 .collect(Collectors.toList());
-        Set<String> validPrefixes = matchingTaxes.stream()
+
+        MasterLogger.warn("🔍 Vendor Tax Segment: '" + vendorSegment + "'");
+        matchingTaxes.forEach(t -> MasterLogger.warn("🔎 Available Tax Segment: '" + t.getTaxsegment_name() + "'"));
+
+        Set<String> validTaxPrefixes = matchingTaxes.stream()
                 .map(Tax::getTaxPrefix)
                 .filter(Objects::nonNull)
                 .map(String::trim)
                 .collect(Collectors.toSet());
 
-        // 4) TYPE-AWARE product selection
-        // new version – require a real, non-null type for physical products:
+        Set<String> validTaxGids = matchingTaxes.stream()
+                .map(Tax::getTaxGid)
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .collect(Collectors.toSet());
+
+        // 4) filter by product type
         List<Product> byType = productList.stream()
                 .filter(p -> {
                     ProductType pt = p.getProductType();
-                    if (pt == null) return false;                     // drop nulls immediately
-                    if (desiredType == ProductType.SERVICE) {
-                        return pt == ProductType.SERVICE;
-                    } else {
-                        return pt != ProductType.SERVICE;
-                    }
+                    if (pt == null) return false;
+                    if (desiredType == ProductType.SERVICE) return pt == ProductType.SERVICE;
+                    return pt != ProductType.SERVICE;
                 })
                 .collect(Collectors.toList());
 
-        // 5) narrow by tax
-        List<Product> filteredProducts = byType.stream()
-                .filter(p -> p.getTax() != null
-                        && validPrefixes.contains(p.getTax().trim()))
-                .collect(Collectors.toList());
+        // 5) initial tax filter or skip for overseas
+        boolean isOverseas = "Overseas".equalsIgnoreCase(vendorSegment);
+        List<Product> filteredProducts;
+        if (isOverseas) {
+            MasterLogger.warn("⚠️ Skipping tax-based filtering for overseas vendor");
+            filteredProducts = new ArrayList<>(byType);
+        } else {
+            filteredProducts = filterByTaxSegment(byType, validTaxPrefixes, validTaxGids);
+        }
 
-        // 6) fallback to same-type bucket
+        // 6) fallback
         if (filteredProducts.isEmpty()) {
-            System.out.println("⚠️ No products matched tax criteria → falling back to same-type bucket.");
+            MasterLogger.warn("⚠️ No products matched tax criteria → falling back to same-type bucket.");
             filteredProducts = new ArrayList<>(byType);
         }
         if (filteredProducts.isEmpty()) {
-            throw new RuntimeException("❌ No valid products of type "
-                    + input.getProductType() + " available! Check master data.");
+            String msg = "❌ No valid " + desiredType + " products available after filtering.";
+            if (desiredType != ProductType.SERVICE) msg += " SERVICE products cannot be used for physical flows.";
+            throw new RuntimeException(msg);
         }
 
-        // 7) build up to itemCount distinct line-items
-        int desiredCount = faker.number().numberBetween(1, 6);     // or 1–4, whatever you want
-        List<Product> pool = new ArrayList<>(filteredProducts);
+        // 7) pick random products
+        Collections.shuffle(filteredProducts);
+        int pickCount = Math.min(faker.number().numberBetween(1, 6), filteredProducts.size());
+        List<Product> picks = filteredProducts.subList(0, pickCount);
 
-        // if the pool is empty, either fallback or throw
-        if (pool.isEmpty()) {
-            throw new RuntimeException("❌ No products of type " + input.getProductType() + " available!");
-        }
-
-        // shuffle & pick at most desiredCount distinct products
-        Collections.shuffle(pool);
-        int pickCount = Math.min(desiredCount, pool.size());
-        List<Product> picks = pool.subList(0, pickCount);
-
+        // 8) build lineItems
         List<LineItem> lineItems = new ArrayList<>();
         for (Product product : picks) {
-            int quantity = faker.number().numberBetween(1, 25);
-            BigDecimal masterPrice;
-            try { masterPrice = new BigDecimal(product.getProductPrice()); } // Cannot resolve method 'getProductPrice' in 'Product'
-            catch (Exception ex) { masterPrice = BigDecimal.ZERO; }
+            if (isOverseas) {
+                // Overseas: always include, 0% tax
+                int qty = faker.number().numberBetween(1, 25);
+                BigDecimal masterPrice;
+                try { masterPrice = new BigDecimal(product.getProductPrice()); }
+                catch (Exception e) { masterPrice = BigDecimal.ZERO; }
+                BigDecimal unitPrice = masterPrice.compareTo(BigDecimal.ZERO) > 0
+                        ? masterPrice
+                        : BigDecimal.valueOf(faker.number().randomDouble(2, 100, 1000)).setScale(2, RoundingMode.HALF_UP);
 
-            BigDecimal price = masterPrice.compareTo(BigDecimal.ZERO) > 0
-                    ? masterPrice
-                    : BigDecimal.valueOf(faker.number().randomDouble(2, 500, 5000))
-                    .setScale(2, RoundingMode.HALF_UP);
+                LineItem item = LineItem.builder()
+                        .productGroup(product.getProductGroupName())
+                        .productCode(product.getProductCode())
+                        .productName(product.getProductName())
+                        .description(product.getProductDesc())
+                        .quantity(qty)
+                        .price(unitPrice)
+                        .discountPct(BigDecimal.ZERO)
+                        .discountAmt(BigDecimal.ZERO)
+                        .taxPrefix("0%")
+                        .taxRate(BigDecimal.ZERO)
+                        .product(product)
+                        .build();
+                item.computeTotal();
+                lineItems.add(item);
+            } else {
+                // Domestic: existing tax-aware logic
+                String chosenPrefix = null;
+                String taxCode = product.getTax();
+                String taxCode1 = product.getTax1();
+                if (taxCode != null && (validTaxPrefixes.contains(taxCode.trim()) || validTaxGids.contains(taxCode.trim()))) {
+                    chosenPrefix = taxCode.trim();
+                } else if (taxCode1 != null && (validTaxPrefixes.contains(taxCode1.trim()) || validTaxGids.contains(taxCode1.trim()))) {
+                    chosenPrefix = taxCode1.trim();
+                } else {
+                    MasterLogger.warn("⚠️ Skipping product: " + product.getProductName());
+                    continue;
+                }
+                final String prefixToMatch = chosenPrefix;
+                Tax tax = matchingTaxes.stream()
+                        .filter(t -> prefixToMatch.equalsIgnoreCase(t.getTaxPrefix()) || prefixToMatch.equalsIgnoreCase(t.getTaxGid()))
+                        .findFirst().orElse(null);
+                BigDecimal taxRate = BigDecimal.ZERO;
+                if (tax != null && tax.getPercentage() != null) {
+                    try {
+                        taxRate = new BigDecimal(tax.getPercentage())
+                                .divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP);
+                    } catch (NumberFormatException ex) {
+                        MasterLogger.warn("⚠️ Invalid tax % for product: " + product.getProductName());
+                    }
+                }
+                if (taxRate.compareTo(BigDecimal.ZERO) <= 0) {
+                    MasterLogger.warn("⚠️ Skipping due to tax linkage issue: " + product.getProductName());
+                    continue;
+                }
+                int quantity = faker.number().numberBetween(1, 25);
+                BigDecimal masterPrice;
+                try { masterPrice = new BigDecimal(product.getProductPrice()); }
+                catch (Exception ex) { masterPrice = BigDecimal.ZERO; }
+                BigDecimal price = masterPrice.compareTo(BigDecimal.ZERO) > 0
+                        ? masterPrice
+                        : BigDecimal.valueOf(faker.number().randomDouble(2, 500, 5000)).setScale(2, RoundingMode.HALF_UP);
+                BigDecimal discountPct = BigDecimal.valueOf(random.nextDouble() * 15).setScale(2, RoundingMode.HALF_UP);
+                BigDecimal discountAmt = price.multiply(BigDecimal.valueOf(quantity)).multiply(discountPct)
+                        .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
 
-            BigDecimal discountPct = BigDecimal.valueOf(random.nextDouble() * 15)
-                    .setScale(2, RoundingMode.HALF_UP);
-            BigDecimal discountAmt = price
-                    .multiply(BigDecimal.valueOf(quantity))
-                    .multiply(discountPct)
-                    .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
-
-            Tax tax = randomFrom(matchingTaxes);
-            BigDecimal taxRate = BigDecimal.ZERO;
-            String taxPrefix   = "GST 0%";
-            if (tax != null && tax.getPercentage() != null) {
-                try {
-                    taxRate   = new BigDecimal(tax.getPercentage())
-                            .divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP);
-                    taxPrefix = tax.getPercentage().replaceAll("[^\\d.-]", "") + "%";
-                } catch (NumberFormatException ignored) {}
+                LineItem item = LineItem.builder()
+                        .productGroup(product.getProductGroupName())
+                        .productCode(product.getProductCode())
+                        .productName(product.getProductName())
+                        .description(product.getProductDesc())
+                        .quantity(quantity)
+                        .price(price)
+                        .discountPct(discountPct)
+                        .discountAmt(discountAmt)
+                        .taxPrefix(chosenPrefix)
+                        .taxRate(taxRate)
+                        .product(product)
+                        .build();
+                item.computeTotal();
+                lineItems.add(item);
             }
-
-            LineItem item = LineItem.builder()
-                    .productGroup(product.getProductGroupName()) // Cannot resolve method 'getProductGroupName' in 'Product'
-                    .productCode (product.getProductCode()) // Cannot resolve method 'getProductCode' in 'Product'
-                    .productName (product.getProductName()) // Cannot resolve method 'getProductName' in 'Product'
-                    .description (product.getProductDesc()) // Cannot resolve method 'getProductDesc' in 'Product'
-                    .quantity    (quantity)
-                    .price       (price)
-                    .discountAmt (discountAmt)
-                    .taxPrefix   (taxPrefix)
-                    .taxRate     (taxRate)
-                    .product     (product)
-                    .build();
-            item.computeTotal();
-            lineItems.add(item);
+        }
+        if (lineItems.isEmpty()) {
+            throw new RuntimeException("❌ All products skipped due to missing/invalid tax linkage for vendor: " + vendorName);
         }
 
-        // 8) finalize header
+        // 9) header
         String mobile    = faker.regexify("[6-9]\\d{9}");
-        String nowTs     = LocalDateTime.now().format(
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        String coverNote = "PO generated on " + nowTs
-                + " — please inspect goods upon arrival.";
+        String nowTs     = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String coverNote = "PO generated on " + nowTs + " — please inspect goods upon arrival.";
 
         PurchaseOrderData data = PurchaseOrderData.builder()
-                .branchName             (randomFrom(branchNames))
-                .poRefNo                ("PO-" + faker.number().digits(6))
-                .poDate                 (poDate)
-                .expectedDate           (expectedDate)
-                .vendorName             (vendorName)
-                .billTo                 (faker.address().fullAddress())
-                .shipTo                 (faker.address().fullAddress())
-                .requestedBy            (randomEmployeeName())
+                .branchName(randomFrom(branchNames))
+                .poRefNo("PO-" + faker.number().digits(6))
+                .poDate(poDate)
+                .expectedDate(expectedDate)
+                .vendorName(vendorName)
+                .billTo(faker.address().fullAddress())
+                .shipTo(faker.address().fullAddress())
+                .requestedBy(randomEmployeeName())
                 .requestorContactDetails(mobile)
-                .deliveryTerms          ("Deliver within 7 days")
-                .paymentTerms           ("Net 30 days")
-                .dispatchMode           (randomFrom(dispatchModes))
-                .currency               (randomFrom(currencyCodes))
-                .exchangeRate           (BigDecimal.valueOf(
-                        faker.number().randomDouble(2, 1, 100)))
-                .coverNote              (coverNote)
-                .renewal                (false)  // you can wire this from input if desired
-                .renewalDate            (null)
-                .frequency              (null)
-                .lineItems              (lineItems)
-                .addOnCharges           (BigDecimal.valueOf(
-                        faker.number().randomDouble(2, 100, 500)))
-                .additionalDiscount     (BigDecimal.valueOf(
-                                random.nextDouble() * 15)
-                        .setScale(2, RoundingMode.HALF_UP))
-                .freightCharges         (BigDecimal.valueOf(
-                        faker.number().randomDouble(2, 100, 300)))
-                .additionalTax          (matchingTaxes.isEmpty()
-                        ? "0%"
-                        : matchingTaxes.get(
-                                random.nextInt(matchingTaxes.size()))
-                        .getPercentage()
-                        .replaceAll("[^\\d.-]", "") + "%")
-                .roundOff               (BigDecimal.ZERO)
-                .termsAndConditions     (randomFrom(termTemplates))
-                .termsEditorText        ("Ensure packaging standards are met.")
+                .deliveryTerms("Deliver within 7 days")
+                .paymentTerms("Net 30 days")
+                .dispatchMode(randomFrom(dispatchModes))
+                .currency(randomFrom(currencyCodes))
+                .exchangeRate(BigDecimal.valueOf(faker.number().randomDouble(2, 1, 100)))
+                .coverNote(coverNote)
+                .renewal(false)
+                .renewalDate(null)
+                .frequency(null)
+                .lineItems(lineItems)
+                .addOnCharges(BigDecimal.valueOf(faker.number().randomDouble(2, 100, 500)))
+                .additionalDiscount(BigDecimal.valueOf(random.nextDouble() * 15).setScale(2, RoundingMode.HALF_UP))
+                .freightCharges(BigDecimal.valueOf(faker.number().randomDouble(2, 100, 300)))
+                .additionalTax(matchingTaxes.isEmpty() ? "0%" : matchingTaxes.get(random.nextInt(matchingTaxes.size()))
+                        .getPercentage().replaceAll("[^\\d.-]", "") + "%")
+                .roundOff(BigDecimal.ZERO)
+                .termsAndConditions(randomFrom(termTemplates))
+                .termsEditorText("Ensure packaging standards are met.")
                 .build();
 
         data.computeNetAmount();
         data.computeGrandTotal();
-
-        // tag it with the requested product type
         data.setProductType(input.getProductType());
         return data;
     }
 
-    /**
-     * Now correctly calls create(input), so your service vs physical
-     * filter actually gets honored.
-     */
     public PurchaseOrderData generateDataFor(PurchaseTestInput input) {
-
         PurchaseOrderData poData = create(input);
         poData.setCurrencyCode(input.getCurrency());
-        System.out.println("📌 EntryType for test: " + input.getEntryType());
+        MasterLogger.warn("📌 EntryType for test: " + input.getEntryType());
         return poData;
     }
 }

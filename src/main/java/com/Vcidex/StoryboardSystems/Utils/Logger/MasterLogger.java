@@ -1,10 +1,11 @@
-// File: MasterLogger.java
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
 import com.aventstack.extentreports.ExtentTest;
 import io.restassured.response.Response;
 
 public class MasterLogger {
+
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(MasterLogger.class);
 
     public enum Layer { UI, API, DB, VALIDATION, ASSERT, WAIT }
 
@@ -13,17 +14,18 @@ public class MasterLogger {
         T get() throws Exception;
     }
 
-    /**
-     * Functional step logger with result (e.g., API call, get text).
-     */
+    // ─── Functional step with result and default node ────────────────────────────
     public static <T> T step(Layer layer, String actionName, SupplierWithException<T> step) {
         return step(layer, actionName, ReportManager.getTest(), step);
     }
 
-    /**
-     * Functional step logger with custom ExtentTest node.
-     */
-    public static <T> T step(Layer layer, String actionName, ExtentTest node, SupplierWithException<T> step) {
+    // ─── Functional step with result and custom node ─────────────────────────────
+    public static <T> T step(
+            Layer layer,
+            String actionName,
+            ExtentTest node,
+            SupplierWithException<T> step
+    ) {
         try {
             T result = step.get();
             String rc = extractReturnCode(layer, result);
@@ -37,17 +39,18 @@ public class MasterLogger {
         }
     }
 
-    /**
-     * Void step logger (UI click, assert, etc.).
-     */
+    // ─── Void step with Runnable and default node ────────────────────────────────
     public static void step(Layer layer, String actionName, Runnable step) {
         step(layer, actionName, ReportManager.getTest(), step);
     }
 
-    /**
-     * Void step logger with custom ExtentTest.
-     */
-    public static void step(Layer layer, String actionName, ExtentTest node, Runnable step) {
+    // ─── Void step with Runnable and custom node ─────────────────────────────────
+    public static void step(
+            Layer layer,
+            String actionName,
+            ExtentTest node,
+            Runnable step
+    ) {
         try {
             step.run();
             node.pass("✅ " + actionName);
@@ -59,6 +62,7 @@ public class MasterLogger {
         }
     }
 
+    // ─── Timed step helper ───────────────────────────────────────────────────────
     public static void stepWithTimer(String key, Runnable step) {
         PerformanceLogger.start(key);
         try {
@@ -72,9 +76,7 @@ public class MasterLogger {
         }
     }
 
-    /**
-     * Creates a grouped node in ExtentReports and executes the block inside it.
-     */
+    // ─── Grouped node helper ────────────────────────────────────────────────────
     public static void group(String groupName, Runnable body) {
         ExtentTest parent = ReportManager.getTest();
         ExtentTest child  = parent.createNode(groupName);
@@ -90,6 +92,7 @@ public class MasterLogger {
         }
     }
 
+    // ─── Return‐code extraction for API layer ───────────────────────────────────
     private static <T> String extractReturnCode(Layer layer, T result) {
         if (layer == Layer.API && result instanceof Response) {
             return String.valueOf(((Response) result).getStatusCode());
@@ -97,23 +100,44 @@ public class MasterLogger {
         return null;
     }
 
+    // ─── Error code determination for FAIL paths ────────────────────────────────
     private static String determineCode(Layer layer, Exception e) {
         return switch (layer) {
             case VALIDATION, ASSERT -> e.getMessage();
-            default -> e.getClass().getSimpleName();
+            default              -> e.getClass().getSimpleName();
         };
     }
+
+    // ─── StepBlock + helpers ────────────────────────────────────────────────────
 
     @FunctionalInterface
     public interface StepBlock {
         Void execute() throws Exception;
     }
 
+    /**
+     * Void‐returning step helper (uses UI layer and default test node).
+     */
     public static void step(String message, StepBlock action) {
         step(Layer.UI, message, ReportManager.getTest(), action);
     }
 
-    public static void step(Layer layer, String message, ExtentTest node, StepBlock action) {
+    /**
+     * Missing overload: Void‐returning step with Layer + default node.
+     */
+    public static void step(Layer layer, String message, StepBlock action) {
+        step(layer, message, ReportManager.getTest(), action);
+    }
+
+    /**
+     * Void‐returning step with custom node.
+     */
+    public static void step(
+            Layer layer,
+            String message,
+            ExtentTest node,
+            StepBlock action
+    ) {
         try {
             action.execute();
             node.pass("✅ " + message);
@@ -125,10 +149,39 @@ public class MasterLogger {
         }
     }
 
+    /**
+     * Wraps a Runnable into a StepBlock.
+     */
     public static StepBlock wrap(Runnable r) {
         return () -> {
             r.run();
             return null;
         };
+    }
+
+    // ─── Info / Warn / Error log pass-throughs to ExtentReport ─────────────────────
+
+    public static void info(String message) {
+        log.info(message);
+        try {
+            ExtentTest test = ReportManager.getTest();
+            if (test != null) test.info(message);
+        } catch (Exception ignored) {}
+    }
+
+    public static void warn(String message) {
+        log.warn(message);
+        try {
+            ExtentTest test = ReportManager.getTest();
+            if (test != null) test.warning(message); // This ensures warning shows in HTML report
+        } catch (Exception ignored) {}
+    }
+
+    public static void error(String message) {
+        log.error(message);
+        try {
+            ExtentTest test = ReportManager.getTest();
+            if (test != null) test.fail("❌ " + message);
+        } catch (Exception ignored) {}
     }
 }

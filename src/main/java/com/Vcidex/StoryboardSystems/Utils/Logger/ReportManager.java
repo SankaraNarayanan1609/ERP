@@ -59,6 +59,9 @@ public class ReportManager {
         ExtentTest test = extent.createTest(name);
         testThreadLocal.set(test);
         TestContextLogger.info("📝 Extent Test created: " + name);
+//        test.assignAuthor("Test Executor: " + System.getProperty("user.name"));
+//        test.assignDevice(System.getProperty("os.name"));
+//        test.assignCategory("Scenario: " + input.toString());
         return test;
     }
 

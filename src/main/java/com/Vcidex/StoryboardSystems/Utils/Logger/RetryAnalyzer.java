@@ -14,6 +14,9 @@ public class RetryAnalyzer implements IRetryAnalyzer {
     @Override
     public boolean retry(ITestResult result) {
         if (retryCount < maxRetry) {
+            if (Boolean.TRUE.equals(result.getAttribute("retry"))) {
+                ReportManager.getTest().assignCategory("RETRIED");
+            }
             retryCount++;
             return true;
         }

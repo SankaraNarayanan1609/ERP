@@ -139,7 +139,7 @@ public class Product {
     private ProductType type;
 
     // --------------------------------------------------------------------
-    // Getters & setters for all other fields (omitted here for brevity)
+    // Getters for all fields
     // --------------------------------------------------------------------
     public String getDocumentId()         { return documentId; }
     public String getLogId()              { return logId; }
@@ -177,9 +177,6 @@ public class Product {
     public String getTax1()               { return tax1; }
     public Boolean getStatus()            { return status; }
     public String getMessage()            { return message; }
-    // --------------------------------------------------------------------
-    // (just copy/paste all of your existing getters/setters up to getMrpPriceDecimal())
-    // --------------------------------------------------------------------
 
     public BigDecimal getProductPriceDecimal() {
         try { return new BigDecimal(productPrice); }
@@ -199,11 +196,6 @@ public class Product {
     // --------------------------------------------------------------------
     // Jackson handling for “product_type” → raw + enum
     // --------------------------------------------------------------------
-
-    /**
-     * Called by Jackson with the raw JSON value.
-     * Blank or unknown strings just yield a null‐type.
-     */
     @JsonProperty("product_type")
     public void setProductTypeRaw(String raw) {
         this.productTypeRaw = raw;
@@ -213,24 +205,23 @@ public class Product {
             try {
                 this.type = ProductType.fromApiString(raw);
             } catch (IllegalArgumentException ex) {
-                // unknown value → null
                 this.type = null;
             }
         }
     }
 
-    /** Hide the raw string from Jackson to avoid duplicate‐getter conflicts. */
     @JsonIgnore
     public String getProductTypeRaw() {
         return productTypeRaw;
     }
 
-    /**
-     * Expose the enum. Jackson will use this on serialization,
-     * and you can safely do product.getProductType() in your code.
-     */
     @JsonProperty("product_type")
     public ProductType getProductType() {
         return type;
     }
+
+    // ─── Test Helpers ─────────────────────────────────────────────────────
+    public void setProductName(String productName) { this.productName = productName; }
+    public void setTax(String tax)                   { this.tax = tax; }
+    public void setTax1(String tax1)                 { this.tax1 = tax1; }
 }

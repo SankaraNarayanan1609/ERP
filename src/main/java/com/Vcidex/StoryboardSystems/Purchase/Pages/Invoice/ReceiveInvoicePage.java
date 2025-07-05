@@ -42,61 +42,46 @@ public class ReceiveInvoicePage extends BasePage {
     public String getInvoiceRefNo() {
         return findElement(invoiceRefInput).getAttribute("value").trim();
     }
-
     public LocalDate getInvoiceDate() {
         String dateStr = findElement(invoiceDateInput).getAttribute("value").trim();
         return LocalDate.parse(dateStr, fmt);
     }
-
-
     public String getBranchName() {
         return getDropdownValue("branch_name");
     }
-
     public String getVendorName() {
         return getDropdownValue("vendor_name");
     }
-
     public String getBillTo() {
         return getInputValue("vendor_details");
     }
-
     public String getShipTo() {
         return getInputValue("ship_to");
     }
-
     public String getDeliveryTerms() {
         return getInputValue("delivery_terms");
     }
-
     public String getPaymentTerms() {
         return getDropdownValue("payment_terms");
     }
-
     public String getDispatchMode() {
         return getInputValue("dispatch_mode");
     }
-
     public String getCurrency() {
         return getDropdownValue("currency_name");
     }
-
     public String getExchangeRate() {
         return getInputValue("exchange_rate");
     }
-
     public String getTermsEditorText() {
         return findElement(termsEditor).getText().trim();
     }
-
     public String getNetAmount() {
         return getInputValue("net_amount");
     }
-
     public String getGrandTotal() {
         return getInputValue("grand_total");
     }
-
     // ──────── Helpers for Getters ───────────────────────
 
     private String getInputValue(String formControlName) {

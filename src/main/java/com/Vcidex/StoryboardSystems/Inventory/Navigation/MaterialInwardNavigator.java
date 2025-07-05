@@ -8,7 +8,10 @@ import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.Layer;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class MaterialInwardNavigator {
     private final WebDriver         driver;
@@ -25,43 +28,28 @@ public class MaterialInwardNavigator {
         this.rootTest = rootTest;
     }
 
-    /**
-     * 1) Navigate to the Material Inward screen and return its page object.
-     */
-    public MaterialInwardPage openAddInwardModal() {
-        // ── 1) make sure we’re on the right screen ──
-        MaterialInwardPage page = openMaterialInwardScreen();
-
-        // ── 2) click “Add Inward” ──
-        ExtentTest node = rootTest.createNode("➕ Open Add Inward modal");
-        ReportManager.setTest(node);
-        MasterLogger.step(Layer.UI, "Click Add Inward", () -> {
-            page.clickAddInward(ReportManager.getTest());
-            // new: wait for spinner/overlay to disappear
-            nav.waitForOverlayClear();
-            // new: wait for the actual modal container
-            nav.waitUntilVisible(
-                    By.cssSelector("#addInwardModal .modal-content"),
-                    "Waiting for Add Inward modal"
-            );
-            return null;
-        });
-
-        // switch back to the root test context
-        ReportManager.setTest(rootTest);
-        return page;
-    }
-
     private MaterialInwardPage openMaterialInwardScreen() {
-        ExtentTest navNode = rootTest.createNode("🔨 Navigate to Material Inward");
+        ExtentTest navNode = rootTest.createNode("🔨 Navigate to Material Inwards");
         ReportManager.setTest(navNode);
 
+        // 1) clear any overlays
         MasterLogger.step(Layer.UI, "Ensure no overlays remain", () -> {
             nav.waitForOverlayClear();
             return null;
         });
-        MasterLogger.step(Layer.UI, "Navigate ▶ Inventory → Inwards → Material Inward", () -> {
-            nav.goTo("Inventory", "Inwards", "Material Inward");
+
+        // 2) click “Inwards → Material Inward” (with JS fallback)
+        MasterLogger.step(Layer.UI, "Navigate ▶ Inventory → Inwards → Material Inwards", () -> {
+            nav.goTo("Inventory", "Inwards", "Material Inwards");
+            return null;
+        });
+
+        // 4) wait for the screen heading
+        MasterLogger.step(Layer.VALIDATION, "Validate heading 'Material Inwards'", () -> {
+            nav.waitUntilVisible(
+                    By.xpath("//h3[contains(normalize-space(),'Material Inward')] | //h1[contains(normalize-space(),'Material Inward')]"),
+                    "Waiting for Material Inwards heading"
+            );
             return null;
         });
 
@@ -69,26 +57,46 @@ public class MaterialInwardNavigator {
         return new MaterialInwardPage(driver);
     }
 
-    /**
-     * Click the “Select” button for the given PO reference on the listing page.
-     */
+    public MaterialInwardPage openAddInwardModal() {
+        // 1) reach the listing page
+        MaterialInwardPage page = openMaterialInwardScreen();
+
+        // 2) click “Add Inward”
+        ExtentTest node = rootTest.createNode("➕ Open Add Inward modal");
+        ReportManager.setTest(node);
+        MasterLogger.step(Layer.UI, "Click Add Inward", () -> {
+            page.clickAddInward(ReportManager.getTest());
+            nav.waitForOverlayClear();
+            nav.waitUntilVisible(
+                    By.cssSelector("#addInwardModal .modal-content"),
+                    "Waiting for Add Inward modal"
+            );
+            return null;
+        });
+        ReportManager.setTest(rootTest);
+        return page;
+    }
+
     public void selectPurchaseOrder(MaterialInwardPage page, String poRef) {
         ExtentTest node = rootTest.createNode("🗃 Select Purchase Order: " + poRef);
         ReportManager.setTest(node);
-
         MasterLogger.step(Layer.UI,
                 "Click Select for PO " + poRef,
                 () -> {
-                    // ensure the table rows are present
+                    // first wait for the PO list heading or filter if any
+                    nav.waitUntilVisible(
+                            By.xpath("//h3[contains(text(),'Purchase Orders')]"),
+                            "Waiting for PO list heading"
+                    );
+                    // then for the rows
                     nav.waitUntilVisible(
                             By.cssSelector("table#purchaseOrderList tbody tr"),
-                            "Waiting for PO list to render"
+                            "Waiting for PO rows"
                     );
                     page.selectPurchaseOrder(poRef, ReportManager.getTest());
                     return null;
                 }
         );
-
         ReportManager.setTest(rootTest);
     }
 }

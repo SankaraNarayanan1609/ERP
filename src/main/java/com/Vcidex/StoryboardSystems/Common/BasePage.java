@@ -1,77 +1,74 @@
-/**
- * BasePage is the foundational class for all page objects.
- * It provides reusable WebDriver interactions with built-in logging,
- * diagnostic handling, waits, scrolling, and JavaScript execution support.
- *
- * This class should be extended by all specific page object classes.
- *
- * Dependencies:
- * - SLF4J for internal debug logs
- * - ExtentReports for step-based reporting
- * - Selenium Actions/JSExecutor/WebDriverWait for UI operations
- */
 package com.Vcidex.StoryboardSystems.Common;
 
-// ─── External Libraries ───────────────────────────────────────────
-import com.aventstack.extentreports.ExtentTest; // Used for structured test reporting
-import org.openqa.selenium.*; // Core Selenium WebDriver and element interaction classes
-import org.openqa.selenium.interactions.Actions; // Needed for hover, drag-drop, etc.
-import org.openqa.selenium.support.ui.*; // Fluent waits and ExpectedConditions
+import com.Vcidex.StoryboardSystems.Utils.Logger.ScreenshotHelper;
+import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// ─── Internal Utilities ───────────────────────────────────────────
-import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager; // Reads timeout from config
-import com.Vcidex.StoryboardSystems.Utils.Logger.DiagnosticsLogger; // Centralized screenshot logging
-import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger; // For consistent error stack logging
-import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager; // Fetches ExtentTest node
+import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
+import com.Vcidex.StoryboardSystems.Utils.Logger.DiagnosticsLogger;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
+import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public abstract class BasePage {
-    private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
+    public static final Logger log = LoggerFactory.getLogger(BasePage.class);
 
-    protected final WebDriver driver;
-    protected final WebDriverWait wait;
-    protected final Actions actions;
+    protected final WebDriver       driver;
+    protected final WebDriverWait   wait;
+    protected final Actions         actions;
     protected final JavascriptExecutor jsExecutor;
-    protected final ExtentTest test;
+    protected final ExtentTest      test;
 
-    private static final int TIMEOUT = Integer.parseInt(
-            ConfigManager.getProperty("timeout", "10")
+    // tightened default wait from 10s → 3s
+    private static final int    TIMEOUT      = Integer.parseInt(
+            ConfigManager.getProperty("timeout", "3")
     );
     private static final Duration DEFAULT_WAIT = Duration.ofSeconds(TIMEOUT);
 
-    // Overlay selectors used to detect loading spinners, modals, and blockUI overlays.
-    private static final By ALL_OVERLAYS = By.cssSelector(
+    // overlays often clear in < 500ms
+    private static final Duration OVERLAY_WAIT = Duration.ofMillis(500);
+    private static final By      ALL_OVERLAYS = By.cssSelector(
             ".spinner-overlay, .modal-backdrop, .blockUI, .blockOverlay"
     );
 
-    /**
-     * Constructor for all child page classes.
-     *
-     * @param driver The active WebDriver instance.
-     */
     public BasePage(WebDriver driver) {
-        this.driver = Objects.requireNonNull(driver, "Driver must not be null");
-        this.test = ReportManager.getTest();
-        this.wait = new WebDriverWait(driver, DEFAULT_WAIT);
-        this.actions = new Actions(driver);
-        this.jsExecutor = (JavascriptExecutor) driver;
+        this.driver      = Objects.requireNonNull(driver);
+        this.test        = ReportManager.getTest();
+        this.wait        = new WebDriverWait(driver, DEFAULT_WAIT);
+        this.actions     = new Actions(driver);
+        this.jsExecutor  = (JavascriptExecutor) driver;
     }
 
-    /** Logs a debug message using SLF4J. */
-    protected void debug(String message) {
-        logger.debug(message);
+    /** Wait up to 500 ms for any loading overlays to disappear. */
+    public void waitForOverlayClear() {
+        try {
+            List<WebElement> found = driver.findElements(ALL_OVERLAYS);
+            log.debug("→ waitForOverlayClear start, matching overlays: " + found.size()
+                    + " classes: " + found.stream()
+                    .map(e->e.getAttribute("class"))
+                    .collect(Collectors.joining(",")));
+            new WebDriverWait(driver, OVERLAY_WAIT)
+                    .until(ExpectedConditions.invisibilityOfElementLocated(ALL_OVERLAYS));
+            found = driver.findElements(ALL_OVERLAYS);
+            log.debug("→ waitForOverlayClear end, " +
+                    " overlays: " + found.size());
+        } catch (TimeoutException ignored) {
+            log.debug("Overlay still present after wait, proceeding anyway");
+        }
     }
 
-    /**
-     * Returns the element after waiting for its presence.
-     * Logs and throws on failure.
-     */
+    /** Finds an element after clearing overlays and presence-checking. */
     protected WebElement findElement(By locator) {
         try {
+            waitForOverlayClear();
             return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         } catch (Exception e) {
             ErrorLogger.logException(e, "findElement: " + locator, driver);
@@ -80,33 +77,19 @@ public abstract class BasePage {
     }
 
     /**
-     * Clicks an element with scroll into view and logging.
-     * Retries on stale element exception.
-     *
-     * @param locator Locator of the element to click.
-     * @param name    Friendly name used for logging and reporting.
+     * Scrolls, logs, then clicks—with one 3 s wait, plus a simple JS fallback if blocked.
      */
     public void click(By locator, String name) {
         try {
-            WebElement el = waitUntilClickable(locator);
-            // Scroll the element into view before clicking
-            jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center', inline:'center'});", el);
-            logger.debug("Click → {} | {}", name, locator);
+            waitForOverlayClear();
+            WebElement el = wait.until(ExpectedConditions.elementToBeClickable(locator));
+            jsExecutor.executeScript(
+                    "arguments[0].scrollIntoView({block:'center',inline:'center'});",
+                    el
+            );
             test.info("🔱 Click ▶ " + name);
             safeClick(el);
             test.pass("✅ Clicked " + name);
-        } catch (StaleElementReferenceException staleEx) {
-            logger.warn("⚠️ StaleElementReferenceException on '{}' — retrying once...", name);
-            try {
-                WebElement retryEl = waitUntilClickable(locator);
-                // Retry after handling stale reference
-                jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center', inline:'center'});", retryEl);
-                safeClick(retryEl);
-                test.pass("✅ Clicked " + name + " after stale element retry");
-            } catch (Exception retryFail) {
-                DiagnosticsLogger.onFailure(driver, "Click (after retry): " + name);
-                throw new RuntimeException("Failed to click '" + name + "' even after retry", retryFail);
-            }
         } catch (Exception e) {
             DiagnosticsLogger.onFailure(driver, "Click: " + name);
             throw e;
@@ -114,29 +97,25 @@ public abstract class BasePage {
     }
 
     /**
-     * Types into input fields using both normal and JS fallback strategy.
-     *
-     * @param locator Target input field.
-     * @param value   Value to be entered.
-     * @param name    Field name for logging.
+     * Types into a field, with a single 3 s wait for visibility,
+     * plus JS fallback if sendKeys fails.
      */
     public void type(By locator, String value, String name) {
         try {
-            logger.debug("Type → {} | '{}' | {}", name, value, locator);
+            waitForOverlayClear();
             test.info("⌨️ Type ▶ " + name + " : '" + value + "'");
-            WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-            scrollIntoView(locator);
-            el.click();
+            WebElement el = wait.until(ExpectedConditions.elementToBeClickable(locator));
+            jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+            safeClick(el);
             el.clear();
             try {
-                el.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.BACK_SPACE);
-                el.sendKeys(value);
-            } catch (InvalidElementStateException e) {
-                // If normal sendKeys fails (e.g. read-only or blocked), fallback to JS typing
-                logger.warn("Fallback to JS: sendKeys failed on " + name, e);
+                el.sendKeys(Keys.chord(Keys.CONTROL, "a"), value);
+            } catch (InvalidElementStateException ie) {
                 jsExecutor.executeScript(
-                        "arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('input', { bubbles: true }))",
-                        el, value);
+                        "arguments[0].value=arguments[1];" +
+                                "arguments[0].dispatchEvent(new Event('input',{bubbles:true}));",
+                        el, value
+                );
                 test.info("⚠️ JS fallback used for typing into '" + name + "'");
             }
             test.pass("✅ Typed '" + value + "' into " + name);
@@ -147,130 +126,159 @@ public abstract class BasePage {
     }
 
     /**
-     * Selects a value from an Angular ng-select component using typing + enter.
-     * Includes scroll and fallback to JS click.
-     */
-    protected void selectFromNgSelect(String formControlName, String value) {
-        By container = By.xpath(String.format("//ng-select[@formcontrolname='%s']//div[contains(@class,'ng-select-container')]", formControlName));
-        WebElement dropdown = waitUntilClickable(container);
-        // Scroll ng-select into view (helps with fixed footer modals)
-        jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center'})", dropdown);
-        try {
-            dropdown.click();
-        } catch (ElementClickInterceptedException e) {
-            // Fallback if element is obscured
-            jsExecutor.executeScript("arguments[0].click();", dropdown);
-        }
-        By filterInput = By.xpath(String.format("//ng-select[@formcontrolname='%s']//input", formControlName));
-        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(filterInput));
-        input.sendKeys(value);
-        input.sendKeys(Keys.ENTER);
-        waitForOverlayClear();
-    }
-
-    /**
-     * Clicks an element using WebDriver and falls back to JS click if blocked.
+     * Simple click: try WebElement.click(), fallback to JS if intercepted.
+     * Assumes caller has already waited for clickability.
      */
     public void safeClick(WebElement element) {
         try {
-            waitForOverlayToDisappear();
-            scrollToElement(element);
-            new WebDriverWait(driver, Duration.ofSeconds(10))
-                    .ignoring(ElementClickInterceptedException.class)
-                    .until(ExpectedConditions.elementToBeClickable(element));
             element.click();
-        } catch (ElementClickInterceptedException e) {
-            // Use JS click if WebDriver click is intercepted (e.g. overlay)
+        } catch (ElementClickInterceptedException ie) {
             jsExecutor.executeScript("arguments[0].click();", element);
         }
     }
 
-    public void waitForAngular() {
-        new WebDriverWait(driver, Duration.ofSeconds(30))
-                .until(wd -> {
-                    Object out = ((JavascriptExecutor)wd).executeAsyncScript(
-                            "var cb = arguments[arguments.length-1];" +
-                                    "if (window.getAllAngularTestabilities) {" +
-                                    "  var testabilities = window.getAllAngularTestabilities();" +
-                                    "  function check() {" +
-                                    "    if (testabilities.every(t=>t.isStable())) cb(true);" +
-                                    "    else setTimeout(check,100);" +
-                                    "  } check();" +
-                                    "} else { cb(true); }"
-                    );
-                    return Boolean.TRUE.equals(out);
-                });
-    }
-
-    /**
-     * Waits for Angular apps to finish pending tasks using testability APIs.
-     */
-    public void waitForAngularRequestsToFinish() {
-        try {
-            new WebDriverWait(driver, DEFAULT_WAIT)
-                    .until(d -> {
-                        Object ready = ((JavascriptExecutor) d).executeScript(
-                                "return (window.getAllAngularTestabilities||" +
-                                        "window.getAllAngularTestability) ? window.getAllAngularTestabilities().every(t=>t.isStable()) : true;"
-                        );
-                        return Boolean.TRUE.equals(ready);
-                    });
-        } catch (TimeoutException | JavascriptException e) {
-            // Angular might not be loaded on all pages, so continue safely
-            logger.debug("Skipping Angular wait: " + e.getMessage());
-        }
-    }
-
-    // Remaining methods unchanged — they are clear enough without line comments
+    /** Waits up to 3 s for visibility, after overlay-clear. */
     public WebElement waitUntilVisible(By locator) {
+        waitForOverlayClear();
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public WebElement waitUntilVisible(By locator, String alias) {
-        return waitUntilVisible(locator);
-    }
-
+    /** Waits up to 3 s for clickability, after overlay-clear. */
     public WebElement waitUntilClickable(By locator) {
+        waitForOverlayClear();
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public void scrollToElement(WebElement element) {
-        jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+    /**
+     * @deprecated in favor of waitUntilVisible(locator)
+     */
+    @Deprecated
+    public WebElement waitUntilVisible(By locator, String alias) {
+        test.info("🔎 Wait for ▶ " + alias);
+        return waitUntilVisible(locator);
     }
 
-    public void scrollIntoView(By locator) {
-        jsExecutor.executeScript("arguments[0].scrollIntoView({behavior:'smooth', block:'center'});", findElement(locator));
-    }
-
-    public void scrollAboveFooter(By locator, int footerHeightPx) {
-        WebElement el = findElement(locator);
-        jsExecutor.executeScript(
-                "const el=arguments[0],f=arguments[1],r=el.getBoundingClientRect()," +
-                        "v=window.innerHeight||document.documentElement.clientHeight," +
-                        "d=r.top-((v-f)/2);window.scrollBy(0,d);",
-                el, footerHeightPx
-        );
-    }
-
-    public void waitForOverlayToDisappear() {
+    /** Helper to clear overlays then wait for Angular stability (<3 s). */
+    public void waitForAngularRequestsToFinish() {
         try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(ALL_OVERLAYS));
-        } catch (TimeoutException ignored) {
-            logger.debug("Overlay may still be present — proceeding with caution.");
+            new WebDriverWait(driver, DEFAULT_WAIT)
+                    .until(d -> Boolean.TRUE.equals(jsExecutor
+                            .executeScript("return (window.getAllAngularTestabilities||" +
+                                    "window.getAllAngularTestability) ?" +
+                                    " window.getAllAngularTestabilities().every(t=>t.isStable()) : true;")
+                    ));
+        } catch (Exception e) {
+            log.debug("Skipping Angular wait: {}", e.getMessage());
         }
     }
 
-    public void waitForOverlayClear() {
+    /** Scroll helper (unchanged). */
+    public void scrollIntoView(By locator) {
+        WebElement el = findElement(locator);
+        jsExecutor.executeScript(
+                "arguments[0].scrollIntoView({behavior:'smooth',block:'center'});",
+                el
+        );
+    }
+
+    protected void sleep(long millis) {
         try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(ALL_OVERLAYS));
-        } catch (TimeoutException ignored) {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 
     /**
-     * Triggers DiagnosticsLogger manually with a custom failure context.
+     * Selects a value from any ng-select on the page (by formControlName).
      */
-    protected void failure(String context) {
-        DiagnosticsLogger.onFailure(driver, context);
+    protected void selectFromNgSelect(String formControlName, String value) {
+        waitForOverlayClear();
+        log.info("🔍 Attempting to select option '{}' from ng-select '{}'", value, formControlName);
+
+        By container = By.xpath(String.format(
+                "//ng-select[@formcontrolname='%s']//div[contains(@class,'ng-select-container')]",
+                formControlName));
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(container));
+        jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
+        try { dropdown.click(); }
+        catch(Exception e) { jsExecutor.executeScript("arguments[0].click();", dropdown); }
+
+        By panel = By.xpath("//ng-dropdown-panel");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(panel));
+
+        By filterInput = By.xpath(String.format(
+                "//ng-select[@formcontrolname='%s']//input", formControlName));
+        WebElement input = wait.until(ExpectedConditions.elementToBeClickable(filterInput));
+        input.clear();
+        input.sendKeys(value);
+
+        By option = By.xpath(String.format(
+                "//ng-dropdown-panel//div[contains(@class,'ng-option') and normalize-space()='%s']",
+                value));
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(option)).click();
+        } catch(Exception e) {
+            input.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
+        }
+
+        waitForOverlayClear();
+        log.info("✅ Successfully selected '{}' in '{}'", value, formControlName);
+    }
+
+    /**
+     * Selects an ng-select inside the given row by formControlName + filter text.
+     * Works for appendTo="body" panels.
+     */
+    protected void selectFromNgSelectInRow(WebElement row,
+                                           String formControlName,
+                                           String value) {
+        // 1) open the dropdown
+        WebElement container = row.findElement(By.cssSelector(
+                "ng-select[formcontrolname='" + formControlName + "'] .ng-select-container"
+        ));
+        jsExecutor.executeScript(
+                "arguments[0].scrollIntoView({block:'center'});", container
+        );
+        safeClick(container);
+
+        // 2) wait for the actual filter input (role=combobox) to appear & be visible
+        WebElement filter = wait.until(driver ->
+                driver.findElements(By.cssSelector("input[role='combobox']"))
+                        .stream()
+                        .filter(WebElement::isDisplayed)
+                        .findFirst()
+                        .orElse(null)
+        );
+        filter.clear();
+        filter.sendKeys(value);
+
+        // 3) pick the matching option that's visible
+        WebElement option = wait.until(driver ->
+                driver.findElements(By.cssSelector(".ng-option"))
+                        .stream()
+                        .filter(el -> el.isDisplayed() && el.getText().trim().equals(value))
+                        .findFirst()
+                        .orElse(null)
+        );
+        safeClick(option);
+
+        waitForOverlayClear();
+    }
+
+    protected void waitForRowToIncrease(By locator, int before, String context) {
+        try {
+            wait.withTimeout(Duration.ofSeconds(15))
+                    .pollingEvery(Duration.ofMillis(300))
+                    .until(d -> {
+                        int count = driver.findElements(locator).size();
+                        log.info("📊 [{}] Current count: {}", context, count);
+                        return count == before + 1;
+                    });
+        } catch (Exception e) {
+            ScreenshotHelper.capture(driver, context + "_RowIncreaseFailed");
+            log.error("❌ [{}] Row did not increase after action.", context, e);
+            throw new RuntimeException("Row increase failed: " + context, e);
+        }
     }
 }
