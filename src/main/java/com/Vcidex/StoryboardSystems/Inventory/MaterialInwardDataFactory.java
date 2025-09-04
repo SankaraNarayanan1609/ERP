@@ -95,8 +95,8 @@ public class MaterialInwardDataFactory {
         Map<Integer, String> qtyMap = new LinkedHashMap<>();
         for (int i = 0; i < rowCount; i++) {
             LineItem line = poLines.get(i);
-            int orderedQty = line.getQuantity();  // Fetch ordered quantity
-            qtyMap.put(i + 1, String.valueOf(orderedQty)); // Set it as received quantity
+            int orderedQty = (int) Math.round(line.getQuantity());
+            qtyMap.put(i + 1, String.valueOf(orderedQty));
         }
         data.setReceivedQtyByRow(qtyMap);
 

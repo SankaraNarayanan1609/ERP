@@ -68,4 +68,6 @@ public class MasterData {
      * The use of Map<String, String> is to match dynamic API format.
      */
     public List<Map<String, String>> currencies;
+
+    public List<CostCenter> costCenters;
 }

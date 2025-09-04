@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
@@ -37,9 +38,7 @@ public class FlatpickrDatePicker {
 
         WebElement trigger = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", trigger);
-        try {
-            trigger.click();
-        } catch (WebDriverException ex) {
+        try { trigger.click(); } catch (WebDriverException ex) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", trigger);
         }
 
@@ -47,23 +46,55 @@ public class FlatpickrDatePicker {
         wait.until(ExpectedConditions.visibilityOfElementLocated(openCalendar));
 
         String desiredMonthName = targetDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
-        Select monthDropdown = new Select(
-                wait.until(ExpectedConditions.visibilityOfElementLocated(
-                        By.cssSelector(".flatpickr-calendar.open .flatpickr-monthDropdown-months"))));
-        monthDropdown.selectByVisibleText(desiredMonthName);
 
-        WebElement yearInput = wait.until(ExpectedConditions.elementToBeClickable(
-                By.cssSelector(".flatpickr-calendar.open .cur-year")));
-        yearInput.clear();
-        yearInput.sendKeys(String.valueOf(targetDate.getYear()), Keys.ENTER);
+        // ── Path A: dropdown exists
+        var dropdowns = driver.findElements(By.cssSelector(".flatpickr-calendar.open .flatpickr-monthDropdown-months"));
+        if (!dropdowns.isEmpty()) {
+            new Select(dropdowns.get(0)).selectByVisibleText(desiredMonthName);
+
+            WebElement yearInput = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.cssSelector(".flatpickr-calendar.open .cur-year")));
+            yearInput.clear();
+            yearInput.sendKeys(String.valueOf(targetDate.getYear()), Keys.ENTER);
+        } else {
+            // ── Path B: no dropdown → navigate with arrows
+            for (int guard = 0; guard < 24; guard++) { // 2-year safety window
+                WebElement currentMonthEl = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        By.cssSelector(".flatpickr-calendar.open .flatpickr-current-month")));
+                String header = currentMonthEl.getText(); // e.g., "March 2025"
+                boolean atTarget = header != null
+                        && header.toLowerCase(Locale.ENGLISH).contains(desiredMonthName.toLowerCase(Locale.ENGLISH))
+                        && header.contains(String.valueOf(targetDate.getYear()));
+                if (atTarget) break;
+
+                // Decide direction based on displayed year/month vs target
+                // If header parse fails, fall back to direction by date comparison with "now"
+                boolean goNext = true;
+                try {
+                    String[] parts = header.trim().split("\\s+");
+                    int currYear = Integer.parseInt(parts[parts.length - 1]);
+                    String currMonthName = parts[0];
+                    int currMonth = Month.valueOf(currMonthName.toUpperCase(Locale.ENGLISH)).getValue();
+                    int tgtMonth = targetDate.getMonthValue();
+
+                    if (currYear < targetDate.getYear()) goNext = true;
+                    else if (currYear > targetDate.getYear()) goNext = false;
+                    else goNext = currMonth < tgtMonth;
+                } catch (Exception ignore) {
+                    goNext = targetDate.isAfter(LocalDate.now());
+                }
+
+                By arrow = goNext
+                        ? By.cssSelector(".flatpickr-calendar.open .flatpickr-next-month")
+                        : By.cssSelector(".flatpickr-calendar.open .flatpickr-prev-month");
+                wait.until(ExpectedConditions.elementToBeClickable(arrow)).click();
+            }
+        }
 
         String ariaLabel = desiredMonthName + " " + targetDate.getDayOfMonth() + ", " + targetDate.getYear();
         WebElement dayCell = wait.until(ExpectedConditions.elementToBeClickable(
-                By.cssSelector(
-                        ".flatpickr-calendar.open " +
-                                ".flatpickr-day[aria-label=\"" + ariaLabel + "\"]" +
-                                ":not(.prevMonthDay):not(.nextMonthDay)"
-                )));
+                By.cssSelector(".flatpickr-calendar.open .flatpickr-day[aria-label=\"" + ariaLabel + "\"]:not(.prevMonthDay):not(.nextMonthDay)")
+        ));
         dayCell.click();
     }
 

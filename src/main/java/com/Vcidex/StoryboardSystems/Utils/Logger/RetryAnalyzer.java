@@ -9,14 +9,15 @@ import org.testng.ITestResult;
  */
 public class RetryAnalyzer implements IRetryAnalyzer {
     private int retryCount = 0;
-    private static final int maxRetry = 1;  // Retry only once
+    private static final int maxRetry = 1;
+
+    public static int getMaxRetry() { return maxRetry; }
 
     @Override
     public boolean retry(ITestResult result) {
         if (retryCount < maxRetry) {
-            if (Boolean.TRUE.equals(result.getAttribute("retry"))) {
-                ReportManager.getTest().assignCategory("RETRIED");
-            }
+            result.setAttribute("retry", true);
+            result.setAttribute("retryCount", retryCount);
             retryCount++;
             return true;
         }

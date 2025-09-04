@@ -1,4 +1,3 @@
-// ScreenshotHelper.java
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
 import org.openqa.selenium.OutputType;
@@ -12,17 +11,13 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
-/**
- * Solely responsible for capturing and writing PNG screenshots.
- */
 public class ScreenshotHelper {
-    private static final Path SCREENSHOT_DIR = Path.of("logs", "screenshots");
-    static {
-        try {
-            Files.createDirectories(SCREENSHOT_DIR);
-        } catch (IOException e) {
-            throw new RuntimeException("Could not create screenshot dir", e);
-        }
+
+    private static Path root() {
+        Path od = ReportManager.outDir();
+        Path r = (od != null ? od : Path.of("test-output")).resolve("assets").resolve("screens");
+        try { Files.createDirectories(r); } catch (IOException e) { throw new RuntimeException("Could not create screenshot dir", e); }
+        return r;
     }
 
     public static Path capture(WebDriver driver, String context) {
@@ -30,7 +25,7 @@ public class ScreenshotHelper {
             String fileName = context.replaceAll("\\W+", "_")
                     + "_" + Instant.now().toEpochMilli()
                     + "_" + UUID.randomUUID() + ".png";
-            Path target = SCREENSHOT_DIR.resolve(fileName);
+            Path target = root().resolve(fileName);
             Files.copy(
                     ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE).toPath(),
                     target
@@ -40,6 +35,7 @@ public class ScreenshotHelper {
             throw new RuntimeException("Screenshot failed: " + e.getMessage(), e);
         }
     }
+
     public static Optional<Path> safeCapture(WebDriver driver, String context) {
         try {
             Path path = capture(driver, context);

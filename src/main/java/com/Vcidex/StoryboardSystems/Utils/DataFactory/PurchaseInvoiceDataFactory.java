@@ -10,6 +10,9 @@ package com.Vcidex.StoryboardSystems.Utils.DataFactory;
 import com.Vcidex.StoryboardSystems.CmnMasterPOJO.Employee;
 import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.*;
+import com.Vcidex.StoryboardSystems.Purchase.POJO.LineItem;
+import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseInvoiceData;
+import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
 import com.github.javafaker.Faker;
 
 import java.math.BigDecimal;
@@ -177,11 +180,12 @@ public class PurchaseInvoiceDataFactory {
                     .description(product.getProductDesc())
                     .quantity(quantity)
                     .price(price)
-                    .discountAmt(discountAmt)
+                    .discountAmt(discountAmt)     // or set discountPct instead, but be consistent with your formula
                     .taxPrefix(taxPrefix)
-                    .taxRate(taxRate)
+                    .taxRate(taxRate)             // e.g., 0.18 for 18%
                     .build();
-            item.computeTotal();
+
+            item.computeAndGetTotal(); // ensure totalAmount is set
             lineItems.add(item);
         }
 
@@ -223,17 +227,15 @@ public class PurchaseInvoiceDataFactory {
 
         data.computeNetAmount();
         data.computeGrandTotal();
-
         return data;
     }
 
     /**
      * Clone data from a Purchase Order and reuse it to create a linked Invoice.
      */
+    /** Clone data from a Purchase Order and reuse it to create a linked Invoice. */
     public static PurchaseInvoiceData createFromPO(PurchaseOrderData po) {
-        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String purchaseType = "Product";
-
         if (po.getLineItems() != null && !po.getLineItems().isEmpty()) {
             String name = po.getLineItems().get(0).getProductName();
             if (name != null && name.toLowerCase().contains("service")) {
@@ -242,40 +244,50 @@ public class PurchaseInvoiceDataFactory {
         }
 
         PurchaseInvoiceData invoice = PurchaseInvoiceData.builder()
+                // Basic
                 .branchName(po.getBranchName())
-                .invoiceRefNo("PI-" + faker.number().digits(6))
+                .invoiceRefNo("PI-" + System.currentTimeMillis())        // or your faker/dedicated generator
                 .invoiceDate(LocalDate.now())
                 .dueDate(LocalDate.now().plusDays(10))
+
+                // Party / addresses
                 .vendorName(po.getVendorName())
                 .vendorDetails(po.getVendorDetails())
                 .billTo(po.getBillTo())
                 .shipTo(po.getShipTo())
                 .requestedBy(po.getRequestedBy())
                 .requestorContactDetails(po.getRequestorContactDetails())
+
+                // Terms
                 .deliveryTerms(po.getDeliveryTerms())
                 .paymentTerms(po.getPaymentTerms())
                 .purchaseType(purchaseType)
                 .dispatchMode(po.getDispatchMode())
                 .currency(po.getCurrency())
                 .exchangeRate(po.getExchangeRate())
-                .coverNote("Auto-generated from PO: " + now)
+                .coverNote("Auto-generated from PO: " + po.getPoRefNo())
                 .renewal(po.isRenewal())
                 .renewalDate(po.getRenewalDate())
                 .frequency(po.getFrequency())
                 .termsAndConditions(po.getTermsAndConditions())
                 .termsEditorText(po.getTermsEditorText())
-                .lineItems(po.getLineItems())
+
+                // Financials / lines
+                .lineItems(po.getLineItems() == null ? java.util.List.<LineItem>of() : po.getLineItems())
                 .addOnCharges(po.getAddOnCharges())
                 .additionalDiscount(po.getAdditionalDiscount())
                 .freightCharges(po.getFreightCharges())
                 .additionalTax(po.getAdditionalTax())
                 .roundOff(po.getRoundOff())
+
+                // Misc
                 .remarks("Imported from PO " + po.getPoRefNo())
-                .billingEmail("billing@storyboarderp.com")
+                .billingEmail("billing@storyboarderp.com") // or from PO if you have it
                 .termsTemplate("Default Template")
                 .termsContent("Ensure to verify goods and report discrepancies within 2 days.")
                 .build();
 
+        // finalize computed totals
         invoice.computeNetAmount();
         invoice.computeGrandTotal();
         return invoice;

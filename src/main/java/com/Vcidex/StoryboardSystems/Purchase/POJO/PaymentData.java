@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 @Data
 public class PaymentData {
-
+    private String vendorName;
     private String invoiceRefNo;      // Invoice against which payment is made
     private LocalDate paymentDate;    // When payment is recorded
     private String paymentRemarks;    // Short text for context

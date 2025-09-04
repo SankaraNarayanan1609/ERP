@@ -1,10 +1,11 @@
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 
+import com.Vcidex.StoryboardSystems.Common.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class PO_Mail extends PurchaseBasePage {
+public class PO_Mail extends BasePage {
 
     // Constructor
     public PO_Mail(WebDriver driver) {

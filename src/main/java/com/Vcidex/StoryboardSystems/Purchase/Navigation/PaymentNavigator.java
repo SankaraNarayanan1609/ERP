@@ -6,14 +6,8 @@ import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.Layer;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.aventstack.extentreports.ExtentTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
 
-import java.time.Duration;
 import java.util.List;
 
 public class PaymentNavigator {
@@ -27,97 +21,101 @@ public class PaymentNavigator {
         this.rootTest = rootTest;
     }
 
-    /**
-     * Navigate to Single Payment section and open the modal for a specific vendor invoice.
-     */
+    /** Navigate to Single Payment and open modal for a specific vendor/invoice. */
     public SinglePaymentPage openSinglePayment(String vendorName, String invoiceRefNo) {
-        ExtentTest node = rootTest.createNode("🔍 Navigate to Single Payment");
-        ReportManager.setTest(node);
+        try (ReportManager.Scope s = ReportManager.with(rootTest.createNode("🔍 Navigate to Single Payment"))) {
 
-        MasterLogger.step(Layer.UI, "Navigate to Payment page", () -> {
-            nav.goTo("Purchase", "Payable", "Payment");
-            return null;
-        });
+            // Go to Payment page (Purchase header → Payable module → Payment)
+            MasterLogger.step(Layer.UI, "Navigate ▶ Purchase (header) → Payable → Payment", (Runnable) () -> {
+                nav.open(
+                        "Purchase",
+                        "Payable",
+                        "Payment",
+                        d -> !d.findElements(By.xpath("//h3[contains(normalize-space(.),'Payment Summary')]")).isEmpty()
+                );
+            });
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//h3[contains(text(),'Payment Summary')]")));
-
-        WebElement addPaymentBtn = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[contains(text(),'Add Payment')]")));
-        addPaymentBtn.click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//h1[contains(text(),'Add Payment')]")));
-
-        // Get all rows in sequence
-        List<WebElement> allRows = driver.findElements(By.xpath("//table//tbody//tr"));
-        int index = 0;
-
-        while (index < allRows.size()) {
-            WebElement row = allRows.get(index);
-
-            String vendorText = row.getText().trim();
-            if (!vendorText.contains(vendorName)) {
-                index++;
-                continue;
+            // Click Add Payment
+            By addPaymentBtn = By.xpath("//button[contains(normalize-space(.),'Add Payment')]");
+            try {
+                nav.waitUntilClickable(addPaymentBtn, "Add Payment").click();
+            } catch (Exception e) {
+                WebElement elm = driver.findElement(addPaymentBtn);
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView(true); arguments[0].click();", elm);
             }
 
-            boolean hasChevron = !row.findElements(By.xpath(".//i[contains(@class,'bi-chevron-right')]")).isEmpty();
-            if (hasChevron) {
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", row);
-                WebElement icon = row.findElement(By.xpath(".//i[contains(@class,'bi-chevron-right')]"));
-                icon.click();
+            // Add Payment page up
+            nav.waitUntilVisible(By.xpath("//h1[contains(normalize-space(.),'Add Payment')]"), "Add Payment");
 
-                try {
-                    Thread.sleep(1000); // Allow invoice rows to load
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    throw new RuntimeException("Interrupted while waiting for invoice rows to load", e);
-                }
+            // Walk the rows to find vendor & invoice, then click Payment
+            List<WebElement> allRows = driver.findElements(By.xpath("//table//tbody//tr"));
+            int index = 0;
 
-                index++;
-                while (index < allRows.size()) {
-                    WebElement invoiceRow = allRows.get(index);
+            while (index < allRows.size()) {
+                WebElement row = allRows.get(index);
+                String vendorText = row.getText().trim();
 
-                    // If we reach another vendor row, break
-                    boolean nextIsVendor = !invoiceRow.findElements(By.xpath(".//i[contains(@class,'bi-chevron-right')]")).isEmpty();
-                    if (nextIsVendor) break;
+                if (!vendorText.contains(vendorName)) { index++; continue; }
 
-                    List<WebElement> cells = invoiceRow.findElements(By.tagName("td"));
-                    if (cells.size() >= 3) {
-                        String refNo = cells.get(2).getText().trim();
-                        if (refNo.equals(invoiceRefNo)) {
-                            WebElement payBtn = invoiceRow.findElement(
-                                    By.xpath(".//button[contains(text(),'Payment')]"));
-
-                            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", payBtn);
-                            try {
-                                Thread.sleep(300); // brief pause after scroll
-                            } catch (InterruptedException e) {
-                                Thread.currentThread().interrupt();
-                                throw new RuntimeException("Interrupted while waiting for UI element scroll", e);
-                            }
-
-                            try {
-                                payBtn.click();
-                            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
-                                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", payBtn); // fallback click
-                            }
-
-                            ReportManager.setTest(rootTest); // Reset to root context
-                            return new SinglePaymentPage(driver);
-                        }
+                boolean hasChevron = !row.findElements(By.xpath(".//i[contains(@class,'bi-chevron-right')]")).isEmpty();
+                if (hasChevron) {
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", row);
+                    WebElement icon = row.findElement(By.xpath(".//i[contains(@class,'bi-chevron-right')]"));
+                    try { icon.click(); } catch (Exception e) {
+                        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", icon);
                     }
+
+                    index++;
+                    while (index < allRows.size()) {
+                        WebElement invoiceRow = allRows.get(index);
+
+                        boolean nextIsVendor = !invoiceRow.findElements(By.xpath(".//i[contains(@class,'bi-chevron-right')]")).isEmpty();
+                        if (nextIsVendor) break;
+
+                        List<WebElement> cells = invoiceRow.findElements(By.tagName("td"));
+                        if (cells.size() >= 3) {
+                            String refNo = cells.get(2).getText().trim();
+                            if (refNo.equals(invoiceRefNo)) {
+                                WebElement payBtn = invoiceRow.findElement(By.xpath(".//button[contains(normalize-space(.),'Payment')]"));
+                                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", payBtn);
+                                try { payBtn.click(); } catch (ElementClickInterceptedException e) {
+                                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", payBtn);
+                                }
+                                return new SinglePaymentPage(driver);
+                            }
+                        }
+                        index++;
+                    }
+                } else {
                     index++;
                 }
-            } else {
-                index++;
             }
-        }
 
-        MasterLogger.step(Layer.UI, "Invoice RefNo NOT found: " + invoiceRefNo, () -> {});
-        throw new IllegalStateException("Invoice RefNo not found: " + invoiceRefNo);
+            MasterLogger.warn("Invoice RefNo NOT found: " + invoiceRefNo);
+            throw new IllegalStateException("Invoice RefNo not found: " + invoiceRefNo);
+        }
+    }
+
+    // PaymentNavigator.java
+    public static final class PayResult {
+        private final String paymentNo;
+        public PayResult(String paymentNo) { this.paymentNo = paymentNo; }
+        public String paymentNo() { return paymentNo; }
+    }
+
+    public PayResult pay(com.Vcidex.StoryboardSystems.Purchase.POJO.PaymentData data) {
+        try (ReportManager.Scope s = ReportManager.with(rootTest.createNode("💳 Make Payment for " + data.getInvoiceRefNo()))) {
+            // We need vendor to expand the correct block on the list
+            String vendor = data.getVendorName();
+            if (vendor == null || vendor.isBlank()) {
+                throw new IllegalArgumentException("PaymentData.vendorName is required to locate the invoice row.");
+            }
+
+            SinglePaymentPage page = openSinglePayment(vendor, data.getInvoiceRefNo());
+            page.makePayment(data, rootTest);
+            String paymentNo = page.submitAndCapture(rootTest);
+            return new PayResult(paymentNo);
+        }
     }
 }

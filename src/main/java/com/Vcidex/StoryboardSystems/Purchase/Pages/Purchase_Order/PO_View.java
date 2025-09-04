@@ -1,10 +1,11 @@
 package com.Vcidex.StoryboardSystems.Purchase.Pages.Purchase_Order;
 
+import com.Vcidex.StoryboardSystems.Common.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class PO_View extends PurchaseBasePage {
+public class PO_View extends BasePage {
 
     // Constructor
     public PO_View(WebDriver driver) {

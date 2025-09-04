@@ -1,62 +1,44 @@
 package com.Vcidex.StoryboardSystems;
 
-// ─── Imports ─────────────────────────────────────────────────────────────
 import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
 import com.Vcidex.StoryboardSystems.Utils.Config.ConfigManager;
+import com.Vcidex.StoryboardSystems.Utils.DataFactory.PurchaseIndentDataFactory;
 import com.Vcidex.StoryboardSystems.Utils.DataFactory.PurchaseOrderDataFactory;
+import com.Vcidex.StoryboardSystems.Utils.TestContext;
 import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import com.Vcidex.StoryboardSystems.Utils.UIEventListener;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
+import com.aventstack.extentreports.ExtentTest;
 import org.json.JSONObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.PageLoadStrategy;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v134.network.Network;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.events.EventFiringDecorator;
-import org.openqa.selenium.support.events.WebDriverListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Optional;
-import java.io.File;
+import org.testng.annotations.*;
+import org.openqa.selenium.logging.LoggingPreferences;
+
 import java.time.Duration;
-import java.util.List;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.URI;
+import java.util.logging.Level;
 
 public abstract class TestBase {
 
     private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
 
-    // ─── Shared Fields for All Child Test Classes ───────────────────────
-    protected static PurchaseOrderDataFactory factory;
     protected WebDriver driver;
-
     protected String appName;
     protected String baseUrl;
     protected String companyCode;
     protected String userId;
     private String loginUrl;
 
-    public static void initDataFactory(String bearerToken) {
-        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            bearerToken = bearerToken.substring("Bearer ".length());
-        }
-        String env = System.getProperty("env", "test");
-        JSONObject appConfig = ConfigManager.getAppConfig(env, "StoryboardSystems");
-        String apiBase = appConfig.getString("apiBase");
-        factory = new PurchaseOrderDataFactory(
-                new ApiMasterDataProvider(apiBase, bearerToken)
-        );
-        logger.info("✅ Initialized data factory with JWT");
-    }
+    // Shared across tests
+    protected ApiMasterDataProvider api;
+    protected PurchaseOrderDataFactory poFactory;
+    protected PurchaseIndentDataFactory indentFactory;
 
     @BeforeSuite(alwaysRun = true)
     @Parameters({ "appName", "companyCode", "userId" })
@@ -65,93 +47,83 @@ public abstract class TestBase {
             @Optional String paramCompanyCode,
             @Optional String paramUserId
     ) {
-        String env = System.getProperty("env", "test");
-        this.appName     = paramAppName     != null ? paramAppName     : "StoryboardSystems";
-        this.companyCode = paramCompanyCode != null ? paramCompanyCode : "vcidex";
-        this.userId      = paramUserId      != null ? paramUserId      : "vcx288";
+        final String env   = System.getProperty("env", "test");
+        final String build = System.getProperty("build", "local");
+
+        this.appName     = (paramAppName     != null) ? paramAppName     : "StoryboardSystems";
+        this.companyCode = (paramCompanyCode != null) ? paramCompanyCode : "vcidex";
+        this.userId      = (paramUserId      != null) ? paramUserId      : "superadmin";
+
+        TestContext.set("userId", userId);
+        TestContext.set("companyCode", companyCode);
+        TestContext.set("appName", appName);
 
         JSONObject appConfig = ConfigManager.getAppConfig(env, appName);
-        String loginUrl = appConfig.getString("loginUrl");
+        this.loginUrl = appConfig.getString("loginUrl");
+        String apiBase = appConfig.getString("apiBase");
         logger.info("App Config: {}", appConfig);
 
-        // ─── ChromeOptions WITHOUT headless ────────────────────────────
-        ChromeOptions opts = new ChromeOptions();
-        // remove any "--headless" flags here
-        opts.setPageLoadStrategy(PageLoadStrategy.EAGER);
-        WebDriver raw = new ChromeDriver(opts);
+        // Init Extent
+        ReportManager.init(env, build);
+        System.out.println("📄 Extent report will be at: " +
+                ReportManager.outDir().resolve("index.html").toAbsolutePath());
 
-        // wrap with your listener
+        // WebDriver boot
+        ChromeOptions opts = new ChromeOptions();
+        opts.setPageLoadStrategy(PageLoadStrategy.EAGER);
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        opts.setCapability("goog:loggingPrefs", logPrefs);
+
+        WebDriver raw = new ChromeDriver(opts);
         driver = new EventFiringDecorator(new UIEventListener()).decorate(raw);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(5));
-
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
         ThreadSafeDriverManager.setDriver(driver);
-        ReportManager.setDriver(driver);
         logger.info("🚀 WebDriver ready");
 
-        // ─── bump page‐load timeout for the login nav ────────────────
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        // UI login
+        LoginManager lm = new LoginManager(driver, appName, companyCode, userId);
+        lm.loginViaUi();
 
-        // ─── do the real UI login ────────────────────────────────────
-        LoginManager lm = new LoginManager(driver, null);
-        lm.loginViaUi(appName, companyCode, userId);
+        ExtentTest root = ReportManager.createTest("🔧 Suite Setup: " + appName + " (" + env + ")", "Setup");
+        ReportManager.setTest(root);
+        ReportManager.table(new String[][]{
+                {"User ID",     userId},
+                {"Environment", env},
+                {"Company",     companyCode},
+                {"App",         appName}
+        }, "Login");
 
-        // ─── restore your normal (short) page‐load timeout ───────────
+        // Relax pageLoad timeout after landing
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
 
-        // ─── grab the JWT out of localStorage ───────────────────────
+        // 🔑 Grab JWT from localStorage (strip prefix if present)
         String jwt = (String)((JavascriptExecutor)driver)
                 .executeScript("return window.localStorage.getItem('token');");
         if (jwt == null) {
             throw new RuntimeException("UI login succeeded but no token found in localStorage");
         }
-        logger.info("✅ Retrieved JWT from UI login");
-
-        // ─── initialize your data factory ────────────────────────────
-        initDataFactory(jwt);
-    }
-
-    private String fetchJwtViaApi(String companyCode, String userId) {
-        try {
-            String env     = System.getProperty("env", "test");
-            String apiBase = ConfigManager
-                    .getAppConfig(env, appName)
-                    .getString("apiBase");   // "https://erplite.storyboarderp.com"
-
-            // Build the exact JSON payload your UI sends
-            String body = new JSONObject()
-                    .put("companyCode", companyCode)
-                    .put("userId",      userId)
-                    .put("password",    "s")
-                    .toString();
-
-            HttpRequest req = HttpRequest.newBuilder()
-                    .uri(URI.create(apiBase + "/StoryboardAPI/api/Login/UserLogin"))
-                    .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(body))
-                    .build();
-
-            HttpResponse<String> resp = HttpClient.newHttpClient()
-                    .send(req, HttpResponse.BodyHandlers.ofString());
-
-            if (resp.statusCode() != 200) {
-                throw new RuntimeException("Login API failed ("
-                        + resp.statusCode() + "): " + resp.body());
-            }
-
-            // Parse the token out of the JSON response
-            JSONObject root = new JSONObject(resp.body());
-            return root.getString("token");
-        } catch (Exception e) {
-            throw new RuntimeException("Could not fetch JWT", e);
+        if (jwt.startsWith("Bearer ")) {
+            jwt = jwt.substring("Bearer ".length());
         }
+
+        // ✅ Build API provider & data factories with the authenticated token
+        api           = new ApiMasterDataProvider(apiBase, jwt); // 2-arg ctor
+        poFactory     = new PurchaseOrderDataFactory(api);
+        indentFactory = new PurchaseIndentDataFactory(api);
+
+        logger.info("✅ Factories initialized with JWT against {}", apiBase);
     }
 
     @AfterSuite(alwaysRun = true)
     public void tearDownSuite() {
         try {
             ReportManager.flush();
+            System.out.println("🧾 Extent report flushed: " +
+                    ReportManager.outDir().resolve("index.html").toAbsolutePath());
         } catch (Exception e) {
             System.err.println("❌ Report flush failed: " + e.getMessage());
         }

@@ -7,8 +7,6 @@ import java.util.Map;
 public class LocalStorageHelper {
     public static void setLocalStorage(WebDriver driver, Map<String, String> data) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        data.forEach((k, v) -> {
-            js.executeScript(String.format("window.localStorage.setItem('%s','%s');", k, v));
-        });
+        data.forEach((k, v) -> js.executeScript("window.localStorage.setItem(arguments[0], arguments[1]);", k, v));
     }
 }

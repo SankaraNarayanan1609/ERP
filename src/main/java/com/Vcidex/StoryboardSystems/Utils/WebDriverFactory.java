@@ -43,43 +43,35 @@ public class WebDriverFactory {
         WebDriver driver = ThreadSafeDriverManager.getDriver();
         if (driver != null) return driver;
 
-        driver = switch (BrowserType.valueOf(browser.toUpperCase())) {
-            case FIREFOX -> {
-                WebDriverManager.firefoxdriver().setup();
-                yield new FirefoxDriver(getFirefoxOptions(headless));
-            }
-            case EDGE -> {
-                WebDriverManager.edgedriver().setup();
-                yield new EdgeDriver(getEdgeOptions(headless));
-            }
-            case CHROME -> {
-                WebDriverManager.chromedriver().setup();
-                yield new ChromeDriver(getChromeOptions(headless));
-            }
+        WebDriver raw = switch (BrowserType.valueOf(browser.toUpperCase())) {
+            case FIREFOX -> { WebDriverManager.firefoxdriver().setup(); yield new FirefoxDriver(getFirefoxOptions(headless)); }
+            case EDGE    -> { WebDriverManager.edgedriver().setup();  yield new EdgeDriver(getEdgeOptions(headless)); }
+            default      -> { WebDriverManager.chromedriver().setup(); yield new ChromeDriver(getChromeOptions(headless)); }
         };
 
-        // ─── Maximize + GUI Positioning ──────────────────────────────────────────
-        driver.manage().window().maximize();
-        driver.manage().window().setPosition(new Point(0, 0)); // Force visible position
-        driver.manage().window().setSize(new Dimension(1280, 800)); // Standard test resolution
+        // Decorate with UIEventListener (Selenium 4)
+        var decorated = new org.openqa.selenium.support.events.EventFiringDecorator<>(new UIEventListener()).decorate(raw);
 
-        driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT);
-        driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT);
-        driver.manage().timeouts().scriptTimeout(SCRIPT_TIMEOUT);
+        decorated.manage().window().setPosition(new Point(0, 0));
+        decorated.manage().window().setSize(new Dimension(1280, 800));
 
-        ThreadSafeDriverManager.setDriver(driver);
-        System.out.println("✅ WebDriver Initialized for browser: " + browser.toUpperCase() +
-                " | Headless Mode: " + headless);
+        // IMPORTANT: Explicit waits only
+        decorated.manage().timeouts().implicitlyWait(Duration.ZERO);
+        decorated.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT);
+        decorated.manage().timeouts().scriptTimeout(SCRIPT_TIMEOUT);
 
-        return driver;
+        // Optional: start CDP network logging (config-gated inside)
+        com.Vcidex.StoryboardSystems.Utils.Logger.NetworkLogger.start(decorated);
+
+        ThreadSafeDriverManager.setDriver(decorated);
+        System.out.println("✅ WebDriver Initialized for " + browser.toUpperCase() + " | Headless: " + headless);
+        return decorated;
     }
 
-    /**
-     * Safely shuts down and removes the current driver.
-     */
     public static void quitDriver() {
         WebDriver driver = ThreadSafeDriverManager.getDriver();
         if (driver != null) {
+            try { com.Vcidex.StoryboardSystems.Utils.Logger.NetworkLogger.stop(); } catch (Exception ignore) {}
             driver.quit();
             ThreadSafeDriverManager.removeDriver();
             System.out.println("🔴 WebDriver Quit Successfully");

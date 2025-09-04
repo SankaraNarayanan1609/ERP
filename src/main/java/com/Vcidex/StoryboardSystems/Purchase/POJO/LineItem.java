@@ -1,90 +1,77 @@
-/**
- * Represents a single product or service entry in a Purchase Order (PO).
- *
- * ─────────────────────────────────────────────────────────────────────────────
- * Lombok Annotations:
- * - {@code @Data}    → Auto-generates getters, setters, toString(), equals(), hashCode()
- * - {@code @Builder} → Enables the builder pattern to create instances fluently
- *
- * Example:
- * LineItem item = LineItem.builder()
- *                         .productName("UPS Battery")
- *                         .quantity(5)
- *                         .price(new BigDecimal("1200.00"))
- *                         .build();
- *
- *  * This saves a lot of boilerplate code, and should be used carefully for data-only classes.
- * ─────────────────────────────────────────────────────────────────────────────
- * Each LineItem holds:
- * - Product identity (group, code, name)
- * - Commercial values (price, quantity, discount, tax)
- * - Derived amount fields like total amount
- * - Embedded Product object for reference
- */
 package com.Vcidex.StoryboardSystems.Purchase.POJO;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
-@Builder
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class LineItem {
 
-    // ─── Product Identity ─────────────────────────────────────────────
-    private String productGroup;   // e.g., "Electronics", "Raw Materials"
-    private String productCode;    // Unique SKU or code
-    private String productName;    // Human-readable name of product
-    private String description;    // Optional remarks or extended name
+    private String productGroup;
+    private String productCode;
+    private String productName;
+    private String description;
+    private double quantity;
 
-    // ─── Commercial Fields ────────────────────────────────────────────
-    private int quantity;          // Quantity ordered
-    private BigDecimal price;      // Unit price
-    private BigDecimal discountPct; // Optional discount % for display/reference
-    private BigDecimal discountAmt; // Discount amount used for calculation
+    @Builder.Default
+    private BigDecimal price = BigDecimal.ZERO;
 
-    // ─── Taxation Fields ──────────────────────────────────────────────
-    private String taxPrefix;      // e.g., "GST 18%", for display
-    private BigDecimal taxRate;    // e.g., 0.18 for 18% GST
+    @Builder.Default
+    private BigDecimal discountPct = BigDecimal.ZERO;
 
-    // ─── Derived Calculation ──────────────────────────────────────────
-    private BigDecimal totalAmount; // Final line total after discount and tax
+    private BigDecimal discountAmt;
+    private String taxPrefix;
+    private BigDecimal taxRate;
+    private BigDecimal totalAmount;
+    private Product product;
 
-    // ─── Embedded Product Object ──────────────────────────────────────
-    private Product product;       // Full product master object (optional, for traceability)
+    @Builder.Default
+    private boolean success = false;
+    private String failureReason;
+    private int index;
 
-    /**
-     * Returns the discount percentage if needed for reporting.
-     * This is useful for summary displays or re-calculations.
-     *
-     * @return Discount percent applied on this line
-     */
-    public BigDecimal getDiscount() {
-        return discountPct;
+    public BigDecimal computeTotalAmount() {
+        BigDecimal qty  = BigDecimal.valueOf(this.quantity);
+        BigDecimal p    = this.price != null ? this.price : BigDecimal.ZERO;
+        BigDecimal base = p.multiply(qty);
+
+        BigDecimal dPct = this.discountPct != null ? this.discountPct : BigDecimal.ZERO;
+        BigDecimal discount = base.multiply(dPct)
+                .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+
+        return base.subtract(discount);
     }
 
-    /**
-     * Calculates the totalAmount by applying discount and tax.
-     *
-     * Formula:
-     *     Subtotal = price × quantity
-     *     Discounted = Subtotal - discountAmt
-     *     Tax = Discounted × taxRate
-     *     totalAmount = Discounted + Tax
-     *
-     * This method should be called after setting all price-related fields.
-     */
+    public BigDecimal computeAndGetTotal() {
+        BigDecimal qty  = BigDecimal.valueOf(this.quantity);
+        BigDecimal p    = this.price != null ? this.price : BigDecimal.ZERO;
+
+        // base = price * qty
+        BigDecimal base = p.multiply(qty);
+
+        // discount = max(discountAmt, base * discountPct/100)
+        BigDecimal pct  = this.discountPct != null ? this.discountPct : BigDecimal.ZERO;
+        BigDecimal pctAmt = base.multiply(pct).divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+        BigDecimal dAmt = this.discountAmt != null ? this.discountAmt : BigDecimal.ZERO;
+        BigDecimal discount = dAmt.max(pctAmt); // choose your rule; or add them if that’s your business logic
+
+        BigDecimal taxable = base.subtract(discount).max(BigDecimal.ZERO);
+
+        BigDecimal tRate = this.taxRate != null ? this.taxRate : BigDecimal.ZERO; // e.g., 0.18
+        BigDecimal tAmt  = taxable.multiply(tRate).setScale(2, RoundingMode.HALF_UP);
+
+        this.totalAmount = taxable.add(tAmt).setScale(2, RoundingMode.HALF_UP);
+        return this.totalAmount;
+    }
+
     public void computeTotal() {
-        // Subtotal = price * quantity
-        BigDecimal subtotal = price.multiply(BigDecimal.valueOf(quantity));
-
-        // Apply discount
-        BigDecimal discounted = subtotal.subtract(discountAmt);
-
-        // Add tax
-        this.totalAmount = discounted.add(discounted.multiply(taxRate));
+        computeAndGetTotal();
     }
 }

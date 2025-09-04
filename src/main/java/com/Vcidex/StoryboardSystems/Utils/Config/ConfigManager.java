@@ -1,24 +1,9 @@
-/**
- * ConfigManager is responsible for loading environment-specific configurations
- * from both:
- *  - a JSON file (used for structured application, company, user, and auth data)
- *  - a properties file (used for basic key-value pairs)
- *
- * 📂 JSON config path: `src/main/resources/config.json`
- * 📂 Properties path:  `config.properties`
- *
- * 💡 Key Capabilities:
- * - Fetch config per environment, application, company, user, and auth section
- * - Load fallback values from properties if JSON is missing
- * - Centralized utility for config-driven test and framework behavior
- */
-
 package com.Vcidex.StoryboardSystems.Utils.Config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -26,181 +11,203 @@ import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.Set;
 
+/**
+ * 🔧 ConfigManager handles hierarchical config from:
+ * - config.json → for env → app → company → user
+ * - config.properties → for runtime overrides like env/user/app + DB, timeouts, etc.
+ */
 public class ConfigManager {
 
-    // SLF4J logger for logging success/failure of config loading
     private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
 
-    // Path to the static JSON configuration file (usually version-controlled)
     private static final String JSON_CONFIG_PATH = "src/main/resources/config.json";
-
-    // Properties file name in classpath (used for fallback or simple key-values)
     private static final String PROP_FILE = "config.properties";
 
-    // Holds the full parsed config.json structure
     private static JSONObject jsonConfig;
+    private static Properties prop = new Properties();
 
-    // ─── Static Initializer: Load config.json once on class load ──────────────────────
     static {
         try {
-            // Read the file content into a string
+            // Load JSON config
             String text = new String(Files.readAllBytes(Paths.get(JSON_CONFIG_PATH)));
-
-            // Parse it into a JSONObject
             jsonConfig = new JSONObject(text);
-
             logger.info("✅ Loaded JSON config: {}", JSON_CONFIG_PATH);
+
+            // Load properties
+            try (InputStream in = ConfigManager.class.getClassLoader().getResourceAsStream(PROP_FILE)) {
+                if (in != null) {
+                    prop.load(in);
+                    logger.info("✅ Loaded properties: {}", PROP_FILE);
+                } else {
+                    logger.warn("⚠️ Properties file not found: {}", PROP_FILE);
+                }
+            }
+
         } catch (Exception e) {
-            // Log and rethrow as runtime to halt tests that depend on this
-            logger.error("❌ Failed to load JSON config {}: {}", JSON_CONFIG_PATH, e.getMessage(), e);
+            logger.error("❌ ConfigManager init failed: {}", e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
 
     // ──────────────────────────────────────────────────────────────────────────────
-    // SECTION: JSON Config Extraction
+    // Basic Getters (From .properties)
     // ──────────────────────────────────────────────────────────────────────────────
 
-    /**
-     * Fetches the config block for a specific application inside a specific environment.
-     *
-     * @param env     The environment key (e.g., "test", "staging", "prod")
-     * @param appName The application name to lookup under that environment
-     * @return JSONObject representing the selected application's config
-     * @throws IllegalArgumentException if the environment or appName is not found
-     */
-    public static JSONObject getAppConfig(String env, String appName) {
-        JSONObject envObj = jsonConfig.optJSONObject(env);  // Top-level environment
-        if (envObj == null) {
-            throw new IllegalArgumentException("Environment not found: " + env);
-        }
+    public static String getEnv() {
+        return prop.getProperty("env", "test");
+    }
 
-        JSONArray apps = envObj.optJSONArray("applications");  // List of apps under env
-        if (apps == null) {
-            throw new IllegalArgumentException("No applications defined for env: " + env);
-        }
+    public static String getAppName() {
+        String userId = getRawUserId(); // From properties (or fallback)
+        return getUserAppName(getEnv(), userId); // New method
+    }
 
-        // Loop through apps and return the one matching appName
+    public static String getRawUserId() {
+        return prop.getProperty("userId", "qa.tester");
+    }
+
+    public static String getProperty(String key, String defaultValue) {
+        return prop.getProperty(key, defaultValue);
+    }
+
+    public static String getUserAppName(String env, String userId) {
+        JSONObject envObj = jsonConfig.optJSONObject(env);
+        if (envObj == null) throw new IllegalArgumentException("Invalid env: " + env);
+
+        JSONArray apps = envObj.optJSONArray("applications");
+        if (apps == null) throw new IllegalArgumentException("No apps for env: " + env);
+
         for (Object o : apps) {
             JSONObject app = (JSONObject) o;
-            if (appName.equals(app.optString("appName"))) {
-                return app;
+            JSONArray companies = app.optJSONArray("companies");
+            if (companies == null) continue;
+
+            for (Object c : companies) {
+                JSONObject company = (JSONObject) c;
+                JSONArray users = company.optJSONArray("users");
+                if (users == null) continue;
+
+                for (Object u : users) {
+                    JSONObject user = (JSONObject) u;
+                    if (userId.equals(user.optString("userId"))) {
+                        return app.optString("appName");
+                    }
+                }
             }
+        }
+
+        throw new IllegalArgumentException("App not found for user: " + userId);
+    }
+
+    public static Set<String> getEnvironments() {
+        return jsonConfig.keySet();
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────────
+    // JSON-Based Config Resolution
+    // ──────────────────────────────────────────────────────────────────────────────
+
+    public static JSONObject getAppConfig(String env, String appName) {
+        JSONObject envObj = jsonConfig.optJSONObject(env);
+        if (envObj == null) throw new IllegalArgumentException("Invalid env: " + env);
+
+        JSONArray apps = envObj.optJSONArray("applications");
+        if (apps == null) throw new IllegalArgumentException("No apps in env: " + env);
+
+        for (Object o : apps) {
+            JSONObject app = (JSONObject) o;
+            if (appName.equals(app.optString("appName"))) return app;
         }
 
         throw new IllegalArgumentException("App not found: " + appName + " in env: " + env);
     }
 
-    /**
-     * Fetches the config block for a specific company under a given app + environment.
-     *
-     * @param env         Environment name (e.g., "test")
-     * @param appName     Application name (e.g., "SBS")
-     * @param companyCode Code of the company to look for (e.g., "VCX001")
-     * @return JSONObject representing the selected company's config
-     */
-    public static JSONObject getCompanyConfig(String env, String appName, String companyCode) {
-        JSONObject app = getAppConfig(env, appName);  // Get the app block
+    public static JSONObject getCompanyConfig(String env, String appName, String userId) {
+        JSONObject app = getAppConfig(env, appName);
         JSONArray companies = app.optJSONArray("companies");
-        if (companies == null) {
-            throw new IllegalArgumentException("No companies for app: " + appName);
-        }
+
+        if (companies == null) throw new IllegalArgumentException("No companies for app: " + appName);
 
         for (Object o : companies) {
-            JSONObject comp = (JSONObject) o;
-            if (companyCode.equals(comp.optString("companyCode"))) {
-                return comp;
+            JSONObject company = (JSONObject) o;
+            JSONArray users = company.optJSONArray("users");
+
+            if (users != null) {
+                for (Object u : users) {
+                    JSONObject user = (JSONObject) u;
+                    if (userId.equals(user.optString("userId"))) {
+                        return company;
+                    }
+                }
             }
         }
 
-        throw new IllegalArgumentException("Company not found: " + companyCode + " in app: " + appName);
+        throw new IllegalArgumentException("No company found for user: " + userId);
     }
 
-    /**
-     * Fetches the config block for a specific user inside a company under app/env.
-     *
-     * @param env         Environment name (e.g., "test")
-     * @param appName     Application name (e.g., "SBS")
-     * @param companyCode Company code to search under
-     * @param userId      The user ID to match (e.g., "qa.tester")
-     * @return JSONObject representing the selected user's config
-     */
-    public static JSONObject getUserConfig(String env, String appName, String companyCode, String userId) {
-        JSONObject comp = getCompanyConfig(env, appName, companyCode);  // First go to company level
-        JSONArray users = comp.optJSONArray("users");
+    public static JSONObject getUserConfig(String env, String appName, String userId) {
+        JSONObject company = getCompanyConfig(env, appName, userId);
+        JSONArray users = company.optJSONArray("users");
 
-        if (users == null) {
-            throw new IllegalArgumentException("No users for company: " + companyCode);
+        if (users == null) throw new IllegalArgumentException("No users in company: " + company.optString("companyCode"));
+
+        for (Object u : users) {
+            JSONObject user = (JSONObject) u;
+            if (userId.equals(user.optString("userId"))) return user;
         }
 
-        for (Object o : users) {
-            JSONObject u = (JSONObject) o;
-            if (userId.equals(u.optString("userId"))) {
-                return u;
+        throw new IllegalArgumentException("User not found: " + userId);
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────────
+    // Final Utility Getters
+    // ──────────────────────────────────────────────────────────────────────────────
+
+    public static String getUserId() {
+        return getUserConfig(getEnv(), getAppName(), getRawUserId()).getString("userId");
+    }
+
+    public static String getCompanyCode() {
+        String userId = getRawUserId(); // From properties (or fallback)
+        return getCompanyConfig(getEnv(), getAppName(), userId).getString("companyCode");
+    }
+
+    // 🔄 Overloaded method for LoginManager (userId only)
+    public static JSONObject getUserConfig(String userId) {
+        String env = getEnv();
+        String appName = getAppName();
+        String companyCode = getCompanyCode(); // Already resolved based on userId
+
+        return getUserConfig(env, appName, companyCode, userId); // Cannot resolve method 'getUserConfig(String, String, String, String)'
+    }
+
+    // ✅ 4-arg overload to support dynamic user resolution
+    public static JSONObject getUserConfig(String env, String appName, String companyCode, String userId) {
+        JSONObject company = getCompanyConfig(env, appName, userId);  // already matches company by userId
+        JSONArray users = company.optJSONArray("users");
+
+        if (users == null)
+            throw new IllegalArgumentException("No users found in company: " + companyCode);
+
+        for (Object u : users) {
+            JSONObject user = (JSONObject) u;
+            if (userId.equals(user.optString("userId"))) {
+                return user;
             }
         }
 
         throw new IllegalArgumentException("User not found: " + userId + " in company: " + companyCode);
     }
 
-    // ──────────────────────────────────────────────────────────────────────────────
-    // SECTION: Properties File Fallback
-    // ──────────────────────────────────────────────────────────────────────────────
-    /**
-     * Loads a simple key-value from config.properties in classpath.
-     * Useful for fallback settings like `browser=chrome`, `timeout=30`
-     *
-     * @param key          The key to search for
-     * @param defaultValue Value returned if key is missing or file not found
-     * @return The value of the property, or default if not found
-     */
-    public static String getProperty(String key, String defaultValue) {
-        try (InputStream in = ConfigManager.class.getClassLoader().getResourceAsStream(PROP_FILE)) {
-            if (in == null) {
-                logger.warn("Properties file '{}' not found, using default for {}", PROP_FILE, key);
-                return defaultValue;
-            }
-
-            Properties props = new Properties();
-            props.load(in);
-
-            String val = props.getProperty(key, defaultValue);
-            logger.info("🔍 Loaded property '{}' = '{}'", key, val);
-            return val;
-
-        } catch (Exception e) {
-            logger.error("❌ Failed to load properties: {}", e.getMessage(), e);
-            return defaultValue;
-        }
+    public static String getApiBase() {
+        return getAppConfig(getEnv(), getAppName()).optString("apiBase");
     }
 
-    /**
-     * Fetches the "apiBase" value for a given environment and application.
-     *
-     * @param env     The environment key (e.g., "test", "staging")
-     * @param appName The application name to lookup under that environment
-     * @return The apiBase URL as a string
-     */
-    public static String getApiBase(String env, String appName) {
-        JSONObject appConfig = getAppConfig(env, appName); // Get the app block
-        String apiBase = appConfig.optString("apiBase", null);
-
-        if (apiBase == null || apiBase.isEmpty()) {
-            throw new IllegalArgumentException("API Base URL is missing in config for app: " + appName + " in env: " + env);
-        }
-
-        return apiBase;
+    public static String getAppUrl() {
+        return getAppConfig(getEnv(), getAppName()).optString("appUrl");
     }
 
-    // ──────────────────────────────────────────────────────────────────────────────
-
-    /**
-     * Returns all top-level environment keys (e.g., "test", "prod", "dev").
-     * Useful for running sanity checks or loading dropdowns.
-     *
-     * @return Set of environment keys defined in config.json
-     */
-    public static Set<String> getEnvironments() {
-        return jsonConfig.keySet();
+    public static String getLoginUrl() {
+        return getAppConfig(getEnv(), getAppName()).optString("loginUrl");
     }
 }

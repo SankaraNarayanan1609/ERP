@@ -41,21 +41,25 @@ public class PurchaseInvoiceData {
     private String currency;
     private BigDecimal exchangeRate;
     private String coverNote;
-    private boolean renewal;
     private LocalDate renewalDate;
     private String frequency;
     private String termsAndConditions;
     private String termsEditorText;
 
     // ─── Line Items and Financials ──────────────────────────────────
-    private List<LineItem> lineItems;
-    private BigDecimal netAmount;
-    private BigDecimal addOnCharges;
-    private BigDecimal additionalDiscount;
-    private BigDecimal freightCharges;
-    private String additionalTax;
-    private BigDecimal roundOff;
-    private BigDecimal grandTotal;
+    @Builder.Default private List<LineItem> lineItems = java.util.Collections.emptyList();
+
+    @Builder.Default private BigDecimal netAmount = BigDecimal.ZERO;
+    @Builder.Default private BigDecimal addOnCharges = BigDecimal.ZERO;
+    @Builder.Default private BigDecimal additionalDiscount = BigDecimal.ZERO;
+    @Builder.Default private BigDecimal freightCharges = BigDecimal.ZERO;
+    @Builder.Default private BigDecimal roundOff = BigDecimal.ZERO;
+
+    @Builder.Default private boolean renewal = false;
+    @Builder.Default private String additionalTax = "0%";
+    @Builder.Default private BigDecimal grandTotal = BigDecimal.ZERO;
+
+
 
     // ─── Misc Fields ────────────────────────────────────────────────
     private String remarks;
@@ -70,8 +74,12 @@ public class PurchaseInvoiceData {
      * This method must be called before computing final total.
      */
     public void computeNetAmount() {
+        if (lineItems == null) { lineItems = java.util.Collections.emptyList(); }
         this.netAmount = lineItems.stream()
-                .map(LineItem::getTotalAmount) // get the total (price * qty - discount + tax)
+                .map(li -> {
+                    // prefer already-computed total; else compute now
+                    return li.getTotalAmount() != null ? li.getTotalAmount() : li.computeAndGetTotal();
+                })
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
@@ -85,31 +93,24 @@ public class PurchaseInvoiceData {
     public void computeGrandTotal() {
         if (netAmount == null) netAmount = BigDecimal.ZERO;
 
-        // Step 1: Add or subtract additional charges
         BigDecimal interim = netAmount
                 .add(addOnCharges != null ? addOnCharges : BigDecimal.ZERO)
                 .subtract(additionalDiscount != null ? additionalDiscount : BigDecimal.ZERO)
                 .add(freightCharges != null ? freightCharges : BigDecimal.ZERO);
 
-        // Step 2: Parse additional tax percentage string (like "5%")
         BigDecimal pct = BigDecimal.ZERO;
-        if (additionalTax != null && additionalTax.contains("%")) {
-            try {
-                String num = additionalTax.replace("%", "").trim(); // remove %
-                pct = new BigDecimal(num)
-                        .divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP);
-            } catch (NumberFormatException e) {
-                // If parsing fails, assume 0%
+        if (additionalTax != null) {
+            String onlyNum = additionalTax.replaceAll("[^\\d.\\-]", "");
+            if (!onlyNum.isBlank()) {
+                try { pct = new BigDecimal(onlyNum).movePointLeft(2); } catch (Exception ignored) {}
             }
         }
 
-        // Step 3: Calculate tax amount and final total
         BigDecimal taxAmt = interim.multiply(pct).setScale(2, RoundingMode.HALF_UP);
-        BigDecimal rawTotal = interim.add(taxAmt);
+        BigDecimal raw    = interim.add(taxAmt);
 
-        // Step 4: Round the total and save rounding difference
-        BigDecimal rounded = rawTotal.setScale(0, RoundingMode.HALF_UP);
-        this.roundOff = rounded.subtract(rawTotal);
-        this.grandTotal = rawTotal.add(roundOff);
+        BigDecimal rounded = raw.setScale(0, RoundingMode.HALF_UP);
+        this.roundOff  = rounded.subtract(raw);
+        this.grandTotal = raw.add(roundOff);
     }
 }

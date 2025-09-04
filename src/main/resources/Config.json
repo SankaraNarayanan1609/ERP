@@ -10,7 +10,7 @@
           {
             "companyCode": "vcidex",
             "users": [
-              { "userId": "Superadmin", "password": "s" },
+              { "userId": "superadmin", "password": "s" },
               { "userId": "vcx288",      "password": "s" }
             ]
           }

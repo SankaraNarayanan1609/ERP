@@ -100,6 +100,36 @@ public class ApiMasterDataProvider implements MasterDataProvider {
         );
     }
 
+    // --- COST CENTERS ---
+    public List<CostCenter> getCostCenters() {
+        // endpoint returns a bare array (per your sample), so extract to List<CostCenter>
+        return safeGetList(
+                "/StoryboardAPI/api/PmrTrnCostcenterSummary/GetCostcenterSummary",
+                r -> r.then().contentType(ContentType.JSON)
+                        .extract().as(new io.restassured.common.mapper.TypeRef<List<CostCenter>>() {})
+        );
+    }
+
+    /** Optional helpers parallel to getBranches()/getCurrencies() style */
+    public List<String> getCostCenterNames() {
+        return getCostCenters().stream()
+                .map(CostCenter::getCostCenterName)
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
+    }
+
+    public Optional<String> getAnyUsableCostCenterName() {
+        return getCostCenters().stream()
+                .filter(cc -> Boolean.TRUE.equals(cc.getStatus()))     // prefer status==true
+                .map(CostCenter::getCostCenterName)
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .findAny();
+    }
+
     // --- EMPLOYEES ---
     @Override
     public List<Employee> getEmployees() {

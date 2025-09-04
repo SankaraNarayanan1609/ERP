@@ -1,19 +1,26 @@
 package com.Vcidex.StoryboardSystems.Utils;
 
-import org.testng.ITestResult;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TestContext {
-    private static final ThreadLocal<String> currentTest = new ThreadLocal<>();
+    private static final ThreadLocal<Map<String, Object>> context = ThreadLocal.withInitial(HashMap::new);
 
-    public static void setCurrentTestName(ITestResult result) {
-        currentTest.set(result.getMethod().getMethodName());
+    public static void set(String key, Object value) {
+        context.get().put(key, value);
+    }
+
+    public static <T> T get(String key, Class<T> type, T defaultValue) {
+        Object v = context.get().get(key);
+        return type.isInstance(v) ? type.cast(v) : defaultValue;
+    }
+
+
+    public static void clear() {
+        context.remove();
     }
 
     public static String getCurrentTestName() {
-        return currentTest.get();
-    }
-
-    public static void clear() {
-        currentTest.remove();
+        return (String) context.get().getOrDefault("testName", "UnnamedTest");
     }
 }

@@ -1,9 +1,11 @@
 package com.Vcidex.StoryboardSystems.Utils;
 
+import com.Vcidex.StoryboardSystems.Purchase.Model.ProductType;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.LineItem;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.Product;
-import com.Vcidex.StoryboardSystems.Purchase.Model.ProductType;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PurchaseOrderData;
+
+import java.util.Objects;
 
 public class PurchaseHelper {
 
@@ -12,10 +14,9 @@ public class PurchaseHelper {
      */
     public static int getNonServiceItemCount(PurchaseOrderData data) {
         return (int) data.getLineItems().stream()
-                .filter(line -> {
-                    Product p = line.getProduct();
-                    return p != null && p.getProductType() == ProductType.SERVICE;
-                })
+                .map(LineItem::getProduct)
+                .filter(Objects::nonNull)
+                .filter(p -> p.getProductType() != ProductType.SERVICE)   // ← fixed
                 .count();
     }
 }

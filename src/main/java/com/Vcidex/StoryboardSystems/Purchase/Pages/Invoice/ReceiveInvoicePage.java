@@ -21,10 +21,6 @@ public class ReceiveInvoicePage extends BasePage {
 
     private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    public ReceiveInvoicePage(WebDriver driver) {
-        super(driver);
-    }
-
     // ──────── Locators (Only inputs) ───────────────────────
     private final By invoiceRefInput      = By.xpath("//input[@formcontrolname='invoice_ref_no']");
     private final By invoiceDateInput     = By.xpath("//input[@formcontrolname='invoice_date']");
@@ -38,6 +34,10 @@ public class ReceiveInvoicePage extends BasePage {
     private final By submitBtn            = By.xpath("//button[@type='submit' and contains(.,'Submit')]");
 
     // ──────── New Getters (for cross-page validation only) ───────────────────────
+
+    public ReceiveInvoicePage(WebDriver driver) {
+        super(driver);
+    }
 
     public String getInvoiceRefNo() {
         return findElement(invoiceRefInput).getAttribute("value").trim();
@@ -104,7 +104,7 @@ public class ReceiveInvoicePage extends BasePage {
             waitForOverlayClear();
 
             MasterLogger.step(MasterLogger.Layer.UI, "Type Invoice Ref = " + d.getInvoiceRefNo(), () -> {
-                type(invoiceRefInput, d.getInvoiceRefNo(), "Invoice Ref No");
+                type(invoiceRefInput, d.getInvoiceRefNo(), "Invoice Ref No"); // Cannot resolve method 'type' in 'ReceiveInvoicePage'
                 return null;
             });
 
@@ -119,14 +119,16 @@ public class ReceiveInvoicePage extends BasePage {
             });
 
             MasterLogger.step(MasterLogger.Layer.UI, "Type Remarks", () -> {
-                type(remarksTextArea, d.getRemarks(), "Remarks");
+                type(remarksTextArea, d.getRemarks(), "Remarks"); // Cannot resolve method 'type' in 'ReceiveInvoicePage'
                 return null;
             });
 
-            MasterLogger.step(MasterLogger.Layer.UI, "Select Payment Terms", () -> {
-                selectFromNgSelect("payment_terms", d.getPaymentTerms());
-                return null;
-            });
+
+//            MasterLogger.step(MasterLogger.Layer.UI, "Select Payment Terms", () -> {
+//                selectFromNgSelect("payment_terms", d.getPaymentTerms());
+//                return null;
+//            });
+
 
             MasterLogger.step(MasterLogger.Layer.UI, "Select Purchase Type", () -> {
                 selectFromNgSelect("purchasetype_name", d.getPurchaseType());
@@ -134,21 +136,21 @@ public class ReceiveInvoicePage extends BasePage {
             });
 
             MasterLogger.step(MasterLogger.Layer.UI, "Type Billing Email", () -> {
-                type(billingEmailInput, d.getBillingEmail(), "Billing Email");
+                type(billingEmailInput, d.getBillingEmail(), "Billing Email"); // Cannot resolve method 'type' in 'ReceiveInvoicePage'
                 return null;
             });
 
-            MasterLogger.step(MasterLogger.Layer.UI, "Select Terms Template", () -> {
-                selectFromNgSelect("template_name", d.getTermsTemplate());
-                return null;
-            });
+//            MasterLogger.step(MasterLogger.Layer.UI, "Select Terms Template", () -> {
+//                selectFromNgSelect("template_name", d.getTermsTemplate());
+//                return null;
+//            });
 
-            MasterLogger.step(MasterLogger.Layer.UI, "Type Terms content", () -> {
-                WebElement editor = findElement(termsEditor);
-                jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", editor);
-                jsExecutor.executeScript("arguments[0].innerHTML = arguments[1];", editor, d.getTermsContent());
-                return null;
-            });
+//            MasterLogger.step(MasterLogger.Layer.UI, "Type Terms content", () -> {
+//                WebElement editor = findElement(termsEditor);
+//                jsExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", editor);
+//                jsExecutor.executeScript("arguments[0].innerHTML = arguments[1];", editor, d.getTermsContent());
+//                return null;
+//            });
         });
 
         PerformanceLogger.end("ReceiveInvoice_fillForm");

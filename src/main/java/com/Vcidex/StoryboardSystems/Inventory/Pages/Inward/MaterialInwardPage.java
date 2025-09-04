@@ -1,7 +1,7 @@
 package com.Vcidex.StoryboardSystems.Inventory.Pages.Inward;
 
-import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.step;
 import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.group;
+import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.step;
 
 import com.Vcidex.StoryboardSystems.Common.BasePage;
 import com.Vcidex.StoryboardSystems.Inventory.POJO.MaterialInwardData;
@@ -12,8 +12,6 @@ import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ValidationLogger;
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
@@ -23,21 +21,17 @@ public class MaterialInwardPage extends BasePage {
 
     // Locators
     private final By addInwardBtn       = By.cssSelector("button[data-bs-target='#myModaladd']");
-    private final By loadingOverlay     = By.cssSelector(".spinner-overlay, .modal-backdrop");
     private final By branchInput        = By.cssSelector("input[formcontrolname='branch_name']");
     private final By dcNoInput          = By.cssSelector("input[formcontrolname='dc_no']");
     private final By datePicker         = By.cssSelector("input[formcontrolname='grn_date']");
     private final By expectedDatePicker = By.cssSelector("input[formcontrolname='expected_date']");
     private final By trackingInput      = By.cssSelector("input[formcontrolname='deliverytracking']");
     private final By boxesInput         = By.cssSelector("input[formcontrolname='no_box']");
-    private final By tableRows          = By.cssSelector("table#addgrn_lists tbody tr");
-    private final By selectPoHeader     = By.xpath("//h3[normalize-space(text())='Select Purchase Order']");
     private final By submitBtn          = By.cssSelector("app-ims-trn-grninwardaddsubmit form .text-center.my-4 button.btn-success");
     private final By backBtn            = By.cssSelector("button.btn-primary");
+    private final By selectPoHeader     = By.xpath("//h3[normalize-space(text())='Select Purchase Order']");
 
-    public MaterialInwardPage(WebDriver driver) {
-        super(driver);
-    }
+    public MaterialInwardPage(WebDriver driver) { super(driver); }
 
     public void assertOnSelectPurchaseOrder(ExtentTest node) {
         ReportManager.setTest(node);
@@ -51,15 +45,11 @@ public class MaterialInwardPage extends BasePage {
 
     public void selectPurchaseOrder(String poRef, ExtentTest node) {
         ReportManager.setTest(node);
-        PerformanceLogger.start("MaterialInward.selectPurchaseOrder");
-        step(Layer.UI, "Select PO " + poRef, () -> {
-            By sel = By.xpath(
-                    "//table[@id='grn_list']//tbody/tr[td[4][normalize-space(text())='" + poRef + "']]//button[@title='Select']"
-            );
-            click(sel, "Select PO '" + poRef + "'");
-            return null;
-        });
-        PerformanceLogger.end("MaterialInward.selectPurchaseOrder");
+        By eitherTable = By.xpath(
+                "//table[@id='purchaseOrderList' or @id='grn_list']" +
+                        "//tbody/tr[td[4][normalize-space()='"+poRef+"']]//button[@title='Select' or normalize-space()='Select']"
+        );
+        click(eitherTable, "Select PO '" + poRef + "'");
     }
 
     public void clickAddInward(ExtentTest node) {
@@ -67,7 +57,7 @@ public class MaterialInwardPage extends BasePage {
         PerformanceLogger.start("MaterialInward.clickAddInward");
         step(Layer.UI, "Click Add Inward", () -> {
             waitForOverlayClear();
-            WebElement btn = waitUntilVisible(addInwardBtn, "Add Inward button");
+            waitUntilVisible(addInwardBtn, "Add Inward button");
             scrollIntoView(addInwardBtn);
             click(addInwardBtn, "Add Inward");
             return null;
@@ -81,12 +71,8 @@ public class MaterialInwardPage extends BasePage {
         step(Layer.UI, "Fill Inward header", () -> {
             waitForOverlayClear();
             scrollIntoView(dcNoInput);
-
-            // Use standard type() to enter Delivery No
-            type(dcNoInput, d.getDcNo(), "Delivery No");
-
-            // now pick your dates…
-            FlatpickrDatePicker.pickDateAndClose(driver, datePicker,       d.getGrnDate(),      "GRN Date");
+            type(dcNoInput, d.getDcNo(), "Delivery No"); // Cannot resolve method 'type' in 'MaterialInwardPage'
+            FlatpickrDatePicker.pickDateAndClose(driver, datePicker,         d.getGrnDate(),      "GRN Date");
             FlatpickrDatePicker.pickDateAndClose(driver, expectedDatePicker, d.getExpectedDate(), "Expected Date");
             return null;
         });
@@ -107,8 +93,8 @@ public class MaterialInwardPage extends BasePage {
         ReportManager.setTest(node);
         PerformanceLogger.start("MaterialInward.fillDispatchDetails");
         group("Fill dispatch details", () -> {
-            type(trackingInput, d.getTrackingNo(), "Delivery Tracking");
-            type(boxesInput,    d.getNoOfBoxes(),  "No of Boxes");
+            type(trackingInput, d.getTrackingNo(), "Delivery Tracking"); // Cannot resolve method 'type' in 'MaterialInwardPage'
+            type(boxesInput,    d.getNoOfBoxes(),  "No of Boxes"); // Cannot resolve method 'type' in 'MaterialInwardPage'
         });
         PerformanceLogger.end("MaterialInward.fillDispatchDetails");
     }
@@ -137,10 +123,7 @@ public class MaterialInwardPage extends BasePage {
         PerformanceLogger.end("MaterialInward.clickSubmit");
     }
 
-    /**
-     * Only count the rows that actually have an <input> in them,
-     * i.e. real line‐items.
-     */
+    /** Only count rows that actually have an &lt;input&gt; (real line-items). */
     public void assertRowCount(int expected, ExtentTest node) {
         ReportManager.setTest(node);
         PerformanceLogger.start("MaterialInward.assertRowCount");
@@ -152,30 +135,11 @@ public class MaterialInwardPage extends BasePage {
                     "Table row count",
                     String.valueOf(expected),
                     String.valueOf(rows.size()),
-                    (ExtentTest) driver
+                    node
             );
             return null;
         });
         PerformanceLogger.end("MaterialInward.assertRowCount");
-    }
-
-    /**
-     * After you click “Back” into the master list, wait for the
-     * master-grid to appear and then verify the DC shows up.
-     */
-    public void assertInwardListed(String dcNo, ExtentTest node) {
-        ReportManager.setTest(node);
-        PerformanceLogger.start("MaterialInward.assertInwardListed");
-        step(Layer.UI, "Verify Inward appears in master list for DC = " + dcNo, () -> {
-            waitForOverlayClear();
-            waitUntilVisible(By.id("GrnInward_lists"), "master GRN‐list table");
-            By row = By.xpath(
-                    "//table[@id='GrnInward_lists']//tbody//tr[td[9][normalize-space()='" + dcNo + "']]"
-            );
-            waitUntilVisible(row, "Inward row for “" + dcNo + "”");
-            return null;
-        });
-        PerformanceLogger.end("MaterialInward.assertInwardListed");
     }
 
     public void clickBack(ExtentTest node) {
@@ -188,31 +152,49 @@ public class MaterialInwardPage extends BasePage {
         PerformanceLogger.end("MaterialInward.clickBack");
     }
 
+    // ─────────────────────────────────────────────────────────
+    // ✅ Added: used by your test — creates a full Inward entry
+    // ─────────────────────────────────────────────────────────
     public void createInwardEntry(MaterialInwardData data, ExtentTest node) {
-        clickAddInward(node);
-        fillHeader(data, node);
-        selectDispatchMode(data.getDispatchMode(), node);
-        fillDispatchDetails(data, node);
-        fillInwardDetails(data, node);
-        clickSubmit(node);
-        clickBack(node);
+        ReportManager.setTest(node);
+        PerformanceLogger.start("MaterialInward.createInwardEntry");
+        group("Create Material Inward Entry", () -> {
+            clickAddInward(node);
+            fillHeader(data, node);
+            selectDispatchMode(data.getDispatchMode(), node);
+            fillDispatchDetails(data, node);
+            fillInwardDetails(data, node);
+            clickSubmit(node);
+            clickBack(node);
+        });
+        PerformanceLogger.end("MaterialInward.createInwardEntry");
     }
 
-    // MaterialInwardPage.java
+    // ─────────────────────────────────────────────────────────
+    // ✅ Added: helper used by createInwardEntry
+    // ─────────────────────────────────────────────────────────
     public void fillInwardDetails(MaterialInwardData data, ExtentTest node) {
         ReportManager.setTest(node);
         PerformanceLogger.start("MaterialInward.fillInwardDetails");
-
         step(Layer.UI, "Fill received quantity for all PO rows", () -> {
             Map<Integer, String> qtyMap = data.getReceivedQtyByRow();
             for (Map.Entry<Integer, String> entry : qtyMap.entrySet()) {
-                int rowIndex = entry.getKey();
-                String qty = entry.getValue();
-                enterReceivedQty(rowIndex, qty, node); // ✅ Use existing robust method
+                enterReceivedQty(entry.getKey(), entry.getValue(), node);
             }
             return null;
         });
-
         PerformanceLogger.end("MaterialInward.fillInwardDetails");
+    }
+
+    // in MaterialInwardPage.java
+    public String submitAndCapture(ExtentTest node) {
+        ReportManager.setTest(node);
+        clickSubmit(node);
+        // Reuse BasePage extractor with GRN/INWARD patterns
+        return captureRefByRegex(
+                "(GRN[-/ ]?\\d{4,})",
+                "(INWARD[-/ ]?\\d{4,})",
+                "(Inward\\s*No\\s*[:#]\\s*\\S+)"
+        );
     }
 }

@@ -14,25 +14,24 @@ import java.util.Optional;
 
 public class NetworkLogger {
     private static final Logger log = LoggerFactory.getLogger(NetworkLogger.class);
-    private static DevTools devTools;
+    private static final ThreadLocal<org.openqa.selenium.devtools.DevTools> TL = new ThreadLocal<>();
     private static final boolean ENABLED = Boolean.parseBoolean(ConfigManager.getProperty("network.logging.enabled", "false"));
 
     public static void start(WebDriver driver) {
-        if (!ENABLED || !(driver instanceof ChromeDriver chromeDriver)) return;
+        if (!ENABLED || !(driver instanceof org.openqa.selenium.chrome.ChromeDriver chrome)) return;
+        if (TL.get() != null) return; // already started for this thread
 
-        devTools = chromeDriver.getDevTools();
+        var devTools = chrome.getDevTools();
+        TL.set(devTools);
+
         devTools.createSession();
         devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
 
-        devTools.addListener(Network.requestWillBeSent(), (RequestWillBeSent req) ->
-                log.debug("▶ {} {}", req.getRequest().getMethod(), req.getRequest().getUrl())
-        );
-
-        devTools.addListener(Network.responseReceived(), (ResponseReceived resp) -> {
+        devTools.addListener(Network.requestWillBeSent(), r -> log.debug("▶ {} {}", r.getRequest().getMethod(), r.getRequest().getUrl()));
+        devTools.addListener(Network.responseReceived(), resp -> {
             int status = resp.getResponse().getStatus();
             String url = resp.getResponse().getUrl();
             log.debug("◀ {} {}", status, url);
-
             if (status >= 400) {
                 try {
                     var body = devTools.send(Network.getResponseBody(resp.getRequestId()));
@@ -46,11 +45,10 @@ public class NetworkLogger {
     }
 
     public static void stop() {
-        if (devTools != null) {
-            try {
-                devTools.close();
-            } catch (Exception ignore) {
-            }
+        var dt = TL.get();
+        if (dt != null) {
+            try { dt.close(); } catch (Exception ignore) {}
+            TL.remove();
         }
     }
 }

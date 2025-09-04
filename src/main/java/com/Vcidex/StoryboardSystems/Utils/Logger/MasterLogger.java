@@ -1,179 +1,129 @@
 package com.Vcidex.StoryboardSystems.Utils.Logger;
 
+import com.Vcidex.StoryboardSystems.Utils.ThreadSafeDriverManager;
 import com.aventstack.extentreports.ExtentTest;
 import io.restassured.response.Response;
+import org.slf4j.LoggerFactory;
 
 public class MasterLogger {
-
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(MasterLogger.class);
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(MasterLogger.class);
 
     public enum Layer { UI, API, DB, VALIDATION, ASSERT, WAIT }
 
     @FunctionalInterface
-    public interface SupplierWithException<T> {
-        T get() throws Exception;
-    }
+    public interface SupplierWithException<T> { T get() throws Exception; }
 
-    // ─── Functional step with result and default node ────────────────────────────
+    // Generic step (returns result)
     public static <T> T step(Layer layer, String actionName, SupplierWithException<T> step) {
         return step(layer, actionName, ReportManager.getTest(), step);
     }
 
-    // ─── Functional step with result and custom node ─────────────────────────────
-    public static <T> T step(
-            Layer layer,
-            String actionName,
-            ExtentTest node,
-            SupplierWithException<T> step
-    ) {
+    public static <T> T step(Layer layer, String actionName, ExtentTest node, SupplierWithException<T> step) {
         try {
             T result = step.get();
             String rc = extractReturnCode(layer, result);
-            node.pass("✅ " + actionName + (rc != null ? " (RC=" + rc + ")" : ""));
+            if (node != null) node.pass("✅ " + actionName + (rc != null ? " (RC=" + rc + ")" : ""));
             return result;
         } catch (Exception e) {
-            String rc = determineCode(layer, e);
-            node.fail("❌ " + actionName + " → " + rc + " – " + e.getMessage());
-            DiagnosticsLogger.onFailure(ReportManager.getDriver(), actionName);
+            DiagnosticsLogger.onFailure(
+                    ThreadSafeDriverManager.getDriver(),
+                    actionName,
+                    e
+            );
+            if (e instanceof RuntimeException re) throw re;
             throw new RuntimeException(e);
         }
     }
 
-    // ─── Void step with Runnable and default node ────────────────────────────────
+    // Step without return value
     public static void step(Layer layer, String actionName, Runnable step) {
         step(layer, actionName, ReportManager.getTest(), step);
     }
 
-    // ─── Void step with Runnable and custom node ─────────────────────────────────
-    public static void step(
-            Layer layer,
-            String actionName,
-            ExtentTest node,
-            Runnable step
-    ) {
+    public static void step(Layer layer, String actionName, ExtentTest node, Runnable step) {
         try {
             step.run();
-            node.pass("✅ " + actionName);
+            if (node != null) node.pass("✅ " + actionName);
         } catch (Exception e) {
-            String rc = determineCode(layer, e);
-            node.fail("❌ " + actionName + " → " + rc + " – " + e.getMessage());
-            DiagnosticsLogger.onFailure(ReportManager.getDriver(), actionName);
+            DiagnosticsLogger.onFailure(
+                    ThreadSafeDriverManager.getDriver(),
+                    actionName,
+                    e
+            );
+            if (e instanceof RuntimeException re) throw re;
             throw new RuntimeException(e);
         }
     }
 
-    // ─── Timed step helper ───────────────────────────────────────────────────────
+    // Step with performance timing
     public static void stepWithTimer(String key, Runnable step) {
         PerformanceLogger.start(key);
         try {
             step.run();
-            ReportManager.getTest().pass("✅ " + key + " (timed)");
+            ExtentTest t = ReportManager.getTest();
+            if (t != null) t.pass("✅ " + key + " (timed)");
         } catch (Exception e) {
-            ReportManager.getTest().fail("❌ " + key + ": " + e.getMessage());
-            throw e;
+            DiagnosticsLogger.onFailure(
+                    ThreadSafeDriverManager.getDriver(),
+                    key,  // fixed: was an undefined variable
+                    e
+            );
+            if (e instanceof RuntimeException re) throw re;
+            throw new RuntimeException(e);
         } finally {
             PerformanceLogger.end(key);
         }
     }
 
-    // ─── Grouped node helper ────────────────────────────────────────────────────
-    public static void group(String groupName, Runnable body) {
-        ExtentTest parent = ReportManager.getTest();
-        ExtentTest child  = parent.createNode(groupName);
-        ReportManager.setTest(child);
-        try {
-            body.run();
-            child.pass("✅ " + groupName);
-        } catch (Exception e) {
-            child.fail("❌ " + groupName + " → " + e.getClass().getSimpleName() + ": " + e.getMessage());
-            throw new RuntimeException(e);
-        } finally {
-            ReportManager.setTest(parent);
-        }
-    }
+    public static void group(String name, Runnable block) { ReportManager.group(name, block); }
 
-    // ─── Return‐code extraction for API layer ───────────────────────────────────
     private static <T> String extractReturnCode(Layer layer, T result) {
-        if (layer == Layer.API && result instanceof Response) {
-            return String.valueOf(((Response) result).getStatusCode());
-        }
+        if (layer == Layer.API && result instanceof Response res) return String.valueOf(res.getStatusCode());
         return null;
     }
 
-    // ─── Error code determination for FAIL paths ────────────────────────────────
-    private static String determineCode(Layer layer, Exception e) {
-        return switch (layer) {
-            case VALIDATION, ASSERT -> e.getMessage();
-            default              -> e.getClass().getSimpleName();
-        };
-    }
+    @FunctionalInterface public interface StepBlock { void execute() throws Exception; }
 
-    // ─── StepBlock + helpers ────────────────────────────────────────────────────
-
-    @FunctionalInterface
-    public interface StepBlock {
-        Void execute() throws Exception;
-    }
-
-    /**
-     * Void‐returning step helper (uses UI layer and default test node).
-     */
     public static void step(String message, StepBlock action) {
         step(Layer.UI, message, ReportManager.getTest(), action);
     }
 
-    /**
-     * Missing overload: Void‐returning step with Layer + default node.
-     */
     public static void step(Layer layer, String message, StepBlock action) {
         step(layer, message, ReportManager.getTest(), action);
     }
 
-    /**
-     * Void‐returning step with custom node.
-     */
-    public static void step(
-            Layer layer,
-            String message,
-            ExtentTest node,
-            StepBlock action
-    ) {
+    public static void step(Layer layer, String message, ExtentTest node, StepBlock action) {
         try {
             action.execute();
-            node.pass("✅ " + message);
+            if (node != null) node.pass("✅ " + message);
         } catch (Exception e) {
-            String rc = determineCode(layer, e);
-            node.fail("❌ " + message + " → " + rc + " – " + e.getMessage());
-            DiagnosticsLogger.onFailure(ReportManager.getDriver(), message);
+            DiagnosticsLogger.onFailure(
+                    ThreadSafeDriverManager.getDriver(),
+                    message, // fixed: use message here
+                    e
+            );
+            if (e instanceof RuntimeException re) throw re;
             throw new RuntimeException(e);
         }
     }
 
-    /**
-     * Wraps a Runnable into a StepBlock.
-     */
-    public static StepBlock wrap(Runnable r) {
-        return () -> {
-            r.run();
-            return null;
-        };
-    }
-
-    // ─── Info / Warn / Error log pass-throughs to ExtentReport ─────────────────────
-
+    // Info/warn/error passthrough
     public static void info(String message) {
         log.info(message);
         try {
             ExtentTest test = ReportManager.getTest();
             if (test != null) test.info(message);
-        } catch (Exception ignored) {}
+            else log.warn("⚠️ ExtentTest null, skipping: {}", message);
+        } catch (Exception e) {
+            log.warn("⚠️ Failed to log to ExtentReport: {}", e.getMessage());
+        }
     }
 
     public static void warn(String message) {
         log.warn(message);
         try {
             ExtentTest test = ReportManager.getTest();
-            if (test != null) test.warning(message); // This ensures warning shows in HTML report
+            if (test != null) test.warning(message);
         } catch (Exception ignored) {}
     }
 

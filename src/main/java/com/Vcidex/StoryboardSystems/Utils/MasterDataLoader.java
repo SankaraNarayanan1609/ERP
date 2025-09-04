@@ -2,7 +2,7 @@ package com.Vcidex.StoryboardSystems.Utils;
 
 import com.Vcidex.StoryboardSystems.Purchase.Factory.ApiMasterDataProvider;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.MasterData;
-import com.Vcidex.StoryboardSystems.Utils.Logger.ErrorLogger;
+import com.Vcidex.StoryboardSystems.Utils.Logger.DiagnosticsLogger;
 
 public class MasterDataLoader {
     private final ApiMasterDataProvider api;
@@ -38,7 +38,8 @@ public class MasterDataLoader {
             return md;
         } catch (Exception e) {
             // wrap or rethrow so test setup will fail fast
-            ErrorLogger.logException(e, "MasterDataLoader.loadAndValidate", null);
+            com.Vcidex.StoryboardSystems.Utils.Logger.DiagnosticsLogger
+                    .onFailure(null, "MasterDataLoader.loadAndValidate", e);
             throw e;
         }
     }

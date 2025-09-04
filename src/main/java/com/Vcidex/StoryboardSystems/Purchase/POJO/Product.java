@@ -125,17 +125,10 @@ public class Product {
     private String message;
 
     // —— NEW FIELDS FOR JSON “product_type” —— //
-
-    /**
-     * Holds the raw JSON value of “product_type” (e.g. "Services", "", etc.).
-     */
     @JsonIgnore
-    private String productTypeRaw;
+    private String productTypeRaw;   // raw JSON value of “product_type”
 
-    /**
-     * The enum‐mapped version of productTypeRaw.
-     * May be null if raw is blank or unrecognized.
-     */
+    /** The enum‐mapped version of the product type (resolved from names/raw). */
     private ProductType type;
 
     // --------------------------------------------------------------------
@@ -194,34 +187,38 @@ public class Product {
     }
 
     // --------------------------------------------------------------------
-    // Jackson handling for “product_type” → raw + enum
+    // Mapping for “producttype_name” / alt / raw → enum ProductType
     // --------------------------------------------------------------------
+
+    @JsonProperty("producttype_name")
+    public void setProductTypeName(String name) {
+        this.productTypeName = name;
+        this.type = ProductType.fromNames(this.productTypeName, this.productTypeNameAlt, this.productTypeRaw);
+    }
+
+    @JsonProperty("producttypename")
+    public void setProductTypeNameAlt(String nameAlt) {
+        this.productTypeNameAlt = nameAlt;
+        this.type = ProductType.fromNames(this.productTypeName, this.productTypeNameAlt, this.productTypeRaw);
+    }
+
     @JsonProperty("product_type")
     public void setProductTypeRaw(String raw) {
         this.productTypeRaw = raw;
-        if (raw == null || raw.trim().isEmpty()) {
-            this.type = null;
-        } else {
-            try {
-                this.type = ProductType.fromApiString(raw);
-            } catch (IllegalArgumentException ex) {
-                this.type = null;
-            }
-        }
+        this.type = ProductType.fromNames(this.productTypeName, this.productTypeNameAlt, this.productTypeRaw);
     }
 
     @JsonIgnore
-    public String getProductTypeRaw() {
-        return productTypeRaw;
-    }
+    public String getProductTypeRaw() { return productTypeRaw; }
 
+    /** Always returns a non-null type (defaults to PHYSICAL). */
     @JsonProperty("product_type")
     public ProductType getProductType() {
-        return type;
+        return (type == null) ? ProductType.PHYSICAL : type;
     }
 
     // ─── Test Helpers ─────────────────────────────────────────────────────
     public void setProductName(String productName) { this.productName = productName; }
-    public void setTax(String tax)                   { this.tax = tax; }
-    public void setTax1(String tax1)                 { this.tax1 = tax1; }
+    public void setTax(String tax)                 { this.tax = tax; }
+    public void setTax1(String tax1)               { this.tax1 = tax1; }
 }

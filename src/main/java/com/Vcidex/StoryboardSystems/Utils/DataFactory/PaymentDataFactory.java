@@ -32,24 +32,24 @@ public class PaymentDataFactory {
     public PaymentData createFromInvoice(PurchaseInvoiceData invoice) {
         PaymentData data = new PaymentData();
 
-        // Step 1: Link to invoice reference number
         data.setInvoiceRefNo(invoice.getInvoiceRefNo());
+        data.setVendorName(invoice.getVendorName()); // <--- needed by navigator
 
-        // Step 2: Set payment date ≥ invoice date
-        LocalDate invoiceDate = invoice.getInvoiceDate();
-        LocalDate paymentDate = invoiceDate.plusDays(faker.number().numberBetween(0, 3));
+        // Payment Date ≥ Invoice Date
+        LocalDate paymentDate = invoice.getInvoiceDate()
+                .plusDays(faker.number().numberBetween(0, 3));
         data.setPaymentDate(paymentDate);
 
-        // Step 3: Add remarks and notes
         data.setPaymentRemarks("Auto-payment for invoice " + invoice.getInvoiceRefNo());
         data.setPaymentNote("Paid via automation on " + paymentDate);
-
-        // Step 4: Hardcoded payment mode for now
         data.setPaymentMode("Cash");
 
-        // Step 5: Match payment amount to invoice total
-        data.setPaymentAmount(invoice.getGrandTotal());
-
+        // Ensure totals are present
+        if (invoice.getGrandTotal() == null || invoice.getGrandTotal().signum() == 0) {
+            invoice.computeNetAmount();
+            invoice.computeGrandTotal();
+        }
+        data.setPaymentAmount(invoice.getGrandTotal());  // requires grandTotal field
         return data;
     }
 }

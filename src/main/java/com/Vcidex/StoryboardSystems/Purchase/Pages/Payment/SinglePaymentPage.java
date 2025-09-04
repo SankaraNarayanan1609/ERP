@@ -9,11 +9,14 @@ package com.Vcidex.StoryboardSystems.Purchase.Pages.Payment;
 
 import com.Vcidex.StoryboardSystems.Common.BasePage;
 import com.Vcidex.StoryboardSystems.Purchase.POJO.PaymentData;
-import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.Layer;
 import com.Vcidex.StoryboardSystems.Utils.Logger.PerformanceLogger;
 import com.Vcidex.StoryboardSystems.Utils.Logger.ReportManager;
+import com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.Layer;
+
 import com.aventstack.extentreports.ExtentTest;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 import java.time.format.DateTimeFormatter;
 
 import static com.Vcidex.StoryboardSystems.Utils.Logger.MasterLogger.step;
@@ -48,7 +51,6 @@ public class SinglePaymentPage extends BasePage {
     public SinglePaymentPage(WebDriver driver) {
         super(driver);
     }
-
     /**
      * Fills the payment form using direct string values.
      *
@@ -63,7 +65,7 @@ public class SinglePaymentPage extends BasePage {
         PerformanceLogger.start("Payment_fillForm");
 
         step(Layer.UI, "Fill Payment Date: " + date, () -> {
-            type(paymentDateInput, date, "Payment Date");
+            type(paymentDateInput, date, "Payment Date"); // Cannot resolve method 'type' in 'SinglePaymentPage'
             return null;
         });
 
@@ -129,5 +131,18 @@ public class SinglePaymentPage extends BasePage {
         });
         waitForAngularRequestsToFinish();
         waitForOverlayClear();
+    }
+
+    public String submitAndCapture(ExtentTest node) {
+        ReportManager.setTest(node);
+        submitPayment(node);
+        // Payment number usually appears as Payment/Voucher/Receipt No
+        return captureRefByRegex( // Cannot resolve method 'captureRefByRegex' in 'SinglePaymentPage'
+                "(PAY[-/ ]?\\d{4,})",
+                "(PMT[-/ ]?\\d{4,})",
+                "(Voucher\\s*(No|#)\\s*[:#]\\s*\\S+)",
+                "(Receipt\\s*(No|#)\\s*[:#]\\s*\\S+)",
+                "(Payment\\s*(No|#)\\s*[:#]\\s*\\S+)"
+        );
     }
 }
