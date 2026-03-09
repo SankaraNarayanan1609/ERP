@@ -5,7 +5,7 @@
  * This class is deserialized from JSON response using Jackson.
  */
 
-package com.Vcidex.StoryboardSystems.CmnMasterPOJO;
+package com.x.y.CmnMasterPOJO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
