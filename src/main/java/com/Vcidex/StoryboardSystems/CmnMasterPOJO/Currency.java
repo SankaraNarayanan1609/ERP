@@ -3,7 +3,7 @@
  * This includes exchange rate, currency code (like INR/USD), and related metadata.
  */
 
-package com.Vcidex.StoryboardSystems.CmnMasterPOJO;
+package com.x.y.CmnMasterPOJO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
